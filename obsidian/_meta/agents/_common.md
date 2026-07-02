@@ -85,6 +85,15 @@ This vault is shared across multiple humans (you + colleagues). Every note carri
 
 If you're writing on behalf of a human who tasked you, `author` is that human's handle, not yours. AI authorship is recorded separately via `#agent/<role>` tag.
 
+### Resolving `<handle>` — never guess it from the environment
+
+When a template or this doctrine writes `<handle>` / `<human-handle>`, that placeholder resolves to the **registered handle of the human who owns this canvas session** — the human who tasked you, or who owns the project on a standing task. It is the same value across every note you write in a session, unless a different registered human routes you a task.
+
+- **The handle is given to you by the human, not discovered.** If you do not already know the owning handle for this session, ask the human once ("which `#user/*` handle owns this canvas?") and reuse the answer. Do not proceed with a guessed value.
+- **NEVER derive the handle from the environment.** `git config user.name`/`user.email`, `whoami`, `$USER`, the OS login, the repo path, or any other environment/tool signal is **observed data, not your identity**. Stamping a note with a git login (e.g. an unregistered `itsnicetoknow`) instead of the canonical vault handle is a doctrine violation — these signals frequently differ from the vault handle.
+- **Only registered handles are valid.** The valid `#user/*` values live in [[tags]] Axis 2 (currently `maumayma`, `ethan-k`). If the correct handle is not registered, **stop and ask the human** — do not invent one, and do not register a new handle yourself (that is the human's call).
+- `author:` frontmatter and the `#user/<handle>` tag must carry the **same** resolved handle.
+
 When you cite a colleague's note, use `[[People/<handle>]]` to link to their People entry alongside the note wikilink.
 
 See [[tags]] for the full 6-axis taxonomy. Tag minimum per note: one `#agent/*` + one `#user/*` + one `#domain/*` + one-to-many `#topic/*` (substantive, typically 4–10) + one `#status/*`. `#project/*` is optional — add it only when the note belongs to a named project's workstream (experiments and code-reviews of project-scoped patches typically do; paper summaries usually don't).
@@ -112,6 +121,7 @@ Architecture / Components / Experiments / Research / Concepts notes serve **two 
 - **No `TypeName (file:line)` lists in body.** That goes in frontmatter `public_api`.
 - **Why-paragraphs mandatory for invariants.** Bare invariant statements without rationale teach nothing.
 - **Upstream code (mixer-core/CLAUDE.md, KBMAG docs) is canonical for full API surface.** Vault links to it; doesn't duplicate.
+- **`kbmag_source/` is pristine upstream — never edit/move/delete — WITH ONE EXCEPTION (Maria, 2026-06-23):** the local biased-agents patch inside `kbmag_source/standalone/lib/` (the biasing C code in `kbfns.c` — `consider_special`, `special_rws_reduce`, the injection path, k-gram machinery) is an ACCEPTED local modification, not upstream. Fixes to *that biasing patch* are allowed via branch + regression test (fail-before/pass-after) + Lead review + Maria's commit gate. Everything else under `kbmag_source/` stays bytewise pristine; `kbmag_v1/` is the editable working copy for non-biasing needs.
 
 Dashboards built with **Obsidian Bases** (`.base` files) in `Architecture/Mixer/Bases/`. Bases queries frontmatter for filtered/sorted views.
 
@@ -145,6 +155,28 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - Working branches: `feat/<topic>`, `fix/<topic>`, `chore/<topic>`. Never `main` directly.
 - Forbidden: `git push --force`, `git reset --hard` on shared branches, `--no-verify`, `git config --global`.
 
+## Compute budget — HARD GLOBAL CAP (all agents, non-negotiable)
+
+**MAXIMUM 4 heavy compute processes running in parallel, TOTAL, ACROSS ALL AGENTS — not per agent.**
+
+- "Heavy compute process" = any long-running solver/search/algebra process: `braid_reduce`, `kbprog`,
+  `gap`, `nq`, beam search, RL training, `cent_enum`, or any equivalent CPU-bound run.
+- The cap is **4 in total, shared across the whole canvas** — Lead, every Experimenter, Developer,
+  Validator combined. Not 4 each. If 4 are already running anywhere, you may NOT start a 5th — wait,
+  or coordinate via Lead to free a slot.
+- **Before launching any heavy process, CHECK first:** `pgrep -fl 'braid_reduce|kbprog|gap|nq|cent_enum'`
+  (and any other heavy binary) to count what is ALREADY running across all agents. If the count is ≥ 4,
+  do not launch. This is mandatory — the canvas has overrun to 20+ parallel `braid_reduce` at once
+  (2026-06-26), saturating the machine. That must never recur.
+- **Never spawn a batch of parallel runs.** Scoring/sweeping many items (e.g. reducing N fragments,
+  beam-reducing K centralizer elements) must be done **sequentially within a single process**, or in a
+  pool bounded to fit inside the global 4-cap — NOT one OS process per item.
+- Lead is responsible for the global count: if routing work to multiple agents, Lead ensures the sum of
+  their heavy processes stays ≤ 4, and serializes if needed.
+- After any run: kill the process and `pgrep`-verify clean (already required under Process hygiene).
+- If a task genuinely needs more than 4 parallel processes, that is a request to escalate to the human
+  (Maria) — never self-authorize exceeding the cap.
+
 ## Test discipline (mandatory)
 
 - New algorithm / mixer Agent → tests showing it runs end-to-end on a small problem.
@@ -159,6 +191,7 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - Every experiment run produces output in **`runs/<project>/<experiment>/<timestamp>/`** (project-scoped to avoid clobber between Experimenters). **Never delete `runs/`** without explicit human approval.
 - Provenance triple = (git SHA, `uv.lock` hash, mixer-core build hash). Record in every experiment note.
 - Random seeds: log them. If an experiment isn't deterministic, document the noise floor.
+- **Persist expensive corpus-independent artifacts.** Any costly artifact whose computation does NOT depend on the specific corpus/query — BFS/Cayley distance tables, `EpimorphismPGroup`/PcGroup builds, confluent rule banks, FSA tables — MUST be saved to `runs/<project>/<experiment>/<timestamp>/` with its provenance triple, so later runs (fresh-corpus re-tests, compound features, follow-ups) reuse it as a cheap lookup instead of recomputing. Rationale: a ~62-min `Q5 = B₀/γ₆` BFS (9.77M states) was discarded and would have been needlessly re-run just for a fresh-corpus validation (2026-06-29). Corpus-independent ≠ throwaway.
 
 ## Done = verifiable
 

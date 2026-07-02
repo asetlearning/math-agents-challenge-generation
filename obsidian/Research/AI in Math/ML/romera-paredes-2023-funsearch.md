@@ -17,6 +17,7 @@ replicates: []
 cites: []
 cited_by:
   - "[[2506.13131]]"
+  - "[[charton-2024-patternboost]]"
 quality_notes: "Published in Nature, December 2023. No separate arXiv preprint identified. Code and discovered programs at https://github.com/google-deepmind/funsearch. Key distinction: FunSearch searches in *function space* (writes Python programs), not in formal proof space — the output is a provably-correct algorithm (in the sense that the evaluator verifies it), not a formal proof. The cap set improvement and bin packing results are genuine mathematical discoveries."
 author: maumayma
 tags:

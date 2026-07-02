@@ -3,7 +3,7 @@ title: OCR tooling — nuextract-cli
 status: draft
 domain: infra
 project: mixer-core
-author: <human>
+author: maumayma
 tags:
   - agent/human
   - domain/infra

@@ -1,3 +1,10 @@
 # in case Obsidian is ever opened from the wrong path
 .obsidian/
 .DS_Store
+
+# Agent working dirs — never commit (logs, scratch, output, verdicts).
+# Vault content only; agent state stays local. (Maria, 2026-07-02)
+# NOTE: root-anchored (/Agents/) so it does NOT catch the doctrine dir
+# obsidian/_meta/agents/ on case-insensitive filesystems (macOS).
+/Agents/
+obsidian/Agents/

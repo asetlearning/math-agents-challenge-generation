@@ -36,6 +36,7 @@ Optional but encouraged: `#project/*` (when the note belongs to a named project)
 - `#agent/exp` — general Experimenter
 - `#agent/exp-b25` — B(2,5) specialist Experimenter
 - `#agent/validator`
+- `#agent/math-expert` — math idea-generator / advisor (proposes mathematically-grounded ideas; NEVER certifies them — Validator alone gives math verdicts). Registered 2026-06-17.
 - `#agent/human` — written by a human directly, no AI involvement
 
 If a note was AI-written but human-tasked, `#agent/*` records the AI role and `#user/*` records the human who owns it.
@@ -59,6 +60,7 @@ Currently registered:
 - `#domain/ai` — AI/ML applied to mathematics, automated theorem proving, RL-guided search, learned heuristics
 - `#domain/cs` — computer science: algorithms-as-implementation, systems, infrastructure, code-focused papers
 - `#domain/methodology` — experimental methodology, benchmark design, statistical analysis, reproducibility (domain-neutral)
+- `#domain/math-logic` — mathematical logic, reverse mathematics, order theory (wqo/bqo), proof theory, foundations. Registered 2026-06-20 for the Pakhomov-Soldà generalized-Higman paper. Relevant to the circle via Higman's lemma underpinning rewriting/Knuth-Bendix termination, but a distinct field from group-theory.
 
 When a paper spans two domains (e.g. AI applied to group theory), pick the **primary** one — the field whose methodology the paper contributes to — and link to the other via wikilink. Don't double-tag domains.
 
@@ -138,6 +140,15 @@ Initial seed (will grow as papers arrive):
 - `#topic/algorithm-portfolio` — the paradigm of running multiple algorithms (or algorithm configurations) in parallel on the same problem instance and sharing discovered information between them; each component provides partial information (local no-witnesses, learned clauses, rewrite rules) that improves the others. The formal name for the structural motif behind the Mixer. Tag when a paper directly contributes to the theory or implementation of portfolio solvers, including clause-sharing SAT and analogous mechanisms.
 - `#topic/mathematical-discovery` — systems that discover genuinely new mathematical results (new bounds, new conjectures, new algorithms, new identities) not previously known to human researchers. Substance test: the paper must provide experimental evidence of a discovery that extends prior human knowledge, not just solve known problems faster. Applies to FunSearch (cap set bounds), AlphaEvolve (kissing number, matrix multiplication), Ramanujan Machine (new conjectures about mathematical constants).
 
+### Kaplansky conjectures + computational search topics (registered 2026-06-13 for Group rings batch)
+
+- `#topic/kaplansky-unit-conjecture` — the Kaplansky unit conjecture: for torsion-free group G and field K, the only units in K[G] are trivial units kg (k ∈ K×, g ∈ G); first stated Higman 1940, popularised by Kaplansky 1970; falsified by Gardam 2021 (char 2), Murray 2021 (all prime char), Gardam 2024 (char 0); zero-divisor and idempotent conjectures remain open. Tag when the unit conjecture itself (its proof, refutation, partial results, or the search for counterexamples) is the paper's primary contribution. See [[Concepts/kaplansky-unit-conjecture]].
+- `#topic/kaplansky-idempotent-conjecture` — the Kaplansky idempotent conjecture: for torsion-free group G and field K, K[G] has no non-trivial idempotents (α² = α implies α = 0 or α = 1); still open in full generality; weaker than both the unit and zero-divisor conjectures (unit → zero-div → idempotent); proved for many group families (hyperbolic, bi-orderable, locally indicable) via Formanek's theorem and the trace method. Tag when the idempotent conjecture is the paper's primary concern.
+- `#topic/computational-search-group-theory` — computer-aided search for algebraic objects in group-theoretic settings: units, zero-divisors, unique-product witnesses, or orderability failures in group rings, encoded as SAT/optimization problems or enumerated by exhaustive ball-search over Cayley graphs; includes Gardam's SAT-based counterexample to the unit conjecture and the semidecidability framing of these problems. Tag when algorithmic/computational search (not just computation of a group structure) is the paper's primary contribution to a group-theoretic problem.
+- `#topic/unique-product-property` — a group G has the unique product property (UP) if for every pair of finite non-empty subsets A, B ⊆ G there exists an element uniquely expressible as a·b (a ∈ A, b ∈ B); UP implies the unit conjecture for K[G]; Rips-Segev 1987 first gave a torsion-free group without UP; Promislow 1988 exhibited the Hantzsche-Wendt group P (the eventual Gardam counterexample group) as failing UP. Tag when UP (or its failure) is a primary topic.
+- `#topic/patternboost` — the PatternBoost methodology (Charton-Ellenberg-Wagner-Williamson 2024): iterative alternation of (1) local classical search generating many constructions and (2) global transformer trained on the best constructions that reseeds local search; finds new extremal-combinatorics constructions and counterexamples to open conjectures; related to FunSearch/AlphaEvolve (evolutionary LLM-guided search) but with a different architecture (learned global reseeding rather than LLM-proposed code variants). Tag when PatternBoost is the paper's primary methodology. See [[romera-paredes-2023-funsearch]] for the related FunSearch paradigm.
+- `#topic/extremal-combinatorics` — extremal combinatorics: finding mathematical objects (graphs, sets, codes) that maximise or minimise a quantity subject to structural constraints; problems include cap sets, triangle-free graphs, Sperner systems, hypercube diameter; applies to FunSearch (cap set bounds), AlphaEvolve (kissing number), and PatternBoost (Graham hypercube conjecture, C₄-free graphs). Tag when the paper's primary mathematical domain is extremal combinatorics.
+
 Grow the list organically. Don't pre-register topics that don't exist yet.
 
 ## Axis 5 — `#status/*` (lifecycle)
@@ -199,6 +210,7 @@ Add new `#project/*` tags as new projects start. Discuss in `_meta/canvas-setup.
 - `#question` — open question for the human or for Validator
 - `#convention` — meta-document defining how something should be done
 - `#content-type/code-example` — runnable code snippet (one task per file, expected output captured verbatim). Used in `Research/Group theory/Tools/<tool>/examples/`.
+- `#type/reference` — standalone reference note for a tool, library, or software component (not a paper summary; no academic venue). Used in `Research/<domain>/Tools/` subdirs. Distinct from `#paper` (requires academic publication) and `#concept` (cross-cutting concept hub). Registered 2026-06-13.
 
 **One primary content-type per note.** A paper note gets `#paper`; an experiment note gets `#experiment`; a concept hub gets `#concept`. Don't carry both `#paper` + `#concept` on the same note — extract the concept content to a `Concepts/<name>.md` hub and link from the paper via `key_concepts:` frontmatter. Documented exception: a self-contained survey paper may carry `#paper` + `#synthesis` when the same note serves both functions (rare; substance test decides).
 

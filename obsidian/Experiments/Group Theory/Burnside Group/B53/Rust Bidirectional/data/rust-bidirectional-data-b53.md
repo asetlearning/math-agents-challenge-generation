@@ -16,10 +16,13 @@ tags: [agent/exp, user/maumayma, domain/group-theory, topic/burnside, topic/b53,
 
 ## Target words
 
-- **File**: `experiments/burnside/b53_bidir/b53_relators.txt`
+- **File**: `experiments/burnside/burnside_bidirectional/data/b53_relators.txt`
+  (also mirrored at `experiments/burnside/b53_bidir/data/b53_relators.txt`)
 - **Count**: 153 words — word-equality instances to prove in B(5,3)
 - **Format**: one word per line in {a,b,c,d,e,A,B,C,D,E} (generators and inverses)
+- **Length range**: 3–26 characters (shortest: `aaa`, `bbb`, ...; longest: `eADbdBabDBdEDbdBCAcbDBdCac`)
 - **Three hardest** (unproved in v5 at 1733s): `EaceAdBDbaECAecbDBdC`, `ECbcBeadADEbCBcedaDA`, `AbaBEbABaeCAbaBebABaEc`
+- **Verified regenerated** (2026-06-17): run17_shortlex_only proves 153/153 in 1.7s with 98K rules
 
 ## Rust source and binary
 
@@ -38,8 +41,11 @@ The v5 bidirectional search accumulates rule banks from 4 ordering agents. No pr
 |---|---|---|---|
 | v1/v2 baseline | `runs/b53/20260320_051415/kb_shortlex/input.kbprog.live` | ~123K rules | 23MB |
 | v1/v2 baseline | `runs/b53/20260320_052723/kb_shortlex/input.kbprog.live` | ~123K rules | 24MB |
+| Step A re-run | `runs/b53/20260617_120259/` | 98,210 rules | 153/153 in 1.7s |
 
-Both baselines used `run17_shortlex_only.toml` (deleted from disk; was in `experiments/burnside_bidirectional/configs/b53/`).
+~~Both baselines used `run17_shortlex_only.toml` (deleted from disk)~~ — **STALE** (corrected 2026-06-17):
+`run17_shortlex_only.toml` is present at `experiments/burnside/burnside_bidirectional/configs/b53/run17_shortlex_only.toml`.
+Re-run confirmed 153/153 with 98,210 rules in 1.7s. See [[Agents/maumayma/Experimenter-B25/output/b53-step-a-ground-truth-2026-06-17]].
 
 **Wtlex source note**: Source-3 (wtlex, 2.3M rules) is the key source for the hardest words — proved words 119–144 after its rule bank built. The wtlex bank is not preserved on disk for v5.
 

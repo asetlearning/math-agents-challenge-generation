@@ -48,7 +48,7 @@ tags: [agent/exp-b25, user/maumayma, domain/group-theory, topic/burnside, topic/
 
 | target     | original_len |            best_len |  delta |     pct% | passes | source            |
 | ---------- | -----------: | ------------------: | -----: | -------: | :----: | ----------------- |
-| comm_13_10 |        2,501 |   2,496 ‡ json=2494 |      5 |      0.2 |   1    | overnight_4pass   |
+| comm_13_10 |        2,500 |   2,496 ‡ json=2494 |      5 |      0.2 |   1    | overnight_4pass   |
 | comm_26_1  |        3,577 |               3,567 |     10 |      0.3 |   1    | overnight_4pass   |
 | comm_11_1  |        3,757 |               3,744 |     13 |      0.3 |   1    | overnight_4pass   |
 | comm_11_7  |        3,793 |               3,777 |     16 |      0.4 |   1    | overnight_4pass   |

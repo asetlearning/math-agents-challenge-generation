@@ -10,7 +10,8 @@ introduced_in:
   - "[[Research/Group theory/Open problems/Group rings/kaplansky-zero-divisors]]"
 appears_in:
   - "[[Research/Group theory/Open problems/Group rings/kaplansky-zero-divisors]]"
-related_concepts: []
+related_concepts:
+  - "[[Concepts/kaplansky-unit-conjecture]]"
 tags:
   - agent/research
   - user/maumayma
@@ -72,8 +73,16 @@ The [[grobner]] paper (Kreuzer-Myasnikov-Rosenberger) already combines group-wor
 2. Can zero-divisor tests in group rings be used as word-problem oracles for the groups that appear as "kernels" in the Havas-Robertson quotient-kernel iteration?
 3. Are there group ring computations fast enough to serve as Mixer sub-agents (faster than KB in some regime)?
 
+## Relationship to the Unit Conjecture
+
+The unit conjecture (UC) is a STRONGER conjecture: UC implies ZDC (Passman), and ZDC implies the idempotent conjecture. The implication chain is UC → ZDC → IC.
+
+**The unit conjecture is NOW FALSE** (Gardam 2021 char 2, Murray 2021 all char p, Gardam 2024 char 0). This does NOT affect ZDC — the counterexample (a non-trivial unit in F₂[P]) is a unit, which is invertible and hence not a zero-divisor. ZDC and IC remain OPEN.
+
+See [[Concepts/kaplansky-unit-conjecture]] for the full unit conjecture hub (5 papers: survey, SAT methodology, char-p, char-0, topology framework).
+
 ## Source
 
-Surfaced in [[problems-people]] (internal project document). Not yet the subject of a Research/ paper note — no published paper in docs/papers/ covers this topic.
+Surfaced in [[problems-people]] (internal project document). 5-paper batch added 2026-06-13 covering the unit conjecture lineage.
 
-If Lead routes this for deeper research: Kaplansky's original 1948 paper; recent survey by Linnell "Zero divisors and group von Neumann algebras"; Gräter et al. for constructive approaches.
+Primary survey: [[Research/Group theory/Open problems/Group rings/gardam-2023-kaplansky-survey]]
