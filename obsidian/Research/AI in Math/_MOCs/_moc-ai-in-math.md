@@ -14,7 +14,7 @@ tags:
 
 # AI in Math — Map of Content
 
-**This MOC is a curated reading path for AI applied to mathematics** — covering formal theorem proving (LLM-based agents), RL training for mathematical reasoning, and ML-guided mathematical discovery. Three sub-areas, 20 papers (2017–2025). Navigate here when you want to understand the state of the art, what's settled, and what remains open.
+**This MOC is a curated reading path for AI applied to mathematics** — covering formal theorem proving (LLM-based agents), RL training for mathematical reasoning, ML-guided mathematical discovery, and the 2026 wave of agent-driven research results. Four sub-areas, 23 notes (2017–2026). Navigate here when you want to understand the state of the art, what's settled, and what remains open.
 
 Cross-cluster: papers in this MOC that are relevant to the Burnside/Mixer program are flagged with ⚡.
 
@@ -103,6 +103,20 @@ Equation/conjecture discovery, neural heuristics inside solvers, embeddings-for-
 - [[ML/romera-paredes-2023-funsearch]] — FunSearch (Romera-Paredes et al. 2023, Nature): evolutionary LLM-guided program search; discovers new cap set bounds and bin packing heuristics; evaluator filters confabulations. ⚡ *Evaluator-filtered evolutionary search = template for Mixer injection heuristic discovery.*
 
 - [[ML/2506.13131]] — AlphaEvolve (Novikov et al. 2025): FunSearch with Gemini; 67+ mathematical problems; discovers 4×4 complex matrix multiplication with 48 multiplications (first Strassen improvement in this setting). ⚡ *Same template as FunSearch; broader validation.*
+
+---
+
+## Sub-area D — Agent-driven discoveries (the 2026 wave)
+
+Concrete research-grade results *produced with AI agents* in 2026 — new proofs of long-open conjectures and novel counterexamples. Distinct from Sub-area A (which is competition/benchmark theorem proving). **Verification status matters: most are not yet peer-reviewed — see each note.**
+
+**Synthesis**: [[_synthesis-ai-agent-discoveries-2026]] — three anchor examples + broader landscape; convergence on propose-then-certify + multi-agent orchestration; honest verification caveats; 5 recommendations for our own agent program.
+
+- [[cycle-double-cover-sol-ultra-2026]] — **GPT-5.6 Sol Ultra** proves the 50-year Cycle Double Cover Conjecture with a **64-subagent** swarm in <1h (2026-07). ❌ Unverified NL proof. **Full orchestration prompt reproduced verbatim.** ⚡ *Prompt patterns map onto our Lead/Validator multi-agent design.*
+
+- [[jacobian-counterexample-fable-2026]] — **Claude Fable 5** finds an explicit counterexample to the 87-year Jacobian Conjecture (det Jac = −2, three colliding points) (2026-07). ⚠️ Arithmetic independently verified; journal review pending. ⚡ *Same model family our Lead runs on; construction-search paradigm = our B25 word-reduction search.*
+
+- [[aletheia-autonomous-math-2026]] — **DeepMind Aletheia** (Gemini Deep Think): Generate–Verify–Revise loop resolves 4 open Erdős problems + a fully-autonomous eigenweights paper (2026-03). ✅ Semi-autonomous, **public transcripts**. ⚡ *3-subagent loop = our two-tier guide/certify architecture; co-authored by Sergei Gukov (group-theory ML line).*
 
 ---
 

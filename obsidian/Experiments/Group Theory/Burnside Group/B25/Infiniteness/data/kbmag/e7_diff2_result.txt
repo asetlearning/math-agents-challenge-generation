@@ -1,0 +1,6 @@
+#Terminate input with ';'.
+reduces to:
+  A*b*a*b*A*B*a*b*A*b*a*B*A*B*a*b*A*b*a*b*A*B*a*B*A*b*a*B*A*B*a*b*A*b*a*b*A
+    *B*a*b*A*b*a*B*A*B*a*B*A*b*a*b*A*B*a*B*A*b*a*B*A*B*a*B*A*b*a*b*A*B*a*b
+    *A*b*a*B*A*B*a*b*A*b*a*b*A*B*a*B*A*b*a*B*A*B*a*B*A*b*a*b*A*B*a*b*A*b*a
+    *B*A*B*a*B*A*b*a*b*A*B*a*B*A*b*a*B*A*B*a*b

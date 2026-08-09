@@ -31,6 +31,8 @@ project:
 # Synthesis — Agents for math: LLM-driven theorem proving and autoformalization (2020–2025)
 
 > **Synthesis note.** Nine papers (2020–2025) covering the emergence of LLMs as formal theorem provers and autoformalization systems. Organized into three paradigmatic arcs: (1) LLM-based proof generation, (2) autoformalization, and (3) neuro-symbolic systems. Each arc represents a distinct approach to the same problem: how do you connect informal mathematical reasoning (what humans do) with formally verified proofs (what computers can check)?
+>
+> **Successor:** for the 2026 wave — agents producing *research-grade discoveries* (CDC proof, Jacobian counterexample, autonomous Erdős solutions) — see [[_synthesis-ai-agent-discoveries-2026]].
 
 ## The question
 

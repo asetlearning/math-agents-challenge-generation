@@ -151,6 +151,12 @@ Initial seed (will grow as papers arrive):
 
 Grow the list organically. Don't pre-register topics that don't exist yet.
 
+### Representation & tokenization topics (registered 2026-07-17 for AXPLORER v1 representation-gate scan)
+
+- `#topic/tokenization` — how a sequence is mapped to model input/output tokens: character-level, BPE/subword, fixed-width block/k-mer packing, or structured (tree/prefix) encodings; includes evidence on when representation choice measurably changes accuracy (Charton's linear-algebra encoding ablations, PatternBoost's BPE-vs-delimiter fix, arithmetic-task BPE failures). Tag when a paper's primary contribution or a substantive finding concerns how input/output is tokenized, not just that a model happens to use some tokenizer.
+- `#topic/length-generalization` — a model's ability to handle sequences longer than (or of different length from) what it saw in training, and the architectural choices (positional encoding scheme, attention pattern) that enable or block it. Tag when length generalization or long-sequence positional-encoding choice is a primary empirical finding of the paper.
+- `#topic/edit-representation` — models that generate or operate over edit operations / action sequences (insert-delete-substitute ops, rewrite-rule applications, tactic sequences) rather than the raw target sequence directly; includes Levenshtein/Insertion Transformers, neural program-repair edit models, and RL action encodings (AlphaTensor/AlphaDev). Tag when the edit/action-sequence representation itself (vs. raw generation) is the paper's subject.
+
 ## Axis 5 — `#status/*` (lifecycle)
 
 General lifecycle:

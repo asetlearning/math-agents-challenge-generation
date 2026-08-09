@@ -24,7 +24,7 @@ cited_by:
   - "[[kuznetsov-shlepkin-2009]]"
   - "[[kuznetsov-shlepkin-2010]]"
   - "[[_synthesis-kuznetsov-b25-algorithmic-line]]"
-quality_notes: "This note covers the mathematical unpacking of Kourovka 11.48 in detail; for the Mixer-attack rationale, see [[b25-finiteness-11.48-kostrikin]]. The two notes are complementary: this one is mathematical, that one is strategic."
+quality_notes: "This note covers the mathematical unpacking of Kourovka 11.48 in detail; for the Mixer-attack rationale, see [[b25-finiteness-11.48-kostrikin]]. The two notes are complementary: this one is mathematical, that one is strategic. STATUS CHECK 2026-08-01 (Validator literature-check request, R2): edition/version metadata (arXiv:1401.0300 v45 = 21st edition, dated 2026-07-03) independently confirmed fresh via WebFetch on the arXiv abstract page. Document structure independently confirmed via a text-extraction proxy (jina reader on the v45 PDF): TOC shows 'Problems from the 11th Issue (1990)' at p.46 and an 'Archive of Solved Problems' section at p.186 — consistent with 11.48 being a real, dateable entry and with there being a real place a solved-marker would appear. Could NOT independently re-extract the literal problem-48 body text from v45 this session (WebFetch/jina truncate before p.46; no local pdftotext/pdftoppm available; a custom zlib/CMap-based extraction attempt hit real per-font glyph-encoding complexity not resolved in the session timebox). The verbatim quote and 'open, no comment, not in Archive' status is corroborated by cross-referencing two independently-produced extractions: this note's own 20th-edition (2022) text (extracted from a local PDF in a prior, properly-tooled session) and experiments/infinite_b25/literature/kourovka_1148_status.md (Validator's own prior v45 extraction, dated 2026-07-31) — both agree word-for-word on the statement and attribution. Treat as corroborated, not freshly re-derived byte-for-byte by Researcher this session."
 author: maumayma
 tags:
   - agent/research
@@ -49,7 +49,7 @@ project: b25
 
 ## TL;DR
 
-Kostrikin's 1990 problem provides a mechanistic sufficient condition for B(2,5) infiniteness: if the weight-7 left-normed commutator [x,y,y,y,y,y,y] is not expressible as a product of fifth powers in the free group, then the unrestricted B(2,5) is infinite. The question is open as of the 2022 Kourovka Notebook.
+Kostrikin's 1990 problem provides a mechanistic sufficient condition for B(2,5) infiniteness: if the weight-7 left-normed commutator [x,y,y,y,y,y,y] is not expressible as a product of fifth powers in the free group, then the unrestricted B(2,5) is infinite. The question is open as of the 2022 Kourovka Notebook. The implication is one-directional: a positive answer kills this witness but leaves B(2,5) finiteness open (6-Engel + exponent 5 ⇒ locally finite is itself unproven; only the 4-Engel case is settled, Vaughan-Lee 1997 — see `experiments/infinite_b25/literature/kourovka_1148_status.md`).
 
 ## Problem
 

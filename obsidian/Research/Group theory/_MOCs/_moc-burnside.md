@@ -18,6 +18,16 @@ tags:
 
 ---
 
+## Odd-exponent bound record & small-cancellation program (2023–2026, general Burnside theory)
+
+Not B(2,5)-specific — the broader question of the smallest odd exponent n proven to give an infinite free Burnside group B(m,n). Scanned 2026-07-31 for Lead's B(2,5)-push literature request.
+
+- [[_synthesis-odd-exponent-state-2026]] — full synthesis: n≥665 (Adian 1975) remains the field-accepted bound; n≥557 (Atkarskaya–Rips–Tent 2023) and n≥101 (Adian 2015) are both published/preprint claims that have NOT cleared independent community verification. Nothing found narrows exponent 5 or 7 directly. Power-free-word growth-rate literature ([[Concepts/power-free-word-growth-rates]]) is exponential for 5th powers but has no published bridge to Adian's actual proof apparatus — not usable as B(2,5) evidence.
+- [[atkarskaya-rips-tent-2023]], [[adian-2015-odd-bound]], [[lysenok-2023-sample-iterated-sc]], [[atkarskaya-kanelbelov-plotkin-rips-2021-sc-rings]], [[gorshkov-2026-moufang-axial-algebra]], [[obrien-vaughanlee-2002-r27]], [[shur-2010-power-free-growth-rates]] — individual paper notes.
+- [[_synthesis-gorshkov-axial-algebra-r2-2026]] — R2 deep-read of the Gorshkov preprint: precise Corollary 1 statement, confirms the group object is genuinely free B(2,5).⟨t⟩ (not a restricted-quotient trap — the index-2 extension step is elementary/harmless), lists 4 concrete computability items with cost estimates, author track record (credible, established) and citation status (none found, too recent).
+
+---
+
 ## Foundational papers
 
 - [[havas-wall-wamsley-1974]] — The 1974 paper that establishes |B(2,5)| = 5^34, class 12, via two independent methods; defines the generator numbering 1–34 that is the source of all `comm_X_Y` naming in B(2,5) experiments. Read this before anything else on B(2,5).

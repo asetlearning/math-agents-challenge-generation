@@ -1,0 +1,30 @@
+Pq time ms: 9
+Size(Q) = 582076609134674072265625
+Size = 5^34
+NilpotencyClass = 12
+LCS length (num subgroups) = 13
+LCS layer 1 : order 5^2  rank(elem-ab layer) = 2
+LCS layer 2 : order 5^1  rank(elem-ab layer) = 1
+LCS layer 3 : order 5^2  rank(elem-ab layer) = 2
+LCS layer 4 : order 5^3  rank(elem-ab layer) = 3
+LCS layer 5 : order 5^2  rank(elem-ab layer) = 2
+LCS layer 6 : order 5^4  rank(elem-ab layer) = 4
+LCS layer 7 : order 5^4  rank(elem-ab layer) = 4
+LCS layer 8 : order 5^4  rank(elem-ab layer) = 4
+LCS layer 9 : order 5^6  rank(elem-ab layer) = 6
+LCS layer 10 : order 5^3  rank(elem-ab layer) = 3
+LCS layer 11 : order 5^2  rank(elem-ab layer) = 2
+LCS layer 12 : order 5^1  rank(elem-ab layer) = 1
+p-central series length = 13
+pC layer 1 : 5^2
+pC layer 2 : 5^1
+pC layer 3 : 5^2
+pC layer 4 : 5^3
+pC layer 5 : 5^2
+pC layer 6 : 5^4
+pC layer 7 : 5^4
+pC layer 8 : 5^4
+pC layer 9 : 5^6
+pC layer 10 : 5^3
+pC layer 11 : 5^2
+pC layer 12 : 5^1

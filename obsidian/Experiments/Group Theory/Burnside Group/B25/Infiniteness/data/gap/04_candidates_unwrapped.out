@@ -1,0 +1,48 @@
+R(2,5) size = 5^34
+weight 13: 5999 distinct candidates, shortest length 96
+weight 14: 6000 distinct candidates, shortest length 110
+
+=== TOP CANDIDATES (weight 14 first, then weight 13) ===
+W14-1 len=110 abel=[ 0, 0 ] trivial_in_R=true
+  aBAbabABBabAbbaBABabABaBAbbaBABabAbabABBBabAbaBBAbabABaBAbbaBABabbAbaBABaBAbabABBabAbaBAbabABaBABabbABaBAbbaBA
+W14-2 len=110 abel=[ 0, 0 ] trivial_in_R=true
+  aBAbabABBabAbaBAbaBABabbABaBAbbABAbaBaBabAbaBAAbABabaBaBAbabABabABaBAbbaBABabABabAbaBAbABAbaBaabABaBAbAbABabaB
+W14-3 len=112 abel=[ 0, 0 ] trivial_in_R=true
+  ABabaBAAbaBabAABaabABAbaaBAbABabbABaBAbbaBBAbabABBabAbaBBabAABabaBAAbaaBAbABaabABAbabABaBAbbaBABabbABBabAbaBBAba
+W14-4 len=112 abel=[ 0, 0 ] trivial_in_R=true
+  aBAbABaabABAbabABaBAbbaBABabaBAbabABABabAbaBBAbabABabaBABabAABabaBAAbaabABAbaBABabbABaBAbabaBABabABAbabABBabAbaB
+W14-5 len=114 abel=[ 0, 0 ] trivial_in_R=true
+  BabAbaBBAbabABaBAbbaBABabbAABabaBAAbaBabABabABAbaaBAbABabaBBAbabABBabAbaBABabbABaBAbAbaBabAABabaBAbaBAbABaabABAbaB
+W14-6 len=118 abel=[ 0, 0 ] trivial_in_R=true
+  aBAbABaabABAbabaBAABabaBAAbaBabbAABaBAbaBABabbAbaBABaBAbabbaBBAbABaabABAbaabABABabaBAAbaBabABABabAbabABaBBAbabABabAbaB
+W14-7 len=120 abel=[ 0, 0 ] trivial_in_R=true
+  aBAAbaBabABabABAbaaBAbABabABabbABabaBAAbaBabABabABAbaaBAbABaBAbaBAbaBabAABabaBAbaBAbABaabAAbaBabAABabaBAbaBAbABaabABAbaB
+W14-8 len=120 abel=[ 0, 0 ] trivial_in_R=true
+  BabABAbaBabAABaabABAbaaBAbABabaBAbaBAbbaBABabABabAbaBBAbabABabABBabABAbaBabAABabaBAAbaaBAbABabbaBAbaBABabbABaBAbaBAbabAB
+W14-9 len=122 abel=[ 0, 0 ] trivial_in_R=true
+  BAbabABBabbaBAbABaBAbbaBABababABAbaBabAABabaBAbaBAbABaabABAbaaBABAbabABBabAbaBabABBAbbaBABabbABabABabaBAAbaBabABabABAbaaBA
+W14-10 len=122 abel=[ 0, 0 ] trivial_in_R=true
+  AbaBabAABabaBABAbabABaabABAbaaBABabAABaabABAbaaBAbABabaBAAbaabAABabaBAAbaBABababABAbaaBAbABaBabABAbaBabAABabaBAAbaaBAbABab
+W14-11 len=122 abel=[ 0, 0 ] trivial_in_R=true
+  BAbabABBabAbaBaBAbbABaBAbbaBABaabbABAbaBabAABabaBAAbaaBAbABaaBAAbabABBabAbaBBabAbABaBAbbaBABabAbaBabAABaabABAbaaBAbABabaBA
+W14-12 len=122 abel=[ 0, 0 ] trivial_in_R=true
+  AbaBABabbABaBAbaBAbabABBabAbaaBAbABaBAbaabABaBAbABabAbaBBabAbABaBAbbaBABabABabAbaBBAbabABaaBAbbABaBAbaBabAbaBAABabAbaBabAB
+W13-1 len=96 abel=[ 0, 0 ] trivial_in_R=true
+  AbaaBAbABabABabaBAAbaBabABabABabABAbaaBAbABabaBAAbaBabAABabaBAbaBAbABaabABAbaBabABAbaBabAABabaBA
+W13-2 len=100 abel=[ 0, 0 ] trivial_in_R=true
+  BAbABababABaBAAbaBabbABabAbaBBABabAbabABaBBAbaBAbABaabAbaBABAbaBabbABabAbaBABaBAbabbABaBAbaBABabAbaB
+W13-3 len=100 abel=[ 0, 0 ] trivial_in_R=true
+  ABabAbaBBAbabABaabABAbaaBAbABBabAbaBBAbaabAABabaBAAbaBABabbABaBAbaabABAbaaBAABabbABaBAbbaBabAABabaBA
+W13-4 len=100 abel=[ 0, 0 ] trivial_in_R=true
+  BAbaBabAABabaBAbaBAbABaabABAbabABAbaBabAABabaBAbaBABabaBAAbaBabABabABAbaaBAbABabbABabABAbaaBAbABabaB
+W13-5 len=100 abel=[ 0, 0 ] trivial_in_R=true
+  AbaBABabbABaBAbaBAbabABBaBAbabABabAbaBBABabAbabABaBAbbaBABabABabAbaBBAbabABBaBAbabbABaBAbaBABabbAbaB
+W13-6 len=100 abel=[ 0, 0 ] trivial_in_R=true
+  BabaBAbbABaBAbaBabAAbaBBABabbABaBAbabABBabAbaBBAbbabABaaBAbABabAbaBBabABABabbABaBAbbaBABabAbaBBAbabA
+W13-7 len=102 abel=[ 0, 0 ] trivial_in_R=true
+  ABabABAbaaBAbABababABaBAAbaBabAABabbaBabABAbaaBAbABabABBAbaaBAbABaabAbaBABAbaBabAABabaBAbbaBabAABabaBA
+W13-8 len=104 abel=[ 0, 0 ] trivial_in_R=true
+  BAbaBabAABabaBAAbaaBAbABaabAbaBAbABaBAbaBabAAbaBabABaBAbABabaBAAbaBabAABaabABAbabaBAbABaaBAbABabAbaBabAB
+
+CONTROL weight-12 balanced commutator NONTRIVIAL in R(2,5): len=146
+  BabABaBAbbabABBBabAbaBAbbaBAbaBABabaBAbabABABAbaBabbaBABabABAbabABaBAbABababABBabABaBAbbbaBABBabAbaBAAbaBabAbaBABabaBAbabABBAbABababaBABabABAbabAB

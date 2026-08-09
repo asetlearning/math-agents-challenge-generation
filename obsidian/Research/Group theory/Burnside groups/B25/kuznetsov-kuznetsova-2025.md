@@ -4,6 +4,7 @@ authors: A. A. Kuznetsov, A. S. Kuznetsova
 year: 2025
 venue: Prikladnaya Diskretnaya Matematika. Supplement
 url: https://doi.org/10.17223/2226308X/18/58
+url_fulltext: "https://www.mathnet.ru/php/getFT.phtml?jrnid=pdma&paperid=730&what=fullt&option_lang=eng"
 url_translated:
 language: ru
 methodology_type: empirical
@@ -12,18 +13,21 @@ status: draft
 citation_count: null
 citation_count_date:
 key_concepts:
-  - "[[Concepts/cayley-table-closure-algorithm]]"
+  - "[[growth-function]]"
+  - "[[cayley-diameter]]"
+  - "[[power-commutator-presentation]]"
 extends:
-  - "[[kuznetsov-shlepkin-2010]]"
-  - "[[kuznetsov-shlepkin-2009]]"
+  - "[[kuznetsov-kuznetsova-2018]]"
+  - "[[kuznetsov-2016]]"
 contradicts: []
 replicates: []
 cites:
   - "[[havas-wall-wamsley-1974]]"
-  - "[[kuznetsov-shlepkin-2009]]"
-  - "[[kuznetsov-shlepkin-2010]]"
+  - "[[kuznetsov-kuznetsova-2018]]"
+  - "[[kuznetsov-2016]]"
 cited_by: []
-quality_notes: "source-text-incomplete-only-abstract-available. 4-page conference note (Prikl. Diskr. Mat. Suppl. 18, pp. 270–273). Original in Russian; abstract summary from mathnet.ru record. Citation count not retrievable. Uses supercomputer resources — compute scale not specified in abstract."
+quality_notes: "4-page conference note (Prikl. Diskr. Mat. Suppl. 18, pp. 270–273, DOI 10.17223/2226308X/18/58). Original in Russian. RE-FILLED FROM FULL TEXT (mathnet getFT paperid=730, pdftotext — PDF is Windows-1251 rendered as mojibake but fully readable). CORRECTION to prior note: removed the WRONG kuznetsov-shlepkin-2009/2010 extends+cites (not references in this paper) and the Concepts/cayley-table-closure-algorithm key-concept. Actual references: [1]=Baumslag–Fazio–Nicolosi, [2]=Fazio–Iga–Nicolosi, [3]=Kahrobaei–Noce, [4]=[[havas-wall-wamsley-1974]], [5]=[[kuznetsov-kuznetsova-2018]] (the resource-efficient/QuotientGrowthFunction algorithm), [6]=[[kuznetsov-2016]] (the Ball algorithm). Content: known fact [4] that Z(B0(2,5))=⟨a34⟩ is cyclic of order 5, a34=[a2,a1,a1,a1,a2,a1,a2,a1,a1,a2,a2,a2]. Naive length of a34: 6142 (A4), 15355 (A2). MAZUROV's 2024 question: compute a SHORT central word in A2/A4. Authors solved it in the stronger form — ALL central elements as minimal-length (geodesic) words in A4 — by computing K25(B0) in A4 (modified algorithm [5] with N=⟨a11..a34⟩, Q=B0/N, q=e; partial K50(e)). Verbatim geodesic words for a34,a34²,a34³,a34⁴ in A4 (x=a1,y=a2,X=a1^-1,Y=a2^-1): lengths 47,50,50,47. In A2 (X→x^4,Y→y^4, reduce w^5): lengths 90,100,100,90 (NOT guaranteed minimal). MCS: 128 cores, 1.5 TB RAM, 2 TB disk; words found in first day, ~1 month to confirm minimality. Verified central via GAP + anupq. Intro note: k-dim hypercube = Cayley graph of B(k,2). Corrected extends/cites; key_concepts to growth-function/cayley-diameter/pc-presentation."
+fill_level: full
 author: maumayma
 tags:
   - agent/research
@@ -50,64 +54,78 @@ The paper examines $B_0(2,5) = \langle a_1, a_2 \rangle$, described as the large
 
 ## TL;DR
 
-Computes the explicit center of $B_0(2,5)$ (supercomputer run), expressing each central element as the shortest group word over the symmetric generating set $\{a_1, a_1^{-1}, a_2, a_2^{-1}\}$. The center is a concrete structural invariant of $B_0(2,5)$; its elements are potential relators or verification anchors for B(2,5) experiments.
+Answers **Mazurov's 2024 question** — find a short group word for a nontrivial central element of $B_0(2,5)$ — in the *strong* form: computes **all** central elements as **geodesic (minimal-length) words** over the symmetric set $A_4=\{a_1,a_1^{-1},a_2,a_2^{-1}\}$. The center is known ([[havas-wall-wamsley-1974]]) to be cyclic of order 5, $Z(B_0)=\langle a_{34}\rangle$ with $a_{34}=[a_2,a_1,a_1,a_1,a_2,a_1,a_2,a_1,a_1,a_2,a_2,a_2]$; naively unfolding this commutator gives length **6142** in $A_4$ (**15355** in $A_2$). By computing $K_{25}(B_0)$ in $A_4$ (a modified version of the [[kuznetsov-kuznetsova-2018]] coset algorithm on a 128-core / 1.5 TB machine) the authors find the four nontrivial central words $a_{34},a_{34}^2,a_{34}^3,a_{34}^4$ have geodesic lengths **47, 50, 50, 47** in $A_4$ (and 90, 100, 100, 90 in $A_2$, not proven minimal). Verified central via GAP + `anupq`.
 
 ## Problem
 
-What are the explicit central elements of $B_0(2,5)$, expressed as group words of minimum length over the symmetric generating set? The center $Z(B_0(2,5))$ is non-trivial (since $B_0(2,5)$ has nilpotency class 12, the class-12 lower central factor is central), but the explicit minimal-length words representing central elements were not previously computed.
+$B_0=B_0(2,5)=\langle a_1,a_2\rangle$ is the maximal finite two-generator exponent-5 Burnside group, order $5^{34}$ [[havas-wall-wamsley-1974]]; if $B(2,5)$ is finite then $B(2,5)=B_0$. Its **center is cyclic of order 5**, $Z(B_0)=\langle a_{34}\rangle$, where (as a pc-commutator)
+$$a_{34}=[a_2,a_1,a_1,a_1,a_2,a_1,a_2,a_1,a_1,a_2,a_2,a_2].$$
+Unfolding this weight-12 commutator "head-on" yields a word of length **6142** over $A_4=\{a_1,a_1^{-1},a_2,a_2^{-1}\}$ and **15355** over $A_2=\{a_1,a_2\}$. In **2024 V. D. Mazurov** asked for at least one nontrivial central element written as a *comparatively short* word in $A_2$ or $A_4$ — needed to test properties of $B_0(2,5)$ and $B(2,5)$. Since [[kuznetsov-kuznetsova-2018]] estimates the Cayley diameter of $B_0$ as $\approx69$ ($A_4$) / $\approx105$ ($A_2$), a much shorter representation must exist — but finding it is "a needle in a haystack" given $|B_0|=5^{34}$.
 
 ## Approach
 
-Uses the power commutator presentation of $B_0(2,5)$ (generators $a_1, \ldots, a_{34}$, each $\alpha_i \in \mathbb{Z}_5$; from [[havas-wall-wamsley-1974]]). Computes the center by finding all elements that commute with every generator $a_1, a_2$ — equivalently, elements $g$ such that $a_i g = g a_i$ for $i = 1, 2$. Reports results as shortest words over $A_4 = \{a_1, a_1^{-1}, a_2, a_2^{-1}\}$. Uses supercomputer resources (infrastructure not specified). Full algorithmic details not available (abstract-only access).
+Starting from the growth-function machinery of [[kuznetsov-kuznetsova-2018]] (ref [5], the coset-ball `QuotientGrowthFunction`) and [[kuznetsov-2016]] (ref [6], the `Ball` algorithm):
+
+- Recall $K_s(G,X)$ = ball of radius $s$ (all irreducible words of length $\le s$); for $Q=G/N$ and coset $qN$, $K_s(q)=\{g\in K_s:\varphi(g)=q\}$; the algorithm of [5] turns a radius-$s$ ball into radius-$2s$ coset balls.
+- **Hardware**: an MCS with **128 processor cores, 1.5 TB RAM, 2 TB disk**. Using known properties of $B_0$, the authors modified algorithm [6] to increase parallelism and cut memory, enabling computation of $K_{25}(B_0)$ in $A_4$.
+- Set $N=\langle a_{11},\dots,a_{34}\rangle\trianglelefteq B_0$ and ran algorithm [5] with inputs $K_{25}(B_0)$, $Q=B_0/N$, $q=e$; after partially computing $K_{50}(e)$ the run was stopped once the goal was reached.
+- The central words were found within the **first day**; confirming *no shorter* words express the central elements took about **one more month** of MCS time.
+- **Verification**: GAP with the `anupq` library confirms all listed words are genuinely central in $B_0(2,5)$.
 
 ## Key result
 
-**Main result**: the center $Z(B_0(2,5))$ has been explicitly computed; each central element is expressed as a group word of minimal length over the symmetric generating set $A_4$.
+Mazurov's question is answered in the stronger form — **all** nontrivial central elements of $B_0(2,5)$ as **minimal-length (geodesic) words** in $A_4$. With $x=a_1,\ y=a_2,\ X=a_1^{-1},\ Y=a_2^{-1}$ (verbatim):
 
-Specific details (center size, element list, word lengths) are not available from the abstract. $B_0(2,5)$ has nilpotency class 12, so the center contains (at minimum) the commutator weight-12 subgroup; the paper likely gives the full center as a subgroup of $B_0(2,5)^{34}$.
+$$
+\begin{aligned}
+a_{34} &= xyx^2Yxyx Y Xyx^2 Y X^2 yX^2 Y xyxY xyXY xyXY Xyx^2 Y XyXY Xyx^2 Y x,\\
+a_{34}^2 &= x^2yxYXyXY xyxY X^2 yxY xyxY X^2 yXY xyXY XyxY xyXY x^2 yX^2 Y X^2 yxY,\\
+a_{34}^3 &= x^2yxYX^2yXY XyXY xyxY XyxY x^2 yX^2 Y Xyx^2 Y xyxY xyXY XyxY XyX^2 Y,\\
+a_{34}^4 &= x^2yx^2Yx^2yXY XyXY x^2 yXY XyxY XyxY xyxY X^2 yX^2 Y x^2 yXY xyxY.
+\end{aligned}
+$$
+
+**Lengths in $A_4$**: $|a_{34}|=|a_{34}^4|=\mathbf{47}$, $\ |a_{34}^2|=|a_{34}^3|=\mathbf{50}$ (vs. 6142 naive).
+
+Substituting $X\to x^4$, $Y\to y^4$ and reducing subwords $w^5$ gives $A_2$ representations of lengths **90, 100, 100, 90** (vs. 15355 naive) — but these are **not guaranteed minimal** in $A_2$.
 
 ## Assumptions
 
-- Works with $B_0(2,5)$ (finite, order $5^{34}$), not the free $B(2,5)$.
-- Power commutator presentation from [[havas-wall-wamsley-1974]] assumed correct (well-established).
-- Supercomputer computation assumed correct; no independent verification known.
+- $B_0(2,5)$ finite of order $5^{34}$, pc-presentation and $Z(B_0)=\langle a_{34}\rangle$ (order 5) taken from [[havas-wall-wamsley-1974]].
+- Minimality in $A_4$ is established by exhaustive ball computation ($K_{25}$/partial $K_{50}$); minimality in $A_2$ is **not** claimed.
+- Multiplication/growth via the algorithms of [[kuznetsov-kuznetsova-2018]] and [[kuznetsov-2016]]; centrality independently checked in GAP + `anupq`.
 
 ## Limitations / scope
 
-- Applies to $B_0(2,5)$ only. Not directly applicable to $B(2,5)$ if $B(2,5) \ncong B_0(2,5)$.
-- "Smallest length for the symmetric generating set" — results depend on the generating set choice $A_4 = \{a_1, a_1^{-1}, a_2, a_2^{-1}\}$; different generating sets would give different word-length optimal expressions.
-- Full center enumeration may require full group arithmetic — resource-intensive; exact compute cost not reported.
+- $A_4$-geodesic words are proven minimal; the $A_2$ words (90/100/100/90) are only *derived*, minimality open.
+- Applies to $B_0(2,5)$; no claim about the free $B(2,5)$ unless $B(2,5)=B_0(2,5)$.
+- Confirming minimality took ~1 month on a 128-core / 1.5 TB machine — reproduction is resource-intensive.
 
 ## Replication evidence
 
-No independent replication known as of 2026-05-28. Supercomputer run; verification would require comparable resources.
+No independent replication known. Centrality of every listed word is checkable directly in GAP + `anupq` (the authors' own verification); minimality would require rebuilding the $A_4$ ball.
 
 ## Why this paper matters
 
-The center of $B_0(2,5)$ is a concrete structural invariant. For the Mixer B(2,5) attack, central elements have a specific property: they commute with everything, so their normal form under KB reduction must be the same regardless of the ordering used. This means:
+This is the current frontier of the Kuznetsov program: a concrete, **short, minimal** representation of the order-5 center of $B_0(2,5)$ — the naive length-6142 commutator collapses to a length-**47** geodesic in $A_4$. It directly answers a question posed by Mazurov (2024).
 
-1. **Cross-ordering consistency test**: a central element of $B_0(2,5)$ should, if B(2,5) ≅ B₀(2,5), reduce to the same normal form under both RPO and shortlex orderings in the Mixer. Failure indicates either a bug or a witness that B(2,5) ≠ B₀(2,5).
-2. **Verification anchors**: the minimal-length central words are the cheapest elements to test in any B(2,5) pipeline — they're provably equal to 1 in $B_0(2,5)$ (as group words), so the KB system or bidirectional search must reduce them to the empty word.
-3. **Structural data**: the center's size and generator words add to the known structural data about $B_0(2,5)$, complementing the 973 candidate-divergence relations from [[kuznetsov-shlepkin-2010]].
-
-This is the most recent Kuznetsov paper in the vault (2025); it represents the current frontier of supercomputer-scale computation on $B_0(2,5)$.
+For the Mixer B(2,5) attack these are prime **verification anchors**: $a_{34}$ commutes with everything, so any correct rewriting/KB pipeline for $B_0(2,5)$ (and for $B(2,5)$ if $B(2,5)=B_0(2,5)$) must handle these words consistently. Because their exact $A_4$-geodesic lengths (47/50/50/47) are known, they double as hard length benchmarks for any growth or bidirectional-search tool. The intro also records the modeling fact that the $k$-dimensional hypercube is the Cayley graph of $B(k,2)$.
 
 ## Quotes
 
-Abstract-only access; no verbatim quotes extracted from body text.
+Full text is in Russian; content above is paraphrased/translated [trans.] from the getFT PDF (pp. 270–273). The four central words and their lengths are reproduced verbatim under Key result.
 
 ## Open questions surfaced
 
-- What is $|Z(B_0(2,5))|$? The class-12 lower central factor is central; the full center may be strictly larger.
-- What are the minimal word lengths for the central elements? If the words are long (e.g., length ≥ 30), they overlap with the 973 candidate-divergence length range ([[kuznetsov-shlepkin-2010]]) — potentially useful cross-checks.
-- Do any central elements of $B_0(2,5)$ reduce to the identity in $B(2,5)$'s KB pipeline, but NOT in $B_0(2,5)$'s? If so, that would distinguish the two groups.
-- Can the central elements be obtained from the Mixer's B(2,5) pipeline without a separate supercomputer run, using the rule banks already generated?
+- Are the $A_2$ representations (90/100/100/90) actually minimal? The paper explicitly leaves this open.
+- The $A_4$ geodesic length 47 is well below the estimated diameter $\approx69$ ([[kuznetsov-kuznetsova-2018]]); how do central-element lengths distribute relative to the full diameter?
+- Can the Mixer's B(2,5) pipeline recover these central words from its existing rule banks without a separate 128-core run?
+- Do these central words reduce to the same normal form under both RPO and shortlex orderings — a consistency test for $B(2,5)\overset?=B_0(2,5)$?
 
 ## Related material in vault
 
-- Extends: [[kuznetsov-shlepkin-2009]], [[kuznetsov-shlepkin-2010]] (foundational B₀(2,5) computation by same first author)
-- Cites: [[havas-wall-wamsley-1974]] (power commutator presentation)
-- Concepts: [[Concepts/cayley-table-closure-algorithm]], [[Concepts/verification-methods-for-group-equality]]
+- Extends: [[kuznetsov-kuznetsova-2018]] (the coset-ball / resource-efficient algorithm modified here — ref [5]), [[kuznetsov-2016]] (the `Ball` algorithm — ref [6])
+- Cites: [[havas-wall-wamsley-1974]] (order $5^{34}$, pc-basis, $Z(B_0)=\langle a_{34}\rangle$ — ref [4]). Crypto-context refs: [1] Baumslag–Fazio–Nicolosi, [2] Fazio–Iga–Nicolosi, [3] Kahrobaei–Noce.
+- Concepts: [[Concepts/verification-methods-for-group-equality]]
 - MOC: [[Research/Group theory/_MOCs/_moc-burnside]]
-- Complementary data: [[kuznetsov-shlepkin-2010]] (973 candidate-divergence relations at lengths 30–35; the center elements from this paper are a different but complementary set of structural anchors)
 - Open problem: [[b25-finiteness-11.48-kostrikin]]

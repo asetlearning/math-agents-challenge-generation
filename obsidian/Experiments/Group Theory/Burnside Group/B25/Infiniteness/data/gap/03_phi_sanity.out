@@ -1,0 +1,23 @@
+Image size = 5^34
+[a,b] nontrivial in R(2,5): true
+EvalWord ABab ([a,b]) nontrivial: true
+EvalWord a^5 trivial: true
+weight 2: #left-normed = 4, #nontrivial = 2
+weight 3: #left-normed = 8, #nontrivial = 4
+weight 4: #left-normed = 16, #nontrivial = 8
+weight 5: #left-normed = 32, #nontrivial = 16
+weight 6: #left-normed = 64, #nontrivial = 32
+weight 7: #left-normed = 128, #nontrivial = 60
+weight 8: #left-normed = 256, #nontrivial = 108
+weight 9: #left-normed = 512, #nontrivial = 180
+weight 10: #left-normed = 1024, #nontrivial = 284
+weight 11: #left-normed = 2048, #nontrivial = 352
+weight 12: #left-normed = 4096, #nontrivial = 252
+weight 13: #left-normed = 8192, #nontrivial = 0
+ALL left-normed commutators of weight 13 are trivial => class < 13 (gamma_
+13 = 1 mod higher, and since previous layer generated, class = 12)
+Length(lcs) = 13, last term trivial: true
+Size(gamma_12) = 5^1
+Size([gamma_12, Q]) = 1 (1 means class 12 exactly)
+surviving weight-12 left-normed commutator [abaababaabbb] (letters = entry seq\
+uence) is NONTRIVIAL in R(2,5)

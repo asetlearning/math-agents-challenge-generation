@@ -404,3 +404,68 @@ Both co-authors must acknowledge before routing to Lead/Maria.
 - ✅ calc_score() formula: `reduction_ratio = (len_in - len_out) / len_in` (confirmed by Developer)
 - ✅ calc_score() --rules-file status: NOT YET in current datapoint.py (§8 clarified 2026-06-30)
 - ⚠️ 119-word canonical path for round 2: **TBD** — `experiments/b25_reduce_core/benchmark_run/words/*.txt` (directory may need regeneration before round 2; not blocking round 1)
+
+---
+
+## v1a — reducer-rollout search (registered 2026-07-19, per verdict §11.4)
+
+Registers what Developer built under the GO in [[AXPLORER_REPRESENTATION_VERDICT]] §11.3.
+Full derivation lives in the verdict + [[axplorer-v1-representation-cost-matrix-2026-07-17]] §8; not duplicated here.
+
+- **Hypothesis (H-v1a):** bounded reducer-as-rollout search beats greedy reducer-alone on the 345
+  non-blind window seeds (`runs/b25/patternboost_seeds/20260630_round2/seed_words.txt`), measured as
+  the **relative cooperation-gain A/B** (`baseline_len − loop_best_len`) under the **same reducer
+  config** (`braid_reduce --no-beam --rules-file <primary bank>`) for both arms. Null: gain ≤ 0.
+- **Scoring:** the reducer is the **sole rollout evaluator** (NO value net). Selection key is the
+  **absolute residual** `len(reduce(W))` — sidesteps the C9 per-candidate-ratio defect
+  (`#status/DISPROVEN`) by construction. PUCT/uniform prior (=UCB1) so the ~43% blind nodes get visits.
+- **Four soundness gates (fail-fast, enforced in code, not docs):** (1) scorer bank ∩ enabler bucket
+  = ∅, compared after free-reduction, diffed to the run dir; (2) scorer bank strictly Δ<0 — loader
+  **raises** on any Δ≥0 (Δ=0 included); (3) `_within_enabler_budget` enforces Δ≤+4 ∧ ≤2 apps/path ∧
+  ≤+8 above path-start ∧ prune-unless-net-shrink as hard runtime bounds; (4) any baseline-beater is
+  **held pending a full-word GAP-in-B₀ pass** — never recorded as a reduction.
+- **Validity note:** the relative A/B is **internally valid despite the open r=0.949 rules-injected
+  re-validation** — that gap gates only **absolute** proxy claims, not the search-vs-baseline number
+  (verdict §11.3 item 1, §11.4 item 5).
+- **Scope now:** the enabler bucket does not exist yet; until B25 produces it the search runs as a
+  pure multi-root reducer baseline (expansion inert). Uses the current 31-rule primary bank; re-run
+  when the bigger bank lands + r-re-validated. NO GPT (v1b adds it as proposer only).
+- **Artifacts:** `rollout_search.py` + `loop.py` SCORE wiring; tests
+  `tests/test_rollout_search.py` (+ C9/G3 in `test_burnside_datapoint.py`); CRUX
+  `test_round2_raw_alphabet.py` stays green. Status: `#status/registered`, awaiting Validator re-verify.
+
+---
+
+## MANDATORY RESULT SANITY GATE (added 2026-07-21, Lead — Maria escalation after the 20260630 reward-hack)
+
+**No run may be reported as a positive result (`COOPERATION_GAIN`, `beats_beam=True`, a recorded
+reduction) until it passes ALL of the following.** Enforced in code by
+`sanity_gate.validate_positive_result(...)`, wired into `loop.py`, `run_v1a_ab.py`, `v1b_pilot.py`.
+A run failing any check is labeled `hypothesis_result='INVALID_GATED'` with reasons — never a discovery.
+
+**★ SOUNDNESS SUBTLETY (Validator, why GAP-equality alone is insufficient):** the benchmark words are
+=e in B₀ BY CONSTRUCTION (HWW relators). So `candidate C =_{B0} original W` reduces to `C =_{B0} e`,
+which the EMPTY WORD and every trivial-in-B₀ word satisfy. **GAP-equality alone therefore CANNOT reject
+the empty collapse on these targets** (exactly how the hack slipped). The accept gate MUST be the
+CONJUNCTION of THREE checks — GAP-equality is necessary but not sufficient:
+
+1. **Element-preservation (GAP-in-B₀):** best `=_{B0}` original W via the verified pc-object oracle
+   (`runs/b25/gap_oracle`, |B₀|=5³⁴; finite-pc element eval, NOT abelianization/KB). General gate;
+   WEAK on =e targets, so never sufficient alone. Element-CHANGED shorter candidate → REJECTED.
+2. **Anti-degeneracy floor:** best non-empty AND `len(best) ≥ MIN_CERT_FLOOR` (DECLARED, pre-registered
+   constant, justified — NOT tuned to produce a result). Empty / below-floor → invalid (−1.0).
+   LOAD-BEARING precisely because check 1 is weak on =e targets. Objective = short NONTRIVIAL
+   certificates / valid reduction PATHS (toward the OPEN free-B(2,5) question), NOT "is W=e in B₀"
+   (trivially known); even a valid-path reduction to empty is a degenerate, rejected result.
+3. **Valid witnessed path:** the accepted best must be reached by an ACTUAL witnessed sequence of
+   B₀-valid reduction moves from W (reducer steps / guarded-core commits) — NOT merely a word that
+   coincidentally =e. A no-path candidate that happens to be =e is REJECTED.
+4. **Baseline reconciliation + degenerate hold:** `cooperation_gain` reconciled vs the braid_reduce
+   baseline (gain > the rule set's physical shortening capacity → AUTO-FLAG); any `best_len==0` OR
+   `max_score==1.0` → HELD FOR MANUAL REVIEW, never auto-labeled a discovery.
+
+**Provenance of the gate:** the 20260630_181754 run reported `COOPERATION_GAIN` for an EMPTY best word
+(certificate collapsed to nothing) with no valid reduction path (baseline blind, 260→260). Root cause:
+reward-ratio credited shortness with no empty/GAP/floor gate. See
+`[[2026-07-21-scoring-reward-hack-incident-and-honest-result]]`. Regression tests pin the three
+rejection cases (empty / GAP-trivial / element-changed). Validator re-verifies the gate's soundness.

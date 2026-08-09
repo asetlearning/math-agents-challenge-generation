@@ -1,0 +1,205 @@
+{
+  "e7_lengths": {
+    "G1": {
+      "normal_form_length": 128,
+      "normal_form_sha256": "bd86ab349c8bb3cbca2b82f3458b9d4b2383c6c49f4a856735a897dbeb2f6633",
+      "source": "computed here from C5*C5 normal form",
+      "status": "proved model for G1",
+      "syllable_count": 128
+    },
+    "G2": {
+      "command": "/Users/maumayma/Desktop/reps/algo_mixing/kbmag_v1/standalone/bin/wordreduce -diff2 g2",
+      "normal_form_length": 128,
+      "normal_form_sha256": "bd86ab349c8bb3cbca2b82f3458b9d4b2383c6c49f4a856735a897dbeb2f6633",
+      "prefix": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g2",
+      "status": "verified automatic-structure oracle",
+      "stderr": ""
+    },
+    "G3": {
+      "command": "/Users/maumayma/Desktop/reps/algo_mixing/kbmag_v1/standalone/bin/wordreduce -diff2 g3",
+      "normal_form_length": 128,
+      "normal_form_sha256": "bd86ab349c8bb3cbca2b82f3458b9d4b2383c6c49f4a856735a897dbeb2f6633",
+      "prefix": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g3",
+      "status": "verified automatic-structure oracle",
+      "stderr": ""
+    },
+    "G4": {
+      "command": "/Users/maumayma/Desktop/reps/algo_mixing/kbmag_v1/standalone/bin/wordreduce -diff2 g4",
+      "normal_form_length": 128,
+      "normal_form_sha256": "bd86ab349c8bb3cbca2b82f3458b9d4b2383c6c49f4a856735a897dbeb2f6633",
+      "prefix": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g4",
+      "status": "diff2-sound preview only; g4 gpaxioms not certified",
+      "stderr": ""
+    },
+    "free_reduced_input_length": 138,
+    "input_path": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/e7_input.txt",
+    "input_sha256": "ed33f27cf275116232e432e054b03df830331b8baa84aaa25e5745f075b07229"
+  },
+  "fuel_gauge": {
+    "extension_protocol": "For rung L -> L+1, use the certified G_L oracle, enumerate primitive freely cyclically reduced periods of length L+1 up to rotation/inversion, retain periods whose p^5 is G_L-geodesic/nontrivial and not G_L-conjugate to existing relator powers, then run realized-piece profiling over the selected set. Absence of conjugacy from a bounded search must be labeled by its connector depth; positive duplicate rejections carry conjugator witnesses.",
+    "filtered_profile_receipt": "/Users/maumayma/Desktop/reps/algo_mixing/.maestri/roles/8f9f252e-bccd-4cb9-b836-6cf90167b5ea/filtered_profile_receipts/filtered_oracle_profile_g3_ell4_5_20260804T123456Z.json",
+    "filtered_profile_receipt_sha256": "fb430db4d3b5b2dfc33bca0d0184cbf86a85508d5edb6db646023eaeb27e06ae",
+    "known_counts": [
+      {
+        "genuinely_new_count": 5,
+        "oracle": "G3",
+        "period_length_ell": 4,
+        "periods": [
+          "AABB",
+          "AAbb",
+          "ABAb",
+          "ABaB",
+          "ABab"
+        ],
+        "status": "certified input to Gate 2",
+        "transition": "G3 -> G4"
+      },
+      {
+        "genuinely_new_count": 14,
+        "oracle": "G3",
+        "period_length_ell": 5,
+        "status": "dry run over G3; not the G4-rung count",
+        "transition": "dry-run signal for length-5 periods"
+      },
+      {
+        "genuinely_new_count": null,
+        "oracle": "G4",
+        "period_length_ell": 5,
+        "status": "pending certified G4 oracle",
+        "transition": "G4 -> G5"
+      }
+    ]
+  },
+  "generated_utc": "20260804T140032Z",
+  "growth": {
+    "G1": {
+      "derivation": "factor syllable polynomial f(t)=2t+2t^2; f(r)=1",
+      "exact": "1 + sqrt(3)",
+      "lower": 2.732050807568877,
+      "source": "closed form for C5*C5 shortlex geodesic normal forms",
+      "status": "sanity anchor",
+      "upper": 2.732050807568877,
+      "width": 0.0
+    },
+    "G2": {
+      "core_prune": null,
+      "growth": {
+        "converged": true,
+        "iteration": 40,
+        "lower": 2.6741695805722068,
+        "max_iters": 5000,
+        "mean_scale": 2.674169580573867,
+        "method": "Collatz-Wielandt row-quotient bracket on the KBMAG deterministic transition-count adjacency matrix; 512eps outward float guard.",
+        "midpoint": 2.6741695805734897,
+        "raw_lower": 2.674169580572511,
+        "raw_upper": 2.6741695805744685,
+        "relative_width": 9.595305672287922e-13,
+        "seconds": 0.0006020069122314453,
+        "tol_abs": 1e-12,
+        "tol_rel": 1e-12,
+        "upper": 2.6741695805747727,
+        "width": 2.5659474545136618e-12
+      },
+      "source": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g2.wa",
+      "status": "verified automatic-structure FSA",
+      "wa": {
+        "declared_transitions": 274,
+        "max_outdegree": 4,
+        "min_outdegree": 2,
+        "observed_transitions": 274,
+        "parse_seconds": 0.00030112266540527344,
+        "path": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g2.wa",
+        "sha256": "fbe8807442773b0558ac8012f54aaf59303050fce6c92fe2962d97c666fe5b76",
+        "state_count": 104
+      }
+    },
+    "G3": {
+      "core_prune": null,
+      "growth": {
+        "converged": true,
+        "iteration": 50,
+        "lower": 2.651213619470526,
+        "max_iters": 5000,
+        "mean_scale": 2.651213619471528,
+        "method": "Collatz-Wielandt row-quotient bracket on the KBMAG deterministic transition-count adjacency matrix; 512eps outward float guard.",
+        "midpoint": 2.6512136194716147,
+        "raw_lower": 2.6512136194708273,
+        "raw_upper": 2.651213619472402,
+        "relative_width": 8.214402148170708e-13,
+        "seconds": 0.0014679431915283203,
+        "tol_abs": 1e-12,
+        "tol_rel": 1e-12,
+        "upper": 2.6512136194727036,
+        "width": 2.177813485104707e-12
+      },
+      "source": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g3.wa",
+      "status": "verified automatic-structure FSA",
+      "wa": {
+        "declared_transitions": 6953,
+        "max_outdegree": 4,
+        "min_outdegree": 1,
+        "observed_transitions": 6953,
+        "parse_seconds": 0.0037238597869873047,
+        "path": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g3.wa",
+        "sha256": "b2cac95ffa9f46ad2088ef81c3bb2f6c8dc8ad2f02231ef23332d1542121d3de",
+        "state_count": 2527
+      }
+    },
+    "G4": {
+      "core_prune": {
+        "core_max_outdegree": 4,
+        "core_min_outdegree": 1,
+        "core_state_count": 7971914,
+        "core_transition_count": 21638975,
+        "full_state_count": 7971915,
+        "iterations": 1,
+        "method": "iterative deletion of states with no outgoing edge to the current live set; deleted states have bounded accepted continuations and do not affect spectral radius",
+        "removed_state_count": 1,
+        "seconds": 0.41451072692871094
+      },
+      "growth": {
+        "converged": true,
+        "iteration": 85,
+        "lower": 2.6477218605829975,
+        "max_iters": 500,
+        "mean_scale": 2.6477218605834323,
+        "method": "Collatz-Wielandt row-quotient bracket on the KBMAG deterministic transition-count adjacency matrix; 512eps outward float guard.",
+        "midpoint": 2.647721860584295,
+        "raw_lower": 2.647721860583298,
+        "raw_upper": 2.647721860585292,
+        "relative_width": 9.803527591832476e-13,
+        "seconds": 11.122943878173828,
+        "tol_abs": 1e-12,
+        "tol_rel": 1e-12,
+        "upper": 2.6477218605855932,
+        "width": 2.595701431573616e-12
+      },
+      "source": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g4.wa",
+      "status": "FSA-level evidence only; g4 gpaxioms not certified",
+      "wa": {
+        "declared_transitions": 21641441,
+        "max_outdegree": 4,
+        "min_outdegree": 0,
+        "observed_transitions": 21641441,
+        "parse_seconds": 11.919648170471191,
+        "path": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag/g4.wa",
+        "sha256": "268bb111eaa3c0a11d5584204916012b88e3f5727bb4b8f02951b92e6f936a59",
+        "state_count": 7971915
+      }
+    }
+  },
+  "host_cwd": "/Users/maumayma/Desktop/reps/algo_mixing/.maestri/roles/8f9f252e-bccd-4cb9-b836-6cf90167b5ea",
+  "kbmag_dir": "/Users/maumayma/Desktop/reps/algo_mixing/infinite_b25/avenues/a6_bounded/kbmag",
+  "labels": {
+    "g4_status": "pre-gpaxioms FSA-level evidence unless a later certified G4 oracle supersedes it",
+    "scope": "limit diagnostics / evidence-generation only"
+  },
+  "receipt_hashes": {
+    "first_json_sha256_before_hash_field": "6f05b9817f648658f77253a4bbc84d487fe599727463294cc7c1aa73cddf0a71",
+    "json_sha256_before_summary_refresh": "415b090eca730ddda1b999cb1f33a9b8cc8ca7f29365ae737d5e1650aa4ef9a7",
+    "script_sha256": "a1e10c064c24c805f92be58f22054da8ef697d50f52c87262eb5dd84e2dedc48",
+    "summary_sha256_before_final_json": "26f3d39b27de7ffc9407fea2a4225a0ce0876b6f25e25f98047de802767d63d2"
+  },
+  "replay_command": "python3 limit_diagnostics.py --groups g2,g3,g4 --tol-abs 1e-12 --tol-rel 1e-12 --max-iters 5000 --g4-tol-abs 1e-12 --g4-tol-rel 1e-12 --g4-max-iters 500 --progress-every 20",
+  "wordreduce": "/Users/maumayma/Desktop/reps/algo_mixing/kbmag_v1/standalone/bin/wordreduce"
+}

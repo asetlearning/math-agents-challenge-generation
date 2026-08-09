@@ -1,0 +1,3 @@
+Conv1 [x,y]=x^-1y^-1xy: E7 trivial in R(2,5): true
+Conv2 [x,y]=xyx^-1y^-1:  E7 trivial in R(2,5): true
+Conv2 [a,5b] trivial: false (expect false)

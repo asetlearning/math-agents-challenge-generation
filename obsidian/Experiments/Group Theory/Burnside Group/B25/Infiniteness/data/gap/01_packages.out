@@ -1,0 +1,6 @@
+PKG anupq : true
+PKG nq : true
+PKG lpres : true
+PKG ace : true
+PKG kbmag : true
+GAP version: 4.15.1

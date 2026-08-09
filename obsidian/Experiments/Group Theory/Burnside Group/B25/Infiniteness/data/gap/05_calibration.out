@@ -1,0 +1,3 @@
+B(2,3): order = 27 = 3^3, class = 2
+B(2,4): order = 4096 = 2^12, class = 5
+B(2,4) order = 4096: true

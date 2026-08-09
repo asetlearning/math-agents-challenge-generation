@@ -4,12 +4,17 @@ authors: A. A. Kuznetsov
 year: 2015
 venue: Sibirskie Elektronnye Matematicheskie Izvestiya
 url: https://doi.org/10.17377/semi.2015.12.020
+url_fulltext: "https://doi.org/10.17377/semi.2015.12.020"
 url_translated:
 language: ru
 methodology_type: empirical
 citation_count: null
 citation_count_date:
-key_concepts: []
+key_concepts:
+  - "[[hall-polynomials]]"
+  - "[[cayley-diameter]]"
+  - "[[power-commutator-presentation]]"
+  - "[[growth-function]]"
 extends:
   - "[[kuznetsov-kuznetsova-2013]]"
 contradicts: []
@@ -17,7 +22,8 @@ replicates: []
 cites:
   - "[[kuznetsov-kuznetsova-2013]]"
 cited_by: []
-quality_notes: "Full journal paper (Sib. El. Math. Izv. 12, pp. 248–254, 7 pages). Abstract available. English in abstract. BORDERLINE inclusion: exponent-3 Burnside groups; included because Cayley graph methodology directly parallels B(2,5) Cayley work. Reports concrete diameter data for small Burnside groups of exponent 3 — useful cross-exponent comparison benchmarks. Abstract mentions application to multiprocessor system topologies, suggesting these Cayley graphs have favorable graph-theoretic properties vs. hypercubes."
+quality_notes: "Full journal paper (Sib. El. Math. Izv. 12, pp. 248–254, 7 pages). Russian body, English abstract. RE-FILLED FROM FULL TEXT (SEMR PDF via DOI 10.17377/semi.2015.12.020, pdftotext — Cyrillic renders correctly). BORDERLINE inclusion for the B25 program: exponent-3, not exponent-5; included because the Hall-polynomial + Cayley-graph methodology is exponent-agnostic and directly parallels the B(2,5) Cayley work. The full text gives (a) the explicit Hall polynomials z1–z14 over Z3 for B4=B(4,3) (Theorem 1, verbatim below), with Corollary 1 (B3: z1–z7) and Corollary 2 (B2: z1–z3); (b) the complete pc-presentation of B4 on 14 basis commutators a1–a14 with defining relations R; (c) the order formula |Bk|=3^(k+C(k,2)+C(k,3)) and nilpotency ≤3 (Levi–van der Waerden [3]); (d) a full TABLE of Cayley-graph characteristics (|V|, degree s, diameter D, average diameter d) for B(k,3) and quotients, 2≤k≤4; (e) the hypercube comparison (k-cube: 2^k vertices, degree=diameter=k, avg=k/2) showing the B(k,3) Cayley graphs are preferable. Worked example: 5th commutator interpolation f5^(1,2)=xy (4×4 system over Z3, rank 4). NOTE: [[kuznetsov-safonov-2015]] is a DIFFERENT paper (exponent-3 Hall polynomials, PDMA-supplement) — the earlier 'same result' claim in Related was wrong; corrected below."
+fill_level: full
 author: maumayma
 tags:
   - agent/research
@@ -39,58 +45,102 @@ The study calculates previously unknown Hall polynomials for $k$-generator Burns
 
 ## TL;DR
 
-Computes Hall polynomials and Cayley graph diameters for Burnside groups of exponent 3 ($k \le 4$, $k$ generators). Finds Cayley graphs of these groups outperform hypercubes in graph-theoretic properties. Fuller treatment of the 3-page conference note [[kuznetsov-safonov-2015]].
+Computes the **explicit Hall polynomials** $z_1,\dots,z_{14}$ over $\mathbb{Z}_3$ for the $k$-generator Burnside group of exponent 3 $B_k=B(k,3)$, $k\le4$ (Theorem 1 for $B_4$; Corollaries 1–2 for $B_3,B_2$), then uses them as a fast-multiplication oracle to compute — by machine, for $2\le k\le4$ — the **diameters and average diameters** of the Cayley graphs $\mathrm{Cay}(B_k,X_k)$ (symmetric generating set $X_k=\{a_1,a_1^{-1},\dots,a_k,a_k^{-1}\}$, $a_i^{-1}=a_i^2$) and their quotients. A verbatim TABLE gives $(|V|,s,D,d)$ for $3^3\le|V|\le3^{14}$. Conclusion: these Cayley graphs are **preferable to hypercubes** ($k$-cube has $2^k$ vertices, degree $=$ diameter $=k$, average $k/2$) — same $|V|$ but smaller degree and diameter — so they merit attention for multiprocessor-network topology design. Exponent-3 sibling of the exponent-5 foundation [[kuznetsov-kuznetsova-2013]].
 
 ## Problem
 
-What are the Cayley graph diameters of $B_k$ (Burnside groups of exponent 3) for $k \le 4$ generators? And do these groups' Cayley graphs exhibit network properties superior to hypercubes (relevant for multiprocessor interconnect design)?
+Cayley graphs are a standard model for multiprocessor interconnection networks (Akers–Krishnamurthy 1986): regular, vertex-transitive, with small diameter and degree. Computing the diameter of the Cayley graph of a large finite group is decidable but hard — finding a minimal group word is NP-hard (Even–Goldreich 1981). The $k$-dimensional hypercube is exactly the Cayley graph of the exponent-2 Burnside group $B(k,2)=(\mathbb{Z}_2)^k$. The structure of the exponent-3 groups $B(k,3)$ is known (Levi–van der Waerden [3]), but the characteristics of **their** Cayley graphs were previously unstudied. Determine those characteristics for $2\le k\le4$ and compare with hypercubes. Doing so requires an efficient element-multiplication oracle — hence the Hall polynomials.
 
 ## Approach
 
-Computes Hall polynomials for $B_k$ (exponent 3, $k \le 4$). Uses the Hall-polynomial multiplication to implement BFS-based Cayley graph construction. Computes diameter and average diameter for each group and its quotients. Compares to hypercube graphs of the same number of vertices.
+1. **Order + nilpotency.** By Levi–van der Waerden [3], $|B_k|=3^{\,k+\binom{k}{2}+\binom{k}{3}}$ and the nilpotency class of $B_k$ is $\le3$. So $|B(2,3)|=3^3$, $|B(3,3)|=3^7$, $|B(4,3)|=3^{14}$.
+2. **pc-presentation.** Obtain (via GAP) a power-commutator presentation of $B_4$ on 14 basis commutators $a_1,\dots,a_{14}$ (weights 1–3, verbatim below); every $g$ is a unique normal word $g=a_1^{x_1}\cdots a_{14}^{x_{14}}$, $x_i\in\mathbb{Z}_3$. Doing $B_4$ also yields $B_1,B_2,B_3$ (heavier commutators vanish).
+3. **Hall polynomials by interpolation.** For each non-commuting pair $1\le i<j\le14$, tabulate the 4 products $a_j^y a_i^x$ ($x,y\in\{1,2\}$) and write $a_j^y a_i^x=a_i^x a_j^y\prod_{r>j}a_r^{f_r^{(i,j)}(x,y)}$ with $f_r^{(i,j)}(x,y)=\beta_{11}xy+\beta_{12}xy^2+\beta_{21}x^2y+\beta_{22}x^2y^2$ over $\mathbb{Z}_3$; each $\beta$-tuple solves a full-rank $4\times4$ linear system (eq. 15). Chaining these (eq. 16) collects any product into normal form, yielding all $z_i$.
+4. **Cayley BFS.** With the Hall-polynomial oracle, run the BFS growth-function algorithm of [7] on $\mathrm{Cay}(B_k,X_k)$ (symmetric $X_k$ ⇒ undirected graph) to get diameter $D$ (max minimal-word length) and average diameter $d$ (mean), for $B_k$ and successive central quotients.
 
 ## Key result
 
-- **Hall polynomials** for exponent-3 Burnside groups computed for $k \le 4$ (previously unknown).
-- **Diameters** and **average diameters** of Cayley graphs of these groups and their quotients computed. Specific numerical values not quoted in the abstract available.
-- **Graph quality**: these Cayley graphs have "superior characteristics compared to hypercubes" — lower diameter or better connectivity for the same number of vertices.
+**Theorem 1 (verbatim).** For two elements $a_1^{x_1}\cdots a_{14}^{x_{14}}$ and $a_1^{y_1}\cdots a_{14}^{y_{14}}$ of $B_4$ in commutator form, the product exponents $z_i\in\mathbb{Z}_3$ are the Hall polynomials (1)–(14):
+
+$$
+\begin{aligned}
+z_1 &= x_1+y_1, & z_2 &= x_2+y_2, & z_3 &= x_3+y_3, & z_4 &= x_4+y_4,\\
+z_5 &= x_5+y_5+x_2y_1, & z_6 &= x_6+y_6+x_3y_1, & z_7 &= x_7+y_7+x_3y_2,\\
+z_8 &= x_8+y_8+x_4y_1, & z_9 &= x_9+y_9+x_4y_2, & z_{10} &= x_{10}+y_{10}+x_4y_3,\\
+z_{11} &= x_{11}+y_{11}+x_5y_3+2x_6y_2+x_7y_1+x_2x_3y_1+x_2y_1y_3+2x_3y_1y_2,\\
+z_{12} &= x_{12}+y_{12}+x_5y_4+2x_8y_2+x_9y_1+x_2x_4y_1+x_2y_1y_4+2x_4y_1y_2,\\
+z_{13} &= x_{13}+y_{13}+x_{10}y_1+x_6y_4+2x_8y_3+x_3x_4y_1+x_3y_1y_4+2x_4y_1y_3,\\
+z_{14} &= x_{14}+y_{14}+x_{10}y_2+x_7y_4+2x_9y_3+x_3x_4y_2+x_3y_2y_4+2x_4y_2y_3.
+\end{aligned}
+$$
+
+**Corollary 1** ($B_3$, formulas 17–23): $z_1=x_1+y_1$, $z_2=x_2+y_2$, $z_3=x_3+y_3$, $z_4=x_4+y_4+x_2y_1$, $z_5=x_5+y_5+x_3y_1$, $z_6=x_6+y_6+x_3y_2$, $z_7=x_7+y_7+x_4y_3+2x_5y_2+x_6y_1+x_2x_3y_1+x_2y_1y_3+2x_3y_1y_2$.
+**Corollary 2** ($B_2$, formulas 24–26): $z_1=x_1+y_1$, $z_2=x_2+y_2$, $z_3=x_3+y_3+x_2y_1$.
+
+**Cayley-graph characteristics** ($2\le k\le4$; $|V|$ = order, $s$ = degree $=|X_k|$, $D$ = diameter, $d$ = average diameter), verbatim table:
+
+| group | $\lvert V\rvert$ | $s$ | $D$ | $d$ |
+|---|---|---|---|---|
+| $B(2,3)$ | $3^3$ | 4 | 4 | $64/27\approx2.4$ |
+| $B(3,3)/\langle a_5,a_6,a_7\rangle$ | $3^4$ | 6 | 5 | $246/81\approx3.0$ |
+| $B(3,3)/\langle a_6,a_7\rangle$ | $3^5$ | 6 | 6 | $918/243\approx3.8$ |
+| $B(3,3)/\langle a_7\rangle$ | $3^6$ | 6 | 6 | $3150/729\approx4.3$ |
+| $B(3,3)$ | $3^7$ | 6 | 10 | $11986/2187\approx5.5$ |
+| $B(4,3)/\langle a_9,\dots,a_{14}\rangle$ | $3^8$ | 8 | 8 | $36776/6561\approx5.6$ |
+| $B(4,3)/\langle a_{10},\dots,a_{14}\rangle$ | $3^9$ | 8 | 9 | $118956/3^9\approx6.0$ |
+| $B(4,3)/\langle a_{11},\dots,a_{14}\rangle$ | $3^{10}$ | 8 | 9 | $380520/3^{10}\approx6.4$ |
+| $B(4,3)/\langle a_{12},a_{13},a_{14}\rangle$ | $3^{11}$ | 8 | 12 | $1303736/3^{11}\approx7.4$ |
+| $B(4,3)/\langle a_{13},a_{14}\rangle$ | $3^{12}$ | 8 | 12 | $4308432/3^{12}\approx8.1$ |
+| $B(4,3)/\langle a_{14}\rangle$ | $3^{13}$ | 8 | 14 | $14067712/3^{13}\approx8.8$ |
+| $B(4,3)$ | $3^{14}$ | 8 | 14 | $45390480/3^{14}\approx9.4$ |
+
+**Hypercube comparison.** The $k$-cube has $2^k$ vertices with degree $=$ diameter $=k$ and average diameter $k/2$. A topology $\Gamma_1$ is preferable to $\Gamma_2$ if $|V_1|\simeq|V_2|$ but $s_1<s_2$ and $D_1<D_2$. The $B(k,3)$ Cayley graphs satisfy this against comparably-sized hypercubes, so they "deserve attention in the design of advanced topologies of multiprocessor computer systems."
+
+## Power-commutator presentation of $B_4=B(4,3)$ (verbatim)
+
+- Weight 1: $a_1,a_2,a_3,a_4$ (generators).
+- Weight 2: $a_5=[a_2,a_1]$, $a_6=[a_3,a_1]$, $a_7=[a_3,a_2]$, $a_8=[a_4,a_1]$, $a_9=[a_4,a_2]$, $a_{10}=[a_4,a_3]$.
+- Weight 3: $a_{11}=[a_5,a_3]=[a_2,a_1,a_3]$, $a_{12}=[a_5,a_4]=[a_2,a_1,a_4]$, $a_{13}=[a_6,a_4]=[a_3,a_1,a_4]$, $a_{14}=[a_7,a_4]=[a_3,a_2,a_4]$.
+- Relations $R$ (trivial $a_i^3=1$ and $[a_j,a_i]=1$ omitted): $[a_2,a_1]=a_5$, $[a_3,a_1]=a_6$, $[a_3,a_2]=a_7$, $[a_4,a_1]=a_8$, $[a_4,a_2]=a_9$, $[a_4,a_3]=a_{10}$, $[a_5,a_3]=a_{11}$, $[a_5,a_4]=a_{12}$, $[a_6,a_2]=a_{11}^2$, $[a_6,a_4]=a_{13}$, $[a_7,a_1]=a_{11}$, $[a_7,a_4]=a_{14}$, $[a_8,a_2]=a_{12}^2$, $[a_8,a_3]=a_{13}^2$, $[a_9,a_1]=a_{12}$, $[a_9,a_3]=a_{14}^2$, $[a_{10},a_1]=a_{13}$, $[a_{10},a_2]=a_{14}$.
+- So $B_4=\langle a_1,\dots,a_{14}\mid R\rangle$.
+
+Worked example (5th commutator of $a_2^y a_1^x$): the $4\times4$ system has rank 4, unique solution $\beta_{11}=1,\beta_{12}=\beta_{21}=\beta_{22}=0$, giving $f_5^{(1,2)}(x,y)=xy$, i.e. $a_2^y a_1^x=(x,y,0,0,xy,0,\dots,0)$.
 
 ## Assumptions
 
-- $B_k$ (exponent 3) are finite for $k \le 4$ (well-established).
-- Symmetric generating sets used throughout (same convention as Kuznetsov's exponent-5 work).
-- Hall polynomial identities correctly computed.
+- $|B_k|=3^{k+\binom{k}{2}+\binom{k}{3}}$ and nilpotency class $\le3$ (Levi–van der Waerden [3]).
+- pc-presentation from GAP correct; each $4\times4$ interpolation system over $\mathbb{Z}_3$ is full rank ⇒ unique Hall polynomials.
+- Symmetric generating set $X_k=\{a_i,a_i^{-1}\}$ (with $a_i^{-1}=a_i^2$) ⇒ undirected Cayley graph, as used for MPС-network topologies.
 
 ## Limitations / scope
 
-- $k \le 4$ generators only; general exponent-3 Burnside groups (large $k$) not studied.
-- Not directly about B(2,5); exponent-3 methodology.
+- Explicit Hall polynomials printed only for $k\le4$; larger $k$ computed identically but "take considerably more space."
+- Cayley characteristics only for $2\le k\le4$ (up to $3^{14}$ vertices).
+- Exponent 3, not $B(2,5)$ — included as the exponent-3 methodological sibling.
 
 ## Replication evidence
 
-No independent replication known. Cross-exponent validation: the Hall polynomial technique is the same as in [[kuznetsov-kuznetsova-2013]] (exponent 5) and [[kuznetsov-safonov-2014]] (exponent 7); internal consistency across exponents serves as implicit validation.
+No independent replication known. Cross-exponent consistency: the identical interpolation technique appears in [[kuznetsov-kuznetsova-2013]] (exponent 5) and [[kuznetsov-safonov-2014]] (exponent 7); internal consistency across three odd exponents serves as implicit cross-validation. The $|B(k,3)|$ orders reproduce Levi–van der Waerden exactly.
 
 ## Why this paper matters
 
-This paper establishes that the Cayley graph computation technique Kuznetsov applies to B(2,5) is not exponent-specific. The same methodology (Hall polynomials → group multiplication oracle → BFS Cayley graph) works across exponents 3, 5, and 7. Specifically:
-
-1. **Cross-exponent calibration**: diameter data for exponent-3 groups provides baseline reference for how diameter scales with group order and exponent. If the relationship is smooth across exponents, it supports extrapolation to larger exponent-5 groups.
-2. **Hypercube comparison**: if exponent-3 Burnside Cayley graphs beat hypercubes, the same is plausible for exponent-5, which has implications for the structure of the word problem's search space.
-3. **Methodology validation**: computing previously unknown Hall polynomials for exponent 3 (confirmed correct against known |B(k,3)| values) validates the collection-process implementation before applying it to the harder exponent-5 case.
+This is the exponent-3 member of Kuznetsov's cross-exponent Hall-polynomial + Cayley-graph program, and the one that most explicitly ties the group-theoretic computation to **network-topology design**. Concrete, verifiable benchmarks emerge: e.g. $B(4,3)$ (order $3^{14}\approx4.8\times10^6$) has a degree-8 Cayley graph of diameter 14 and average distance $\approx9.4$ — beating a comparably-sized hypercube. It validates the Hall-polynomial oracle (against known $|B(k,3)|$) before it is trusted on the harder exponent-5 case, and supplies a smooth cross-exponent baseline for how Cayley diameter scales with group order.
 
 ## Quotes
 
-No verbatim body-text quotes available (abstract only).
+1. > "Previously unknown Hall's polynomials of $B_k$ for $k\le4$ are calculated." — Abstract
+2. > "It is shown that these graphs have better characteristics than hypercubes." — Abstract
+3. > "The rank of the system matrix equals 4, therefore it has the unique solution." — §2 [trans.]
 
 ## Open questions surfaced
 
-- What are the specific diameter values for B(2,3), B(3,3), B(4,3) Cayley graphs? These are the verifiable benchmarks.
-- Does the Cayley graph diameter scale with $|B_k|^{1/3}$ (cube root) or some other power?
-- Do the "superior characteristics vs. hypercubes" hold for exponent-5 Burnside groups?
+- How does the Cayley diameter of $B(k,3)$ scale with $k$ (or with $\log_3|V|$)? The table hints at roughly-linear-in-$\log|V|$ growth but no closed form is given.
+- Do the "better than hypercube" characteristics persist for exponent-5 Burnside groups at comparable vertex counts?
+- Which quotients give the best degree/diameter trade-off for a target $|V|$ (the practical network-design question)?
 
 ## Related material in vault
 
-- Extends: [[kuznetsov-kuznetsova-2013]] (Hall polynomial methodology for exponent 5; this paper applies same method to exponent 3)
+- Extends: [[kuznetsov-kuznetsova-2013]] (Hall polynomial methodology for exponent 5; this paper applies the same interpolation method to exponent 3)
 - Cites: [[kuznetsov-kuznetsova-2013]]
-- Related: [[kuznetsov-safonov-2015]] (conference companion note with same result), [[kuznetsov-safonov-2014]] (same Hall polynomial methodology for exponent 7)
+- Related: [[kuznetsov-safonov-2015]] (exponent-3 Hall polynomials, PDMA-supplement — same research line, distinct paper; NOT "the same result"), [[kuznetsov-safonov-2014]] (same Hall polynomial methodology for exponent 7)
 - MOC: [[Research/Group theory/_MOCs/_moc-burnside]]

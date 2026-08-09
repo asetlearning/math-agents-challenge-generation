@@ -1,0 +1,4 @@
+gluings checked: 8000
+aligned (delta=0 mod 4): contour==empty 8000, contour!=empty 0
+phase-offset: contour nonempty 0, empty 0; nonempty contour lengths observed: []
+VERDICT: PASS — every aligned opposite gluing cancels; no offset gluing does

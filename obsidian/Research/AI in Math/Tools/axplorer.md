@@ -18,6 +18,7 @@ tags:
 related:
   - "[[charton-2024-patternboost]]"
   - "[[patternboost-v1-lineage]]"
+  - "[[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]"
 ---
 
 # axplorer — PatternBoost Reference Implementation
@@ -63,8 +64,11 @@ To apply axplorer to a new domain: implement these three methods. The training l
 
 ## Tokenizers
 
-- **`SparseTokenizerSequenceKTokens` (k=1)**: one symbol = one token, no BPE merging. Correct for domains where each element in the sequence is independently meaningful. **This is the right tokenizer for B(2,5) Burnside words** — each generator letter (a, b, A, B) maps to a distinct integer token.
-- Additional domain-specific tokenizers are available in the repo for graphs and point sets. Check axplorer source for the full list.
+> **Correction (2026-07-17, Researcher, AXPLORER v1 representation-gate scan):** the claim below that `SparseTokenizerSequenceKTokens` is "the right tokenizer for B(2,5)" is **superseded** — verified wrong on closer reading. See [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]] for the full literature pass; see Lead's `experiments/burnside/b25_patternboost/AXPLORER_REPRESENTATION_NOTES.md` (repo-local, not vault) for the code-grounding read this correction is based on.
+
+- All three of axplorer's native tokenizer classes (`SparseTokenizerSingleInteger`, `SparseTokenizerSequenceKTokens`, `DenseTokenizer`) are built over a **fixed, precomputed N-choose-k or N^k coordinate space** (`generate_index_tuples(N, k, symmetric)` in `src/envs/tokenizers.py`) — they tokenize *which fixed coordinates are active*, not an open-ended sequence of symbols. `DenseTokenizer.decode()` hard-fails if decoded length ≠ an expected value computed from N,k up front.
+- **There is no native variable-length word/sequence environment in axplorer.** All three built-in envs (`cycle.py`/square, `isosceles.py`, `sphere.py`) assume a fixed coordinate space. A B(2,5) word (variable length, up to 1348 characters, no fixed N/k) does not fit this abstraction as-is — applying `SparseTokenizerSequenceKTokens` to it would require treating "position in the word" as the fixed coordinate space, which is a real design choice with real tradeoffs (see synthesis), not a drop-in reuse of the existing tokenizer.
+- Correct framing: our free-group word is structurally closer to PatternBoost's own **flattened-string + BPE** approach for graph adjacency matrices (a variable-length string case PatternBoost's paper handles, even though axplorer's *code* doesn't provide a ready-made tokenizer for it) than to axplorer's fixed-coordinate tokenizers.
 
 ## Configuration
 

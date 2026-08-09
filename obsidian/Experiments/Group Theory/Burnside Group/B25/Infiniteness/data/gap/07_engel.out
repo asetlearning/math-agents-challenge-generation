@@ -1,0 +1,25 @@
+size 5^34 class 12
+[a,1*b] trivial in R(2,5): false
+[a,2*b] trivial in R(2,5): false
+[a,3*b] trivial in R(2,5): false
+[a,4*b] trivial in R(2,5): false
+[a,5*b] trivial in R(2,5): false
+[a,6*b] trivial in R(2,5): true
+[a,7*b] trivial in R(2,5): true
+[a,8*b] trivial in R(2,5): true
+[b,1*a] trivial in R(2,5): false
+[b,2*a] trivial in R(2,5): false
+[b,3*a] trivial in R(2,5): false
+[b,4*a] trivial in R(2,5): false
+[b,5*a] trivial in R(2,5): false
+[b,6*a] trivial in R(2,5): true
+[b,7*a] trivial in R(2,5): true
+[b,8*a] trivial in R(2,5): true
+[[a,b],1*(ab)] trivial: false
+[[a,b],2*(ab)] trivial: false
+[[a,b],3*(ab)] trivial: false
+[[a,b],4*(ab)] trivial: false
+[[a,b],5*(ab)] trivial: true
+[[a,b],6*(ab)] trivial: true
+[[a,b],7*(ab)] trivial: true
+[[a,b],8*(ab)] trivial: true

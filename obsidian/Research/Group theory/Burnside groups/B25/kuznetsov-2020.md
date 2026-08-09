@@ -4,6 +4,7 @@ authors: A. A. Kuznetsov
 year: 2020
 venue: Prikladnaya Diskretnaya Matematika. Supplement
 url: https://doi.org/10.17223/2226308X/13/39
+url_fulltext: "https://www.mathnet.ru/php/getFT.phtml?jrnid=pdma&paperid=519&what=fullt&option_lang=eng"
 url_translated:
 language: ru
 methodology_type: methodology
@@ -12,17 +13,19 @@ status: draft
 citation_count: null
 citation_count_date:
 key_concepts:
-  - "[[Concepts/cayley-table-closure-algorithm]]"
+  - "[[rewriting-system]]"
+  - "[[knuth-bendix]]"
+  - "[[power-commutator-presentation]]"
 extends:
-  - "[[kuznetsov-tarasov-shlepkin-2009]]"
-  - "[[kuznetsov-shlepkin-2009]]"
+  - "[[kuznetsov-kuznetsova-2013]]"
 contradicts: []
 replicates: []
 cites:
+  - "[[kuznetsov-kuznetsova-2013]]"
   - "[[havas-wall-wamsley-1974]]"
-  - "[[kuznetsov-tarasov-shlepkin-2009]]"
 cited_by: []
-quality_notes: "source-text-incomplete-only-abstract-available. 3-page conference note (Prikl. Diskr. Mat. Suppl.). Original in Russian; abstract summary from mathnet.ru record. Citation count not retrievable."
+quality_notes: "3-page conference note (Prikl. Diskr. Mat. Suppl. 13, pp. 132–134, DOI 10.17223/2226308X/13/39). Original in Russian. RE-FILLED FROM FULL TEXT (mathnet getFT PDF, pdftotext — Cyrillic renders cleanly). CORRECTION to prior note: the cited work is NOT kuznetsov-tarasov-shlepkin-2009 / kuznetsov-shlepkin-2009. Actual references are [1] = Konstantinova (Cayley-graph combinatorics), [2] = Camelo et al. (routing in data-center Cayley graphs), [3] = Epstein et al. 'Word Processing in Groups' (automatic structures), [4] = Sims 'Computation with Finitely Presented Groups' (Knuth–Bendix), [5] = [[havas-wall-wamsley-1974]]; the Hall-polynomial multiplication oracle is [[kuznetsov-kuznetsova-2013]]. Corrected extends/cites accordingly. The paper's contribution is Algorithm 1 (RewritingSystem) + Theorem 1 (the output R is confluent AND irreducible), applied to the B_k quotients of B_0(2,5). Motivation: Knuth–Bendix on commutator-relator presentations blows up (unfolding commutators yields very long words); this algorithm builds R directly by BFS over the group instead. NOTE: the source PDMA-supplement PDF interleaves a SAT/RSA note before and abuts the article's own references; only pp. 132–134 are this paper."
+fill_level: full
 author: maumayma
 tags:
   - agent/research
@@ -50,67 +53,70 @@ The paper presents an algorithm computing the rewriting system $R$ of a finite g
 
 ## TL;DR
 
-Presents an algorithm that computes a complete (confluent and irreducible) rewriting system for any finite group, given a generating set; applies it to the exponent-5 two-generator groups $B_k$ using Hall polynomial multiplication. A 3-page conference note — algorithm details not available from abstract alone.
+Gives **Algorithm 1 `RewritingSystem`$(G,X,\circ)$** — a BFS over a finite group $G$ (with generating set $X$ and multiplication oracle $\circ$) that constructs a rewriting system $R$ directly, and **Theorem 1**: the resulting $R$ is both **confluent** and **irreducible**. Motivation: running Knuth–Bendix on a commutator-relator presentation blows up because unfolding the commutators yields very long words; building $R$ by walking the group itself avoids this. Applied to the $B_k$ quotients of $B_0(2,5)$ with two generating sets — the **minimal** $X=\{a_1,a_2\}$ and the **symmetric** $Y=\{a_1,a_2,a_1^{-1},a_2^{-1}\}$ — with $|R_k|$ growth curves shown in Fig. 1. Multiplication is the Hall-polynomial oracle of [[kuznetsov-kuznetsova-2013]].
 
 ## Problem
 
-Given a finite group $G$ with a fixed generating set, can one algorithmically compute a confluent irreducible rewriting system $R$ for $G$ — i.e., a set of rewrite rules that decides the word problem by reducing every word to a unique normal form? If yes, what does the practical complexity depend on?
+A finite group $G=\langle X\rangle$ has a solvable word problem, but a *usable* solution is a **confluent, irreducible rewriting system** $R$ — a finite set of rewrite rules $\ell\to r$ (with $\ell$ longer than $r$ in the chosen order) such that every word reduces to a unique normal form. The standard route is **Knuth–Bendix completion** on a group presentation. For the Burnside quotients $B_k$ of $B_0(2,5)$ the natural presentation is a **power-commutator (commutator-relator) presentation**; but feeding this to KB is impractical because each relator, once its commutators are expanded into generator words, becomes very long, and completion generates an explosion of intermediate rules. Can one instead build a confluent irreducible $R$ *directly from the group*, using only a fast multiplication oracle, and prove those two properties hold?
 
 ## Approach
 
-Presents a procedure that takes a finite group (with its multiplication oracle — permutation, matrix, or Hall polynomial form) and outputs a rewriting system $R$. The paper proves $R$ is confluent and irreducible. It applies the algorithm to the quotient groups $B_k$ of $B_0(2,5)$, where multiplication is implemented via Hall polynomial arithmetic from [[havas-wall-wamsley-1974]]. Full algorithmic details not available (abstract-only access).
+**Algorithm 1 `RewritingSystem`$(G,X,\circ)$.** Perform a breadth-first traversal of $G$ over the generating set $X$ under the multiplication operation $\circ$. Maintain the set of already-reached normal forms; when a product $w\circ x$ (word $w$ extended by generator $x$) yields a group element already reached by a shorter/earlier word $u$, emit the rewrite rule $w x \to u$ into $R$. The BFS order guarantees that the left side of every rule is longer (in the traversal order) than its right side, and that once the whole group has been enumerated, every non-normal word has a rule reducing it. The oracle $\circ$ is abstract: it can be **permutation composition, matrix multiplication, or Hall-polynomial calculation** — the algorithm is agnostic to $G$'s internal representation, and its cost is dominated by the multiplication step.
 
-**Significance of the multiplication oracle**: the algorithm is agnostic to the internal representation of the group; the cost depends entirely on the multiplication step. For $B_0(2,5)$ quotients, Hall polynomial multiplication is the natural choice, consistent with Kuznetsov's earlier computational setup ([[kuznetsov-tarasov-shlepkin-2009]]).
+**Application to $B_0(2,5)$ quotients.** Multiplication is realized by the **Hall polynomials** of [[kuznetsov-kuznetsova-2013]] (fast pc-word product over $\mathbb{Z}_5$). The algorithm is run on the $B_k$ with two generating sets:
+- **Minimal** $X=\{a_1,a_2\}$ (two generators);
+- **Symmetric** $Y=\{a_1,a_2,a_1^{-1},a_2^{-1}\}$ (generators + inverses).
+
+Figure 1 plots the growth of the rule-set size $|R_k|$ as a function of $k$ for both generating sets.
 
 ## Key result
 
-**Main claim**: the algorithm outputs a rewriting system $R$ for a finite group $G$ that is:
-- **Confluent**: every word reduces to the same normal form regardless of the order in which rules are applied.
-- **Irreducible**: no rule's right-hand side can be further reduced by another rule.
+**Theorem 1.** The rewriting system $R$ output by Algorithm 1 for a finite group $G$ is **confluent** and **irreducible**:
+- **Confluent**: every word reduces to the same normal form regardless of the order in which rules are applied (the word problem is decided by reduction to normal form).
+- **Irreducible**: no rule's right-hand side can be further reduced by any other rule of $R$ (the system is reduced — no redundant rules).
 
-**Application**: the algorithm successfully computes $R$ for the quotient groups $B_k$ of $B_0(2,5)$ (exponent-5, two-generator finite groups). Specific rule counts or timings not available from abstract.
+**Application.** The algorithm successfully computes $R$ for the quotient groups $B_k$ of $B_0(2,5)$ under both the minimal $X=\{a_1,a_2\}$ and symmetric $Y=\{a_1,a_2,a_1^{-1},a_2^{-1}\}$ generating sets; Fig. 1 gives the empirical $|R_k|$ growth. (The supplement plots the curves; explicit rule-count values per $k$ are read off the figure, not tabulated.)
 
 ## Assumptions
 
-- Group $G$ is finite and given by a generating set with a black-box multiplication oracle.
-- The oracle allows exact element equality checking (needed to detect confluence).
-- Applied to $B_k$ quotients of $B_0(2,5)$: uses the power commutator representation (Hall polynomials) from [[havas-wall-wamsley-1974]].
+- $G$ is finite and given by a generating set $X$ with a multiplication oracle $\circ$ supporting exact element-equality (needed to detect when a word revisits an already-reached element).
+- Termination relies on finiteness: the BFS halts once all of $G$ is enumerated.
+- For $B_k$: uses the pc-representation and Hall-polynomial multiplication of [[kuznetsov-kuznetsova-2013]]; the order $|B_0(2,5)|=5^{34}$ and the pc-basis come from [[havas-wall-wamsley-1974]].
 
 ## Limitations / scope
 
-- Applies only to **finite** groups — the algorithm presupposes finiteness to terminate. Not directly applicable to the free Burnside group $B(2,5)$ if it is infinite.
-- Full complexity analysis not available from abstract; depends on the size of $G$ and the cost of the multiplication oracle.
-- The $B(2,5)$ word problem itself is not solved by this paper — only the $B_k$ finite quotients are treated.
+- Applies only to **finite** groups — the algorithm presupposes finiteness to terminate. Not directly applicable to the free Burnside group $B(2,5)$ if it is infinite; only the finite $B_k$ quotients are treated.
+- The $B(2,5)$ word problem itself is not solved here.
+- Conference supplement (3 pp): $|R_k|$ is shown only as growth curves (Fig. 1), not as an explicit table; no formal complexity bound in $|G|$ is proved.
 
 ## Replication evidence
 
-No independent replication known as of 2026-05-28.
+No independent replication known as of 2026-05-28. The construction is internally validated by Theorem 1 (confluence + irreducibility); the multiplication oracle is the previously-verified Hall-polynomial method of [[kuznetsov-kuznetsova-2013]].
 
 ## Why this paper matters
 
-This paper bridges Kuznetsov's Cayley-table-closure tradition ([[kuznetsov-tarasov-shlepkin-2009]], [[kuznetsov-shlepkin-2009]]) with the KB-rewriting-system tradition that drives the Mixer. A confluent irreducible rewriting system for a finite group is exactly the output that Knuth-Bendix completion produces when it terminates on a finite group presentation. Kuznetsov's algorithm here takes a different input (the group itself, via a multiplication oracle) rather than a presentation, and guarantees termination because finiteness is assumed.
+A confluent irreducible rewriting system for a finite group is exactly the output that Knuth–Bendix completion produces when it terminates on a group presentation. This paper's contribution is a **different route to the same object**: instead of completing a presentation (which blows up on commutator relators), it walks the group by BFS via a multiplication oracle and reads the rules off directly, *proving* confluence + irreducibility (Theorem 1) rather than relying on KB termination.
 
-For the Mixer B(2,5) attack, this is relevant in two ways:
-1. **Sanity check**: the rewriting system for $B_k$ computed by this algorithm gives a ground-truth normal form against which KB-derived reductions on $B_0(2,5)$ can be verified.
-2. **Scale reference**: if the rule counts or system sizes for $B_k$ (up to $k = 34$) are extractable from the full paper, they bound the rule complexity that the Mixer must eventually produce to close B(2,5) if finite.
+For the Mixer B(2,5) attack this is relevant in two ways:
+1. **Sanity check**: the rewriting system for $B_k$ computed by Algorithm 1 gives a ground-truth normal form against which KB-derived reductions on $B_0(2,5)$ can be verified.
+2. **Scale reference**: the $|R_k|$ growth curves (Fig. 1), for both the minimal and symmetric generating sets, bound the rule complexity a confluent system for $B_0(2,5)$ must reach — and show how much the symmetric generating set inflates the rule count versus the minimal one.
 
-The detail that Hall polynomial multiplication is the recommended oracle choice aligns with the Havas-Wall-Wamsley presentation — meaning this algorithm plugs directly into the established B(2,5) computational stack.
+The Hall-polynomial oracle ([[kuznetsov-kuznetsova-2013]]) ties this algorithm directly into the established $B(2,5)$ computational stack.
 
 ## Quotes
 
-Abstract-only access; no verbatim quotes extracted from body text.
+Full text is in Russian; no verbatim English quotes extracted. Content above is paraphrased/translated [trans.] from the getFT PDF (pp. 132–134).
 
 ## Open questions surfaced
 
-- What are the rule counts for the full $R$ for $B_k$ at $k = 34$? This would give an empirical upper bound on the size of a confluent KB system for $B_0(2,5)$.
-- Is the algorithm's complexity polynomial in $|G|$? If yes, what is the exponent?
+- What are the explicit rule counts $|R_k|$ (as opposed to the Fig. 1 curves), especially near $k = 34$? This would give an empirical upper bound on the size of a confluent KB system for $B_0(2,5)$.
+- How does the symmetric generating set $Y=\{a_1,a_2,a_1^{-1},a_2^{-1}\}$ inflate $|R_k|$ relative to the minimal $X=\{a_1,a_2\}$?
 - Can the confluent irreducible rewriting systems $R_k$ for successive $B_k$ be combined (bootstrapped) into an approximation for the full $B_0(2,5)$ rewriting system?
-- Does the algorithm produce the same output as KBMAG (KB completion with shortlex ordering) on the same input? If not, what does the difference reveal about the structure of B(2,5)?
+- Does Algorithm 1 produce the same $R$ as KBMAG (KB completion with shortlex ordering) on the same input? If not, what does the difference reveal about the structure of $B(2,5)$?
 
 ## Related material in vault
 
-- Extends: [[kuznetsov-tarasov-shlepkin-2009]] (general algorithm for periodic groups; same computational stack), [[kuznetsov-shlepkin-2009]] (earlier B₀(2,5) computation)
-- Cites: [[havas-wall-wamsley-1974]] (Hall polynomial multiplication; the power commutator presentation used)
-- Concepts: [[Concepts/cayley-table-closure-algorithm]] (complementary algorithm by same author; this paper computes rewriting systems where Algorithm I computes Cayley tables)
+- Extends / Cites: [[kuznetsov-kuznetsova-2013]] (Hall-polynomial fast multiplication — the oracle $\circ$ used to run Algorithm 1 on $B_k$)
+- Cites: [[havas-wall-wamsley-1974]] (order $5^{34}$ of $B_0(2,5)$ and its pc-basis). Other references in the paper are [1] Konstantinova (Cayley-graph combinatorics), [2] Camelo et al. (routing in data-center Cayley graphs), [3] Epstein et al. *Word Processing in Groups* (automatic structures), [4] Sims *Computation with Finitely Presented Groups* (Knuth–Bendix).
 - MOC: [[Research/Group theory/_MOCs/_moc-burnside]]
 - Mixer context: [[algo-mixing-burnside-slides]] (the Mixer aims to produce a confluent KB system for B(4,3)/B(2,5); this paper shows how one can be computed directly for finite quotients)

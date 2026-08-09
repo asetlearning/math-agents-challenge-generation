@@ -1,0 +1,16 @@
+g3 roots: 8 ['A', 'A*A*B', 'A*A*b', 'A*B', 'A*B*B', 'A*b', 'A*b*b', 'B']
+g4 roots: 17 ['A', 'A*A*A*B', 'A*A*A*b', 'A*A*B', 'A*A*B*B', 'A*A*b', 'A*A*b*b', 'A*B', 'A*B*A*b', 'A*B*B', 'A*B*B*B', 'A*B*a*B', 'A*B*a*b', 'A*b', 'A*b*b', 'A*b*b*b', 'B']
+added: 9 ['A*A*A*B', 'A*A*A*b', 'A*A*B*B', 'A*A*b*b', 'A*B*A*b', 'A*B*B*B', 'A*B*a*B', 'A*B*a*b', 'A*b*b*b']
+g3 subset g4: True
+(AAAB)^5 in G_3 -> IdWord (redundant)
+(AAAb)^5 in G_3 -> IdWord (redundant)
+(ABBB)^5 in G_3 -> IdWord (redundant)
+(Abbb)^5 in G_3 -> IdWord (redundant)
+(AABB)^5 in G_3 -> nontrivial (genuinely new)
+(AAbb)^5 in G_3 -> nontrivial (genuinely new)
+(ABAb)^5 in G_3 -> nontrivial (genuinely new)
+(ABaB)^5 in G_3 -> nontrivial (genuinely new)
+(ABab)^5 in G_3 -> nontrivial (genuinely new)
+cyclic-conjugacy collisions between {p_i} and {p_i^-1} (all ordered pairs incl self): NONE
+E7 freely-reduced length (F_2): 138
+E7 G_3 shortlex normal-form length: 128
