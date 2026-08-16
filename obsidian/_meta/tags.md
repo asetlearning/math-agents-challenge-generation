@@ -152,6 +152,11 @@ Initial seed (will grow as papers arrive):
 
 Grow the list organically. Don't pre-register topics that don't exist yet.
 
+### Interpretation-theory topics (registered 2026-08-15 for the Daniyarova-Myasnikov "Theory of Interpretations" series)
+
+- `#topic/category-theory` — categorical methods used as the primary proof apparatus: functors, natural transformations, 2-categories, categorical equivalence between two constructed categories. Tag when category theory is the mechanism a paper's main results are proved through (e.g. proving strong bi-interpretability of algebraic structures via equivalence of their categories of projective logical sets), not just a passing categorical remark. Distinct from `#domain/cs` category-theory-as-subject papers — here the domain follows the contribution (see the methodology-vs-contribution disambiguation note under Axis 3), so a categorical proof of a model-theoretic result stays `#domain/math-logic`.
+- `#topic/logical-geometry` — Boris Plotkin's logical geometry program and its extensions: the classification of algebraic structures by which first-order-definable ("logical") sets they carry, generalizing universal algebraic geometry's classification by algebraic (equational) sets; includes projective logical geometry (the imaginary-elements extension, analogous to projective vs. affine varieties). Tag when a paper directly engages with logical-geometry classification (geometric/logical equivalence of structures, logical sets, or their categorical structure) as a primary subject, not just cites Plotkin in passing.
+
 ### Representation & tokenization topics (registered 2026-07-17 for AXPLORER v1 representation-gate scan)
 
 - `#topic/tokenization` — how a sequence is mapped to model input/output tokens: character-level, BPE/subword, fixed-width block/k-mer packing, or structured (tree/prefix) encodings; includes evidence on when representation choice measurably changes accuracy (Charton's linear-algebra encoding ablations, PatternBoost's BPE-vs-delimiter fix, arithmetic-task BPE failures). Tag when a paper's primary contribution or a substantive finding concerns how input/output is tokenized, not just that a model happens to use some tokenizer.

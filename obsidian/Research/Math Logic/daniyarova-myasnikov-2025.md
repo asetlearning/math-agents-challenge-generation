@@ -11,12 +11,14 @@ status: draft
 methodology_type: theoretical
 citation_count:
 citation_count_date: 2026-08-15
-key_concepts: []
+key_concepts:
+  - "[[Concepts/bi-interpretability]]"
 extends: []
 contradicts: []
 replicates: []
 cites: []
-cited_by: []
+cited_by:
+  - "[[daniyarova-myasnikov-2026]]"
 quality_notes: "arXiv preprint (math.LO primary, math.GR secondary), v1 submitted 2025-11-17, v2 revised 2026-07-25. First paper in a planned series. Citation count not verified at ingest — Semantic Scholar API rate-limited during the ingest session; too recent for a meaningful count regardless. Second #domain/math-logic paper in the vault, after `[[pakhomov-solda-2025-generalized-higman]]`."
 author: brett-b
 tags:
@@ -112,10 +114,10 @@ This is a rare **standardization** paper: rather than proving a new theorem, it 
 - Extends: (none in vault)
 - Contradicts: (none)
 - Replicates: (none)
-- Concepts introduced/used: none linked yet — `interpretation`, `bi-interpretability`, and `regular interpretability` are candidate future `Concepts/` hubs, but per the singleton-hub rule no stub is created until a second paper in the vault engages with them.
+- Concepts introduced/used: `[[Concepts/bi-interpretability]]` — hub created at the ingest of `[[daniyarova-myasnikov-2026]]` (Paper II), which builds directly on this paper's bi-interpretability apparatus; `interpretation` and `regular interpretability` remain candidate future hubs (singleton so far).
 - Cites (in vault): (none)
-- Cited by (in vault): (none)
-- Sibling math-logic note: `[[pakhomov-solda-2025-generalized-higman]]` — the vault's other `#domain/math-logic` paper; both are foundations-of-logic papers with only an indirect, field-level connection (order theory / reverse mathematics vs. model theory of interpretations) rather than a direct citation link.
+- Cited by (in vault): `[[daniyarova-myasnikov-2026]]` — Paper II of this series, which extends and re-derives this paper's bi-interpretability notion categorically.
+- Sibling math-logic note: `[[pakhomov-solda-2025-generalized-higman]]` — the vault's other non-series `#domain/math-logic` paper; both are foundations-of-logic papers with only an indirect, field-level connection (order theory / reverse mathematics vs. model theory of interpretations) rather than a direct citation link.
 - Adjacent group-theory work: `[[decidability-landscape]]` (`Research/Group theory/Word Problem/decidability-landscape.md`) — this paper's undecidability-via-interpretation technique (transferring undecidability of Th(ℕ)/Th(ℤ)) is a general-purpose analogue of the decidability questions catalogued there for the word problem specifically.
 - MOC: `[[_moc-word-problem]]` (`Research/Group theory/_MOCs/_moc-word-problem.md`) — nearest existing decidability-themed MOC in the vault; `Research/Math Logic/` has no MOC of its own yet (only two papers so far).
 
