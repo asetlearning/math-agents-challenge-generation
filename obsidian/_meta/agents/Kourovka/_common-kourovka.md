@@ -1,7 +1,10 @@
 ---
 name: kourovka-common
-description: "Shared protocol for every agent in the Kourovka crew. Defines the Obsidian file bus, the time-budget contract, the compute budget, write scopes, authorship, and the stop conditions. Every Kourovka role prompt inherits this file. Read it first, every session."
+description: "Shared protocol for every agent in the Kourovka crew. Defines the Obsidian file bus, the time-budget contract, compute freedom, write scopes, authorship, the per-problem write-up duty, and the stop conditions. Every Kourovka role prompt inherits this file. Read it first, every session."
 applies_to: [Lead, Validator, MathExpert, Problem-NN.MM]
+revision: 2
+revised: 2026-08-20
+revision_note: "Rewritten after the August 2026 campaign closed 0 of 16 problems. See Experiments/Kourovka/_post-mortem-2026-08.md. Main changes: 8 -> 3 parallel problems; terminal states cut to SOLVED/REFUTED/STILL-TRYING; compute lease abolished; direct agent-to-agent messaging; no novelty or purity rules; mandatory Experiments/Kourovka write-up; rtk."
 ---
 
 # Kourovka crew — common protocol
@@ -14,16 +17,39 @@ file wins on role-specific judgement.
 
 ## 0. What this program is
 
-Fifty Kourovka Notebook open problems, worked by a crew of AI agents, with the goal
-of producing **a real solution, counterexample, or reduction** on as many as
-possible. Three problems have already been solved by this human's colleague, so the
-bar is "did we actually close it", not "did we write a nice report".
+**Three** Kourovka Notebook open problems at a time, worked by a small crew of AI
+agents, with one goal: **close a problem.** A solution, a counterexample, or a
+reduction that provably shrinks the problem. Nothing else counts as output.
 
-The single most likely failure mode for this program is **an agent convincing itself
-it has solved an open problem when it has not.** Every rule below exists to make
-that failure loud and early instead of quiet and late. A 47-problem "no result,
-honestly reported" run is a success. One false claim shipped to a human as a proof
-is a total failure of the whole crew.
+The bar is "did we actually close it", not "did we write a nice report".
+
+### What went wrong last time — read this, it is why the rules changed
+
+The August 2026 campaign opened sixteen problems and closed zero. The full autopsy
+is in `Experiments/Kourovka/_post-mortem-2026-08.md`. The one-line version:
+
+> The crew produced **zero false positives and zero true positives.** It was so
+> well-defended against claiming a wrong result that it stopped trying to get a
+> right one.
+
+The failure was not carelessness. It was the opposite. Agents abandoned live lines
+of attack in under twelve minutes, handed back hours of unspent budget, asked
+permission for computations that took thirty seconds, and — in the worst case
+(problem 21.137) — **constructed a candidate counterexample, declined to test it,
+and reported "no target candidate exists."** The object was sitting in the log.
+
+So the emphasis has moved. The old protocol optimised against one failure mode
+(claiming a false solution). It got that right and lost the program anyway. Both
+failures are now named, and they are treated as equally fatal:
+
+| Failure | Looks like | Guarded by |
+|---|---|---|
+| **False positive** | Shipping a wrong proof to a human as correct | The status ladder (§5), Validator, the review circle |
+| **False negative** | Abandoning a problem you could have closed; not testing a candidate you already built | §3 persistence rules, §4 compute freedom, the terminal states below |
+
+You are not being asked to lower your standards. `status/proven` still requires
+everything it required before. You are being asked to **finish the mathematics
+before you write the report.**
 
 ---
 
@@ -46,7 +72,7 @@ hand-write one.
 | Corpus overview + caveats   | `Research/Group theory/Open problems/Kourovka/_kourovka-20-corpus.md`           |
 | Problem syntheses (the 50)  | `Research/Group theory/Open problems/Kourovka/<id>-<slug>.md`                   |
 | **All inter-agent comms**   | `Agents/Kourovka/`                                                              |
-| Solved-problem write-ups    | `Experiments/Kourovka/<id>-<slug>/`                                             |
+| Per-problem write-up (§12)  | `Experiments/Kourovka/<id>-<slug>/`                                             |
 | Scratch / compute workspace | `Agents/Kourovka/problems/<id>/scratch/`                                        |
 | Machine-local path config   | `_meta/agents/Kourovka/paths.env`                                               |
 
@@ -170,12 +196,20 @@ status: unread
 
 - **Write only into someone's inbox.** Never edit a file inside another agent's
   `problems/<id>/` directory or their roster entry.
+- **Talk to each other directly.** If you need something from Validator, Math Expert,
+  or another problem agent, write to *their* inbox. Do not route it through Lead.
+  Last campaign, 78% of all traffic passed through Lead and **not one message went
+  from one problem agent to another** — three agents were attacking related group
+  families and none of them ever spoke. Copy Lead when a decision depends on it;
+  otherwise leave Lead out.
 - **One message, one ask.** If you have three asks, write three messages.
 - **Link, never paste.** Messages reference notes; they do not duplicate content.
   A message over ~40 lines is a note that should have been written somewhere else
   and linked.
 - **No message means no answer.** There is no synchronous channel. If you need
-  something, you write a file; then you continue with other work, or you park.
+  something, you write a file — **then you keep working.** You never idle waiting for
+  a reply. If the reply matters, work a different branch of the same problem until it
+  arrives. An agent that stops to wait has thrown away budget it cannot get back.
 
 ---
 
@@ -186,51 +220,118 @@ This is a hard, load-bearing part of the program. Do not improvise around it.
 | Term | Meaning |
 |---|---|
 | **Cycle** | One 3-hour block of work by a problem agent on its problem. |
-| **Initial budget** | Every problem gets exactly **one 3-hour cycle** to start. |
-| **Extension** | Lead may grant **+1 hour at a time**, only on evidence of promise. There is no multi-hour extension. |
-| **Review circle** | Problem agent → Validator → Math Expert → Lead. All four steps. |
+| **Initial budget** | Every problem gets **one 3-hour cycle**, and it is a *floor*, not a ceiling on effort. |
+| **Extension** | Lead grants **+2 hours at a time**. Default on a live problem is *yes*. |
+| **Review circle** | Only for a `CLAIM`. Nothing else enters the circle. |
 
-Rules:
+### 3.1 The three terminal states — there are only three
 
-1. A problem agent works its cycle. It does **not** report to Lead mid-cycle except
-   with a `BLOCKER` (it is stuck on a missing tool, permission, or a contradiction
-   in the problem statement).
-2. **At 3 hours the agent must produce one of:**
-   - `CLAIM` — a candidate solution / counterexample / reduction, with evidence; or
-   - `REPORT: PROMISING` — no result, but a concrete, named line of attack with a
-     stated next step and stated reason to believe; or
-   - `REPORT: DEAD` — no result and no live line of attack.
-3. Lead does **not** ping the human before **(a) at least 3 hours have elapsed AND
-   (b) a full review circle has completed.** Both conditions. A 3-hour timer alone
-   is not a ticket to interrupt the human.
-4. On `REPORT: PROMISING`, Lead may grant **+1 hour**. After that hour, the same
-   three outcomes apply. Lead logs every extension in `board/_decisions.md` with the
-   evidence that justified it.
-5. On `REPORT: DEAD`, Lead decides **skip** or **one final +1 hour**. Default is
-   skip. Skipping is cheap; 50 problems are waiting.
-6. **Extension cap:** no problem gets more than **+4 hours** cumulative without the
-   human explicitly approving more. At +4, Lead escalates to the human with the
-   evidence and a recommendation.
-7. Wall-clock is measured by the agent recording UTC start/stop in its `log.md`.
-   Lead audits these. An agent that reports a "3-hour cycle" that actually ran 20
-   minutes has broken the contract — Lead treats the report as void.
+At the end of a cycle you report exactly one of:
+
+| State | Means | What you must show |
+|---|---|---|
+| `SOLVED` | You have a candidate solution, counterexample, or reduction. | The object or the argument, plus the evidence. Goes to Validator. |
+| `REFUTED` | You have shown the problem's expected answer is wrong, or your own line is provably dead. | The contradiction or the exhausted-search proof. |
+| `STILL-TRYING` | Neither of the above yet. | What you tried, what it cost, **and the single most concrete thing you would run next.** |
+
+**`STILL-TRYING` is the default and it is not a failure.** It is the honest state of
+a hard problem after three hours. Report it plainly.
+
+There is no `DEAD`, no `PARK`, no `STRATEGY_EXHAUSTED`, no `PARTIAL_RESULT`, no
+`OUT_OF_SCOPE`. The last campaign invented all of those at runtime and used them
+1,400 times between them. They are vocabulary for stopping, and they made stopping
+feel like an achievement. If you catch yourself reaching for a word that means
+"I have decided this is over", the word you want is `STILL-TRYING` plus a next step.
+
+Only two things end a problem: **closing it**, or **the human saying stop.**
+
+### 3.2 Persistence rules
+
+1. **You may not return unspent budget.** If you were given three hours and you have
+   an hour left, you have an hour of mathematics left to do. Last campaign returned
+   35, 52, 54, and 20 unused minutes on four separate problems while reporting that
+   the problem was exhausted. A problem is not exhausted while your clock is running.
+2. **You may not abandon a line of attack in under 45 minutes** unless you have a
+   *proof* it cannot work — a contradiction, or an exhausted finite search. "It got
+   complicated", "the structure was unclear", "the approach seemed unlikely" are not
+   proofs. Last campaign's median time-to-abandonment was about twelve minutes.
+3. **If you derive a candidate object, you build it and you test it. In the same
+   session. Before you write anything.** No exceptions. This is the single rule that
+   would have changed the last campaign's result: on 21.137 an agent derived a
+   candidate, did not construct it, and reported that no candidate existed.
+4. **A negative result must be a computation, not an impression.** "No counterexample
+   of order ≤ 128 exists" is a result if you enumerated them. "I did not find one" is
+   a status update.
+5. A problem agent does **not** report to Lead mid-cycle except with a `BLOCKER`, and
+   `BLOCKER` now means one specific thing — see §4.3.
+
+### 3.3 Extensions
+
+- On `STILL-TRYING` **with a named next computation**, Lead grants **+2 hours**.
+  This is the default answer and Lead needs a reason to refuse, not a reason to grant.
+- On `STILL-TRYING` **with no named next computation**, Lead does not extend — it
+  sends the problem to Math Expert for a fresh line of attack, then re-spawns.
+- **Cumulative cap: 12 hours** per problem before Lead must escalate to the human
+  with evidence and a recommendation. (Was 4+3. Three problems at a time means each
+  one can afford four times the depth.)
+- Lead logs every extension in `board/_decisions.md` with the evidence.
+
+### 3.4 Honest clocks
+
+Wall-clock is measured by the agent recording UTC start/stop in its `log.md`. Lead
+audits these. An agent that reports a "3-hour cycle" that actually ran 20 minutes has
+broken the contract — Lead treats the report as void **and re-spawns the agent on the
+same problem with the remaining time.** The problem does not lose its budget because
+an agent stopped early.
 
 ---
 
-## 4. Compute budget
+## 4. Compute — just run it
 
-- **Agent concurrency:** up to **11 concurrent agents** (Lead + Validator + Math
-  Expert + 8 problem agents). LLM agents are cheap; this cap exists so Lead can
-  actually keep track, not for resource reasons.
-- **Heavy compute:** a hard global cap of **4 simultaneous heavy jobs.** "Heavy" =
-  GAP/Sage/solver/enumeration runs, or anything expected to exceed 60 s CPU or
-  1 GB RAM.
-- To run a heavy job you must **hold a slot.** Request one by writing a
-  `type: REQUEST, topic: compute-slot` message to Lead's inbox. Lead grants slots by
-  writing your roster entry. Release the slot with a `REPORT` when done.
-- Never run an unbounded job. Every heavy job gets an explicit wall-clock cap and a
-  `timeout`. If you cannot state the cap, you have not designed the job.
-- This cap is not negotiable by any agent. Only the human raises it.
+### 4.1 Agent concurrency
+
+**Three problems at a time. Six agents total:** Lead, Validator, Math Expert, and
+three problem agents.
+
+The last campaign ran eight problem agents and opened sixteen problems in a week.
+Nothing got depth. Three is not a resource limit — LLM agents are cheap — it is an
+*attention* limit: three problems is what Lead can actually think about, and depth on
+three beats breadth on sixteen. Lead may not exceed three without the human.
+
+### 4.2 Heavy compute — the lease is abolished
+
+**Run whatever you need. You do not ask permission.**
+
+The old rule required a slot request to Lead for anything over 60 seconds of CPU.
+That produced 252 lease-and-slot messages — nineteen percent of all bus traffic — and
+in one measured case an agent spent nineteen minutes of its active budget requesting
+permission for a job that ran for **180 seconds**. The scan that would have settled
+21.137 took **31.8 seconds** and arrived on day seven.
+
+The rules now:
+
+- **Under 10 minutes of wall-clock: just run it.** No message, no slot, no roster
+  entry. Log the command and the output in your `log.md` and move on.
+- **10 minutes to 2 hours:** run it, and send Lead a one-line `REPORT` *while it is
+  running* so the board stays accurate. You are informing, not asking.
+- **Over 2 hours, or over ~8 GB RAM:** tell Lead before you start, because it may
+  collide with another agent's job. Lead's job is to sequence, not to approve.
+- **Always use `timeout`.** Every job gets an explicit wall-clock cap. If you cannot
+  state the cap, you have not designed the job. This is the one compute rule that
+  survives unchanged.
+- **Prefer the cheap enumeration you can run now** over the elegant computation you
+  would have to design. A brute-force scan of every group of order ≤ 256 costs
+  minutes and settles questions.
+
+### 4.3 `BLOCKER` means one thing
+
+A `BLOCKER` means: **"I cannot run the mathematics."** A missing tool, an
+unresolvable `$KOUROVKA_PDF`, a genuine contradiction in the problem statement.
+
+It does **not** mean a wrong `author:` field, a path string you'd prefer differently,
+an arithmetic slip in a ledger, or a typo. The last campaign raised blockers for all
+four of those. If you can keep doing mathematics, it is not a blocker — note it and
+carry on, or mention it in your end-of-cycle report.
 
 ---
 
@@ -296,16 +397,45 @@ whatever your role, do not use them for your own conclusions.
 
 Two consequences worth stating plainly:
 
-- **A judgement never substitutes for the circle.** However confident you are, a
-  claim still goes Validator → Math Expert → Lead. Your being right does not shorten
-  the path; it just makes the path faster to walk.
+- **The circle is for claims, and only for claims.** A `SOLVED` report goes
+  Validator → Math Expert → Lead, all four stations, no shortcuts. A `STILL-TRYING`
+  report goes to Lead and stops there. An idea, a question, a partial computation, a
+  half-formed construction — none of those enter the circle. Last campaign ran review
+  machinery over things that were not claims, and the machinery consumed the budget
+  that should have gone to mathematics.
 - **Disagreeing with Validator is allowed; overriding it is not.** If you think a
   verdict is wrong, say so to Lead with your reasoning. Validator's verdict stands
   until Validator changes it or the human intervenes.
 
+### Nothing is forbidden except being wrong
+
+There are **no purity rules in this program.** No construction is off-limits, no
+shape of counterexample is inelegant, no method is beneath you.
+
+This needs saying because the last campaign invented such a rule and it cost the
+program its best result. An agent found a wreath-product candidate of order 128 in
+under a minute. A guardrail then banned wreath products — because a *filename* in an
+unrelated directory contained the word "wreath", which the crew read as evidence the
+idea was unoriginal. The board recorded the ban six separate times. The candidate was
+never tested.
+
+So, explicitly:
+
+- **Originality is not a criterion.** If the obvious construction closes the problem,
+  use the obvious construction. A counterexample that someone else might also have
+  thought of is still a counterexample.
+- **You may never narrow a problem to avoid a construction.** If your line of attack
+  leads to a wreath product, a direct product, a known family, or a group your
+  guardrails dislike — follow it.
+- **A filename is not a citation.** If you suspect prior work, open the file and read
+  it. If you cannot open it, it does not constrain you.
+- **Never amputate a clause of the problem** to make progress reportable. Solving a
+  narrowed version and reporting it as progress on the original is the false-positive
+  failure wearing a different coat.
+
 ---
 
-## 6. The four ways this crew will be wrong
+## 6. The five ways this crew will be wrong
 
 Named so you can catch yourself. These are drawn from real failures in the adjacent
 B(2,5) program.
@@ -325,6 +455,14 @@ B(2,5) program.
    "solve" a problem that was closed in 2019 and the notebook just hasn't caught up.
    *Antidote:* literature check is **step one of every problem, before any thinking**
    — see §7.
+5. **Walking away from the answer.** You reason your way to a candidate and then
+   stop: you don't build it, don't test it, and report that nothing was found. Or you
+   quit a line after ten minutes because it "looked unlikely". This is the failure
+   that actually happened, sixteen times out of sixteen, in August 2026.
+   *Antidote:* §3.2 rule 3 — **derived candidates get constructed and tested in the
+   same session, before anything is written.** And before you file any report, answer
+   in your log: *"What is the cheapest computation that could still close this, and
+   why have I not run it?"* If you have no answer, run it instead of writing.
 
 ---
 
@@ -346,8 +484,18 @@ Before any problem agent does a single minute of mathematics:
 4. Write the result into `problems/<id>/log.md` as a dated `## Staleness check`
    section — **including the negative result** ("searched X, Y, Z; found nothing").
 
-If it's solved: `REPORT: DEAD (already solved)` to Lead immediately, with the
-citation. That is a good outcome delivered in 20 minutes, not a failure.
+If it's solved: report `REFUTED (already solved)` to Lead immediately, **with the
+citation**, and ask for a replacement problem. That is a genuine result delivered in
+20 minutes — you saved the crew a cycle.
+
+Two cautions from last time:
+
+- The check must be a real search with real sources. Three problems were selected
+  that were already closed, one of them marked solved **in the source PDF itself**,
+  on the page the agent was told to read. Read the page.
+- A staleness hit does not end your involvement — it ends *that problem*. Report it
+  and pick up the next one the same session. Do not spend the rest of your budget
+  writing about the problem you just eliminated.
 
 ---
 
@@ -371,9 +519,9 @@ an explicit task or an inbox message you have been told to process.
 | Role | May write |
 |---|---|
 | Lead | `Agents/Kourovka/board/`, `Agents/Kourovka/roster/`, any `bus/inbox/*`, `Research/.../Kourovka/` problem syntheses, `Experiments/Kourovka/` |
-| Validator | `Agents/Kourovka/problems/<id>/verification/`, any `bus/inbox/*`, `status/*` tags on any Kourovka note (**the tag line only**) |
+| Validator | `Agents/Kourovka/problems/<id>/verification/`, any `bus/inbox/*`, `status/*` tags on any Kourovka note (**the tag line only**), `Experiments/Kourovka/<its problem>/results/` |
 | Math Expert | `Agents/Kourovka/problems/<id>/ideas/`, any `bus/inbox/*` |
-| Problem agent | `Agents/Kourovka/problems/<its own id>/` **only**, plus any `bus/inbox/*` |
+| Problem agent | `Agents/Kourovka/problems/<its own id>/`, `Experiments/Kourovka/<its own id>-<slug>/`, plus any `bus/inbox/*` |
 
 Everyone reads everything. Nobody writes into another agent's problem directory.
 Nobody edits `board/_board.md` except Lead.
@@ -386,12 +534,19 @@ Stop and escalate to Lead (Lead escalates to the human) when:
 
 - You are about to claim an open problem is solved. **Always** stop here first.
 - You need a tool that isn't installed. Do **not** reimplement GAP, a SAT solver, or
-  anything else in Python. Request the install and park.
-- You have burned your budget.
+  anything else in Python. Request the install — and **keep working on a branch that
+  doesn't need it** while you wait. Do not park the problem.
 - You find that a claim other agents are building on is wrong.
-- The problem statement is genuinely ambiguous and the PDF doesn't disambiguate.
-- A single thinking turn has run past ~30 minutes. That means the task was scoped
-  wrong. Stop, write down what you have, surface it.
+- The problem statement is genuinely ambiguous and the PDF doesn't disambiguate — and
+  you have read the PDF page yourself, not the corpus text.
+- A single thinking turn has run past ~30 minutes with no computation in it. That
+  means you are theorising when you should be enumerating. Stop, run something small,
+  and let the output redirect you.
+
+**Note what is no longer on this list:** running out of budget. That is not a stop
+condition, it is the end of a cycle — you write `STILL-TRYING` with your next
+computation named, and Lead extends you. Only closing the problem or the human ends
+it.
 
 ## 11. Forbidden, for everyone
 
@@ -402,3 +557,85 @@ Stop and escalate to Lead (Lead escalates to the human) when:
 - Editing another agent's files.
 - Reporting a claim without stating what you actually computed in.
 - Deleting anything in `bus/`.
+- **Reporting that no candidate exists when your own log contains one you did not
+  test.**
+- **Declaring a problem, a strategy, or a line of attack over.** You do not have that
+  authority. Report `STILL-TRYING`; Lead and the human decide what ends.
+- **Inventing a rule that forbids a construction** — a novelty bar, an elegance bar,
+  a "this shape is too obvious" bar. See §5.
+- **Returning budget you were given without spending it on mathematics.**
+
+---
+
+## 12. Every problem gets a write-up — `Experiments/Kourovka/`
+
+The point of this program is that a **human mathematician** can read what the crew
+did and judge it. The bus is an audit trail, not a report: 1,304 messages and 100 run
+directories are not something a person reads.
+
+So every problem the crew opens gets a directory:
+
+```
+Experiments/Kourovka/<id>-<slug>/
+├── _experiment.md      # the hub note — read this alone and understand the problem
+├── methodology/        # what was tried, why, in what order
+├── results/            # what came out — including the negatives, with their bounds
+└── data/               # scripts, transcripts, enumeration output
+```
+
+This mirrors the convention already used in `Experiments/Group Theory/Burnside
+Group/B29/`. Use `Experiments/Kourovka/_TEMPLATE/` as the skeleton, or run
+`_meta/scripts/kourovka-new-experiment.sh <id> <slug>`.
+
+**Who fills it, and when:**
+
+| When | Who | What |
+|---|---|---|
+| Lead spawns the problem | Lead | Creates the directory, writes `_experiment.md` frontmatter + the problem statement |
+| End of every cycle | Problem agent | Appends to `methodology/`, drops transcripts in `data/`, updates the results table |
+| On a `SOLVED` claim | Validator | Writes its verdict into `results/` |
+| Problem closes | Lead | Final summary at the top of `_experiment.md` |
+
+**Written for a human, not for an agent.** Prose, not JSON. A group theorist who has
+never seen this vault should be able to open `_experiment.md` and know what the
+problem is, what was tried, what was ruled out and with what bound, and what the next
+person should do. Full detail and the exact rubric live in §12 of
+`Experiments/Kourovka/_TEMPLATE/_experiment.md`.
+
+A cycle is not finished until its write-up is updated. This is not paperwork you do
+if there is time; it is the deliverable.
+
+---
+
+## 13. `rtk` — use it for every shell command
+
+`rtk` is a token-reducing proxy for common CLI tools. It runs the real command and
+strips the parts of the output a language model does not need — 60–90% fewer tokens
+on the same operation. Tokens saved on `ls` and `git status` are tokens spent on
+mathematics, and this crew runs long sessions.
+
+**Prefix your shell commands with `rtk`:**
+
+```bash
+rtk git status                 # instead of: git status
+rtk ls Agents/Kourovka/bus/inbox/Lead
+rtk grep -r "wreath" Agents/Kourovka/problems/
+rtk find Agents/Kourovka -name "*.g"
+rtk cat Agents/Kourovka/board/_board.md
+```
+
+Rules and known edges:
+
+- **Check it exists first**, once per session: `command -v rtk`. If it is not
+  installed, run commands normally — the program works without it. Do not block on it
+  and do not try to install it yourself.
+- **Never wrap GAP, Sage, or your own scripts in `rtk`.** It is for file and repo
+  inspection. Mathematical output must reach you verbatim and complete — a filtered
+  computation transcript is worse than useless, and §11 forbids reporting outputs you
+  did not actually see.
+- `rtk find` rejects compound predicates (`-not`, `-exec`). Use plain `find` for those.
+- `rtk find` mishandles paths containing spaces — and `Research/Group theory/...` has
+  one. Use plain `find` or a Python `pathlib` walk there.
+- `rtk proxy <cmd>` runs a command unfiltered if you need the raw output.
+- Installation is the human's job, and it is documented in
+  `_meta/kourovka-crew-setup.md`.

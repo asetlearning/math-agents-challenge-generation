@@ -29,7 +29,7 @@ Assumes nothing is installed. Follow it top to bottom the first time.
 > the same folder through `/mnt/c/...`. Both `claude` and `codex` support native
 > Windows, but only under WSL2 does `codex` get the Linux sandbox that
 > `--sandbox workspace-write` relies on — and that sandbox is the thing stopping
-> eight autonomous agents from writing outside the vault. Take WSL2 if you can.
+> six autonomous agents from writing outside the vault. Take WSL2 if you can.
 >
 > If WSL2 is blocked on your machine (no admin rights, virtualization disabled in
 > BIOS, corporate policy), use **§A — Git Bash fallback** instead. It works; you
@@ -50,8 +50,14 @@ Three **standing** agents, each in its own terminal window, running indefinitely
 | 2 | **Validator** | `codex` | [[validator-kourovka]] |
 | 3 | **Math Expert** | `codex` | [[math-expert-kourovka]] |
 
-Plus up to **8 ephemeral problem agents** that Lead spawns and kills itself with
-`codex exec` (§5). You never launch those by hand.
+Plus exactly **3 ephemeral problem agents** — one per live problem — that Lead
+spawns and kills itself with `codex exec` (§5). You never launch those by hand.
+
+> [!note] Why 3 and not 8
+> The August 2026 campaign ran up to eight and closed nothing. Attention spread
+> thin across eight fronts is worse than depth on three; see
+> [[Experiments/Kourovka/_post-mortem-2026-08]]. Six processes total, three of
+> them ephemeral.
 
 They talk to each other by **writing files** into
 `Agents/Kourovka/bus/inbox/<Recipient>/`. There is no canvas, no daemon, no
@@ -165,8 +171,7 @@ builds it isn't recognised, which is fine — the computation is the real test.
 
 Ubuntu's `gap` package is usually a release or two behind. That's acceptable here;
 what is *not* acceptable is silently missing GAP packages. If an agent later reports
-that a specific GAP package is unavailable, install it (`sudo apt install
-gap-<name>`, or `apt search gap-`) rather than letting the agent work around it.
+that a specific GAP package is unavailable, install it rather than letting the agent work around it.
 
 > [!warning] Do not let an agent reimplement GAP
 > [[_common-kourovka]] forbids it. If GAP isn't working, fix GAP. A hand-rolled
@@ -253,15 +258,73 @@ codex exec --sandbox read-only --skip-git-repo-check "Reply with exactly: OK"
 
 If that doesn't print `OK`, stop here. Nothing downstream will work.
 
-### 1.8 Confirm everything at once
+### 1.8 rtk — the token proxy
+
+`rtk` wraps common CLI tools and strips the parts of their output a language model
+doesn't need. Same command, same result, **60–90% fewer tokens.** The crew runs long
+sessions across many agents; this is the difference between a campaign that fits in
+budget and one that doesn't.
+
+This step is **optional** — the crew works without it — but do it, because the savings
+compound across six agents running for days.
+
+Install (any one of these):
+
+```bash
+# 1. Homebrew, if you have it on WSL
+brew install rtk
+
+# 2. Install script — puts the binary in ~/.local/bin
+curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+
+# 3. From source, if you have Rust
+cargo install --git https://github.com/rtk-ai/rtk
+```
+
+If you used the install script, make sure `~/.local/bin` is on your `PATH`:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Verify:
+
+```bash
+rtk --version     # expect: rtk 0.40.0 or later
+rtk gain          # token-savings analytics; must not error
+```
+
+> [!warning] Name collision
+> There is an unrelated tool also called `rtk` (Rust Type Kit). If `rtk gain` fails
+> with an unknown-subcommand error, you have the wrong one. Check `which rtk`.
+
+**Lead gets automatic rewriting; the codex agents don't.** Lead runs on Claude Code,
+which supports a hook that rewrites commands transparently:
+
+```bash
+rtk init -g       # installs the global Claude Code hook
+```
+
+Codex has no such hook, so Validator, Math Expert and the problem agents are told to
+type `rtk` themselves — that instruction lives in `_common-kourovka.md` §13, and it is
+reinforced by `AGENTS.md` at the vault root, which `codex` reads automatically on
+startup. You don't have to do anything for that; both files are already in the repo.
+
+**One thing to know:** the crew is instructed **never** to wrap GAP, Sage, or its own
+scripts in `rtk`. Mathematical output has to arrive verbatim. `rtk` is for `ls`,
+`grep`, `find`, `cat`, and `git` — inspection, not computation.
+
+### 1.9 Confirm everything at once
 
 ```bash
 for t in node npm pdftotext gap claude codex python3; do
   printf '%-12s %s\n' "$t" "$(command -v $t || echo MISSING)"
 done
+printf '%-12s %s\n' "rtk" "$(command -v rtk || echo 'not installed (optional)')"
 ```
 
-Seven paths, no `MISSING`. That's the gate.
+Seven paths, no `MISSING`. That's the gate. `rtk` may be absent.
 
 ---
 
@@ -499,6 +562,9 @@ SLUG="dpi-groups"                # matches the synthesis note filename
 mkdir -p "$V/Agents/Kourovka/problems/$ID/scratch" \
          "$V/Agents/Kourovka/bus/inbox/Problem-$ID"
 
+# The write-up directory must exist before the agent starts (_common §12).
+bash "$V/_meta/scripts/kourovka-new-experiment.sh" "$ID" "$SLUG"
+
 codex exec \
   --sandbox workspace-write \
   -C "$V" \
@@ -510,15 +576,26 @@ codex exec \
   "$(cat "$V/_meta/agents/Kourovka/problem-agent-kourovka.md")
 
 === YOUR ASSIGNMENT ===
-PROBLEM_ID:    $ID
-PROBLEM_DIR:   Agents/Kourovka/problems/$ID
-SYNTHESIS:     Research/Group theory/Open problems/Kourovka/$ID-$SLUG.md
-CYCLE:         1
-BUDGET_HOURS:  3
-STARTED_UTC:   $(kv_now)
-DEADLINE_UTC:  $(kv_deadline 3)
+PROBLEM_ID:      $ID
+PROBLEM_DIR:     Agents/Kourovka/problems/$ID
+EXPERIMENT_DIR:  Experiments/Kourovka/$ID-$SLUG
+SYNTHESIS:       Research/Group theory/Open problems/Kourovka/$ID-$SLUG.md
+CYCLE:           1
+BUDGET_HOURS:    3
+STARTED_UTC:     $(kv_now)
+DEADLINE_UTC:    $(kv_deadline 3)
+
+FIRST_COMPUTATION: <the concrete scan from the tractability block — required>
+TRACTABILITY:      <n>/5 — <one-line reason>
+COUNTEREXAMPLE_SHAPE: <what one would look like, or 'unknown'>
 " > "$V/Agents/Kourovka/problems/$ID/cycle-1.jsonl" 2>&1 &
 ```
+
+> [!important] No spawn without a named first computation
+> `FIRST_COMPUTATION` is not decoration. Lead may not spawn an agent on a problem
+> unless it can name the concrete scan the agent should run in its first half hour
+> ([[lead-kourovka]] Phase A §6a). If you can't fill that line, the problem isn't
+> ready — work out the computation, or pick a more tractable problem.
 
 Flag by flag, because each one is load-bearing:
 
@@ -531,7 +608,7 @@ Flag by flag, because each one is load-bearing:
 | `-m gpt-5-codex` | Pin the model so cycles are comparable. |
 | `--json` | Emits the event stream, which is where the **session id** comes from. |
 | `-o .../last-message.md` | Final message lands in a file Lead can read without parsing JSONL. |
-| `... .jsonl 2>&1 &` | Full transcript to disk; background so Lead keeps 8 in flight. |
+| `... .jsonl 2>&1 &` | Full transcript to disk; background so Lead keeps 3 in flight. |
 
 `kv_now` and `kv_deadline` come from `paths.env`. Never substitute a bare `date`
 here — the relative-time flag differs between shells, and a wrong `DEADLINE_UTC`
@@ -554,7 +631,7 @@ head -c 800 "$V/Agents/Kourovka/problems/$ID/cycle-1.jsonl"
 
 Write it into `Agents/Kourovka/roster/Problem-$ID.md` under `session_id:`.
 
-### 5.3 Extend (`+1h`) or start a new cycle
+### 5.3 Extend (`+2h`) or start a new cycle
 
 **Resume. Never re-spawn.** A fresh `codex exec` throws away everything the agent
 learned and burns the extension on re-reading.
@@ -565,15 +642,20 @@ codex exec resume "$SESSION_ID" \
   -C "$V" \
   --skip-git-repo-check \
   --add-dir "$KOUROVKA_PAPERS" \
-  "EXTENSION GRANTED. CYCLE: 2. BUDGET_HOURS: 1.
-DEADLINE_UTC: $(kv_deadline 1)
-Justification on record: <the one line from board/_decisions.md>
-Read Agents/Kourovka/bus/inbox/Problem-$ID/ first, then continue." \
+  "EXTENSION GRANTED. CYCLE: 2. BUDGET_HOURS: 2.
+DEADLINE_UTC: $(kv_deadline 2)
+Named next computation on record: <the one from the STILL-TRYING report>.
+Run it first. Read Agents/Kourovka/bus/inbox/Problem-$ID/ after." \
   >> "$V/Agents/Kourovka/problems/$ID/cycle-2.jsonl" 2>&1 &
 ```
 
+Extensions are **+2 hours** and, on a `STILL-TRYING` report that names a next
+computation, they are the **default** — Lead needs a reason to refuse, not a reason to
+grant ([[lead-kourovka]], "Extension discipline"). Cumulative cap is 12 hours before
+the human is asked.
+
 `codex exec resume --last` resumes the most recent session — convenient
-interactively, **wrong** with 8 agents in flight. Always pass the explicit id.
+interactively, **wrong** with several agents in flight. Always pass the explicit id.
 
 ### 5.4 Kill
 
@@ -598,13 +680,23 @@ the next agent to read it will believe it.
 ### 5.5 See what's live
 
 ```bash
-pgrep -fl "codex exec" | wc -l    # should be ≤ 8
+pgrep -fl "codex exec" | wc -l    # should be ≤ 3 problem agents
 ```
 
-Concurrency limits ([[_common-kourovka]] §4): **11 LLM agents total** (3 standing +
-8 problem agents), and a hard **4 concurrent heavy-compute slots**, which agents
-request from Lead. The 4-slot cap is about CPU/RAM, not about model calls — a GAP
-enumeration that eats a core counts, an agent thinking does not.
+Concurrency ([[_common-kourovka]] §4.1): **six agents total** — Lead, Validator, Math
+Expert, and **exactly three problem agents.**
+
+> [!note] This was eight, and the change is the main lesson of the first campaign
+> The August 2026 run kept eight problem agents alive and opened sixteen problems in a
+> week. Nothing got depth and nothing closed. Three is an *attention* limit, not a
+> resource limit: it is how many problems Lead can actually think about while also
+> reading the mathematics. See `Experiments/Kourovka/_post-mortem-2026-08.md`.
+
+**There are no compute slots any more.** Agents run whatever computation they need
+without asking ([[_common-kourovka]] §4.2) — the old 60-second lease produced 252
+permission messages, nineteen percent of all bus traffic, and in one case cost an
+agent nineteen active minutes to authorise a three-minute job. Jobs over two hours or
+~8 GB get an FYI to Lead so it can sequence them. Everything gets a `timeout`.
 
 ---
 
@@ -684,11 +776,15 @@ Once the crew is up, you do very little. The sequence:
    synthesis notes, and puts a ranked list in `Agents/Kourovka/board/_board.md`.
 2. **You approve the 50.** This is a hard human gate. No agent gets spawned before
    you've looked at the list.
-3. **Lead spawns 8** and keeps 8 alive while the queue is non-empty.
+3. **Lead spawns 3** — the three highest-tractability problems, easiest first — and
+   keeps exactly 3 alive while the queue is non-empty. Each spawn is preceded by
+   `kourovka-new-experiment.sh`, so the write-up directory exists before the agent does.
 4. **You get pinged** only when a problem has burned ≥3h **and** completed the full
    Validator → Math Expert → Lead circle. Anything else reaching you is a protocol
    violation; say so.
-5. **Closed problems get written up** in `Experiments/Kourovka/`.
+5. **Every problem gets written up** in `Experiments/Kourovka/<id>-<slug>/`, whether it
+   closed or not. A `STILL-TRYING` write-up naming what was ruled out is worth as much
+   to the next campaign as a solution.
 
 ### 7.1 What to check daily
 
@@ -700,24 +796,41 @@ ls -1 bus/inbox/*/ | wc -l        # unread backlog
 pgrep -f "codex exec" | wc -l     # live agents
 ```
 
-Three things mean something is wrong:
+Five things mean something is wrong:
 
-- **Live agents < 8 with a non-empty queue** — Lead let the board drain.
+- **Live agents < 3 with a non-empty queue** — Lead let the board drain.
+- **Live agents > 3** — Lead is spreading attention thin again.
 - **`_decisions.md` not growing** — extensions are being granted without a record,
   which means without justification.
+- **An `Experiments/Kourovka/<id>-<slug>/` directory that is still all template** on a
+  problem that has burned hours. The agent is not writing as it goes.
 - **Any note tagged `status/proven` or `status/solved`** that you didn't write.
   `proven` is Validator-only and `solved` is yours alone. Investigate immediately.
 
+Also worth a glance, weekly: `grep -c '' Agents/Kourovka/bus/inbox/Lead/*` — if
+Lead's inbox is carrying a third of all crew traffic, the bottleneck is back.
+
 ### 7.2 Expected outcome
 
-Say it out loud before you start: **most of the 50 will produce nothing.** These
-problems are in the Kourovka Notebook because competent mathematicians did not close
-them. A run of 47 honest DEADs, 2 stale-already-solved, and 1 real partial result is
-a *successful* run. One fabricated claim that reaches a mathematician is a failed
-program regardless of what else happened.
+These problems are in the Kourovka Notebook because competent mathematicians did not
+close them, so most of the 50 will not close here either. But note what the first
+campaign actually produced: **zero false positives and zero true positives.** It was
+so well defended against claiming a wrong result that it stopped trying to get a
+right one.
 
-The whole prompt architecture — the status ladder, the review circle, the mandatory
-"What this does NOT establish" section — exists to buy that trade.
+So there are two ways to fail, not one:
+
+| Failure | What it costs |
+|---|---|
+| A fabricated claim reaches a mathematician | Credibility. Unrecoverable. |
+| A closable problem is abandoned at minute 12 | The entire point of the program. |
+
+The status ladder, the review circle and the mandatory "What this does NOT establish"
+section exist to prevent the first. The persistence rules ([[_common-kourovka]] §3.2),
+the enumerate-first mandate and the abolished compute lease exist to prevent the
+second. A run of 47 well-documented `STILL-TRYING`s, each naming a concrete next
+computation, is a good run. A run of 47 twelve-minute abandonments is not, however
+honestly it was reported.
 
 ---
 
