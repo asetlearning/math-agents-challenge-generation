@@ -1,0 +1,21 @@
+PAIR G=[ 96, 69 ] K=[ 8, 4 ] Q8 L=[ 8, 2 ] C4 x C2
+  PhiSeriesK=[ 8, 2, 1 ] PhiSeriesL=[ 8, 2, 1 ]
+  PCentralK=[ 8, 2, 1 ] PCentralL=[ 8, 2, 1 ]
+  LowerCentralK=[ 8, 2, 1 ] LowerCentralL=[ 8, 1 ]
+  centerK=2 centerL=8 expK=4 expL=4
+  C3PhiSig [dim,fixed,triv?rem/2]: K=[ [ 2, 0, 1 ], [ 1, 1, 0 ] ] L=
+[ [ 2, 2, 0 ], [ 1, 1, 0 ] ]
+PAIR G=[ 192, 996 ] K=[ 16, 12 ] C2 x Q8 L=[ 16, 10 ] C4 x C2 x C2
+  PhiSeriesK=[ 16, 2, 1 ] PhiSeriesL=[ 16, 2, 1 ]
+  PCentralK=[ 16, 2, 1 ] PCentralL=[ 16, 2, 1 ]
+  LowerCentralK=[ 16, 2, 1 ] LowerCentralL=[ 16, 1 ]
+  centerK=4 centerL=16 expK=4 expL=4
+  C3PhiSig [dim,fixed,triv?rem/2]: K=[ [ 3, 1, 1 ], [ 1, 1, 0 ] ] L=
+[ [ 3, 3, 0 ], [ 1, 1, 0 ] ]
+PAIR G=[ 192, 996 ] K=[ 16, 12 ] C2 x Q8 L=[ 16, 10 ] C4 x C2 x C2
+  PhiSeriesK=[ 16, 2, 1 ] PhiSeriesL=[ 16, 2, 1 ]
+  PCentralK=[ 16, 2, 1 ] PCentralL=[ 16, 2, 1 ]
+  LowerCentralK=[ 16, 2, 1 ] LowerCentralL=[ 16, 1 ]
+  centerK=4 centerL=16 expK=4 expL=4
+  C3PhiSig [dim,fixed,triv?rem/2]: K=[ [ 3, 1, 1 ], [ 1, 1, 0 ] ] L=
+[ [ 3, 3, 0 ], [ 1, 1, 0 ] ]

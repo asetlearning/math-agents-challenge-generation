@@ -1,0 +1,15 @@
+P_order 243
+B_order 2187
+H_order 531441
+enumerated_all_H_elements 531441
+cube_of_every_cube_is_identity True
+exponent_exactly_9 True
+literal_cube_count 75
+literal_cube_sha256 46b121c21f36b8fc44868a0e88cf691ab538f40bf9f0fe5f5972017b425da248
+cube_projection_to_B_count 9
+cube_projection_fibre_distribution {3: 1, 9: 8}
+literal_cubes_equal_embedded_P False
+literal_cube_set_closed False
+closure_defect (((0, 0, 0, 0, 0), ((0, 0, 0, 0, 0, 1), 0)), ((0, 0, 0, 1, 0), ((0, 0, 0, 0, 0, 2), 0)), ((0, 0, 0, 1, 0), ((0, 0, 0, 0, 0, 0), 0)))
+noncommuting_cube_pair None
+elapsed_seconds 2.79 max_rss_kb 14720

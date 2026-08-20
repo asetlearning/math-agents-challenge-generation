@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "scope_key": "21.52-involution-class-product-order-colouring",
+  "problem_id": "21.52",
+  "scope_id": "21.52/involution-class-product-order-colouring",
+  "assignment_revision": 1,
+  "source": {
+    "issue": 21,
+    "pdf_page": 172,
+    "statement_checked": true,
+    "checked_by": "Lead",
+    "checked_utc": "2026-08-17T15:08:24Z",
+    "transcription_note": "Research/Group theory/Open problems/Kourovka/21.52-involution-coloured-graph-automorphisms.md",
+    "independent_scope_audit": {
+      "required": true,
+      "status": "passed",
+      "auditor": "Validator",
+      "note": "Agents/Kourovka/problems/21.52/verification/2026-08-17-source-fidelity-audit.md"
+    }
+  },
+  "target_statement": "For every finite nonabelian simple group L and every conjugacy class D of involutions in L, every permutation of D preserving the order |ab| for each pair of distinct vertices a,b is induced on D by an automorphism of L that stabilizes D setwise.",
+  "source_clauses": [
+    {
+      "clause_id": "c-objects",
+      "text": "Let L be a finite non-abelian simple group, and let D be a conjugacy class of involutions in L.",
+      "in_scope": true
+    },
+    {
+      "clause_id": "c-colouring",
+      "text": "On the complete graph Gamma with vertex set D, two edges (a,b) and (c,d) have the same colour if and only if |ab|=|cd|.",
+      "in_scope": true
+    },
+    {
+      "clause_id": "c-colour-automorphism",
+      "text": "A colour-graph automorphism is a permutation tau of D satisfying (a,b)~(a^tau,b^tau) for every edge (a,b).",
+      "in_scope": true
+    },
+    {
+      "clause_id": "c-question",
+      "text": "Is the automorphism group of the coloured graph Gamma a subgroup of Aut(L)?",
+      "in_scope": true
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "21.52-forall-L-D",
+      "kind": "quantifier",
+      "role": "admissibility",
+      "statement": "The assertion quantifies over every pair (L,D) satisfying the remaining admissibility rows.",
+      "required": true,
+      "source_clause_id": "c-objects"
+    },
+    {
+      "constraint_id": "21.52-L-finite-nonabelian-simple",
+      "kind": "object_class",
+      "role": "admissibility",
+      "statement": "L is a finite nonabelian simple group.",
+      "required": true,
+      "source_clause_id": "c-objects"
+    },
+    {
+      "constraint_id": "21.52-D-single-involution-class",
+      "kind": "object_class",
+      "role": "admissibility",
+      "statement": "D is one conjugacy class in L and every member of D has order exactly 2.",
+      "required": true,
+      "source_clause_id": "c-objects"
+    },
+    {
+      "constraint_id": "21.52-Gamma-complete-on-D",
+      "kind": "definition",
+      "role": "admissibility",
+      "statement": "Gamma is the complete simple graph with vertex set D, so its edges are unordered pairs of distinct elements of D.",
+      "required": true,
+      "source_clause_id": "c-colouring"
+    },
+    {
+      "constraint_id": "21.52-edge-colour-exact-product-order",
+      "kind": "definition",
+      "role": "admissibility",
+      "statement": "The colour of edge {a,b} is determined exactly by the element order |ab| in L; two edges have the same colour exactly when these orders are equal.",
+      "required": true,
+      "source_clause_id": "c-colouring"
+    },
+    {
+      "constraint_id": "21.52-tau-preserves-all-edge-colours",
+      "kind": "hypothesis",
+      "role": "admissibility",
+      "statement": "tau is a permutation of D such that |ab|=|a^tau b^tau| for every two distinct a,b in D.",
+      "required": true,
+      "source_clause_id": "c-colour-automorphism"
+    },
+    {
+      "constraint_id": "21.52-tau-induced-by-AutL",
+      "kind": "conclusion",
+      "role": "target_conclusion",
+      "statement": "Every such tau is the restriction to D of an automorphism of L that stabilizes D setwise; this is the typed meaning of Aut(Gamma)<=Aut(L) in the source.",
+      "required": true,
+      "source_clause_id": "c-question"
+    }
+  ],
+  "excluded_scopes": [
+    "Problem 21.53, which asks whether two selected edge-colour constraints determine the full colour automorphism group",
+    "The union of all involutions when L has more than one involution class",
+    "Automorphisms of the underlying uncoloured complete graph",
+    "Colouring edges by conjugacy class of ab rather than only by the order |ab|",
+    "A bounded list of simple groups presented as a proof of the universal assertion"
+  ],
+  "success_criteria": {
+    "proof": "Prove for every finite nonabelian simple L and every involution class D that every product-order-colour-preserving permutation of D extends to an automorphism of L stabilizing D.",
+    "counterexample": "Give one reconstructible finite nonabelian simple L, one explicit involution class D, and one colour-preserving permutation of D that is not induced by any automorphism of L stabilizing D.",
+    "partial_progress": [
+      "A complete independently reproducible determination of the colour-automorphism group for a precisely stated family of pairs (L,D).",
+      "A proved reduction from colour preservation to a group-theoretic incidence structure or generation relation for an infinite simple-group family."
+    ],
+    "certificate": "For a finite witness or bounded determination: a reconstructible group and class, the complete product-order colour matrix or colour classes, the full permutation automorphism group, the restriction image of the setwise stabilizer in Aut(L), and an exact inclusion/equality or separating permutation check."
+  },
+  "selection_status": "approved",
+  "state": "running",
+  "scope_answered": false,
+  "active_direction": "proof",
+  "truth_likelihood": {
+    "estimate": 0.62,
+    "rationale": "Product-order relations on an involution class often encode rigid subgroup and incidence data, but small highly symmetric classes may admit accidental colour symmetries. This is a scheduling estimate only.",
+    "updated_utc": "2026-08-17T15:08:24Z"
+  },
+  "priority": {
+    "importance": 3,
+    "probability_of_substantial_progress": 0.7,
+    "verifiability": 5,
+    "expected_active_hours": 3.0,
+    "rationale": "For each fixed (L,D), both the complete colour automorphism group and the restriction image of Aut(L) have exact finite certificates, making a small-simple-group reconnaissance highly informative."
+  },
+  "direction_sessions": {
+    "proof": {
+      "session_id": "collaboration:/root/p2152_nonsplit_polar",
+      "state": "running",
+      "parent_session_id": "collaboration:/root",
+      "previous_session_id": "collaboration:/root/p2152_psl2q_family",
+      "fresh_session_reason": "The broad PSL(2,q) lane submitted candidate equalities for even q, odd q congruent to 1 mod 4, and q=7, leaving one exact finite-geometry gate. In a fresh context, treat q congruent to 3 mod 4 and at least 11 by intrinsically recovering opposite-type polar-line blocks and the projective-line completion from exact colours."
+    },
+    "counterexample": {
+      "session_id": "collaboration:/root/p2152_psu33",
+      "state": "stopped",
+      "parent_session_id": "collaboration:/root",
+      "previous_session_id": "collaboration:/root/p2152_psl33",
+      "fresh_session_reason": "The fixed PSL(3,3) lane ended with an unreviewed equality. Move to the structurally distinct fixed simple group PSU(3,3), first verifying its full involution-class inventory and then requiring a complete full-colour group versus Aut(L)-restriction comparison."
+    }
+  },
+  "current_strategy": "PSL2-NONSPLIT-POLAR-BLOCK-RIGIDITY: for q congruent to 3 mod 4, q at least 11, recover opposite-type polar-line blocks and the projective-line completion intrinsically from the exact product-order colouring",
+  "strategy_history": [
+    "Selected from the approved tractable-50 list as the third distinct replacement lane after 20.49 reached its reviewed park gate. No mathematics begins before independent scope fidelity passes.",
+    "Validator independently renders page 172 and passes every clause, constraint, exclusion, and the typed interpretation Aut_col(Gamma)=res_D(Stab_Aut(L)(D)). Activate a fresh counterexample lane on A5, with complete finite certificates required before any next simple target.",
+    "The exact fixed-A5 computation exhausts all 15 involutions, all 105 edges, all colour-preserving permutations, and all automorphisms of A5. Both permutation groups have order 120 and are equal; all 15 frozen verification checks pass. This is a fixed-target PARTIAL_RESULT, not a universal answer. Charge 10 active minutes and route to a fresh Validator.",
+    "A fresh Validator gives an independent hand proof of the fixed-A5 equality via five colour-2 blocks and faithful order-3 matching holonomies, retaining witness_equals_target:false and active_assignment_answered:no. Continue counterexample-first on the next exact target PSL(2,7), with a complete finite colour-group versus Aut(L) restriction comparison.",
+    "At cumulative minute 82 the decorated-fibre route produces an exact PSL_4(2) collision: a same-fibre and a cross-fibre colour-2 pair have identical complete common-colour-2 cores, monochromatic K6. This kills only that predicate. Switch to the full all-colour two-point intersection array before any incidence quotient."
+  ],
+  "latest_outcome": "RUNNING from cumulative time 349m27s. Candidate labelled equality is obtained for simple PSL(2,q) with even q, odd q congruent to 1 mod 4, and q=7. A fresh lane is resolving the remaining odd nonsplit polar-block geometry; the universal scope remains open.",
+  "open_questions": [
+    "Does the source shorthand Aut(Gamma)<=Aut(L) require explicit restriction to the setwise stabilizer of D in Aut(L)?"
+  ],
+  "revision_history": [
+    {
+      "revision": 1,
+      "changed_utc": "2026-08-17T15:08:24Z",
+      "reason": "Initial atomic scope record and replacement activation under the human's three-distinct-problem instruction.",
+      "supersedes": []
+    }
+  ],
+  "blind_run": {
+    "enabled": true,
+    "open_web": false,
+    "solution_bearing_history_allowed": false,
+    "claim_of_clean_pretraining": false
+  },
+  "updated_utc": "2026-08-18T11:29:52Z"
+}

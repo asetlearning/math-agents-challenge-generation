@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "claim_id": "20.115-l43-2block-defect-bridge-r1-partial-001",
+  "problem_id": "20.115",
+  "scope_id": "20.115/nonzero-character-order-divisibility",
+  "assignment_revision": 1,
+  "claim_kind": "proof",
+  "claim_scope": "bounded_partial",
+  "active_assignment_answered": false,
+  "candidate_object": "The exact six ordinary 2-blocks of the centerless simple group L4(3), explicit defect-group representatives with exponents 8,4,1,1,1,1, all 29 ordinary-character 2-defects, and the resulting Proposition 3.2 implication at the single prime 2 for nearly-simple triples with derived subgroup L4(3).",
+  "target_vs_witness": {
+    "canonical_target": "The full integer divisibility o(x)chi(1) divides |G| for every finite G, every ordinary irreducible complex chi, and every x with exact chi(x) nonzero.",
+    "bounded_claim": "Condition (1.1) at the prime 2 for nearly-simple triples whose derived subgroup is exactly centerless L4(3), obtained from the verified 2-block exponent inequalities.",
+    "relationship": "strict_partial_special_case_and_sufficient_bridge",
+    "canonical_target_result": "not_proved",
+    "scope_answered": false
+  },
+  "rows": [
+    {
+      "constraint_id": "20.115-forall-G-chi-x",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim_gate_only",
+      "canonical_scope_result": "unknown",
+      "candidate_value": "The submitted proof claim explicitly quantifies only over the six 2-blocks of fixed L4(3), and Proposition 3.2 then over triples with derived subgroup L4(3); it does not claim the universal finite-group quantifier.",
+      "evidence_ref": "Agents/Kourovka/problems/20.115/runs/2026-08-17-r4-l43-2block-defect-bridge/findings.md"
+    },
+    {
+      "constraint_id": "20.115-G-finite",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The fixed base group is the finite group PSL(4,3) of order 6065280, and the Proposition 3.2 corollary concerns finite nearly-simple groups H.",
+      "evidence_ref": "Agents/Kourovka/problems/20.115/runs/2026-08-17-r4-l43-2block-defect-bridge/findings.md"
+    },
+    {
+      "constraint_id": "20.115-chi-complex-irreducible",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The block partition and all 29 defects use Irr(CharacterTable(\"L4(3)\")), hence ordinary irreducible complex characters; Proposition 3.2 likewise uses ordinary Irr(H).",
+      "evidence_ref": "Agents/Kourovka/problems/20.115/runs/2026-08-17-r4-l43-2block-defect-bridge/findings.md"
+    },
+    {
+      "constraint_id": "20.115-x-in-G",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "For the Proposition 3.2 implication, h is an element of finite H and o(hZ(H))_2 is its exact quotient-order 2-part; centerlessness gives the exact o(h)_2 statement.",
+      "evidence_ref": "Agents/Kourovka/problems/20.115/runs/2026-08-17-r4-l43-2block-defect-bridge/findings.md"
+    },
+    {
+      "constraint_id": "20.115-character-value-nonzero",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The Proposition 3.2 implication is conditional on exact ordinary nonvanishing chi(h) != 0; this also forces irreducibility of chi restricted to the derived subgroup in the intended triple.",
+      "evidence_ref": "Agents/Kourovka/problems/20.115/runs/2026-08-17-r4-l43-2block-defect-bridge/findings.md"
+    },
+    {
+      "constraint_id": "20.115-order-degree-divisibility",
+      "role": "target_conclusion",
+      "result": "proved",
+      "result_scope": "bounded_claim_only",
+      "canonical_scope_result": "not_proved",
+      "candidate_value": "The proved conclusion is only o(h)_2 divides (|H|/chi(1))_2 for triples with derived subgroup L4(3); the full integer divisibility for arbitrary finite groups remains unanswered.",
+      "evidence_ref": "Agents/Kourovka/problems/20.115/runs/2026-08-17-r4-l43-2block-defect-bridge/findings.md"
+    }
+  ],
+  "ready_for_validator": true,
+  "created_utc": "2026-08-17T21:17:56Z"
+}

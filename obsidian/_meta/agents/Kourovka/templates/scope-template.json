@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "scope_key": "NN.MM-short-scope-name",
+  "problem_id": "NN.MM",
+  "scope_id": "NN.MM/short-scope-name",
+  "assignment_revision": 1,
+  "source": {
+    "issue": 21,
+    "pdf_page": 1,
+    "statement_checked": false,
+    "checked_by": null,
+    "checked_utc": null,
+    "transcription_note": "Research/Group theory/Open problems/Kourovka/NN.MM-slug.md",
+    "independent_scope_audit": {
+      "required": true,
+      "status": "pending",
+      "auditor": null,
+      "note": null
+    }
+  },
+  "target_statement": "Replace with the exact atomic target transcribed from the rendered source.",
+  "source_clauses": [
+    {
+      "clause_id": "c1",
+      "text": "Replace with one source clause.",
+      "in_scope": true
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "domain-1",
+      "kind": "quantifier",
+      "role": "admissibility",
+      "statement": "Replace with one explicit required quantifier, domain restriction, object-class condition, exclusion, or hypothesis.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "conclusion-1",
+      "kind": "conclusion",
+      "role": "target_conclusion",
+      "statement": "Replace with the conclusion a proof must establish or a counterexample must violate.",
+      "required": true,
+      "source_clause_id": "c1"
+    }
+  ],
+  "excluded_scopes": [],
+  "success_criteria": {
+    "proof": "What a proof must establish for exactly this scope.",
+    "counterexample": "What a witness must satisfy and what conclusion it must violate.",
+    "partial_progress": [
+      "One precise, reproducible advance that does not close the scope."
+    ],
+    "certificate": "What independent evidence would let Validator check the result."
+  },
+  "selection_status": "longlisted",
+  "state": "queued",
+  "scope_answered": false,
+  "active_direction": "none",
+  "truth_likelihood": {
+    "estimate": 0.5,
+    "rationale": "Planning estimate only; not a mathematical verdict.",
+    "updated_utc": null
+  },
+  "priority": {
+    "importance": 3,
+    "probability_of_substantial_progress": 0.2,
+    "verifiability": 3,
+    "expected_active_hours": 3.0,
+    "rationale": "Replace with evidence from reconnaissance."
+  },
+  "direction_sessions": {
+    "proof": {
+      "session_id": null,
+      "state": "not_started",
+      "parent_session_id": null,
+      "fresh_session_reason": null
+    },
+    "counterexample": {
+      "session_id": null,
+      "state": "not_started",
+      "parent_session_id": null,
+      "fresh_session_reason": null
+    }
+  },
+  "current_strategy": null,
+  "strategy_history": [],
+  "latest_outcome": null,
+  "open_questions": [],
+  "revision_history": [
+    {
+      "revision": 1,
+      "changed_utc": null,
+      "reason": "Initial atomic scope record.",
+      "supersedes": []
+    }
+  ],
+  "updated_utc": null
+}

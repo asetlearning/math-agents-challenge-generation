@@ -1,0 +1,3 @@
+Exact blocker: the workspace is read-only, Problem-20.21’s inbox is empty, and no valid compute lease exists. I cannot update the ledger or report through the file bus. No computation ran; recorded active time remains 43 minutes.
+
+Read-only inspection produced a narrower necessary local screen: a candidate kernel group \(H\) must have equal-order normal subgroups \(N_C,N_V\) with quotients \(C_4,V_4\), plus compatible order-three automorphisms inducing trivial and irreducible quotient actions, respectively. This should precede any leased amalgam construction search.

@@ -1,0 +1,157 @@
+{
+  "aut_t_vacuity": "For every positive t not in occurring_edge_colours, Aut_t is S_55.",
+  "colour_count": 4,
+  "conjugacy_classes": [
+    {
+      "class_size": 1,
+      "element_order": 1,
+      "normal_closure_size": 1,
+      "representative": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "class_size": 55,
+      "element_order": 2,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        0
+      ]
+    },
+    {
+      "class_size": 110,
+      "element_order": 3,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        1
+      ]
+    },
+    {
+      "class_size": 132,
+      "element_order": 5,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "class_size": 132,
+      "element_order": 5,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        4
+      ]
+    },
+    {
+      "class_size": 110,
+      "element_order": 6,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        5
+      ]
+    },
+    {
+      "class_size": 60,
+      "element_order": 11,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        2
+      ]
+    },
+    {
+      "class_size": 60,
+      "element_order": 11,
+      "normal_closure_size": 660,
+      "representative": [
+        0,
+        1,
+        10,
+        9
+      ]
+    }
+  ],
+  "distinct_prime_divisors": [
+    2,
+    3,
+    5,
+    11
+  ],
+  "edge_count_by_colour": {
+    "2": 165,
+    "3": 330,
+    "5": 660,
+    "6": 330
+  },
+  "every_nonidentity_class_normal_closure_order": 660,
+  "field_order": 11,
+  "generated_subgroup_order": 660,
+  "generators": {
+    "s": [
+      0,
+      1,
+      10,
+      0
+    ],
+    "u": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  "generators_noncommute": true,
+  "involution_centralizer_order": 12,
+  "involution_class_count": 1,
+  "involution_class_sizes": [
+    55
+  ],
+  "involution_count": 55,
+  "matrix_diagonal": 1,
+  "model": "SL(2,11)/{+I,-I} with lexicographically canonical representatives",
+  "occurring_edge_colours": [
+    2,
+    3,
+    5,
+    6
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "prime_factorization": {
+    "11": 1,
+    "2": 2,
+    "3": 1,
+    "5": 1
+  },
+  "python": "3.12.3",
+  "quotient_order": 660,
+  "second_smallest_distinct_prime": 3,
+  "sl2_order": 1320,
+  "unordered_pair_count": 1485,
+  "valency_by_colour": {
+    "2": 6,
+    "3": 12,
+    "5": 24,
+    "6": 12
+  },
+  "vertex_order": "lexicographic canonical matrix tuple"
+}

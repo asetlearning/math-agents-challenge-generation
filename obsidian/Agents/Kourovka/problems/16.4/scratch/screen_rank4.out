@@ -1,0 +1,7 @@
+GAP version: 4.12.1
+CTblLib version: 1.3.7
+table,nclasses,tested_ordered_nonidentity_pairs,single_class_products
+S8(2),81,6400,[  ]
+O8+(2),53,2704,[  ]
+O8-(2),39,1444,[  ]
+U5(2),47,2116,[  ]

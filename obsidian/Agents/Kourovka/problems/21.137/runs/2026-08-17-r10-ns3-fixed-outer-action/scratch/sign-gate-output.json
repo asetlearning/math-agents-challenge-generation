@@ -1,0 +1,96 @@
+{
+  "H_normal_form": "x^i y^j c^k t^l, 0<=i,j,k,l<3",
+  "H_order": 81,
+  "assertions": {
+    "A^3=Inn(a)": true,
+    "B^3=Inn(b)": true,
+    "C=[A,B]": true,
+    "C^3=I": true,
+    "Inn(z)=I": true,
+    "T=I": true,
+    "[C,A]=Inn(q_X)": true,
+    "[C,B]=Inn(q_Y)": true,
+    "q_X=q_Y=a-b": true,
+    "|H|=3^4=81_from_normal_forms": true
+  },
+  "basis": [
+    "a",
+    "b",
+    "u",
+    "v",
+    "z"
+  ],
+  "categorical_rows_enumerated": 0,
+  "commutator_convention": "[r,s]=r^-1 s^-1 r s",
+  "conjugation_convention": "q^g=g^-1 q g",
+  "decisive_pair": {
+    "Inn(z^e_YX)": "I for every e_YX in F_3",
+    "h": "y",
+    "j": "x",
+    "left_equals_right": false,
+    "missing_inner": "Inn(a-b)",
+    "required_equation": "A B = Inn(z^e_YX) C B A",
+    "section_product": "Y X = X Y K z^e_YX"
+  },
+  "field": 3,
+  "frozen_row_count": 59049,
+  "group_elements_enumerated": 0,
+  "inner_defect_representatives": {
+    "q_X_for_[C,A]": [1, 2, 0, 0, 0],
+    "q_Y_for_[C,B]": [1, 2, 0, 0, 0],
+    "required_noncentral_correction_in_[Y,X]": [1, 2, 0, 0, 0]
+  },
+  "limitation": "This eliminates only the central-N family as frozen. Allowing the noncentral correction a-b in [Y,X], changing C, or enlarging the factor family is outside this run.",
+  "matrices": {
+    "A": [
+      [1, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0],
+      [0, 2, 1, 0, 0],
+      [0, 0, 1, 1, 0],
+      [0, 0, 0, 1, 1]
+    ],
+    "B": [
+      [1, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0],
+      [1, 0, 1, 0, 0],
+      [0, 0, 1, 1, 0],
+      [0, 0, 0, 1, 1]
+    ],
+    "C_standard_commutator_A_B": [
+      [1, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0],
+      [0, 0, 1, 0, 0],
+      [1, 1, 0, 1, 0],
+      [1, 1, 0, 0, 1]
+    ],
+    "action_of_[Y,X]": [
+      [1, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0],
+      [0, 0, 1, 0, 0],
+      [1, 1, 0, 1, 0],
+      [0, 0, 0, 0, 1]
+    ],
+    "common_inner_defect": [
+      [1, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0],
+      [0, 0, 1, 0, 0],
+      [0, 0, 0, 1, 0],
+      [2, 2, 0, 0, 1]
+    ]
+  },
+  "matrix_convention": "column vectors; XY acts as B*A",
+  "outcome": "all 59049 frozen central rows fail the action equation before the cocycle/associativity or cube-set stages",
+  "row_coordinates": [
+    "e_X",
+    "e_Y",
+    "e_K",
+    "e_T",
+    "e_YX",
+    "e_KX",
+    "e_KY",
+    "e_TX",
+    "e_TY",
+    "e_TK"
+  ],
+  "strategy_id": "NS3-FIXED-OUTER-ACTION"
+}

@@ -1,0 +1,50 @@
+58                                      12th Issue (1992)
+
+12.13. If ⟨Ω, ⩽⟩ is the countable universal poset, then G = Aut (⟨Ω, ⩽⟩) is simple
+(A. M. W. Glass, S. H. McCleary, M. Rubin, Math. Z., 214, no. 1 (1993), 55–66). If H
+is a subgroup of G such that |G : H| < 2ℵ0 and H is transitive on Ω, does H = G?
+                                                                                   A. M. W. Glass
+
+
+12.15. Suppose that, in a finite 2-group G, any two elements are conjugate whenever
+their normal closures coincide. Is it true that the derived subgroup of G is abelian?
+                                                                E. A. Golikova, A. I. Starostin
+
+
+12.16. Is the class of groups of recursive automorphisms of arbitrary models closed
+with respect to taking free products?                               S. S. Goncharov
+
+
+12.17. Find a description of autostable periodic abelian groups.                   S. S. Goncharov
+
+
+12.19. Is it true that, for every n ⩾ 2 and every two epimorphisms φ and ψ of a free
+group F2n of rank 2n onto Fn × Fn , there exists an automorphism α of F2n such that
+αφ = ψ?                                                             R. I. Grigorchuk
+
+
+12.20. (Well-known problem). Is R. Thompson’s group
+                  F = ⟨x0 , x1 , . . . | xxni = xn+1 , i < n, n = 1, 2, . . .⟩ =
+
+      = ⟨x0 , . . . , x4 | xx1 0 = x2 , xx2 0 = x3 , xx2 1 = x3 , xx3 1 = x4 , xx3 2 = x4 ⟩
+amenable?                                                                         R. I. Grigorchuk
+
+
+12.21. Let R be a commutative ring with identity and let G be a finite group. Prove
+that the ring a(RG) of R-representations of G has no non-trivial idempotents.
+                                                                  P. M. Gudivok, V. P. Rud’ko
+
+
+12.23. The index of permutability of a group G is defined to be the minimal integer
+k ⩾ 2 such that for each k-tuple x1 , . . . , xk of elements in G there is a non-identity
+permutation σ on k symbols such that x1 · · · xk = xσ(1) · · · xσ(k) . Determine the index
+of permutability of the symmetric group Sn .                                   M. Gutsan
+
+
+12.27. Let G be a simple locally finite group. We say that G is a group of finite
+type if there is a non-trivial permutational representation of G such that some finite
+subgroup of G has no regular orbits. Investigate and, perhaps, classify the simple
+locally finite groups of finite type. Partial results see in (B. Hartley, A. Zalesski, Isr.
+J. Math., 82 (1993), 299–327, J. London Math. Soc., 55 (1997), 210–230; F. Leinen,
+O. Puglisi, Illinois J. Math., 47 (2003), 345–360).                        A. E. Zalesskiı̆
+

@@ -1,0 +1,20 @@
+{
+  "strategy_id": "NOTT3-N2-N14-CUBESET",
+  "scope_id": "21.137/odd-prime-exponent-p2",
+  "assignment_revision": 2,
+  "frozen_utc": "2026-08-17T15:49:15Z",
+  "script": "Agents/Kourovka/problems/21.137/scratch/nott_n2_n14_cube.py",
+  "script_bytes": 12804,
+  "script_sha256": "b47c33a29577e7462b8f36a9cb0c1ebc6c65194db01ac63b27a4c0bba0d059cd",
+  "command": "timeout 1500s python3 Agents/Kourovka/problems/21.137/scratch/nott_n2_n14_cube.py --p 3 --lowest-degree 3 --truncate 14 --exhaustive --artifact-dir Agents/Kourovka/problems/21.137/scratch/nott-n2-n14",
+  "cpu_cores": 1,
+  "ram_gb_max": 2,
+  "timeout_seconds": 1500,
+  "lease_minutes_requested": 30,
+  "carrier": {
+    "prime": 3,
+    "orientation": "f*g=f(g(t)) mod t^14",
+    "coordinates": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "cardinality": 177147
+  }
+}

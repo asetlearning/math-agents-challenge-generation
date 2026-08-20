@@ -1,0 +1,81 @@
+---
+title: "Full central-family leased certificate — raw output"
+problem: "21.137"
+scope_id: 21.137/odd-prime-exponent-p2
+assignment_revision: 2
+author: operator
+tags: [agent/problem, user/operator, domain/group-theory, topic/kourovka, topic/p-groups, topic/compute-lease, project/kourovka, status/draft]
+---
+
+# Exact active source scope
+
+Odd `p>2`; finite same-`p` group; exponent exactly `p^2`; literal actual set
+`{g^p:g in G}`, never generated subgroup; literal set itself a subgroup; ask
+whether it is abelian; `p=2`/exponent-eight sibling excluded.
+
+# Authorized command
+
+All three hashes matched the explicit slot-1 lease. Exactly one invocation ran
+and exited zero:
+
+```text
+timeout 240s python3 -u Agents/Kourovka/problems/21.137/runs/2026-08-17-r26-rank4-central-corrections/scratch/check_full_family.py
+```
+
+# Raw stdout
+
+```text
+frozen lift reconstruction: PASS
+V defect/associativity checks: 729 19683 78732
+normalized central variables/equations/rank/dimension: 2028 59049 1951 77
+relator-definition combined rank: 1969
+complete affine relator constraints:
+  1*r1 = 0
+  1*r2 = 0
+  1*r4 = 0
+  1*r5 = 0
+  1*r6+2*r11+2*r13 = 0
+  1*r7 = 0
+  1*r8 = 0
+  1*r11+2*r13+2*r16 = 0
+  1*r14 = 2
+  1*r17 = 2
+relator particular: 000000000000002002
+relator homogeneous dimension/feasible rows: 8 6561
+generator-lift gauge rank/image size: 5 243
+normalized C1/coboundary/Z1 dimensions: 78 74 4
+exact-row kernel dimensions (cochain/gauge): 69 69
+quotient dimensions (full cochain/relator): 3 3
+derived orbit count: 27
+representatives and full-factor certificates:
+ 00 000000000000002002 1959 69 a74a5d9b959366b0b8913fabd7cc7e7af1a4e3605df09c3d95d2f3a00492f824
+ 01 000000000000002102 1959 69 1007faf0d4b276771e1f91550aafaedfdec9381fea8198e1edd8d13735244eec
+ 02 000000000000002202 1959 69 2fc9bee1f3cf19206c66648414dc77dbb769efff85b57d989d7852a90f212e35
+ 03 000000000000102002 1959 69 d90bfd2e7a4425328adf452b5cf397d787f3d170601ee06840781acba6cbbd2d
+ 04 000000000000102102 1959 69 4b8bdf2c7832b5948883e5816aae84ded2abf9b09dd6b6fccb93e81bc9c13194
+ 05 000000000000102202 1959 69 27e7ab454407467922b213a86aa06e067b3bd7cd25a5ced8d9551733cc51e06b
+ 06 000000000000202002 1959 69 d75edbd9b366c37374c4a7606f59705daad344792328fba651cda53c8b0e7328
+ 07 000000000000202102 1959 69 e573d6d178d20f18647a6765c204150556c90c0693a6c8c07956a2811728a5fa
+ 08 000000000000202202 1959 69 68c1a9fabca880299da9d2d43d868f59d942119d2f0c6af95eef709711f48bb2
+ 09 000000100000012022 1959 69 6275f76c00ab7c7fcb35913158d6e56939625b76e15022ebccea231a2ea7074d
+ 10 000000100000012122 1959 69 f7ef7a4c58ebbf2b4f2722d8dd8679632b61948e2d8c0e4454244a63bf478c07
+ 11 000000100000012222 1959 69 b77a65f26ab70f2b573e6e789a8a67e97c9609c753f3311772f79d1dbc74d30b
+ 12 000000100000112022 1959 69 3830cd325b90d9a640dc6d4c87e6778407450a61cfbe1da12992fd8e2c3caef7
+ 13 000000100000112122 1959 69 d85e91f9fc153714f923f0d23ea6dc443bf13a85e915a95676350a3e9b353dd4
+ 14 000000100000112222 1959 69 701c7bf86d34ea8bf2ccda942a1c6828835af9c09453d33d7ca6aebbb389b339
+ 15 000000100000212022 1959 69 3cf9d2aad6f7c4506eed21e9bd3a43649d26e1bdd5ee21ece500d1735a023776
+ 16 000000100000212122 1959 69 a19ad8c7cd82dcbdff6b6e83e0363e3fd150e198a89db40a5c662dd021031880
+ 17 000000100000212222 1959 69 4ab6aceb5fae02a03208f33afe805917f32b98aa1467795524d0f39a1db143a6
+ 18 000000200000022012 1959 69 22c61b81e042c6c2dc22fddf02347fa203d528ffe51ac5abb7894503e4ece660
+ 19 000000200000022112 1959 69 0c910028f41a103c6fdc708f610a2dbacd202992e9c3d7c94c501f751a73ebae
+ 20 000000200000022212 1959 69 f8de2485f4b746d0d360fbda2d19677e905b6bec2b120690c4907a04264fe8f0
+ 21 000000200000122012 1959 69 7b789f1fd39f4a217d92fd7fcebc91e9c8aa348a7a46b73e06004be7dca1989f
+ 22 000000200000122112 1959 69 6f6d3451c2359876252fe7caf3a9040a9cdb3271026b8682eaa5fcf65f1b8aac
+ 23 000000200000122212 1959 69 09caaae575bec7b71da6b9394b572f11dea2f1765300e823be65bc9a74238d37
+ 24 000000200000222012 1959 69 64658c9fe8221df32b25b633829b06e4f304d02e35afa764495c28a0c0135999
+ 25 000000200000222112 1959 69 0d4a90c486bda9ae817c667b1818e931ac86f70620c865453c49fd0b36e74692
+ 26 000000200000222212 1959 69 d929c333010c56683ff9823dca1fb2c35470c5491a8fca875c7043799384a1e5
+NO alternate group or cube enumeration performed
+```
+
+No patch, rerun, group construction, or cube enumeration occurred.

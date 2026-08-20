@@ -1,0 +1,52 @@
+{
+  "schema": "kourovka-compute-lease-request-v1",
+  "problem": "21.52",
+  "scope_id": "21.52/involution-class-product-order-colouring",
+  "assignment_revision": 1,
+  "direction": "counterexample",
+  "strategy": "SMALLEST-SIMPLE-COLOUR-AUTOMORPHISM",
+  "target": "L=A5 and its unique conjugacy class D of involutions",
+  "frozen_utc": "2026-08-17T15:23:20Z",
+  "scripts": [
+    {
+      "path": "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5_colour_test.py",
+      "sha256": "6e392e5a784893160cedc00af6c52b7ab682d37c31e36cd11ba16d0f14fdc8e4",
+      "purpose": "construct A5 and D, form the complete product-order colour matrix, exhaust the full colour-preserving permutation group, and separately exhaust Aut(A5) from all images of a fixed generating pair"
+    },
+    {
+      "path": "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/verify_a5_colour_certificate.py",
+      "sha256": "356b186a237402dddaffcd327659e046bef45ba31c359109bdae43252b827a10",
+      "purpose": "independently reconstruct the model, colour matrix, complete colour-automorphism group, full Aut(A5), restriction image, and S5-conjugation image"
+    }
+  ],
+  "commands": [
+    "/usr/bin/timeout --signal=TERM --kill-after=5s 60s python3 Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5_colour_test.py --certificate Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-certificate.json --summary Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-summary.txt > Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-run.stdout 2> Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-run.stderr",
+    "/usr/bin/timeout --signal=TERM --kill-after=5s 60s python3 Agents/Kourovka/problems/21.52/scratch/a5-colour-test/verify_a5_colour_certificate.py --certificate Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-certificate.json --enumerator-script Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5_colour_test.py --verification Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-independent-verification.json > Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-verification.stdout 2> Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-verification.stderr"
+  ],
+  "output_paths": [
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-certificate.json",
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-summary.txt",
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-run.stdout",
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-run.stderr",
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-independent-verification.json",
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-verification.stdout",
+    "Agents/Kourovka/problems/21.52/scratch/a5-colour-test/a5-colour-verification.stderr"
+  ],
+  "resource_bound": {
+    "jobs": 1,
+    "cpu_cores": 1,
+    "ram_mib_estimate": 256,
+    "wall_timeout_seconds_per_command": 60,
+    "kill_grace_seconds": 5,
+    "requested_lease_minutes": 10
+  },
+  "bounded_coverage": {
+    "group_elements": "all 60 even permutations on five points",
+    "vertices": "all 15 order-two elements of A5, which form the unique involution class",
+    "edges": "all 105 unordered pairs of distinct vertices",
+    "colour_automorphisms": "all injective assignments of 15 vertices consistent with every already exposed product-order colour",
+    "group_automorphisms": "all 60^2 possible images of a fixed generating pair, with accepted maps checked on all 60^2 products",
+    "independent_image": "conjugation restrictions for all 120 elements of S5"
+  },
+  "status": "frozen_not_run"
+}

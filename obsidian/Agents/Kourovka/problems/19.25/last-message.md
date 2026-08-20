@@ -1,0 +1,1 @@
+Blocked: the workspace is read-only, so I cannot update the active-time ledger, process the inbox verdict, save verification output, or communicate through the required file bus. Please restore vault write access and resume.

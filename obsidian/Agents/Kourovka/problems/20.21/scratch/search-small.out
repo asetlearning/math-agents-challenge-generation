@@ -1,0 +1,28 @@
+GAP 4.12.1
+target quotient IDs: C12=[ 12, 2 ], A4=[ 12, 3 ]
+ORDER 12 GROUPS 5
+ORDER 24 GROUPS 15
+ORDER 36 GROUPS 14
+ORDER 48 GROUPS 52
+NEARMISS SmallGroup(48,31) C-kernels [ [ 4, 2 ] ] A-kernels [ [ 4, 1 ] ]
+ORDER 60 GROUPS 13
+ORDER 72 GROUPS 50
+ORDER 84 GROUPS 15
+ORDER 96 GROUPS 231
+NEARMISS SmallGroup(96,69) C-kernels [ [ 8, 4 ] ] A-kernels [ [ 8, 2 ] ]
+NEARMISS SmallGroup(96,73) C-kernels [ [ 8, 5 ] ] A-kernels [ [ 8, 1 ] ]
+NEARMISS SmallGroup(96,74) C-kernels [ [ 8, 4 ] ] A-kernels [ [ 8, 1 ] ]
+NEARMISS SmallGroup(96,196) C-kernels [ [ 8, 5 ], [ 8, 5 ] ] A-kernels 
+[ [ 8, 2 ] ]
+ORDER 108 GROUPS 45
+ORDER 120 GROUPS 47
+ORDER 132 GROUPS 10
+ORDER 144 GROUPS 197
+NEARMISS SmallGroup(144,34) C-kernels [ [ 12, 5 ] ] A-kernels [ [ 12, 2 ] ]
+NEARMISS SmallGroup(144,129) C-kernels [ [ 12, 5 ] ] A-kernels [ [ 12, 1 ] ]
+NEARMISS SmallGroup(144,155) C-kernels [ [ 12, 3 ], [ 12, 3 ], [ 12, 3 ], 
+  [ 12, 5 ] ] A-kernels [ [ 12, 2 ] ]
+ORDER 156 GROUPS 18
+ORDER 168 GROUPS 57
+ORDER 180 GROUPS 37
+ORDER 192 GROUPS 1543

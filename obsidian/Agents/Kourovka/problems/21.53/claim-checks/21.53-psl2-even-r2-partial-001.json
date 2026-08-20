@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "claim_id": "21.53-psl2-even-r2-partial-001",
+  "problem_id": "21.53",
+  "scope_id": "21.53/two-minimal-prime-colours",
+  "assignment_revision": 2,
+  "claim_kind": "proof",
+  "claim_scope": "bounded_partial",
+  "active_assignment_answered": false,
+  "candidate_object": "Every pair consisting of L=PSL(2,2^f), f>=2, and its complete involution class D, together with the identical A5 pair represented by PSL(2,5)=PSL(2,4).",
+  "target_vs_witness": {
+    "canonical_target": "Every finite nonabelian simple L and every complete involution class D in L.",
+    "bounded_claim": "Every simple even-characteristic PSL(2,q), q=2^f with f>=2, plus q=5 only through the identical abstract A5 pair already covered at q=4.",
+    "relationship": "strict_infinite_subfamily_partial_theorem",
+    "canonical_target_result": "not_proved",
+    "scope_answered": false
+  },
+  "q5_identification": {
+    "status": "included_only_as_identical_pair",
+    "statement": "PSL(2,5) is isomorphic to PSL(2,4) isomorphic to A5, and A5 has one involution class; no general odd-characteristic inference is made."
+  },
+  "odd_family_status": {
+    "claimed": false,
+    "statement": "The trace/norm model is derived, but the odd orthogonal-shell rigidity lemma remains unproved."
+  },
+  "q27_audit_status": {
+    "claimed_as_family_evidence": false,
+    "statement": "The single leased q=27 automorphism-order audit is a finite stress test only and is not used to prove the bounded even-characteristic theorem."
+  },
+  "rows": [
+    {
+      "constraint_id": "21.53-forall-L-D",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim_gate_only",
+      "canonical_scope_result": "unknown",
+      "candidate_value": "The submitted theorem explicitly quantifies over every pair in the stated PSL(2,2^f) subfamily and the identical q=5/A5 pair; it does not claim the canonical all-simple-groups quantifier.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/findings.md"
+    },
+    {
+      "constraint_id": "21.53-L-finite-nonabelian-simple",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "For f>=2, PSL(2,2^f) is finite nonabelian simple; the q=5 transfer is the identical simple group A5 represented at q=4.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/partial-result.md"
+    },
+    {
+      "constraint_id": "21.53-D-single-involution-class",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The vector-nilpotent model enumerates all q^2-1 involutions and proves SL(2,q)-transitivity; A5 has the same unique involution class at q=4 and q=5.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/partial-result.md"
+    },
+    {
+      "constraint_id": "21.53-Gamma-product-order-colouring",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The graph is complete on the exact class, and every distinct pair receives the exact order determined by the characteristic polynomial T^2+det(x,y)^2 T+1.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/partial-result.md"
+    },
+    {
+      "constraint_id": "21.53-Aut-t-definition",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The proof uses the literal setwise stabilizers of exact t-edge sets; finite bijectivity converts the source implication to equality, and absent positive labels impose no condition, hence Aut_t=S_D.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/findings.md"
+    },
+    {
+      "constraint_id": "21.53-two-minimal-primes",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "The exact order q(q-1)(q+1) in even characteristic is divisible by 2 and 3, so the second-smallest distinct prime divisor is p=3; the A5 order is 60.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/partial-result.md"
+    },
+    {
+      "constraint_id": "21.53-full-colour-group-definition",
+      "role": "admissibility",
+      "result": "pass",
+      "result_scope": "bounded_claim",
+      "candidate_value": "Aut(Gamma) is treated as the intersection over every occurring exact product-order colour, with absent-label factors vacuous.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/partial-result.md"
+    },
+    {
+      "constraint_id": "21.53-two-colours-determine-all",
+      "role": "target_conclusion",
+      "result": "proved",
+      "result_scope": "bounded_claim_only",
+      "canonical_scope_result": "not_proved",
+      "candidate_value": "For every q=2^f, f>=2, the functional equation gives Aut_2 intersect Aut_3=GammaSL(2,q), and the trace formula proves that this group preserves every colour; q=5 is covered only as the identical A5 pair.",
+      "evidence_ref": "Agents/Kourovka/problems/21.53/runs/2026-08-17-r4-psl2q-two-colour-rigidity/partial-result.md"
+    }
+  ],
+  "ready_for_validator": true,
+  "created_utc": "2026-08-17T21:29:59Z"
+}

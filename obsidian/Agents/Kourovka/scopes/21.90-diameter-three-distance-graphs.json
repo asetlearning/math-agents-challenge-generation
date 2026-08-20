@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "scope_key": "21.90-diameter-three-distance-graphs",
+  "problem_id": "21.90",
+  "scope_id": "21.90/diameter-three-distance-graphs",
+  "assignment_revision": 3,
+  "source": {
+    "issue": 21,
+    "pdf_page": 177,
+    "statement_checked": true,
+    "checked_by": "Lead",
+    "checked_utc": "2026-08-16T11:13:07Z",
+    "transcription_note": "Research/Group theory/Open problems/Kourovka/21.90-distance-regular-graph-distance-graphs.md",
+    "independent_scope_audit": {
+      "required": true,
+      "status": "passed",
+      "auditor": "Validator",
+      "note": "Agents/Kourovka/problems/21.90/verification/2026-08-16T114327Z-source-fidelity-audit.md"
+    }
+  },
+  "interpretive_convention": {
+    "status": "source_context_checked",
+    "references": [
+      "https://www.mathnet.ru/links/dbffa53a5831e7a1511e72d34815ac91/umj177.pdf",
+      "https://en.wikipedia.org/wiki/Strongly_regular_graph"
+    ],
+    "adopted_definition": "Use the nontrivial spectral/common-neighbour convention operational in the source paper: a finite connected noncomplete regular graph with constant adjacent and nonadjacent common-neighbour counts, equivalently a regular graph with exactly three distinct adjacency eigenvalues and valency of multiplicity one.",
+    "degenerate_imprimitive_cases": "graphs with fewer than three distinct eigenvalues, including equal-clique unions and matchings such as 2K4 and 4K2, are excluded",
+    "caveat": "The source paper does not give a standalone definition, but it treats a strongly regular distance graph via three eigenvalues kappa, r, and -s. This source-operational convention supersedes revision 2's literal Wikipedia-only reading.",
+    "updated_utc": "2026-08-16T13:45:05Z"
+  },
+  "target_statement": "Does there exist a Q-polynomial distance-regular graph Gamma of diameter 3 such that its distance-2 graph Gamma_2 and distance-3 graph Gamma_3 are strongly regular?",
+  "source_clauses": [
+    {
+      "clause_id": "c-definition",
+      "text": "For a graph Gamma of diameter d and i in {1,...,d}, Gamma_i has the same vertices and joins u,w exactly when their distance in Gamma is i.",
+      "in_scope": true
+    },
+    {
+      "clause_id": "c-question",
+      "text": "Does there exist a Q-polynomial distance-regular graph Gamma of diameter 3 such that Gamma_2 and Gamma_3 are strongly regular?",
+      "in_scope": true
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "21.90-exists-Gamma",
+      "kind": "quantifier",
+      "role": "admissibility",
+      "statement": "The target asks for existence of one graph Gamma satisfying all remaining rows.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "21.90-diameter-3",
+      "kind": "parameter",
+      "role": "admissibility",
+      "statement": "Gamma has diameter exactly 3.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "21.90-Q-polynomial-distance-regular",
+      "kind": "object_class",
+      "role": "admissibility",
+      "statement": "Gamma is a Q-polynomial distance-regular graph.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "21.90-distance-graph-definition",
+      "kind": "definition",
+      "role": "admissibility",
+      "statement": "Gamma_i uses the same vertex set as Gamma and adjacency exactly at distance i in Gamma.",
+      "required": true,
+      "source_clause_id": "c-definition"
+    },
+    {
+      "constraint_id": "21.90-Gamma2-strongly-regular",
+      "kind": "hypothesis",
+      "role": "admissibility",
+      "statement": "Gamma_2 is a nontrivial strongly regular graph in the source-operational sense: it is connected, noncomplete and regular, has constant common-neighbour counts on adjacent and nonadjacent pairs, and has exactly three distinct adjacency eigenvalues.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "21.90-Gamma3-strongly-regular",
+      "kind": "hypothesis",
+      "role": "admissibility",
+      "statement": "Gamma_3 is a nontrivial strongly regular graph in the source-operational sense: it is connected, noncomplete and regular, has constant common-neighbour counts on adjacent and nonadjacent pairs, and has exactly three distinct adjacency eigenvalues.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "21.90-existence-conclusion",
+      "kind": "conclusion",
+      "role": "target_conclusion",
+      "statement": "At least one such graph Gamma exists.",
+      "required": true,
+      "source_clause_id": "c-question"
+    }
+  ],
+  "excluded_scopes": [],
+  "success_criteria": {
+    "proof": "Construct one graph and prove every admissibility row under the source-operational nontrivial three-eigenvalue convention for strong regularity.",
+    "counterexample": "Prove no graph satisfying every row exists.",
+    "partial_progress": [
+      "A proved parameter-family reduction under the source-operational nontrivial convention.",
+      "A proved parameter-family reduction after the convention is fixed."
+    ],
+    "certificate": "Explicit graph data and independent distance-regular, Q-polynomial, distance-graph, connectedness, common-neighbour, and three-eigenvalue checks under the documented source convention."
+  },
+  "selection_status": "approved",
+  "state": "parked",
+  "scope_answered": false,
+  "active_direction": "none",
+  "truth_likelihood": {
+    "estimate": 0.5,
+    "rationale": "The source-operational convention excludes the cube. The prior nontrivial parameter work gives no witness and no universal nonexistence result.",
+    "updated_utc": "2026-08-16T13:45:05Z"
+  },
+  "priority": {
+    "importance": 4,
+    "probability_of_substantial_progress": 0.55,
+    "verifiability": 4,
+    "expected_active_hours": 1.85,
+    "rationale": "The source convention is now operationally fixed, but 21.137 has explicit priority for the next hour; preserve 21.90's remaining legacy budget for later nontrivial parameter work."
+  },
+  "direction_sessions": {
+    "proof": {
+      "session_id": "collaboration:/root/p2190_local_root_family",
+      "state": "complete",
+      "parent_session_id": "collaboration:/root/p2190_local_root120",
+      "previous_session_id": "collaboration:/root/p2190_local_root120",
+      "fresh_session_reason": "Validator independently upheld the rank-17 local-root exclusion. Use a clean context to test whether its positive-definite Gram and support-degree mechanism extends symbolically to a genuine Type-II(ii) subfamily; do not assume the one-array arithmetic generalizes."
+    },
+    "counterexample": {
+      "session_id": "019ff183-a29f-7a52-964e-f5f982060aef",
+      "state": "stopped",
+      "parent_session_id": null,
+      "fresh_session_reason": null
+    }
+  },
+  "current_strategy": null,
+  "strategy_history": [
+    "Legacy parameter work is preserved; it could not be promoted while the strongly-regular convention was unresolved.",
+    "Human supplied the Wikipedia displayed definition; revision 2 temporarily promoted H(3,2) as a literal-definition candidate.",
+    "Human then supplied the MathNet source paper. Its operational three-eigenvalue treatment restores the nontrivial convention and makes H(3,2) out of scope.",
+    "Human scheduling correction on 2026-08-17 requires at least three distinct active problems. Resume in a fresh proof/construction session because revision 3 corrected the foundational convention. Freeze exact asymmetric fission constraints for the smallest live 300-vertex array before requesting any heavy solver lease.",
+    "After 22 active minutes, the exact maximum-coclique reformulation and a cheap complete GRAPE gate show the standard polar constituent has coclique number 30, while every fission requires a 40-coclique. This strictly eliminates all fissions over that constituent but not nonisomorphic SRGs. Lead uses the remaining 38 minutes on a constituent-independent integral/design obstruction from the full 300-block incidence equations.",
+    "At run minute 24, the elementary local handshake condition already eliminates the entire array {39,25,10;1,5,30}: its local graph would be 13-regular on 39 vertices. Lead accepts this as a candidate array-level partial result pending Validator review and uses the remaining 36 minutes to repair the candidate-selection pipeline by rescreening the exact source-derived families with all elementary feasibility gates.",
+    "The corrected bounded rescreen finished at run minute 45 with 482 arithmetic survivors; its smallest row {19,12,5;1,4,15} is already reported nonexistent in the maintained literature log. Use the remaining 15 minutes to reconcile all documented exclusions and identify the first row that is genuinely live before starting any constituent computation.",
+    "Reconciliation at scope cumulative minute 129 identifies {19,6,8;1,1,12} on 210 vertices as the first row in the bounded box with no maintained exclusion. Lead grants 45 of the 51 initial-cycle minutes remaining to identify and independently reconstruct an explicit srg(210,76,26,28) distance-3 constituent; no fission search starts until the constituent and 20-coclique formulation are exact.",
+    "Fresh Validator review eliminates the order-210 row by a local K13-component contradiction. The next row {77,60,13;1,12,65} on 540 vertices passes every cheap local, spectral, modular-rank, and design gate after 21 active minutes of extension 1. Use the remaining 40 minutes on a bounded installed primitive-group orbital construction for srg(540,77,4,12); stop at the catalogue-availability/subdegree gate rather than launching a broad graph search.",
+    "The installed primitive-group probe reached the named negative frontier after 10 minutes, but it invoked GAP without a lease under the incorrect under-60-second exception. Common protocol section 4 classifies every GAP call as heavy. Quarantine the output as non-evidence and freeze one complete replay script for an explicit Lead lease before reusing the result.",
+    "The sanctioned all-ten-group replay exited 0 and confirms that the installed degree-540 primitive layer has no length-77 suborbit. That route is exhausted only at this bounded installed-layer scope; the existential problem remains open.",
+    "A candidate symbolic handshake calculation says every required local handshake is equivalent to ta even, excluding an explicit infinite Type-II(ii) subfamily with x and w odd. This awaits fresh validation.",
+    "The complementary even-xw Type-II(ii) residual survives multiplicity and 2-adic/Krein-integrality checks and is formally self-dual with P=Q. Use the final nine active minutes on a representation-changing triple-intersection feasibility gate rather than repeating spectral congruences.",
+    "IIii-EVEN-TRIPLE-INTERSECTION-GATE used eight active minutes and found one nontrivial zero-Krein multiset {1,1,3}. Its three standard triple-intersection equations have an exact nonnegative-integral residual, and their primitive parity gate is identically satisfied on both even-xw branches. The method is exhausted; route this residual together with the earlier odd-x,w handshake partial to a fresh Validator.",
+    "Validator independently reconstructs every displayed substitution and handshake identity. The explicit odd-x,w Type-II(ii) parameter family is genuinely infinite and fails necessary handshakes, so retain it as a conditional parameter-family PARTIAL_RESULT at status/conjectured. The even residual's P=Q, zero support, three equations, and automatic mod-2 consequence also pass, but full integral feasibility and the revision-3 existential target remain open.",
+    "MathExpert compares complete nine-base-type elimination, a 120-vertex fission construction, another source family, a local-root representation change, and parking. It selects one final 45-minute no-compute increment IIii-LOCAL-ROOT-120; if the local eigenvalue or A17/D17 chain fails its 15/30-minute gates, PARK_RECOMMENDED applies absent new reviewed input.",
+    "IIii-LOCAL-ROOT-120 used 11 active minutes and proposes a complete exclusion of the exact array {17,8,6;1,2,12}: the local bound gives lambda_min>=-9/5, 2I+A is a positive-definite rank-17 simply-laced Gram matrix, and the submitted A17/D17 support-graph cases contradict 8-regularity. Route this one-array candidate partial to fresh validation; revision 3 remains unanswered.",
+    "Validator independently reconstructs and upholds the exact one-array exclusion, including the delicate repeated-support D_17 case. Preserve it as an array-level PARTIAL_RESULT at status/conjectured; active_assignment_answered:no. Use the 34 unspent minutes on a clean parametric extension of the successful representation: derive exactly when the Type-II(ii) local Gram 2I+A is positive definite and whether root-system support arithmetic excludes an infinite subfamily.",
+    "IIii-LOCAL-ROOT-PARAMETRIC met its hard kill after nine active minutes. The exact symbolic local lower bound exceeds -2 only for the already reviewed tuple (x,w,u)=(1,2,2), while the equality boundary has no positive integral tuple. The ADE reduction therefore has no parametric regime and cannot be applied outside the single rank-17 row. Accept the prior MathExpert park recommendation with 25 increment minutes unspent; revision 3 remains unanswered."
+  ],
+  "latest_outcome": "PARKED at 259 active minutes with 25 minutes unspent. The exact local-root positivity regime is isolated to the already validated array {17,8,6;1,2,12}; outside it the available bound lies below -2 and gives no ADE reduction. The one-array and infinite odd-parameter partials are preserved, but revision 3 remains unanswered.",
+  "open_questions": [
+    "Do zero Krein parameters in the formally self-dual even-xw Type-II(ii) residual force an impossible integral or nonnegative triple-intersection number?"
+  ],
+  "revision_history": [
+    {
+      "revision": 1,
+      "changed_utc": "2026-08-16T11:13:07Z",
+      "reason": "Initial protocol-v2 migration; preserve the unresolved source-convention blocker.",
+      "supersedes": [
+        "legacy whole-problem assignment"
+      ]
+    },
+    {
+      "revision": 2,
+      "changed_utc": "2026-08-16T13:40:44Z",
+      "reason": "The human explicitly directed Lead to the Wikipedia definition of strongly regular graphs. Revision 2 adopts its displayed regular/common-neighbour definition literally, so disconnected imprimitive mu=0 cases are admissible.",
+      "supersedes": [
+        "revision 1 unresolved strongly-regular convention blocker"
+      ]
+    },
+    {
+      "revision": 3,
+      "changed_utc": "2026-08-16T13:45:05Z",
+      "reason": "The human supplied the MathNet source paper after the Wikipedia-only interpretation. The paper operationally treats strongly regular distance graphs through three eigenvalues, excluding the disconnected cube constituents.",
+      "supersedes": [
+        "revision 2 literal-definition cube candidate"
+      ]
+    }
+  ],
+  "updated_utc": "2026-08-17T14:02:38Z"
+}

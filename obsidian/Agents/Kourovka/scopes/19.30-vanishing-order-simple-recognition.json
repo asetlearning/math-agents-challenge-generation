@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "scope_key": "19.30-vanishing-order-simple-recognition",
+  "problem_id": "19.30",
+  "scope_id": "19.30/vanishing-order-simple-recognition",
+  "assignment_revision": 1,
+  "source": {
+    "issue": 19,
+    "pdf_page": 134,
+    "statement_checked": true,
+    "checked_by": "Lead",
+    "checked_utc": "2026-08-16T11:13:07Z",
+    "transcription_note": "Research/Group theory/Open problems/Kourovka/19.30-vanishing-element-order-recognition.md",
+    "independent_scope_audit": {
+      "required": true,
+      "status": "passed",
+      "auditor": "Validator",
+      "note": "Agents/Kourovka/problems/19.30/verification/2026-08-16T114327Z-source-fidelity-audit.md"
+    }
+  },
+  "target_statement": "For every finite group G and finite simple group S, if |G|=|S| and G and S have the same set of orders of vanishing elements, then G is isomorphic to S.",
+  "source_clauses": [
+    {
+      "clause_id": "c-definition",
+      "text": "An element g of a finite group G is vanishing if chi(g)=0 for some irreducible complex character chi in Irr(G).",
+      "in_scope": true
+    },
+    {
+      "clause_id": "c-question",
+      "text": "Must a finite group and a finite simple group be isomorphic if they have equal orders and the same set of orders of vanishing elements?",
+      "in_scope": true
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "19.30-forall-GS",
+      "kind": "quantifier",
+      "role": "admissibility",
+      "statement": "The assertion quantifies over every pair (G,S) satisfying all remaining admissibility rows.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "19.30-G-finite",
+      "kind": "object_class",
+      "role": "admissibility",
+      "statement": "G is a finite group.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "19.30-S-finite-simple",
+      "kind": "object_class",
+      "role": "admissibility",
+      "statement": "S is a finite simple group.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "19.30-vanishing-definition",
+      "kind": "definition",
+      "role": "admissibility",
+      "statement": "An element x of H is vanishing exactly when chi(x)=0 for at least one irreducible complex character chi of H.",
+      "required": true,
+      "source_clause_id": "c-definition"
+    },
+    {
+      "constraint_id": "19.30-equal-orders",
+      "kind": "order",
+      "role": "admissibility",
+      "statement": "G and S have equal finite order.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "19.30-equal-vanishing-order-sets",
+      "kind": "hypothesis",
+      "role": "admissibility",
+      "statement": "The set of element orders attained by vanishing elements of G equals the corresponding set for S; multiplicities are not part of the invariant.",
+      "required": true,
+      "source_clause_id": "c-question"
+    },
+    {
+      "constraint_id": "19.30-isomorphic",
+      "kind": "conclusion",
+      "role": "target_conclusion",
+      "statement": "G is isomorphic to S.",
+      "required": true,
+      "source_clause_id": "c-question"
+    }
+  ],
+  "excluded_scopes": [
+    "Equality of character tables without equality of vanishing-order sets",
+    "Equality of spectra of all elements rather than only vanishing elements",
+    "Pairs in which neither group is finite simple"
+  ],
+  "success_criteria": {
+    "proof": "Prove the recognition implication for every finite simple S and every finite G of the same order.",
+    "counterexample": "Give an explicit nonisomorphic pair (G,S) satisfying every admissibility row, with S finite simple.",
+    "partial_progress": [
+      "A proved recognition theorem for a new infinite family of finite simple groups.",
+      "An independently reproducible finite counterexample search over a precisely complete family."
+    ],
+    "certificate": "For a witness, explicit reconstructible groups, complete irreducible character data or an independent character-table calculation, and exact vanishing-order-set and isomorphism checks."
+  },
+  "selection_status": "approved",
+  "state": "parked",
+  "scope_answered": false,
+  "active_direction": "none",
+  "truth_likelihood": {
+    "estimate": 0.56,
+    "rationale": "Several structurally different collision families failed for exact vanishing-order reasons, while the normal-prime mechanism supports positive recognition on broad Suzuki families. This remains a planning estimate only.",
+    "updated_utc": "2026-08-16T13:18:21Z"
+  },
+  "priority": {
+    "importance": 4,
+    "probability_of_substantial_progress": 0.08,
+    "verifiability": 5,
+    "expected_active_hours": 3.0,
+    "rationale": "The remaining 22 minutes cannot support a fourth singleton screen or derive the missing family-level ordinary-character bridge. Resume only after one of the explicit proof/counterexample restart gates is externally grounded."
+  },
+  "direction_sessions": {
+    "proof": {
+      "session_id": "01a00aba-d0c9-7b50-a7ed-df61f05418ba",
+      "state": "complete",
+      "parent_session_id": "01a00a6c-af83-73e0-92f4-304af187ff2e",
+      "fresh_session_reason": "The counterexample direction exhausted multiple structured collision representations after 76 active minutes; the fresh proof context receives only a curated reviewed normal-prime seed."
+    },
+    "counterexample": {
+      "session_id": "collaboration:/root/p1930_a6",
+      "state": "complete",
+      "parent_session_id": "collaboration:/root/p1930_psl27",
+      "previous_session_id": "collaboration:/root/p1930_psl27",
+      "fresh_session_reason": "The fixed PSL(2,7) order-168 result is independently replicated. The remaining 34 minutes move to the next exact simple target A6 of order 360, retaining only the reviewed invariant definition and strict singleton interpretation."
+    }
+  },
+  "current_strategy": null,
+  "strategy_history": [
+    "Legacy family screens are preserved but excluded from the clean-context prompt.",
+    "The proof direction stopped at 106 cumulative active minutes with a computation-free prime-power separator theorem for an explicitly restricted subclass; the universal target and unconditional Suzuki family remain open.",
+    "Validator's hand audit found Lemmas 1-3 and Theorem 4 survive only for the stated four-extra-hypothesis subclass; corrected metadata is status/conjectured, witness_equals_target:false, and active_assignment_answered:no.",
+    "MathExpert prescribed the single proof experiment P-A5-5-HYPOTHESIS-CLOSURE for the remaining 74 active minutes: hand-close base simplicity, target vanishing, CS-5, Aut-5, and simple-order uniqueness, with immediate kill on any external or conditional dependency.",
+    "At 126 cumulative active minutes the five-row dossier terminated as PARTIAL_RESULT for the fixed target S=A5 only. The universal scope remains unanswered; route the hand argument to hostile Validator reconstruction.",
+    "Validator reconstructed the singleton argument without finding a gap; MathExpert judged it meaningful but local and found no non-repetitive exact experiment fitting the residual 54 minutes. Lead parks the universal scope with the fixed A5 partial preserved.",
+    "Human concurrency policy later requires a third distinct live scope. Use the explicit park restart gate by fixing a genuinely second target S=PSL(2,7), order 168. A fresh counterexample lane gets the preserved 54 minutes to freeze a complete all-groups-of-order-168 vanishing-set collision test. A hit is a full target counterexample; a miss is only a second singleton partial and must not be generalized.",
+    "A fresh Validator independently reconstructs all 57 order-168 rows and exactly replicates the PSL(2,7) target set [2,3,4,7], equality index [42], and zero nonisomorphic collisions. The fixed subcase is replicated, but active_assignment_answered:no. Use the 34 preserved active minutes on the next exact simple target A6 of order 360, with a complete same-order catalogue screen and a +12-minute freeze gate.",
+    "MathExpert compares refinement, an equal-order Lie-type family counterexample pivot, and a defect-zero/chief-factor proof pivot. None has the complete ordinary-character invariant or uniform nonsimple-group bridge needed for the final 22 minutes. Lead accepts PARK_RECOMMENDED without treating the three finite misses as evidence for the universal assertion."
+  ],
+  "latest_outcome": "PARKED at 158/180 with 22 minutes preserved. Fixed A5, PSL(2,7), and A6 recognition subcases and a restricted prime-power separator survive review, but the universal scope is open. Restart only with a source-grounded complete vanishing-order formula for a named equal-order family, or a family-uniform defect-zero/chief-factor bridge with order witnesses and order-twin discrimination.",
+  "open_questions": [],
+  "revision_history": [
+    {
+      "revision": 1,
+      "changed_utc": "2026-08-16T11:13:07Z",
+      "reason": "Initial protocol-v2 atomic migration and fresh counterexample session.",
+      "supersedes": [
+        "legacy whole-problem assignment"
+      ]
+    }
+  ],
+  "blind_run": {
+    "enabled": true,
+    "open_web": false,
+    "solution_bearing_history_allowed": false,
+    "claim_of_clean_pretraining": false
+  },
+  "updated_utc": "2026-08-17T16:53:53Z"
+}

@@ -1,0 +1,165 @@
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:44
+                  p2 := z -> (z^2-a1*z-k)/c;
+                                  ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:44
+                  p2 := z -> (z^2-a1*z-k)/c;
+                                       ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:44
+                  p2 := z -> (z^2-a1*z-k)/c;
+                                          ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:45
+                  p3 := z -> ((z-a2)*p2(z)-b1*z)/c3;
+                                 ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:45
+                  p3 := z -> ((z-a2)*p2(z)-b1*z)/c3;
+                                     ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:45
+                  p3 := z -> ((z-a2)*p2(z)-b1*z)/c3;
+                                           ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:45
+                  p3 := z -> ((z-a2)*p2(z)-b1*z)/c3;
+                                                 ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:46
+                  P := List(eig,z->[1,z,p2(z),p3(z)]);
+                                        ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:46
+                  P := List(eig,z->[1,z,p2(z),p3(z)]);
+                                              ^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:48
+                  Q := List([1..4],rr->List([1..4],jj->multiplicities[jj]*P[jj\
+][rr]/valencies[rr]));
+                                                       ^^^^^^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:48
+                  Q := List([1..4],rr->List([1..4],jj->multiplicities[jj]*P[jj\
+][rr]/valencies[rr]));
+                                                                          ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:48
+                  Q := List([1..4],rr->List([1..4],jj->multiplicities[jj]*P[jj\
+][rr]/valencies[rr]));
+                                                                              \
+      ^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:50
+                    return Sum([1..4],rr->P[hh][rr]*Q[rr][ii]*Q[rr][jj])/v;
+                                          ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:50
+                    return Sum([1..4],rr->P[hh][rr]*Q[rr][ii]*Q[rr][jj])/v;
+                                                    ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:50
+                    return Sum([1..4],rr->P[hh][rr]*Q[rr][ii]*Q[rr][jj])/v;
+                                                              ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:50
+                    return Sum([1..4],rr->P[hh][rr]*Q[rr][ii]*Q[rr][jj])/v;
+                                                                         ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:53
+                    return Sum([1..4],ee->multiplicities[ee]*P[ee][ii]*P[ee][j\
+j]*P[ee][hh])/(v*valencies[hh]);
+                                          ^^^^^^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:53
+                    return Sum([1..4],ee->multiplicities[ee]*P[ee][ii]*P[ee][j\
+j]*P[ee][hh])/(v*valencies[hh]);
+                                                             ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:53
+                    return Sum([1..4],ee->multiplicities[ee]*P[ee][ii]*P[ee][j\
+j]*P[ee][hh])/(v*valencies[hh]);
+                                                                       ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:53
+                    return Sum([1..4],ee->multiplicities[ee]*P[ee][ii]*P[ee][j\
+j]*P[ee][hh])/(v*valencies[hh]);
+                                                                              \
+   ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:53
+                    return Sum([1..4],ee->multiplicities[ee]*P[ee][ii]*P[ee][j\
+j]*P[ee][hh])/(v*valencies[hh]);
+                                                                              \
+               ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:53
+                    return Sum([1..4],ee->multiplicities[ee]*P[ee][ii]*P[ee][j\
+j]*P[ee][hh])/(v*valencies[hh]);
+                                                                              \
+                 ^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:65
+                    if good and ForAll([1..3],jj->qpar(ord[2],ord[jj],ord[jj+1\
+])>0) then Add(qorders,ord); fi;
+                                                  ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:65
+                    if good and ForAll([1..3],jj->qpar(ord[2],ord[jj],ord[jj+1\
+])>0) then Add(qorders,ord); fi;
+                                                       ^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:65
+                    if good and ForAll([1..3],jj->qpar(ord[2],ord[jj],ord[jj+1\
+])>0) then Add(qorders,ord); fi;
+                                                              ^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:65
+                    if good and ForAll([1..3],jj->qpar(ord[2],ord[jj],ord[jj+1\
+])>0) then Add(qorders,ord); fi;
+                                                                      ^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:67
+                  schemefeasible := ForAll([1..4],ii->ForAll([1..4],jj->ForAll\
+([1..4],hh->IsInt(ppar(ii,jj,hh)) and ppar(ii,jj,hh)>=0)));
+                                                                              \
+                  ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:67
+                  schemefeasible := ForAll([1..4],ii->ForAll([1..4],jj->ForAll\
+([1..4],hh->IsInt(ppar(ii,jj,hh)) and ppar(ii,jj,hh)>=0)));
+                                                                              \
+                                      ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:70
+                    Sum(Filtered([1..4],hh->qpar(ii,jj,hh)<>0),hh->multiplicit\
+ies[hh]) <=
+                                            ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:70
+                    Sum(Filtered([1..4],hh->qpar(ii,jj,hh)<>0),hh->multiplicit\
+ies[hh]) <=
+                                                                   ^^^^^^^^^^^\
+^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:71
+                    AbsoluteProductBound(ii,jj,multiplicities)));
+                                               ^^^^^^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:76
+                      lhsab := Sum(Filtered([1..4],hh->qpar(ii,jj,hh)<>0),hh->\
+multiplicities[hh]);
+                                                       ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:76
+                      lhsab := Sum(Filtered([1..4],hh->qpar(ii,jj,hh)<>0),hh->\
+multiplicities[hh]);
+                                                                              \
+^^^^^^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/enumerate_parameter_candidates.g:78
+                      if lhsab>rhsab then Print("  pair=",[ii,jj]," lhs=",lhsa\
+b," rhs=",rhsab," support=",Filtered([1..4],hh->qpar(ii,jj,hh)<>0),"\n"); fi;
+                                                                              \
+                                                ^^^^

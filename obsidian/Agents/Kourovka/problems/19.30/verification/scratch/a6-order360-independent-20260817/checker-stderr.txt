@@ -1,0 +1,11 @@
+VERIFIER_FAILURE: unrecognized independent output line: '\x1b[1m\x1b[34m\x1b[0m\x1b[31m'
+Traceback (most recent call last):
+  File "/mnt/c/users/kmuli/downloads/math-agents-main/math-agents-main/obsidian/Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/verify-independent.py", line 411, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/mnt/c/users/kmuli/downloads/math-agents-main/math-agents-main/obsidian/Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/verify-independent.py", line 385, in main
+    independent_rows, metadata = parse_independent(independent_path)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/kmuli/downloads/math-agents-main/math-agents-main/obsidian/Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/verify-independent.py", line 290, in parse_independent
+    raise AssertionError(f"unrecognized independent output line: {line!r}")
+AssertionError: unrecognized independent output line: '\x1b[1m\x1b[34m\x1b[0m\x1b[31m'

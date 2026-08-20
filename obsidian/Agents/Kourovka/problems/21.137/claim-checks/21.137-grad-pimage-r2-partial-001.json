@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "claim_id": "21.137-grad-pimage-r2-partial-001",
+  "problem_id": "21.137",
+  "scope_id": "21.137/odd-prime-exponent-p2",
+  "assignment_revision": 2,
+  "claim_kind": "proof",
+  "candidate_object": "A necessary Baer-Lie/Jordan-chain condition in the first lower-central quotient where the literal pth-power image of a hypothetical counterexample is nonabelian.",
+  "rows": [
+    {
+      "constraint_id": "21.137-odd-forall-p-G",
+      "role": "admissibility",
+      "result": "unknown",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    },
+    {
+      "constraint_id": "21.137-odd-p-not-2",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    },
+    {
+      "constraint_id": "21.137-odd-finite-p-group",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    },
+    {
+      "constraint_id": "21.137-odd-exponent-p2",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    },
+    {
+      "constraint_id": "21.137-odd-power-set-definition",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    },
+    {
+      "constraint_id": "21.137-odd-power-set-subgroup",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    },
+    {
+      "constraint_id": "21.137-odd-P-abelian",
+      "role": "target_conclusion",
+      "result": "not_proved",
+      "evidence_ref": "Agents/Kourovka/problems/21.137/runs/2026-08-17-r21-grad-pimage-minimal-weight/findings.md"
+    }
+  ],
+  "ready_for_validator": false,
+  "created_utc": "2026-08-17T16:34:05Z"
+}

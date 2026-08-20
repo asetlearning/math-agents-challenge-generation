@@ -1,0 +1,129 @@
+---
+title: "Source-fidelity audit — Kourovka 21.52 — revision 1"
+problem: "21.52"
+scope_id: 21.52/involution-class-product-order-colouring
+scope_record: Agents/Kourovka/scopes/21.52-involution-class-product-order-colouring.json
+assignment_revision: 1
+audit_type: source-fidelity
+source_pdf_page: 172
+source_transcription_checked: yes
+audit_result: PASS
+active_assignment_answered: no
+author: operator
+tags:
+  - agent/validator
+  - user/operator
+  - domain/group-theory
+  - topic/kourovka
+  - topic/coloured-graphs
+  - project/kourovka
+  - status/draft
+---
+
+# Source-fidelity audit — Kourovka 21.52
+
+## Result
+
+**PASS.** The revision-1 canonical target, source clauses, admissibility
+constraints, target conclusion, and substantive exclusions are faithful to the
+rendered statement on Notebook No. 21, PDF page 172. No correction to the scope
+JSON is required. In particular, the typed extension interpretation of the
+source's shorthand comparison with `Aut(L)` is faithful.
+
+This is only a transcription and typing audit. It does not assess the truth of the
+assertion, perform a staleness search, or answer the active assignment;
+`active_assignment_answered: no` remains mandatory.
+
+## Independently read rendered statement
+
+The rendered page states, with typography normalized only into Markdown:
+
+> Let \(L\) be a finite non-abelian simple group, and let \(D\) be a conjugacy
+> class of involutions in \(L\). Consider the complete graph \(\Gamma\) with
+> vertex set \(D\). Define an equivalence relation \(\sim\) (graph coloring) on
+> the set of edges by \((a,b)\sim(c,d)\) if and only if
+> \(|ab|=|cd|\). An automorphism of the coloured graph \(\Gamma\) is a
+> permutation \(\tau\in S_D\) such that
+> \((a,b)\sim(a^\tau,b^\tau)\) for every edge \((a,b)\). Is it true that the
+> automorphism group of \(\Gamma\) is a subgroup of \(\operatorname{Aut}(L)\)?
+
+The page gives no extra hypothesis, parameter range, exception, comment, or
+starred-status qualification inside Problem 21.52.
+
+## Source-clause audit
+
+| clause | rendered source content | revision-1 rendering | result |
+|---|---|---|---|
+| `c-objects` | \(L\) finite non-abelian simple; \(D\) a conjugacy class of involutions in \(L\) | Exact | PASS |
+| `c-colouring` | Complete graph on \(D\); two edges equivalent exactly when the orders of the two products agree | Exact; treating edges as unordered pairs of distinct vertices is the standard content of “complete graph” | PASS |
+| `c-colour-automorphism` | \(\tau\in S_D\) and every edge is sent to an edge of the same equivalence class | Exact; the JSON's product-order equality is precisely the displayed equivalence condition | PASS |
+| `c-question` | Ask whether the coloured-graph automorphism group is a subgroup of \(\operatorname{Aut}(L)\) | Exact, subject to the faithful action typing below | PASS |
+
+Problem 21.53 begins separately below 21.52 and is not a second clause of 21.52.
+
+## Constraint-and-conclusion audit
+
+| constraint id | required source condition | audit |
+|---|---|---|
+| `21.52-forall-L-D` | The question is universal in the arbitrary pair \((L,D)\) introduced by “Let” | PASS |
+| `21.52-L-finite-nonabelian-simple` | \(L\) is finite, non-abelian, and simple | PASS |
+| `21.52-D-single-involution-class` | \(D\) is one \(L\)-conjugacy class, all of whose elements have order exactly two | PASS |
+| `21.52-Gamma-complete-on-D` | \(\Gamma\) is the complete graph with vertex set \(D\), hence its edges join distinct vertices | PASS |
+| `21.52-edge-colour-exact-product-order` | Edge colours are exactly the fibres of \(\{a,b\}\mapsto |ab|\) | PASS |
+| `21.52-tau-preserves-all-edge-colours` | \(\tau\) is a permutation of \(D\) preserving that colour on every edge | PASS |
+| `21.52-tau-induced-by-AutL` | Every such \(\tau\) is induced on \(D\) by an automorphism of \(L\) stabilizing \(D\) setwise | PASS; this is the correct typed reading of the source shorthand |
+
+No quantifier, object-class condition, distinct-vertex condition, product-order
+condition, or target conclusion is missing from the canonical list.
+
+## Typing `Aut(Gamma) <= Aut(L)`
+
+Let
+
+\[
+A=\operatorname{Aut}(\Gamma)\leq \operatorname{Sym}(D),\qquad
+B=\operatorname{Stab}_{\operatorname{Aut}(L)}(D),
+\]
+
+and let \(\rho:B\to\operatorname{Sym}(D)\) be restriction to \(D\). Every member
+of \(B\) preserves product orders, so \(\rho(B)\leq A\) automatically. The
+question's substantive direction is therefore
+
+\[
+A\leq \rho(B),
+\]
+
+equivalently \(A=\rho(B)\): every colour-preserving permutation of \(D\) extends
+to an automorphism of \(L\) stabilizing \(D\) setwise.
+
+This also supports the literal “subgroup” shorthand rather than merely an arbitrary
+abstract embedding. The class \(D\) generates \(L\): its generated subgroup is
+nontrivial and normal in the simple group \(L\). Hence \(\rho\) has trivial kernel,
+because an automorphism fixing \(D\) pointwise fixes the group generated by \(D\).
+Thus the setwise stabilizer \(B\) is faithfully identified with its restriction
+image. Under this natural identification, the revision-1 target is exactly the
+well-typed action statement meant by the source.
+
+## Exclusion audit
+
+| revision-1 exclusion | source-fidelity assessment |
+|---|---|
+| Problem 21.53 | PASS: it is a separate numbered problem and asks a different two-colour-determination question. |
+| Union of all involutions when there is more than one involution class | PASS: the source fixes one conjugacy class \(D\). |
+| Automorphisms of the underlying uncoloured complete graph | PASS: the source explicitly requires preservation of the edge-colour equivalence relation. |
+| Colouring by the conjugacy class of \(ab\) rather than by \(|ab|\) | PASS: equality of element orders, and only that datum, defines the source colouring. |
+| A bounded list of simple groups as proof of the universal assertion | PASS as a logical adequacy boundary forced by the universal quantifier; it is not an additional explicit exclusion printed on the page. |
+
+## Non-substantive transcription note
+
+The linked Research note's plain Markdown source block writes `SD`, `aτ`, and `bτ`.
+For exact visual typography those should be rendered as \(S_D\), \(a^\tau\), and
+\(b^\tau\). The canonical scope JSON already carries the correct permutation and
+action semantics, so this editorial typography loss does not alter the PASS or
+require a scope revision.
+
+## Audit boundary
+
+The configured PDF page was rendered and inspected visually. No web search,
+literature assessment, truth assessment, computation, or problem-solving search was
+performed.

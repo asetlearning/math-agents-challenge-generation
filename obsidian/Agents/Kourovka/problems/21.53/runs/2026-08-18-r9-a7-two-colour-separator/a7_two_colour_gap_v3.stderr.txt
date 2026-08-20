@@ -1,0 +1,6 @@
+Error, immutable lists cannot be sorted at /usr/share/gap/lib/list.gi:2393 called from
+<function "SORT_MUTABILITY_ERROR_HANDLER">( <arguments> )
+ called from read-eval loop at Agents/Kourovka/problems/21.53/runs/2026-08-18-r9-a7-two-colour-separator/a\
+7_two_colour_gap.g:11
+Reading file "Agents/Kourovka/problems/21.53/runs/2026-08-18-r9-a7-two-colour-\
+separator/a7_two_colour_gap.g" has been aborted.

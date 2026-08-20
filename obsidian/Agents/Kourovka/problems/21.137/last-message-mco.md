@@ -1,0 +1,1 @@
+Completed via the vault bus with outcome `PARTIAL_RESULT`. Findings and audit requests were routed to Lead and Validator. Ledger stopped at 165/180 when the mandated obstruction was obtained; 15 minutes remain unspent.

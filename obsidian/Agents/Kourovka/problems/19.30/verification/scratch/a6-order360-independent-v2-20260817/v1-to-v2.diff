@@ -1,0 +1,52 @@
+--- Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/independent-a6-order360.g	2026-08-17 19:24:58.449599100 +0300
++++ Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-v2-20260817/independent-a6-order360-v2.g	2026-08-17 19:33:13.706234400 +0300
+@@ -65,7 +65,7 @@
+   Require(Length(irreducibles) = Length(classes),
+           "number of ordinary irreducibles differs from number of classes");
+   Require(ForAll(irreducibles,
+-                 character -> UnderlyingCharacteristic(character) = 0),
++                 character -> UnderlyingCharacteristic(UnderlyingCharacterTable(character)) = 0),
+           "a returned irreducible is not an ordinary character");
+   Require(ForAll(irreducibles,
+                  character -> UnderlyingCharacterTable(character) = table),
+--- Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/run-independent.sh	2026-08-17 19:25:03.196592300 +0300
++++ Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-v2-20260817/run-independent-v2.sh	2026-08-17 19:33:32.273934600 +0300
+@@ -1,18 +1,18 @@
+ #!/usr/bin/env bash
+ set -u
+ 
+-validation_dir="Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817"
+-gap_script="$validation_dir/independent-a6-order360.g"
+-python_checker="$validation_dir/verify-independent.py"
+-hash_manifest="$validation_dir/frozen.sha256"
++validation_dir="Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-v2-20260817"
++gap_script="$validation_dir/independent-a6-order360-v2.g"
++python_checker="Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/verify-independent.py"
++hash_manifest="$validation_dir/frozen-v2.sha256"
+ claimant_output="Agents/Kourovka/problems/19.30/runs/2026-08-16-r1-counterexample/scratch/a6_order360_vanishing_collision.out"
+-gap_stdout="$validation_dir/gap-stdout.txt"
+-gap_stderr="$validation_dir/gap-stderr.txt"
+-gap_status="$validation_dir/gap-exit-status.txt"
+-checker_stdout="$validation_dir/checker-stdout.txt"
+-checker_stderr="$validation_dir/checker-stderr.txt"
+-checker_status="$validation_dir/checker-exit-status.txt"
+-hash_output="$validation_dir/hash-check.txt"
++gap_stdout="$validation_dir/gap-stdout-v2.txt"
++gap_stderr="$validation_dir/gap-stderr-v2.txt"
++gap_status="$validation_dir/gap-exit-status-v2.txt"
++checker_stdout="$validation_dir/checker-stdout-v2.txt"
++checker_stderr="$validation_dir/checker-stderr-v2.txt"
++checker_status="$validation_dir/checker-exit-status-v2.txt"
++hash_output="$validation_dir/hash-check-v2.txt"
+ 
+ for output_path in \
+   "$gap_stdout" "$gap_stderr" "$gap_status" \
+@@ -33,7 +33,7 @@
+ (
+   ulimit -t 870
+   ulimit -v 2097152
+-  exec /usr/bin/gap -q "$gap_script"
++  exec /usr/bin/gap -q --quitonbreak "$gap_script"
+ ) >"$gap_stdout" 2>"$gap_stderr"
+ gap_rc=$?
+ printf '%s\n' "$gap_rc" >"$gap_status"

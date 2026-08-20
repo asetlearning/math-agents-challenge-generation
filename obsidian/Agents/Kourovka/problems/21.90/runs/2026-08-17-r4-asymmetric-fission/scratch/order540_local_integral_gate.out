@@ -1,0 +1,15 @@
+IA={77,60,13;1,12,65} a=[ 0, 16, 52, 12 ] layers=[ 1, 77, 385, 77 ] v=540
+handshakes=[ 1232, 20020, 924 ] parities=[ 0, 0, 0 ]
+A1_eig=[ 77, 17, -1, -13 ] mult=[ 1, 77, 385, 77 ]
+A2_eig=[ 385, -5, -5, 25 ] A3_eig=[ 77, -13, 5, -13 ]
+Gamma2_srg=[540,385,280,260] spectrum=[385^1,25^77,-5^462]
+Gamma3_srg=[540,77,4,12] spectrum=[77^1,5^385,-13^154]
+A1plusA3_srg=[540,154,28,50] spectrum=[154^1,4^462,-26^77]
+induced_relation_degrees_rows_layer1_layer2_layer3=
+[ [ 16, 60, 0 ], [ 52, 280, 52 ], [ 12, 60, 4 ] ]
+all_induced_handshakes=[ [ 1232, 4620, 0 ], [ 20020, 107800, 20020 ],
+  [ 924, 4620, 308 ] ]
+M_spectrum=[78^1,18^77,0^385,-12^77] rankQ=155
+identities: X2=65I+4X+12J-12B; XB=13J-13I-13X-B
+identities: M(B+13I)=13J; M2=60I+6M+12J-12B
+identities: B2=65I-8B+12J; D2=72I-6D+12J; MD=13J-12M

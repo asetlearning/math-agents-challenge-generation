@@ -1,0 +1,31 @@
+{
+  "all_pairs_commute": true,
+  "generator_codes": [
+    243,
+    130741056
+  ],
+  "pair_count_including_diagonal": 3,
+  "pairs": [
+    {
+      "commute": true,
+      "i": 0,
+      "j": 0,
+      "left_right_code": 486,
+      "right_left_code": 486
+    },
+    {
+      "commute": true,
+      "i": 0,
+      "j": 1,
+      "left_right_code": 130741299,
+      "right_left_code": 130741299
+    },
+    {
+      "commute": true,
+      "i": 1,
+      "j": 1,
+      "left_right_code": 261482355,
+      "right_left_code": 261482355
+    }
+  ]
+}

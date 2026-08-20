@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "claim_id": "21.52-psl27-colour-r1-partial-001",
+  "problem_id": "21.52",
+  "scope_id": "21.52/involution-class-product-order-colouring",
+  "assignment_revision": 1,
+  "claim_kind": "proof",
+  "candidate_object": "The 21-element involution class of PSL(2,7), its complete product-order colouring, and the computed restriction image of Aut(PSL(2,7)).",
+  "rows": [
+    {
+      "constraint_id": "21.52-forall-L-D",
+      "role": "admissibility",
+      "result": "unknown",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/psl27-involution-colour-log.md"
+    },
+    {
+      "constraint_id": "21.52-L-finite-nonabelian-simple",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/scratch/psl27-involution-colour/psl27-certificate.json"
+    },
+    {
+      "constraint_id": "21.52-D-single-involution-class",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/scratch/psl27-involution-colour/psl27-certificate.json"
+    },
+    {
+      "constraint_id": "21.52-Gamma-complete-on-D",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/scratch/psl27-involution-colour/psl27-certificate.json"
+    },
+    {
+      "constraint_id": "21.52-edge-colour-exact-product-order",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/scratch/psl27-involution-colour/psl27-certificate.json"
+    },
+    {
+      "constraint_id": "21.52-tau-preserves-all-edge-colours",
+      "role": "admissibility",
+      "result": "pass",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/scratch/psl27-involution-colour/psl27-certificate.json"
+    },
+    {
+      "constraint_id": "21.52-tau-induced-by-AutL",
+      "role": "target_conclusion",
+      "result": "not_proved",
+      "evidence_ref": "Agents/Kourovka/problems/21.52/psl27-involution-colour-log.md"
+    }
+  ],
+  "ready_for_validator": false,
+  "created_utc": "2026-08-17T16:06:14Z"
+}

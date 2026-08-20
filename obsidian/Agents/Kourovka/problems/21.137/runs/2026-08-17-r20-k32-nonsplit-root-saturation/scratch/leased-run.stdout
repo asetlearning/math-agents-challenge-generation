@@ -1,0 +1,27 @@
+STRATEGY=K32-NONSPLIT-ROOT-SATURATION
+PRIME=3
+FROZEN_CORRECTION=B_YX lexicographic row 0
+GATE_0=PASS
+R0_NORMAL_FORM=x2^a*x1^b*y2^d*y1^e*u^i, all coordinates in F3
+R0_ORDER=3^5=243
+R0_EXPONENT=3
+R0_RELATIONS=x2,x1,y2,y1 commute; all five generators cube to 1; u^-1*x2*u=x2*x1; u^-1*y2*u=y2*y1; u fixes x1,y1
+R0_COMMUTATOR_GENERATORS=(1, 0, 0, 0),(0, 0, 1, 0)
+R0_COMMUTATOR_RANK=2
+GATE_1=PASS
+SCHREIER_EQUATIONS=alternation, bilinear cocycle, U-equivariance: PASS
+FIXED_ACTIONS=U,S_(R_f),S_(R_e): PASS
+A_f_CUBE=((1, 0, 0, 0, 0, 0), (0, 0, 0), 0)
+A_e_CUBE=((0, 0, 0, 1, 0, 0), (0, 0, 0), 0)
+G0_NORMAL_FORM=(K=F3^6, W0=<c,z1,z2>=F3^3, i in F3)
+G0_ORDER=3^10=59049
+G_NORMAL_FORM=(K=F3^6, W=<z>_9 x <z1,z2>_3, i in F3), z^3=c
+G_ORDER=3^11=177147
+CUBE_FORMULA=for g=(k,w,i), g^3 has E-part q*U^(-i)(q)*U^(-2i)(q); K-label is (I+U^(-i)+U^(-2i))k; central correction is 2*(B(k,Ak)+B(k,A^2k)+B(Ak,A^2k)); the W norm contributes only <c> modulo <c>
+LABEL_i=1: X0=x2; Y0=y2; z1=2*x0*y2 + 2*x1*y2 + x2*y0 + x2*y1; z2=2*x1*y2 + x2*y1
+LABEL_i=2: X0=x2; Y0=y2; z1=x0*y2 + 2*x2*y0; z2=x1*y2 + 2*x2*y1
+ACTUAL_QUOTIENT_LABEL_COUNT=73
+FIRST_MISSING_QUOTIENT_LABEL=(0, 0, 0, 1)
+MISSING_QUOTIENT_LABEL_COUNT=8
+GATE_2=FAIL
+FAIL_REASON=the complete actual cube-label set is a proper subset of P/<c>

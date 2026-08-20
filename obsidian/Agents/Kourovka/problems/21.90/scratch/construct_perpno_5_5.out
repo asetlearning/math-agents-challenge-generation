@@ -1,0 +1,22 @@
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/construct_perpno_5_5.g:7
+  pos := First([1..5],i->x[i]<>0);
+                         ^
+projective_points=781 Q_counts=[ 156, 163, 150, 150, 162 ]
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/construct_perpno_5_5.g:22
+  commonAdj := Set(List(Combinations([1..Length(chosen)],2),ij->Length(Interse\
+ction(adj[ij[1]],adj[ij[2]]))));
+                                                                              \
+      ^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.90/scra\
+tch/construct_perpno_5_5.g:22
+  commonAdj := Set(List(Combinations([1..Length(chosen)],2),ij->Length(Interse\
+ction(adj[ij[1]],adj[ij[2]]))));
+                                                                              \
+                 ^^^
+type_size=325 degrees=[ 60 ] common_counts=[ 10, 15 ]
+type_size=300 degrees=[ 65 ] common_counts=[ 10, 15 ]
+minus_perp aut_order=9360000 vertex_orbit=300 stabilizer_orbit_sizes=
+[ 1, 65, 104, 130 ]
+derived_order=4680000 stabilizer_orbit_sizes=[ 1, 65, 104, 130 ]

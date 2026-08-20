@@ -1,0 +1,48 @@
+projective_points=781 Q_counts=[ 156, 163, 150, 150, 162 ]
+type_size=325 degrees=[ 60 ] common_counts=[ 10, 15 ]
+type_size=300 degrees=[ 65 ] common_counts=[ 10, 15 ]
+minus_perp aut_order=9360000 vertex_orbit=300 stabilizer_orbit_sizes=
+[ 1, 65, 104, 130 ]
+derived_order=4680000 stabilizer_orbit_sizes=[ 1, 65, 104, 130 ]
+tom_classes=307 iso_fail=false
+TRANSITIVE label=D:292 order=3000 base_degrees=
+[ 5, 5, 5, 5, 10, 5, 5, 10, 5, 5, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+  5, 5, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1 ]
+TRANSITIVE_DONE label=D:292 linear_unions_tested=0 quadratic_passes=0 hits=0
+TRANSITIVE label=D:296 order=6000 base_degrees=
+[ 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 
+  10, 10, 10, 10, 10, 2 ]
+TRANSITIVE_DONE label=D:296 linear_unions_tested=0 quadratic_passes=0 hits=0
+TRANSITIVE label=D:303 order=15000 base_degrees=
+[ 25, 25, 25, 25, 10, 25, 10, 10, 25, 25, 25, 1, 1, 1, 1 ]
+TRANSITIVE_DONE label=D:303 linear_unions_tested=0 quadratic_passes=0 hits=0
+TRANSITIVE label=D:305 order=30000 base_degrees=[ 10, 10, 10, 2, 2 ]
+TRANSITIVE_DONE label=D:305 linear_unions_tested=0 quadratic_passes=0 hits=0
+TRANSITIVE label=D:307 order=4680000 base_degrees=[  ]
+TRANSITIVE_DONE label=D:307 linear_unions_tested=0 quadratic_passes=0 hits=0
+derived_transitive_classes=5 derived_target_hits=0 two_150_classes=
+3 runtime_ms=668
+OUTER_BASE D:282 h0_order=1500 normalizer_order=6000 quotient_order=
+4 outer_involutions=0
+OUTER_BASE D:285 h0_order=1500 normalizer_order=6000 quotient_order=
+4 outer_involutions=2
+TRANSITIVE label=OUT:285:1 order=3000 base_degrees=
+[ 5, 5, 5, 5, 10, 5, 5, 10, 5, 5, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+  5, 5, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1 ]
+TRANSITIVE_DONE label=OUT:285:1 linear_unions_tested=0 quadratic_passes=
+0 hits=0
+TRANSITIVE label=OUT:285:2 order=3000 base_degrees=
+[ 5, 5, 5, 5, 10, 5, 5, 10, 5, 5, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+  5, 5, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1 ]
+TRANSITIVE_DONE label=OUT:285:2 linear_unions_tested=0 quadratic_passes=
+0 hits=0
+OUTER_BASE D:294 h0_order=3000 normalizer_order=6000 quotient_order=
+2 outer_involutions=1
+TRANSITIVE label=OUT:294:3 order=6000 base_degrees=
+[ 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 
+  2, 10, 10, 10, 10, 2 ]
+TRANSITIVE_DONE label=OUT:294:3 linear_unions_tested=0 quadratic_passes=
+0 hits=0
+outer_extensions_tested=3 outer_transitive=3 outer_target_hits=
+0 total_vertex_transitive_hits=0 total_runtime_ms=749
+exit_code=0

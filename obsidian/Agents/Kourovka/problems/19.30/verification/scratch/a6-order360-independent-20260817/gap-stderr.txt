@@ -1,0 +1,11 @@
+Error, no method found! For debugging hints type ?Recovery from NoMethodFound
+Error, no 1st choice method found for `UnderlyingCharacteristic' on 1 arguments at /usr/share/gap/lib/methsel2.g:249 called from
+UnderlyingCharacteristic( character ) at Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/independent-a6-order360.g:68 called from
+func( elm ) at /usr/share/gap/lib/coll.gi:1559 called from
+ForAll( irreducibles, function ( character )
+      return UnderlyingCharacteristic( character ) = 0;
+  end ) at Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/independent-a6-order360.g:68 called from
+<function "ActualVanishingData">( <arguments> )
+ called from read-eval loop at Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/independent-a6-order360.g:135
+type 'quit;' to quit to outer loop
+Reading file "Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/independent-a6-order360.g" has been aborted.

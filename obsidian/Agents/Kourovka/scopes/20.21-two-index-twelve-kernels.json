@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "protocol_version": 2,
+  "scope_key": "20.21-two-index-twelve-kernels",
+  "problem_id": "20.21",
+  "scope_id": "20.21/two-index-twelve-kernels",
+  "assignment_revision": 1,
+  "source": {
+    "issue": 20,
+    "pdf_page": 148,
+    "statement_checked": true,
+    "checked_by": "Lead",
+    "checked_utc": "2026-08-16T11:13:07Z",
+    "transcription_note": "Research/Group theory/Open problems/Kourovka/20.21-two-index-twelve-normal-subgroups.md",
+    "independent_scope_audit": {
+      "required": true,
+      "status": "passed",
+      "auditor": "Validator",
+      "note": "Agents/Kourovka/problems/20.21/verification/2026-08-16T114327Z-source-fidelity-audit.md"
+    }
+  },
+  "target_statement": "There exist a finite group G and normal subgroups K,L normal in G such that [G:K]=[G:L]=12, K is isomorphic to L, G/K is isomorphic to C_12, and G/L is isomorphic to A_4.",
+  "source_clauses": [
+    {
+      "clause_id": "c1",
+      "text": "Does there exist a finite group G with two normal subgroups K and L, each with index 12 in G, such that K is isomorphic to L, but G/K is isomorphic to C12, while G/L is isomorphic to A4?",
+      "in_scope": true
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "20.21-exists-GKL",
+      "kind": "quantifier",
+      "role": "admissibility",
+      "statement": "The target asks for existence of one triple (G,K,L) satisfying all remaining rows.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-G-finite",
+      "kind": "object_class",
+      "role": "admissibility",
+      "statement": "G is finite.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-KL-normal",
+      "kind": "hypothesis",
+      "role": "admissibility",
+      "statement": "K and L are normal subgroups of G.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-both-index-12",
+      "kind": "order",
+      "role": "admissibility",
+      "statement": "Both indices are exactly 12: [G:K]=[G:L]=12.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-kernels-isomorphic",
+      "kind": "relation",
+      "role": "admissibility",
+      "statement": "K is isomorphic to L as an abstract group.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-quotient-K-C12",
+      "kind": "relation",
+      "role": "admissibility",
+      "statement": "G/K is isomorphic to the cyclic group C_12.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-quotient-L-A4",
+      "kind": "relation",
+      "role": "admissibility",
+      "statement": "G/L is isomorphic to the alternating group A_4.",
+      "required": true,
+      "source_clause_id": "c1"
+    },
+    {
+      "constraint_id": "20.21-existence-conclusion",
+      "kind": "conclusion",
+      "role": "target_conclusion",
+      "statement": "At least one such triple (G,K,L) exists.",
+      "required": true,
+      "source_clause_id": "c1"
+    }
+  ],
+  "excluded_scopes": [
+    "Pairs of nonnormal subgroups",
+    "Pairs with only one index equal to 12",
+    "Pairs with the two quotient isomorphism types swapped unless K and L are correspondingly relabelled"
+  ],
+  "success_criteria": {
+    "proof": "Construct one explicit finite triple (G,K,L) and prove every admissibility row.",
+    "counterexample": "Prove no finite triple satisfying all rows exists; finite-range failure alone does not suffice.",
+    "partial_progress": [
+      "A proved extension/fibre-product reduction that narrows all possible triples.",
+      "A complete bounded exclusion with exact coverage and independently reproducible code."
+    ],
+    "certificate": "A finite presentation or reproducible group identifier together with explicit embeddings of K,L and independent quotient, index, normality, and isomorphism checks."
+  },
+  "selection_status": "approved",
+  "state": "parked",
+  "scope_answered": false,
+  "active_direction": "none",
+  "truth_likelihood": {
+    "estimate": 0.42,
+    "rationale": "The constructive direction found no witness in its bounded template and proved structural obstructions for split elementary, Q8, and D8 kernels. Nonexistence is now the higher-value alternate direction, but this remains a planning estimate only.",
+    "updated_utc": "2026-08-16T13:21:59Z"
+  },
+  "priority": {
+    "importance": 4,
+    "probability_of_substantial_progress": 0.55,
+    "verifiability": 5,
+    "expected_active_hours": 3.0,
+    "rationale": "A positive answer has a compact finite certificate, and the two quotient maps admit a structured fibre-product formulation."
+  },
+  "direction_sessions": {
+    "proof": {
+      "session_id": "01a00a6c-66f6-7d03-a3c5-b32f9ec22750",
+      "state": "complete",
+      "parent_session_id": "019ff183-a243-7302-a36b-b279b544dc65",
+      "fresh_session_reason": "The legacy catalogue strategy was reformulated repeatedly; the restart switches representation to constructive extension data."
+    },
+    "counterexample": {
+      "session_id": "01a00abe-5a61-7322-9033-705ff7b560e2",
+      "state": "complete",
+      "parent_session_id": "01a00a6c-66f6-7d03-a3c5-b32f9ec22750",
+      "fresh_session_reason": "The constructive direction closed with reviewed family obstructions after 105 cumulative active minutes; the independent alternate direction tests intrinsic invariants across the two Goursat branches."
+    }
+  },
+  "current_strategy": null,
+  "strategy_history": [
+    "Legacy bounded catalogue work is preserved but excluded from the clean-context prompt.",
+    "The counterexample/nonexistence direction stopped at 128 cumulative active minutes after its quotient-characteristic strategy met the strict kill criterion; route the computation-free minimum-witness reductions to Validator before any new construction pivot.",
+    "Validator independently reconstructed all four minimum-witness restrictions as a necessary partial result and records active_assignment_answered:no; route the surviving branch to MathExpert before spending the remaining 52 minutes.",
+    "MathExpert found that a target-faithful next representation must retain the marked datum (Q,N,M,phi) and ambient order-three compatibility, but the admissible record supplies neither a bounded completeness theorem nor a 52-minute certificate; Lead parks the scope."
+  ],
+  "latest_outcome": "PARKED at 128/180 active minutes after MathExpert PARK_RECOMMENDED: reviewed minimum-witness reductions are preserved, but no bounded model retains both unmarked kernels, their isomorphism, and ambient order-three compatibility; existence remains unanswered",
+  "open_questions": [
+    "Can the surviving common-C3 branch be represented by a bounded marked datum (Q,N,M,phi) that retains the ambient order-three compatibility and admits a complete certificate?"
+  ],
+  "revision_history": [
+    {
+      "revision": 1,
+      "changed_utc": "2026-08-16T11:13:07Z",
+      "reason": "Initial protocol-v2 atomic migration and clean-context strategy pivot.",
+      "supersedes": [
+        "legacy whole-problem assignment"
+      ]
+    }
+  ],
+  "blind_run": {
+    "enabled": true,
+    "open_web": false,
+    "solution_bearing_history_allowed": false,
+    "claim_of_clean_pretraining": false
+  },
+  "updated_utc": "2026-08-16T16:56:19Z"
+}

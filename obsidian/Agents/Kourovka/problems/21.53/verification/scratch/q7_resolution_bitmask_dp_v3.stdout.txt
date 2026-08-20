@@ -1,0 +1,9 @@
+projective_points=57
+conic_points=8
+internal_points=21
+geometric_blocks=28
+traded_blocks=28
+new_determinants=[1, 6, 4, 6]
+gram_equal=True
+geometric_resolutions=8
+traded_resolutions=0

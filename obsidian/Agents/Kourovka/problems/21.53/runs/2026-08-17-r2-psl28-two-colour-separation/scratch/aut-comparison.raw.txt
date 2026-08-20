@@ -1,0 +1,69 @@
+returncode=0
+--- stdout ---
+--- stderr ---
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:113
+Print("@@TWO_INCIDENCE_VERTICES=", TwoGraph.graph.order, "
+                                                         ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:114
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:115
+Print("@@FULL_INCIDENCE_VERTICES=", FullGraph.graph.order, "
+                                                           ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:116
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:117
+Print("@@EDGE_COUNTS=[", CountRelationEdges(2), ",", CountRelationEdges(3), ",", CountRelationEdges(7), ",", CountRelationEdges(9), "]
+                                                                                                                                    ^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:118
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:119
+Print("@@TWO_ORDER=", Size(TwoGroup), "
+                                      ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:120
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:121
+Print("@@FULL_ORDER=", Size(FullGroup), "
+                                        ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:122
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:123
+Print("@@FULL_SUBGROUP_OF_TWO=", IsSubgroup(TwoGroup, FullGroup), "
+                                                                  ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:124
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:125
+Print("@@EQUAL=", IsEqual, "
+                           ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:126
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:127
+Print("@@TWO_GENERATORS=", List(GeneratorsOfGroup(TwoGroup), ImagesList), "
+                                                                          ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:128
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:129
+Print("@@FULL_GENERATORS=", List(GeneratorsOfGroup(FullGroup), ImagesList), "
+                                                                            ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:130
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:132
+  Print("@@CANDIDATE=[]
+        ^^^^^^^^^^^^^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:133
+");
+^^^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:135
+  Print("@@CANDIDATE=", ImagesList(Candidate), "
+                                               ^
+Syntax error: String must not include <newline> in scratch/aut-comparison.generated.g:136
+");
+^^^

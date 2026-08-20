@@ -1,0 +1,9 @@
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.53/runs\
+/2026-08-18-r10-m11-two-colour-separator/scratch/m11_two_colour_gap_v1.g:54
+  graph := EdgeOrbitsGraph(Group(()), directedEdges, nextVertex);
+           ^^^^^^^^^^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.53/runs\
+/2026-08-18-r10-m11-two-colour-separator/scratch/m11_two_colour_gap_v1.g:55
+  M11Assert(IsSimpleGraph(graph), "incidence graph is not simple");
+            ^^^^^^^^^^^^^
+Error, Variable: 'OnConjugation' must have a value

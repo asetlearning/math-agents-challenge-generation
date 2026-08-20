@@ -1,0 +1,305 @@
+{
+  "array_convention": "S_ij counts all 210 T, including endpoints; signatures of unordered pairs are canonicalized up to transposition. Endpoint-excluded arrays were checked separately and give the same collision/separation gate.",
+  "bare_flag_fibre_count": 35,
+  "colour_two_pair_count": 1785,
+  "cross_fibre_colour_two_pair_count": 1260,
+  "cross_signature_histogram": [
+    {
+      "multiplicity": 1260,
+      "nonzero_cells": [
+        {
+          "count": 1,
+          "i": 1,
+          "j": 2
+        },
+        {
+          "count": 1,
+          "i": 2,
+          "j": 1
+        },
+        {
+          "count": 4,
+          "i": 2,
+          "j": 2
+        },
+        {
+          "count": 4,
+          "i": 2,
+          "j": 3
+        },
+        {
+          "count": 4,
+          "i": 2,
+          "j": 4
+        },
+        {
+          "count": 4,
+          "i": 2,
+          "j": 6
+        },
+        {
+          "count": 4,
+          "i": 3,
+          "j": 2
+        },
+        {
+          "count": 20,
+          "i": 3,
+          "j": 3
+        },
+        {
+          "count": 20,
+          "i": 3,
+          "j": 4
+        },
+        {
+          "count": 8,
+          "i": 3,
+          "j": 5
+        },
+        {
+          "count": 12,
+          "i": 3,
+          "j": 6
+        },
+        {
+          "count": 4,
+          "i": 4,
+          "j": 2
+        },
+        {
+          "count": 20,
+          "i": 4,
+          "j": 3
+        },
+        {
+          "count": 4,
+          "i": 4,
+          "j": 4
+        },
+        {
+          "count": 8,
+          "i": 4,
+          "j": 5
+        },
+        {
+          "count": 12,
+          "i": 4,
+          "j": 6
+        },
+        {
+          "count": 8,
+          "i": 5,
+          "j": 3
+        },
+        {
+          "count": 8,
+          "i": 5,
+          "j": 4
+        },
+        {
+          "count": 8,
+          "i": 5,
+          "j": 5
+        },
+        {
+          "count": 8,
+          "i": 5,
+          "j": 6
+        },
+        {
+          "count": 4,
+          "i": 6,
+          "j": 2
+        },
+        {
+          "count": 12,
+          "i": 6,
+          "j": 3
+        },
+        {
+          "count": 12,
+          "i": 6,
+          "j": 4
+        },
+        {
+          "count": 8,
+          "i": 6,
+          "j": 5
+        },
+        {
+          "count": 12,
+          "i": 6,
+          "j": 6
+        }
+      ]
+    }
+  ],
+  "cross_signature_type_count": 1,
+  "edge_product_order_palette": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "endpoint_excluded_gate_agrees": true,
+  "gate_result": "FIBRE_SEPARATION",
+  "matrix_encoding": "16-bit row-major, low nibble is row 0; vectors are 4-bit columns",
+  "model": "all rank-2 square-zero 4x4 matrices over F_2; I+N in GL(4,2)=PSL(4,2)",
+  "product_order_palette_including_diagonal": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "same_fibre_colour_two_pair_count": 525,
+  "same_signature_histogram": [
+    {
+      "multiplicity": 210,
+      "nonzero_cells": [
+        {
+          "count": 1,
+          "i": 1,
+          "j": 2
+        },
+        {
+          "count": 1,
+          "i": 2,
+          "j": 1
+        },
+        {
+          "count": 4,
+          "i": 2,
+          "j": 2
+        },
+        {
+          "count": 12,
+          "i": 2,
+          "j": 4
+        },
+        {
+          "count": 24,
+          "i": 3,
+          "j": 3
+        },
+        {
+          "count": 24,
+          "i": 3,
+          "j": 4
+        },
+        {
+          "count": 16,
+          "i": 3,
+          "j": 5
+        },
+        {
+          "count": 12,
+          "i": 4,
+          "j": 2
+        },
+        {
+          "count": 24,
+          "i": 4,
+          "j": 3
+        },
+        {
+          "count": 12,
+          "i": 4,
+          "j": 4
+        },
+        {
+          "count": 16,
+          "i": 5,
+          "j": 3
+        },
+        {
+          "count": 16,
+          "i": 5,
+          "j": 5
+        },
+        {
+          "count": 48,
+          "i": 6,
+          "j": 6
+        }
+      ]
+    },
+    {
+      "multiplicity": 315,
+      "nonzero_cells": [
+        {
+          "count": 1,
+          "i": 1,
+          "j": 2
+        },
+        {
+          "count": 1,
+          "i": 2,
+          "j": 1
+        },
+        {
+          "count": 8,
+          "i": 2,
+          "j": 2
+        },
+        {
+          "count": 8,
+          "i": 2,
+          "j": 4
+        },
+        {
+          "count": 32,
+          "i": 3,
+          "j": 3
+        },
+        {
+          "count": 16,
+          "i": 3,
+          "j": 4
+        },
+        {
+          "count": 16,
+          "i": 3,
+          "j": 6
+        },
+        {
+          "count": 8,
+          "i": 4,
+          "j": 2
+        },
+        {
+          "count": 16,
+          "i": 4,
+          "j": 3
+        },
+        {
+          "count": 24,
+          "i": 4,
+          "j": 4
+        },
+        {
+          "count": 32,
+          "i": 5,
+          "j": 6
+        },
+        {
+          "count": 16,
+          "i": 6,
+          "j": 3
+        },
+        {
+          "count": 32,
+          "i": 6,
+          "j": 5
+        }
+      ]
+    }
+  ],
+  "same_signature_type_count": 2,
+  "shared_signature_type_count": 0,
+  "vertex_count": 210,
+  "vertices_per_fibre": 6
+}

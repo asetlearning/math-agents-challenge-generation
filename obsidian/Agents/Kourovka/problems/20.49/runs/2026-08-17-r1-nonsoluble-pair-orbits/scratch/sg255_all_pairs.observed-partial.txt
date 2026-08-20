@@ -1,0 +1,30 @@
+KOUROVKA 20.49 SG255 RUN — MANUALLY PRESERVED OBSERVED PARTIAL OUTPUT
+This is not the raw stdout stream. The frozen script mistakenly called Print(out,...),
+which printed the stream object and data to process stdout while leaving the intended
+output file empty. The records below are transcribed from the actually observed tool
+output chunks. The command ended with shell exit 124 at the 20-minute timeout.
+
+Complete sequential order markers were observed for orders 1 through 239, followed by
+ORDER order=240 catalogue_count=208. Because the script emits the next ORDER marker
+only after exhausting every catalogue index at the preceding order, the pair scan was
+complete for all nonsoluble representatives of orders at most 239. At order 240, the
+following completed nonsoluble group records were observed before timeout.
+
+GROUP id=[60,5] status=HAS_FULL_EXPONENT_PAIR exponent=30 tested_pairs=3600 full_exponent_pairs=2280 first_witness=[2,16,3,3,60] exponent_histogram=[[1,1],[2,75],[3,80],[5,144],[6,660],[10,360],[30,2280]] runtime_ms=5650
+GROUP id=[120,5] status=HAS_FULL_EXPONENT_PAIR exponent=60 tested_pairs=14400 full_exponent_pairs=9120 first_witness=[2,11,5,4,120] exponent_histogram=[[1,1],[2,3],[3,80],[4,300],[5,144],[6,240],[10,432],[12,2640],[20,1440],[60,9120]] runtime_ms=45481
+GROUP id=[120,34] status=HAS_FULL_EXPONENT_PAIR exponent=60 tested_pairs=14400 full_exponent_pairs=6840 first_witness=[2,33,2,4,120] exponent_histogram=[[1,1],[2,195],[3,80],[4,540],[5,144],[6,1440],[10,360],[12,1080],[20,1440],[30,2280],[60,6840]] runtime_ms=32347
+GROUP id=[120,35] status=HAS_FULL_EXPONENT_PAIR exponent=30 tested_pairs=14400 full_exponent_pairs=9120 first_witness=[3,31,3,3,60] exponent_histogram=[[1,1],[2,303],[3,80],[5,144],[6,2880],[10,1872],[30,9120]] runtime_ms=27060
+GROUP id=[168,42] status=HAS_FULL_EXPONENT_PAIR exponent=84 tested_pairs=28224 full_exponent_pairs=19152 first_witness=[2,29,2,3,168] exponent_histogram=[[1,1],[2,147],[3,224],[4,756],[6,1848],[7,384],[12,3024],[21,2688],[84,19152]] runtime_ms=46619
+GROUP id=[180,19] status=HAS_FULL_EXPONENT_PAIR exponent=30 tested_pairs=32400 full_exponent_pairs=23400 first_witness=[4,46,3,3,60] exponent_histogram=[[1,1],[2,75],[3,728],[5,144],[6,6540],[10,360],[15,1152],[30,23400]] runtime_ms=61938
+GROUP id=[240,89] status=HAS_FULL_EXPONENT_PAIR exponent=120 tested_pairs=57600 full_exponent_pairs=27360 first_witness=[2,141,5,4,240] exponent_histogram=[[1,1],[2,3],[3,80],[4,780],[5,144],[6,240],[8,2160],[10,432],[12,5760],[20,1440],[24,4320],[40,5760],[60,9120],[120,27360]] runtime_ms=225921
+GROUP id=[240,90] status=HAS_FULL_EXPONENT_PAIR exponent=120 tested_pairs=57600 full_exponent_pairs=27360 first_witness=[2,7,6,5,240] exponent_histogram=[[1,1],[2,123],[3,80],[4,660],[5,144],[6,1920],[8,2160],[10,432],[12,4080],[20,1440],[24,4320],[40,5760],[60,9120],[120,27360]] runtime_ms=223072
+GROUP id=[240,91] status=HAS_FULL_EXPONENT_PAIR exponent=60 tested_pairs=57600 full_exponent_pairs=27360 first_witness=[3,65,4,4,240] exponent_histogram=[[1,1],[2,303],[3,80],[4,2640],[5,144],[6,2880],[10,1872],[12,7440],[20,5760],[30,9120],[60,27360]] runtime_ms=168864
+GROUP id=[240,92] status=HAS_FULL_EXPONENT_PAIR exponent=60 tested_pairs=57600 full_exponent_pairs=27360 first_witness=[5,63,3,12,240] exponent_histogram=[[1,1],[2,303],[3,80],[4,912],[5,144],[6,2880],[10,1872],[12,8880],[20,6048],[30,9120],[60,27360]] runtime_ms=133938
+GROUP id=[240,93] status=HAS_FULL_EXPONENT_PAIR exponent=60 tested_pairs=57600 full_exponent_pairs=36480 first_witness=[2,15,2,20,240] exponent_histogram=[[1,1],[2,183],[3,80],[4,1032],[5,144],[6,960],[10,1872],[12,10800],[20,6048],[60,36480]] runtime_ms=192228
+
+Observed completed nonsoluble group records: 11.
+Observed completed ordered-pair scans: 395424 pairs.
+Complete bounded layer established by this run: all nonsoluble groups of order <=239.
+Additional individually completed order-240 representatives: [240,89] through [240,93].
+No COUNTEREXAMPLE_CANDIDATE record was observed in the completed portion.
+

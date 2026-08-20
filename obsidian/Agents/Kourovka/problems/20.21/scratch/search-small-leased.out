@@ -1,0 +1,69 @@
+GAP 4.12.1
+target quotient IDs: C12=[ 12, 2 ], A4=[ 12, 3 ]
+ORDER 12 GROUPS 5
+ORDER 24 GROUPS 15
+ORDER 36 GROUPS 14
+ORDER 48 GROUPS 52
+NEARMISS SmallGroup(48,31) C-kernels [ [ 4, 2 ] ] A-kernels [ [ 4, 1 ] ]
+ORDER 60 GROUPS 13
+ORDER 72 GROUPS 50
+ORDER 84 GROUPS 15
+ORDER 96 GROUPS 231
+NEARMISS SmallGroup(96,69) C-kernels [ [ 8, 4 ] ] A-kernels [ [ 8, 2 ] ]
+NEARMISS SmallGroup(96,73) C-kernels [ [ 8, 5 ] ] A-kernels [ [ 8, 1 ] ]
+NEARMISS SmallGroup(96,74) C-kernels [ [ 8, 4 ] ] A-kernels [ [ 8, 1 ] ]
+NEARMISS SmallGroup(96,196) C-kernels [ [ 8, 5 ], [ 8, 5 ] ] A-kernels 
+[ [ 8, 2 ] ]
+ORDER 108 GROUPS 45
+ORDER 120 GROUPS 47
+ORDER 132 GROUPS 10
+ORDER 144 GROUPS 197
+NEARMISS SmallGroup(144,34) C-kernels [ [ 12, 5 ] ] A-kernels [ [ 12, 2 ] ]
+NEARMISS SmallGroup(144,129) C-kernels [ [ 12, 5 ] ] A-kernels [ [ 12, 1 ] ]
+NEARMISS SmallGroup(144,155) C-kernels [ [ 12, 3 ], [ 12, 3 ], [ 12, 3 ], 
+  [ 12, 5 ] ] A-kernels [ [ 12, 2 ] ]
+ORDER 156 GROUPS 18
+ORDER 168 GROUPS 57
+ORDER 180 GROUPS 37
+ORDER 192 GROUPS 1543
+NEARMISS SmallGroup(192,188) C-kernels [ [ 16, 2 ] ] A-kernels [ [ 16, 10 ] ]
+NEARMISS SmallGroup(192,191) C-kernels [ [ 16, 14 ] ] A-kernels [ [ 16, 10 ] ]
+NEARMISS SmallGroup(192,192) C-kernels [ [ 16, 2 ] ] A-kernels [ [ 16, 10 ] ]
+NEARMISS SmallGroup(192,193) C-kernels [ [ 16, 2 ] ] A-kernels [ [ 16, 10 ] ]
+NEARMISS SmallGroup(192,200) C-kernels [ [ 16, 12 ] ] A-kernels [ [ 16, 5 ] ]
+NEARMISS SmallGroup(192,203) C-kernels [ [ 16, 10 ] ] A-kernels [ [ 16, 1 ] ]
+NEARMISS SmallGroup(192,204) C-kernels [ [ 16, 13 ] ] A-kernels [ [ 16, 1 ] ]
+NEARMISS SmallGroup(192,993) C-kernels [ [ 16, 10 ], [ 16, 10 ], [ 16, 10 ], 
+  [ 16, 10 ], [ 16, 10 ], [ 16, 10 ] ] A-kernels [ [ 16, 2 ] ]
+NEARMISS SmallGroup(192,994) C-kernels [ [ 16, 14 ], [ 16, 14 ] ] A-kernels 
+[ [ 16, 3 ] ]
+NEARMISS SmallGroup(192,995) C-kernels [ [ 16, 10 ], [ 16, 10 ] ] A-kernels 
+[ [ 16, 4 ] ]
+NEARMISS SmallGroup(192,996) C-kernels [ [ 16, 12 ], [ 16, 12 ] ] A-kernels 
+[ [ 16, 10 ] ]
+NEARMISS SmallGroup(192,997) C-kernels [ [ 16, 13 ], [ 16, 13 ] ] A-kernels 
+[ [ 16, 2 ] ]
+NEARMISS SmallGroup(192,998) C-kernels [ [ 16, 12 ], [ 16, 12 ] ] A-kernels 
+[ [ 16, 3 ] ]
+NEARMISS SmallGroup(192,999) C-kernels [ [ 16, 13 ], [ 16, 13 ] ] A-kernels 
+[ [ 16, 4 ] ]
+NEARMISS SmallGroup(192,1010) C-kernels [ [ 16, 10 ], [ 16, 14 ] ] A-kernels 
+[ [ 16, 5 ] ]
+NEARMISS SmallGroup(192,1011) C-kernels [ [ 16, 10 ], [ 16, 14 ] ] A-kernels 
+[ [ 16, 6 ] ]
+NEARMISS SmallGroup(192,1012) C-kernels [ [ 16, 13 ], [ 16, 12 ] ] A-kernels 
+[ [ 16, 5 ] ]
+NEARMISS SmallGroup(192,1013) C-kernels [ [ 16, 13 ], [ 16, 12 ] ] A-kernels 
+[ [ 16, 6 ] ]
+NEARMISS SmallGroup(192,1496) C-kernels [ [ 16, 14 ], [ 16, 14 ], [ 16, 14 ], 
+  [ 16, 14 ] ] A-kernels [ [ 16, 10 ] ]
+NEARMISS SmallGroup(192,1505) C-kernels [ [ 16, 14 ] ] A-kernels 
+[ [ 16, 10 ], [ 16, 10 ], [ 16, 10 ], [ 16, 10 ], [ 16, 10 ] ]
+ORDER 204 GROUPS 12
+ORDER 216 GROUPS 177
+ORDER 228 GROUPS 15
+ORDER 240 GROUPS 208
+NEARMISS SmallGroup(240,110) C-kernels [ [ 20, 5 ] ] A-kernels [ [ 20, 1 ] ]
+NEARMISS SmallGroup(240,152) C-kernels [ [ 20, 5 ] ] A-kernels [ [ 20, 2 ] ]
+NEARMISS SmallGroup(240,193) C-kernels [ [ 20, 5 ] ] A-kernels [ [ 20, 3 ] ]
+SUMMARY tested=2761 with_both_quotients=31 hits=0

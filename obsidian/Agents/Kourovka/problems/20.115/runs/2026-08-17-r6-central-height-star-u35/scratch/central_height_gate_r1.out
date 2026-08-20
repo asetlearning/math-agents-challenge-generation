@@ -1,0 +1,12 @@
+BEGIN R6_CENTRAL_HEIGHT_STAR_U35
+GAP_VERSION=4.12.1
+Error, sorry, the GAP Character Table Library is not loaded,
+call `LoadPackage( "CTblLib" )' if you want to use it at /usr/share/gap/lib/ctbl.gd:4737 called from
+CharacterTableFromLibrary( str ) at /usr/share/gap/lib/ctbl.gi:4161 called from
+<function "CharacterTable for a string">( <arguments> )
+ called from read-eval loop at Agents/Kourovka/problems/20.115/runs/2026-08-17-r6-central-height-star-u35/\
+scratch/central_height_gate.g:7
+you can 'quit;' to quit to outer loop, or
+you can 'return;' to continue
+Reading file "Agents/Kourovka/problems/20.115/runs/2026-08-17-r6-central-heigh\
+t-star-u35/scratch/central_height_gate.g" has been aborted.

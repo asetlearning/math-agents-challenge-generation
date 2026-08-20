@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "strategy_id": "PCOVER-QUOTIENT-INHERITANCE",
+  "scope_id": "21.137/odd-prime-exponent-p2",
+  "assignment_revision": 2,
+  "direction": "counterexample",
+  "prime": 3,
+  "parent_order": 6561,
+  "descendant_order": 19683,
+  "target_exponent": 9,
+  "status": "frozen_unexecuted_hard_kill",
+  "allowed_inputs": [
+    "Agents/Kourovka/scopes/21.137-odd-prime-exponent-p2.json",
+    "Agents/Kourovka/problems/21.137/ideas/2026-08-18-post-r4-faithful-character-portfolio.md",
+    "Agents/Kourovka/problems/21.137/verification/2026-08-17T105745Z-order6561-TRI3-layer.md",
+    "Agents/Kourovka/problems/21.137/verification/2026-08-17T122251Z-min9-action-family-empty.md"
+  ],
+  "parent_predicate": {
+    "order": 6561,
+    "exponent_exactly": 9,
+    "literal_cube_set": "S(Q)={q^3:q in Q}",
+    "literal_cube_set_is_subgroup": true,
+    "literal_cube_set_is_nontrivial": true,
+    "literal_cube_set_is_abelian": true,
+    "capable_step_size_one_required": true
+  },
+  "complete_parent_enumeration": {
+    "series": "L_1(X)=X and L_{i+1}(X)=L_i(X)^3[L_i(X),X]",
+    "roots": "C3^d for 1<=d<=8",
+    "recursion": "For every retained isomorphism type A, compute its 3-cover A*, 3-multiplicator M, nucleus U, and Aut(A)-orbits of every allowable subgroup L<=M with LU=M and |M:L| no larger than the remaining order budget; emit A*/L, deduplicate by the p-group generation orbit theorem, and continue through order 3^8.",
+    "safe_branch_pruning": [
+      "discard an ancestor whose exponent exceeds 9",
+      "discard an ancestor whose complete literal cube set is not a subgroup"
+    ],
+    "final_filter": "At order 3^8 retain exactly the groups satisfying parent_predicate.",
+    "completeness_reason": "Every finite 3-group has a unique lower-exponent-3 parent and an iterated parent chain ending at an elementary abelian root. Literal cube-set subgroup closure and exponent at most 9 pass to every quotient, so the two branch prunes cannot remove an ancestor of a qualifying parent. All allowable step sizes, not only step size one, are required before order 3^8."
+  },
+  "central_descendant_count": {
+    "method": "For each retained Q, compute Aut(Q)-orbits on the allowable hyperplanes L of its 3-multiplicator M which do not contain the nucleus U; each orbit gives one order-3^9 immediate descendant.",
+    "raw_hyperplane_bound_per_parent": "If dim_F3(M)=m and dim_F3(U)=u, the number before Aut(Q)-fusion is (3^m-3^(m-u))/2.",
+    "required_global_orbit_cap": 100000,
+    "numerical_bound_status": "unavailable",
+    "reason": "Neither ANUPQ nor a pq executable is installed, so the multiplicator/nucleus dimensions and automorphism orbit counts cannot be obtained."
+  },
+  "required_tool": {
+    "name": "ANUPQ/pq p-cover and p-group-generation engine",
+    "available": false,
+    "filesystem_probe": [
+      "command -v pq pga anupq gap3",
+      "search /usr/share/gap, /usr/local/share/gap, /home/kmuli/.gap, and Agents/Kourovka/tools/gaproot for ANUPQ or pq"
+    ],
+    "probe_result": "No executable and no ANUPQ package path found."
+  },
+  "execution": {
+    "lead_lease_requested": false,
+    "commands_run": [],
+    "groups_enumerated": 0,
+    "reason": "The mandatory tool-availability and numerical descendant-bound gates failed before a computable manifest could be leased."
+  },
+  "explicit_nonreuse": [
+    "No R4 outer action was opened.",
+    "No MIN9 fixed outer-action row was re-encoded.",
+    "No quotient or parent is treated as a witness.",
+    "No p=2 or exponent-8 object is in scope."
+  ]
+}

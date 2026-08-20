@@ -1,0 +1,26 @@
+2187
+9310
+true
+TRI3_QUOTIENT_BASE_BEGIN gap_version=4.12.1 smallgrp_loaded=true
+library_order=2187 group_count=9310
+PROGRESS i=500 exp9=116 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=1000 exp9=439 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=1500 exp9=939 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=2000 exp9=1439 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=2500 exp9=1939 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=3000 exp9=2439 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=3500 exp9=2939 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=4000 exp9=3439 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=4500 exp9=3758 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=5000 exp9=4230 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=5500 exp9=4661 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=6000 exp9=5124 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=6500 exp9=5620 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=7000 exp9=6119 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=7500 exp9=6618 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=8000 exp9=7098 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=8500 exp9=7511 class56=26 nontrivial_cube=26 cube_subgroup=0
+PROGRESS i=9000 exp9=8011 class56=26 nontrivial_cube=26 cube_subgroup=0
+COMPLETE_BASE_FILTER=yes groups=9310 exp9=8302 class56=26 nontrivial_cube=
+26 cube_subgroup=0
+STATUS=QUOTIENT_BASE_FILTER_COMPLETE

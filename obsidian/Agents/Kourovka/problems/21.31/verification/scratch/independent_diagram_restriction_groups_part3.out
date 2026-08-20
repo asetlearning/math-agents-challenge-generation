@@ -1,0 +1,89 @@
+GAP_VERSION=4.12.1
+T_ID=[ 168, 42 ] AUT_T_SIZE=336 P_ID=[ 21, 1 ] AUT_P_SIZE=42
+AUT_T_P_SIZE=42 RESTRICTION_IMAGE_SIZE=42 RESTRICTION_KERNEL_SIZE=1
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:34
+  gensH := Concatenation(List(gensK,x->Image(embK,x)),List(gensP2,x->Image(emb\
+P,x)));
+                                             ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:34
+  gensH := Concatenation(List(gensK,x->Image(embK,x)),List(gensP2,x->Image(emb\
+P,x)));
+                                                                           ^^^\
+^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:36
+    GroupHomomorphismByImages(H,H,gensH,
+                              ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:36
+    GroupHomomorphismByImages(H,H,gensH,
+                                ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:36
+    GroupHomomorphismByImages(H,H,gensH,
+                                  ^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:37
+      Concatenation(List(gensK,x->Image(embK,Image(a,x))),List(gensP2,x->Image\
+(embP,x)))));
+                         ^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:37
+      Concatenation(List(gensK,x->Image(embK,Image(a,x))),List(gensP2,x->Image\
+(embP,x)))));
+                                        ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:37
+      Concatenation(List(gensK,x->Image(embK,Image(a,x))),List(gensP2,x->Image\
+(embP,x)))));
+                                                               ^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:37
+      Concatenation(List(gensK,x->Image(embK,Image(a,x))),List(gensP2,x->Image\
+(embP,x)))));
+                                                                              \
+ ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:39
+    GroupHomomorphismByImages(H,H,gensH,
+                              ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:39
+    GroupHomomorphismByImages(H,H,gensH,
+                                ^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:39
+    GroupHomomorphismByImages(H,H,gensH,
+                                  ^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:40
+      Concatenation(List(gensK,x->Image(embK,x)),List(gensP2,x->Image(embP,Ima\
+ge(b,x))))));
+                         ^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:40
+      Concatenation(List(gensK,x->Image(embK,x)),List(gensP2,x->Image(embP,Ima\
+ge(b,x))))));
+                                        ^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:40
+      Concatenation(List(gensK,x->Image(embK,x)),List(gensP2,x->Image(embP,Ima\
+ge(b,x))))));
+                                                      ^^^^^^
+Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.31/veri\
+fication/scratch/independent_diagram_restriction_groups.g:40
+      Concatenation(List(gensK,x->Image(embK,x)),List(gensP2,x->Image(embP,Ima\
+ge(b,x))))));
+                                                                      ^^^^
+K_ID=[ 12, 4 ] KIND=nonsplit Z_ORDER=2 AUT_K_SIZE=12 STAB_Z_SIZE=
+12 AUT_P_SIZE=42 EXPECTED_AI_SIZE=504 GENERATED_AI_SIZE=504 GENERATORS=
+6 ALL_GENERATORS_BIJECTIVE=true
+K_ID=[ 12, 5 ] KIND=split Z_ORDER=1 AUT_K_SIZE=12 STAB_Z_SIZE=12 AUT_P_SIZE=
+42 EXPECTED_AI_SIZE=504 GENERATED_AI_SIZE=504 GENERATORS=
+8 ALL_GENERATORS_BIJECTIVE=true
+K_ID=[ 12, 5 ] KIND=nonsplit Z_ORDER=2 AUT_K_SIZE=12 STAB_Z_SIZE=4 AUT_P_SIZE=
+42 EXPECTED_AI_SIZE=168 GENERATED_AI_SIZE=168 GENERATORS=
+5 ALL_GENERATORS_BIJECTIVE=true
+RUN_COMPLETE=true

@@ -1,0 +1,604 @@
+BEGIN_SU38_CRITICAL_ROWS_DIRECT
+META	GAP_VERSION	4.12.1
+META	CTBLLIB_VERSION	1.3.7
+META	IDENTIFIER	3.U3(8)
+META	INFO_TEXT	origin: ATLAS of finite groups, tests: 1.o.r., | constructions: SU(3,8)
+META	ORDINARY	true
+META	PERFECT	true
+META	QUASISIMPLE	true
+META	GROUP_ORDER	16547328
+META	NUMBER_ROWS	82
+META	NUMBER_CLASSES	82
+META	CENTRE_POSITIONS	[ 1, 2, 3 ]
+META	CENTRE_ORDER	3
+META	AUTHORIZED_ROWS	[ 35, 36, 37, 38, 39, 40 ]
+META	AUTHORIZED_DEGREES	[ 189, 189, 189, 189, 189, 189 ]
+META	CLASS_ORDERS	[ 1, 3, 3, 2, 6, 6, 9, 9, 9, 9, 9, 9, 3, 4, 12, 12, 4, 12, 12, 4, 12, 12, 18, 18, 18, 18, 18, 18, 7, 21, 21, 7, 21, 21, 7, 21, 21, 9, 9, 9, 9, 9, 9, 9, 9, 9, 19, 57, 57, 19, 57, 57, 19, 57, 57, 19, 57, 57, 19, 57, 57, 19, 57, 57, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63 ]
+META	REVIEWED_DIRECT_SCAN_TABLES	[ "L4(3)", "2.L4(3).2_2", "2.L4(3).2_3", "3.U3(5)" ]
+META	TARGET_PREVIOUSLY_DIRECT_SCANNED	false
+CLASS	index=1	label=1A_0	order=1	size=1	central=true
+CLASS	index=2	label=1A_1	order=3	size=1	central=true
+CLASS	index=3	label=1A_2	order=3	size=1	central=true
+CLASS	index=4	label=2A_0	order=2	size=3591	central=false
+CLASS	index=5	label=2A_1	order=6	size=3591	central=false
+CLASS	index=6	label=2A_2	order=6	size=3591	central=false
+CLASS	index=7	label=3A_0	order=9	size=3648	central=false
+CLASS	index=8	label=3A_1	order=9	size=3648	central=false
+CLASS	index=9	label=3A_2	order=9	size=3648	central=false
+CLASS	index=10	label=3B_0	order=9	size=3648	central=false
+CLASS	index=11	label=3B_1	order=9	size=3648	central=false
+CLASS	index=12	label=3B_2	order=9	size=3648	central=false
+CLASS	index=13	label=3C_0	order=3	size=204288	central=false
+CLASS	index=14	label=4A_0	order=4	size=86184	central=false
+CLASS	index=15	label=4A_1	order=12	size=86184	central=false
+CLASS	index=16	label=4A_2	order=12	size=86184	central=false
+CLASS	index=17	label=4B_0	order=4	size=86184	central=false
+CLASS	index=18	label=4B_1	order=12	size=86184	central=false
+CLASS	index=19	label=4B_2	order=12	size=86184	central=false
+CLASS	index=20	label=4C_0	order=4	size=86184	central=false
+CLASS	index=21	label=4C_1	order=12	size=86184	central=false
+CLASS	index=22	label=4C_2	order=12	size=86184	central=false
+CLASS	index=23	label=6A_0	order=18	size=229824	central=false
+CLASS	index=24	label=6A_1	order=18	size=229824	central=false
+CLASS	index=25	label=6A_2	order=18	size=229824	central=false
+CLASS	index=26	label=6B_0	order=18	size=229824	central=false
+CLASS	index=27	label=6B_1	order=18	size=229824	central=false
+CLASS	index=28	label=6B_2	order=18	size=229824	central=false
+CLASS	index=29	label=7A_0	order=7	size=262656	central=false
+CLASS	index=30	label=7A_1	order=21	size=262656	central=false
+CLASS	index=31	label=7A_2	order=21	size=262656	central=false
+CLASS	index=32	label=7B_0	order=7	size=262656	central=false
+CLASS	index=33	label=7B_1	order=21	size=262656	central=false
+CLASS	index=34	label=7B_2	order=21	size=262656	central=false
+CLASS	index=35	label=7C_0	order=7	size=262656	central=false
+CLASS	index=36	label=7C_1	order=21	size=262656	central=false
+CLASS	index=37	label=7C_2	order=21	size=262656	central=false
+CLASS	index=38	label=9A_0	order=9	size=204288	central=false
+CLASS	index=39	label=9A_1	order=9	size=204288	central=false
+CLASS	index=40	label=9A_2	order=9	size=204288	central=false
+CLASS	index=41	label=9B_0	order=9	size=204288	central=false
+CLASS	index=42	label=9B_1	order=9	size=204288	central=false
+CLASS	index=43	label=9B_2	order=9	size=204288	central=false
+CLASS	index=44	label=9C_0	order=9	size=204288	central=false
+CLASS	index=45	label=9C_1	order=9	size=204288	central=false
+CLASS	index=46	label=9C_2	order=9	size=204288	central=false
+CLASS	index=47	label=19A_0	order=19	size=290304	central=false
+CLASS	index=48	label=19A_1	order=57	size=290304	central=false
+CLASS	index=49	label=19A_2	order=57	size=290304	central=false
+CLASS	index=50	label=19B_0	order=19	size=290304	central=false
+CLASS	index=51	label=19B_1	order=57	size=290304	central=false
+CLASS	index=52	label=19B_2	order=57	size=290304	central=false
+CLASS	index=53	label=19C_0	order=19	size=290304	central=false
+CLASS	index=54	label=19C_1	order=57	size=290304	central=false
+CLASS	index=55	label=19C_2	order=57	size=290304	central=false
+CLASS	index=56	label=19D_0	order=19	size=290304	central=false
+CLASS	index=57	label=19D_1	order=57	size=290304	central=false
+CLASS	index=58	label=19D_2	order=57	size=290304	central=false
+CLASS	index=59	label=19E_0	order=19	size=290304	central=false
+CLASS	index=60	label=19E_1	order=57	size=290304	central=false
+CLASS	index=61	label=19E_2	order=57	size=290304	central=false
+CLASS	index=62	label=19F_0	order=19	size=290304	central=false
+CLASS	index=63	label=19F_1	order=57	size=290304	central=false
+CLASS	index=64	label=19F_2	order=57	size=290304	central=false
+CLASS	index=65	label=21A_0	order=63	size=262656	central=false
+CLASS	index=66	label=21A_1	order=63	size=262656	central=false
+CLASS	index=67	label=21A_2	order=63	size=262656	central=false
+CLASS	index=68	label=21B_0	order=63	size=262656	central=false
+CLASS	index=69	label=21B_1	order=63	size=262656	central=false
+CLASS	index=70	label=21B_2	order=63	size=262656	central=false
+CLASS	index=71	label=21C_0	order=63	size=262656	central=false
+CLASS	index=72	label=21C_1	order=63	size=262656	central=false
+CLASS	index=73	label=21C_2	order=63	size=262656	central=false
+CLASS	index=74	label=21D_0	order=63	size=262656	central=false
+CLASS	index=75	label=21D_1	order=63	size=262656	central=false
+CLASS	index=76	label=21D_2	order=63	size=262656	central=false
+CLASS	index=77	label=21E_0	order=63	size=262656	central=false
+CLASS	index=78	label=21E_1	order=63	size=262656	central=false
+CLASS	index=79	label=21E_2	order=63	size=262656	central=false
+CLASS	index=80	label=21F_0	order=63	size=262656	central=false
+CLASS	index=81	label=21F_1	order=63	size=262656	central=false
+CLASS	index=82	label=21F_2	order=63	size=262656	central=false
+ROW	index=35	degree=189
+ROW	index=36	degree=189
+ROW	index=37	degree=189
+ROW	index=38	degree=189
+ROW	index=39	degree=189
+ROW	index=40	degree=189
+CELL	row=35	class=1	label=1A_0	degree=189	class_order=1	exact_value=189	nonzero=true	group_order=16547328	product=189	remainder=0	divides=true
+CELL	row=35	class=2	label=1A_1	degree=189	class_order=3	exact_value=189*E(3)	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=35	class=3	label=1A_2	degree=189	class_order=3	exact_value=189*E(3)^2	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=35	class=4	label=2A_0	degree=189	class_order=2	exact_value=-3	nonzero=true	group_order=16547328	product=378	remainder=0	divides=true
+CELL	row=35	class=5	label=2A_1	degree=189	class_order=6	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=35	class=6	label=2A_2	degree=189	class_order=6	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=35	class=7	label=3A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=8	label=3A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=9	label=3A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=10	label=3B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=11	label=3B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=12	label=3B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=13	label=3C_0	degree=189	class_order=3	exact_value=0	nonzero=false	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=35	class=14	label=4A_0	degree=189	class_order=4	exact_value=5	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=35	class=15	label=4A_1	degree=189	class_order=12	exact_value=5*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=35	class=16	label=4A_2	degree=189	class_order=12	exact_value=5*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=35	class=17	label=4B_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=35	class=18	label=4B_1	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=35	class=19	label=4B_2	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=35	class=20	label=4C_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=35	class=21	label=4C_1	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=35	class=22	label=4C_2	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=35	class=23	label=6A_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=35	class=24	label=6A_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=35	class=25	label=6A_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=35	class=26	label=6B_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=35	class=27	label=6B_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=35	class=28	label=6B_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=35	class=29	label=7A_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=35	class=30	label=7A_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=35	class=31	label=7A_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=35	class=32	label=7B_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=35	class=33	label=7B_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=35	class=34	label=7B_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=35	class=35	label=7C_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=35	class=36	label=7C_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=35	class=37	label=7C_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=35	class=38	label=9A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=39	label=9A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=40	label=9A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=41	label=9B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=42	label=9B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=43	label=9B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=44	label=9C_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=45	label=9C_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=46	label=9C_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=35	class=47	label=19A_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=35	class=48	label=19A_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=49	label=19A_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=50	label=19B_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=35	class=51	label=19B_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=52	label=19B_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=53	label=19C_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=35	class=54	label=19C_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=55	label=19C_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=56	label=19D_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=35	class=57	label=19D_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=58	label=19D_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=59	label=19E_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=35	class=60	label=19E_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=61	label=19E_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=62	label=19F_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=35	class=63	label=19F_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=64	label=19F_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=35	class=65	label=21A_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=66	label=21A_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=67	label=21A_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=68	label=21B_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=69	label=21B_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=70	label=21B_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=71	label=21C_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=72	label=21C_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=73	label=21C_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=74	label=21D_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=75	label=21D_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=76	label=21D_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=77	label=21E_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=78	label=21E_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=79	label=21E_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=80	label=21F_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=81	label=21F_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=35	class=82	label=21F_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=1	label=1A_0	degree=189	class_order=1	exact_value=189	nonzero=true	group_order=16547328	product=189	remainder=0	divides=true
+CELL	row=36	class=2	label=1A_1	degree=189	class_order=3	exact_value=189*E(3)^2	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=36	class=3	label=1A_2	degree=189	class_order=3	exact_value=189*E(3)	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=36	class=4	label=2A_0	degree=189	class_order=2	exact_value=-3	nonzero=true	group_order=16547328	product=378	remainder=0	divides=true
+CELL	row=36	class=5	label=2A_1	degree=189	class_order=6	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=36	class=6	label=2A_2	degree=189	class_order=6	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=36	class=7	label=3A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=8	label=3A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=9	label=3A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=10	label=3B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=11	label=3B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=12	label=3B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=13	label=3C_0	degree=189	class_order=3	exact_value=0	nonzero=false	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=36	class=14	label=4A_0	degree=189	class_order=4	exact_value=5	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=36	class=15	label=4A_1	degree=189	class_order=12	exact_value=5*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=36	class=16	label=4A_2	degree=189	class_order=12	exact_value=5*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=36	class=17	label=4B_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=36	class=18	label=4B_1	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=36	class=19	label=4B_2	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=36	class=20	label=4C_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=36	class=21	label=4C_1	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=36	class=22	label=4C_2	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=36	class=23	label=6A_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=36	class=24	label=6A_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=36	class=25	label=6A_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=36	class=26	label=6B_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=36	class=27	label=6B_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=36	class=28	label=6B_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=36	class=29	label=7A_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=36	class=30	label=7A_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=36	class=31	label=7A_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=36	class=32	label=7B_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=36	class=33	label=7B_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=36	class=34	label=7B_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=36	class=35	label=7C_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=36	class=36	label=7C_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=36	class=37	label=7C_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=36	class=38	label=9A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=39	label=9A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=40	label=9A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=41	label=9B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=42	label=9B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=43	label=9B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=44	label=9C_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=45	label=9C_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=46	label=9C_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=36	class=47	label=19A_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=36	class=48	label=19A_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=49	label=19A_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=50	label=19B_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=36	class=51	label=19B_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=52	label=19B_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=53	label=19C_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=36	class=54	label=19C_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=55	label=19C_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=56	label=19D_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=36	class=57	label=19D_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=58	label=19D_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=59	label=19E_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=36	class=60	label=19E_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=61	label=19E_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=62	label=19F_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=36	class=63	label=19F_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=64	label=19F_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=36	class=65	label=21A_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=66	label=21A_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=67	label=21A_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=68	label=21B_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=69	label=21B_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=70	label=21B_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=71	label=21C_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=72	label=21C_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=73	label=21C_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=74	label=21D_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=75	label=21D_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=76	label=21D_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=77	label=21E_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=78	label=21E_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=79	label=21E_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=80	label=21F_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=81	label=21F_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=36	class=82	label=21F_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=1	label=1A_0	degree=189	class_order=1	exact_value=189	nonzero=true	group_order=16547328	product=189	remainder=0	divides=true
+CELL	row=37	class=2	label=1A_1	degree=189	class_order=3	exact_value=189*E(3)	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=37	class=3	label=1A_2	degree=189	class_order=3	exact_value=189*E(3)^2	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=37	class=4	label=2A_0	degree=189	class_order=2	exact_value=-3	nonzero=true	group_order=16547328	product=378	remainder=0	divides=true
+CELL	row=37	class=5	label=2A_1	degree=189	class_order=6	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=37	class=6	label=2A_2	degree=189	class_order=6	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=37	class=7	label=3A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=8	label=3A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=9	label=3A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=10	label=3B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=11	label=3B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=12	label=3B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=13	label=3C_0	degree=189	class_order=3	exact_value=0	nonzero=false	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=37	class=14	label=4A_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=37	class=15	label=4A_1	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=37	class=16	label=4A_2	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=37	class=17	label=4B_0	degree=189	class_order=4	exact_value=5	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=37	class=18	label=4B_1	degree=189	class_order=12	exact_value=5*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=37	class=19	label=4B_2	degree=189	class_order=12	exact_value=5*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=37	class=20	label=4C_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=37	class=21	label=4C_1	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=37	class=22	label=4C_2	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=37	class=23	label=6A_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=37	class=24	label=6A_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=37	class=25	label=6A_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=37	class=26	label=6B_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=37	class=27	label=6B_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=37	class=28	label=6B_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=37	class=29	label=7A_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=37	class=30	label=7A_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=37	class=31	label=7A_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=37	class=32	label=7B_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=37	class=33	label=7B_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=37	class=34	label=7B_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=37	class=35	label=7C_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=37	class=36	label=7C_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=37	class=37	label=7C_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=37	class=38	label=9A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=39	label=9A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=40	label=9A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=41	label=9B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=42	label=9B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=43	label=9B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=44	label=9C_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=45	label=9C_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=46	label=9C_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=37	class=47	label=19A_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=37	class=48	label=19A_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=49	label=19A_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=50	label=19B_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=37	class=51	label=19B_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=52	label=19B_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=53	label=19C_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=37	class=54	label=19C_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=55	label=19C_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=56	label=19D_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=37	class=57	label=19D_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=58	label=19D_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=59	label=19E_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=37	class=60	label=19E_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=61	label=19E_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=62	label=19F_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=37	class=63	label=19F_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=64	label=19F_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=37	class=65	label=21A_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=66	label=21A_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=67	label=21A_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=68	label=21B_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=69	label=21B_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=70	label=21B_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=71	label=21C_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=72	label=21C_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=73	label=21C_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=74	label=21D_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=75	label=21D_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=76	label=21D_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=77	label=21E_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=78	label=21E_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=79	label=21E_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=80	label=21F_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=81	label=21F_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=37	class=82	label=21F_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=1	label=1A_0	degree=189	class_order=1	exact_value=189	nonzero=true	group_order=16547328	product=189	remainder=0	divides=true
+CELL	row=38	class=2	label=1A_1	degree=189	class_order=3	exact_value=189*E(3)^2	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=38	class=3	label=1A_2	degree=189	class_order=3	exact_value=189*E(3)	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=38	class=4	label=2A_0	degree=189	class_order=2	exact_value=-3	nonzero=true	group_order=16547328	product=378	remainder=0	divides=true
+CELL	row=38	class=5	label=2A_1	degree=189	class_order=6	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=38	class=6	label=2A_2	degree=189	class_order=6	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=38	class=7	label=3A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=8	label=3A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=9	label=3A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=10	label=3B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=11	label=3B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=12	label=3B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=13	label=3C_0	degree=189	class_order=3	exact_value=0	nonzero=false	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=38	class=14	label=4A_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=38	class=15	label=4A_1	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=38	class=16	label=4A_2	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=38	class=17	label=4B_0	degree=189	class_order=4	exact_value=5	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=38	class=18	label=4B_1	degree=189	class_order=12	exact_value=5*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=38	class=19	label=4B_2	degree=189	class_order=12	exact_value=5*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=38	class=20	label=4C_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=38	class=21	label=4C_1	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=38	class=22	label=4C_2	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=38	class=23	label=6A_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=38	class=24	label=6A_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=38	class=25	label=6A_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=38	class=26	label=6B_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=38	class=27	label=6B_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=38	class=28	label=6B_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=38	class=29	label=7A_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=38	class=30	label=7A_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=38	class=31	label=7A_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=38	class=32	label=7B_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=38	class=33	label=7B_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=38	class=34	label=7B_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=38	class=35	label=7C_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=38	class=36	label=7C_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=38	class=37	label=7C_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=38	class=38	label=9A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=39	label=9A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=40	label=9A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=41	label=9B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=42	label=9B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=43	label=9B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=44	label=9C_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=45	label=9C_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=46	label=9C_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=38	class=47	label=19A_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=38	class=48	label=19A_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=49	label=19A_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=50	label=19B_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=38	class=51	label=19B_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=52	label=19B_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=53	label=19C_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=38	class=54	label=19C_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=55	label=19C_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=56	label=19D_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=38	class=57	label=19D_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=58	label=19D_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=59	label=19E_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=38	class=60	label=19E_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=61	label=19E_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=62	label=19F_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=38	class=63	label=19F_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=64	label=19F_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=38	class=65	label=21A_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=66	label=21A_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=67	label=21A_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=68	label=21B_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=69	label=21B_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=70	label=21B_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=71	label=21C_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=72	label=21C_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=73	label=21C_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=74	label=21D_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=75	label=21D_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=76	label=21D_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=77	label=21E_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=78	label=21E_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=79	label=21E_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=80	label=21F_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=81	label=21F_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=38	class=82	label=21F_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=1	label=1A_0	degree=189	class_order=1	exact_value=189	nonzero=true	group_order=16547328	product=189	remainder=0	divides=true
+CELL	row=39	class=2	label=1A_1	degree=189	class_order=3	exact_value=189*E(3)	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=39	class=3	label=1A_2	degree=189	class_order=3	exact_value=189*E(3)^2	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=39	class=4	label=2A_0	degree=189	class_order=2	exact_value=-3	nonzero=true	group_order=16547328	product=378	remainder=0	divides=true
+CELL	row=39	class=5	label=2A_1	degree=189	class_order=6	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=39	class=6	label=2A_2	degree=189	class_order=6	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=39	class=7	label=3A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=8	label=3A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=9	label=3A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=10	label=3B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=11	label=3B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=12	label=3B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=13	label=3C_0	degree=189	class_order=3	exact_value=0	nonzero=false	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=39	class=14	label=4A_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=39	class=15	label=4A_1	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=39	class=16	label=4A_2	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=39	class=17	label=4B_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=39	class=18	label=4B_1	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=39	class=19	label=4B_2	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=39	class=20	label=4C_0	degree=189	class_order=4	exact_value=5	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=39	class=21	label=4C_1	degree=189	class_order=12	exact_value=5*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=39	class=22	label=4C_2	degree=189	class_order=12	exact_value=5*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=39	class=23	label=6A_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=39	class=24	label=6A_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=39	class=25	label=6A_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=39	class=26	label=6B_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=39	class=27	label=6B_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=39	class=28	label=6B_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=39	class=29	label=7A_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=39	class=30	label=7A_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=39	class=31	label=7A_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=39	class=32	label=7B_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=39	class=33	label=7B_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=39	class=34	label=7B_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=39	class=35	label=7C_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=39	class=36	label=7C_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=39	class=37	label=7C_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=39	class=38	label=9A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=39	label=9A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=40	label=9A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=41	label=9B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=42	label=9B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=43	label=9B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=44	label=9C_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=45	label=9C_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=46	label=9C_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=39	class=47	label=19A_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=39	class=48	label=19A_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=49	label=19A_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=50	label=19B_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=39	class=51	label=19B_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=52	label=19B_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=53	label=19C_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=39	class=54	label=19C_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=55	label=19C_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=56	label=19D_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=39	class=57	label=19D_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=58	label=19D_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=59	label=19E_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=39	class=60	label=19E_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=61	label=19E_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=62	label=19F_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=39	class=63	label=19F_1	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=64	label=19F_2	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=39	class=65	label=21A_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=66	label=21A_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=67	label=21A_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=68	label=21B_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=69	label=21B_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=70	label=21B_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=71	label=21C_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=72	label=21C_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=73	label=21C_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=74	label=21D_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=75	label=21D_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=76	label=21D_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=77	label=21E_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=78	label=21E_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=79	label=21E_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=80	label=21F_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=81	label=21F_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=39	class=82	label=21F_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=1	label=1A_0	degree=189	class_order=1	exact_value=189	nonzero=true	group_order=16547328	product=189	remainder=0	divides=true
+CELL	row=40	class=2	label=1A_1	degree=189	class_order=3	exact_value=189*E(3)^2	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=40	class=3	label=1A_2	degree=189	class_order=3	exact_value=189*E(3)	nonzero=true	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=40	class=4	label=2A_0	degree=189	class_order=2	exact_value=-3	nonzero=true	group_order=16547328	product=378	remainder=0	divides=true
+CELL	row=40	class=5	label=2A_1	degree=189	class_order=6	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=40	class=6	label=2A_2	degree=189	class_order=6	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=1134	remainder=0	divides=true
+CELL	row=40	class=7	label=3A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=8	label=3A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=9	label=3A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=10	label=3B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=11	label=3B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=12	label=3B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=13	label=3C_0	degree=189	class_order=3	exact_value=0	nonzero=false	group_order=16547328	product=567	remainder=0	divides=true
+CELL	row=40	class=14	label=4A_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=40	class=15	label=4A_1	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=40	class=16	label=4A_2	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=40	class=17	label=4B_0	degree=189	class_order=4	exact_value=-3	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=40	class=18	label=4B_1	degree=189	class_order=12	exact_value=-3*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=40	class=19	label=4B_2	degree=189	class_order=12	exact_value=-3*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=40	class=20	label=4C_0	degree=189	class_order=4	exact_value=5	nonzero=true	group_order=16547328	product=756	remainder=0	divides=true
+CELL	row=40	class=21	label=4C_1	degree=189	class_order=12	exact_value=5*E(3)^2	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=40	class=22	label=4C_2	degree=189	class_order=12	exact_value=5*E(3)	nonzero=true	group_order=16547328	product=2268	remainder=0	divides=true
+CELL	row=40	class=23	label=6A_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=40	class=24	label=6A_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=40	class=25	label=6A_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=40	class=26	label=6B_0	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=40	class=27	label=6B_1	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=40	class=28	label=6B_2	degree=189	class_order=18	exact_value=0	nonzero=false	group_order=16547328	product=3402	remainder=0	divides=true
+CELL	row=40	class=29	label=7A_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=40	class=30	label=7A_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=40	class=31	label=7A_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=40	class=32	label=7B_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=40	class=33	label=7B_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=40	class=34	label=7B_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=40	class=35	label=7C_0	degree=189	class_order=7	exact_value=0	nonzero=false	group_order=16547328	product=1323	remainder=567	divides=false
+CELL	row=40	class=36	label=7C_1	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=40	class=37	label=7C_2	degree=189	class_order=21	exact_value=0	nonzero=false	group_order=16547328	product=3969	remainder=567	divides=false
+CELL	row=40	class=38	label=9A_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=39	label=9A_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=40	label=9A_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=41	label=9B_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=42	label=9B_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=43	label=9B_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=44	label=9C_0	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=45	label=9C_1	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=46	label=9C_2	degree=189	class_order=9	exact_value=0	nonzero=false	group_order=16547328	product=1701	remainder=0	divides=true
+CELL	row=40	class=47	label=19A_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=40	class=48	label=19A_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=49	label=19A_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=50	label=19B_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=40	class=51	label=19B_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=52	label=19B_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=53	label=19C_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=40	class=54	label=19C_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=55	label=19C_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=56	label=19D_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=40	class=57	label=19D_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=58	label=19D_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=59	label=19E_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=40	class=60	label=19E_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=61	label=19E_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=62	label=19F_0	degree=189	class_order=19	exact_value=-1	nonzero=true	group_order=16547328	product=3591	remainder=0	divides=true
+CELL	row=40	class=63	label=19F_1	degree=189	class_order=57	exact_value=-E(3)^2	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=64	label=19F_2	degree=189	class_order=57	exact_value=-E(3)	nonzero=true	group_order=16547328	product=10773	remainder=0	divides=true
+CELL	row=40	class=65	label=21A_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=66	label=21A_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=67	label=21A_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=68	label=21B_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=69	label=21B_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=70	label=21B_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=71	label=21C_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=72	label=21C_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=73	label=21C_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=74	label=21D_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=75	label=21D_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=76	label=21D_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=77	label=21E_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=78	label=21E_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=79	label=21E_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=80	label=21F_0	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=81	label=21F_1	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+CELL	row=40	class=82	label=21F_2	degree=189	class_order=63	exact_value=0	nonzero=false	group_order=16547328	product=11907	remainder=8505	divides=false
+SUMMARY	CELLS	492
+SUMMARY	NONZERO	198
+SUMMARY	ZERO	294
+SUMMARY	HITS	0
+SUMMARY	HIT_RECORDS	[  ]
+END_SU38_CRITICAL_ROWS_DIRECT
