@@ -24,6 +24,8 @@ key_concepts:
   - "[[Concepts/verification-methods-for-group-equality]]"
 date_range: 2009-01 to 2010-06
 project: b25
+status: draft
+domain: group-theory
 ---
 
 # Synthesis — The Kuznetsov line on B(2,5): Cayley-table closure as a third algorithmic family

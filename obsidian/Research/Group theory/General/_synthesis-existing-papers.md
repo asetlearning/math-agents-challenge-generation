@@ -8,8 +8,12 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/burnside
+  - topic/word-problem
   - synthesis
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # Group Theory Papers — Cross-Paper Synthesis
@@ -33,10 +37,10 @@ tags:
 - [[b25-finiteness-11.48-kostrikin]] — Mixer attack rationale for 11.48
 - [[b-exponent-5-adian-4.2b]] — exponent-5 groups (Adian, 1973)
 - [[braid-b4-membership-6.24-makanin]] — B₄ membership (Makanin, 1980)
-- [[burau4-faithfulness]] — Burau₄ faithfulness (open since 1936)
+- [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness|burau4-faithfulness]] — Burau₄ faithfulness (open since 1936)
 - [[2-relator-word-problem-9.29-merzlyakov]] — 2-relator word problem (Merzlyakov, 1984)
 - [[andrews-curtis-conjecture]] — AC conjecture (1965)
-- [[kaplansky-zero-divisors]] — Kaplansky zero-divisors (~1956)
+- [[Research/Group theory/Open problems/Group rings/kaplansky-zero-divisors|kaplansky-zero-divisors]] — Kaplansky zero-divisors (~1956)
 
 **Algorithm Cooperation:**
 - [[algo-mixing-burnside-slides]] — B(4,3) breakthrough + Mixer methodology (2025)
@@ -86,7 +90,7 @@ The single most important open question across all 15 papers. [[kourovka-11.48-k
 
 **B. The B₄ frontier — two open problems about the 4-string braid group**
 
-[[braid-b4-membership-6.24-makanin]] (Kourovka 6.24) and [[burau4-faithfulness]] are distinct but related open problems:
+[[braid-b4-membership-6.24-makanin]] (Kourovka 6.24) and [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness|burau4-faithfulness]] are distinct but related open problems:
 - Membership problem: decidable for B₃, undecidable for B₅+, open for B₄.
 - Burau₄ faithfulness: faithful for n≤3, unfaithful for n≥5, open for n=4.
 
@@ -145,9 +149,21 @@ This convergence is the strongest cross-paper signal: **algorithm mixing is not 
 
 3. **Does the Gröbner approach (Section 7.5 of [[grobner]]) produce a fast "No" oracle for B(2,5) words?** What is the computational cost of the Gröbner basis for I_R at n=2?
 
-4. **Do the bidirectional search experiments ([[b53_bidir]]) generalize to B(2,5)? What is the bottleneck — rule bank size, word difficulty, or proof strategy?**
+4. **Do the bidirectional search experiments (`b53_bidir`) generalize to B(2,5)? What is the bottleneck — rule bank size, word difficulty, or proof strategy?**
 
 ---
+
+### Later additions (2026-08-31)
+
+Papers landed in `Research/Group theory/**` after the 2026-05-28 pass, not yet folded into the synthesis body above:
+
+- Kuznetsov computational line on B₀(2,5) (growth functions, subgroups, centralizers, 2009–2025, ~20 notes under `Burnside groups/B25/`) — see [[_synthesis-kuznetsov-b25-algorithmic-line]] and [[_synthesis-kuznetsov-b25-publications]]; MOC-era additions include [[kuznetsov-2016]], [[kuznetsov-karchevsky-2016]], [[kuznetsov-kuznetsova-2018]], [[kuznetsova-kuznetsov-safonov-2013]].
+- Odd-exponent bound-record batch (2026-07-31): [[_synthesis-odd-exponent-state-2026]] + [[atkarskaya-rips-tent-2023]], [[adian-2015-odd-bound]], [[lysenok-2023-sample-iterated-sc]], [[atkarskaya-kanelbelov-plotkin-rips-2021-sc-rings]], [[gorshkov-2026-moufang-axial-algebra]], [[obrien-vaughanlee-2002-r27]], [[shur-2010-power-free-growth-rates]].
+- Small-cancellation / periodic-quotient scan (2026-08-07): [[coulon-2018-even-exponents]], [[coulon-school-partial-periodic-quotients]], [[wagner-2020-torsion-quadratic-dehn]]; campaign syntheses [[_synthesis-b25-attack-surface-2026-08-07]], [[_synthesis-rungs-to-limit-composition-2026-08-07]], [[_synthesis-gorshkov-axial-algebra-r2-2026]].
+- [[kalika-2026]] — 2026 Stevens thesis on biased KB completion and algorithm mixing in B(2,5).
+- KB / rewriting-systems batch (2026-08-09): [[epstein-holt-rees-1991]], [[epstein-sanders-2000]], [[gilman-1979]], [[hermiller-shapiro-1999]], [[le-chenadec-1986]], [[book-otto-1993-string-rewriting]], [[tate-2011-equality-saturation]], [[holt-1995-warwick-ags]].
+
+Fold these into "Papers covered" / "What's settled" on the next full `/research --reconnect group-theory` pass.
 
 ## Refresh notes (for next Researcher)
 

@@ -14,6 +14,8 @@ tags:
   - status/validated
 related:
   - "[[coset-enumeration]]"
+status: validated
+domain: group-theory
 ---
 
 # Knuth-Bendix Completion
@@ -76,3 +78,5 @@ A **complete (confluent + terminating) rewriting system** for G:
 
 - [[coset-enumeration]] — an alternative approach; KB is sometimes faster (especially for infinite groups where coset enumeration diverges).
 - [[Research/Group theory/Burnside groups/B25/havas-wall-wamsley-1974]] — source of the B(2,5) relators that KB operates on.
+- [[word-problem-overview]] — parent: Word Problem directory map.
+- [[_moc-knuth-bendix]] — MOC: the full KB completion reading path (papers, tools, stagnation modes).

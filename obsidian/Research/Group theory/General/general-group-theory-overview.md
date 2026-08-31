@@ -6,8 +6,11 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
   - convention
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # General Group Theory — Scope and Map

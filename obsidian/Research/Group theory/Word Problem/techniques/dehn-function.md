@@ -10,6 +10,8 @@ tags:
   - topic/word-problem
   - topic/finitely-presented-groups
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # Dehn Function and Isoperimetric Inequalities

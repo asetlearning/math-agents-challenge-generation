@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 12th Issue, 1992
@@ -431,3 +435,9 @@ Is every periodic group with a regular automorphism of order 4 locally finite?
 We call a group G containing an involution i a T0 -group if 1) the order of the product of any two involutions conjugate to i is finite; 2) all 2-subgroups of G are either cyclic or generalized quaternion; 3) the centralizer C of the involution i in G is infinite, distinct from G, and has finite periodic part; 4) the normalizer of any non-trivial i-invariant finite subgroup in G either is con- tained in C or has periodic part which is a Frobenius group (see 6.55) with abelian kernel and finite complement of even order; 5) for every element c not contained in C for which ci is an involution there is an element s of C such that hc, cs i is an infinite subgroup. Does there exist a simple T0 -group? V. P. Shunkov
 
 64
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-11-1990]] — previous issue (1990)
+- [[kourovka-issue-13-1995]] — next issue (1995)

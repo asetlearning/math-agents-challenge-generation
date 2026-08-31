@@ -33,6 +33,7 @@ tags:
   - topic/tokenization
   - paper
   - status/draft
+status: draft
 ---
 
 # The Impact of Positional Encoding on Length Generalization in Transformers
@@ -85,4 +86,6 @@ Whether NoPE (or relative PE) specifically helps a decoder-only GPT recognize a 
 ## Related material in vault
 
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
-- Cross-reference (not vault notes, cited inline in synthesis only): Ruoss et al. 2023 (arXiv:2305.16843), Jelassi et al. 2023 (arXiv:2306.15400), Zhou et al. 2024 (arXiv:2402.09371, caveats length-generalization fragility/seed-dependence even with the "right" PE choice)
+- Related: [[ruoss-2023-randomized-positional-encodings]] (the randomized-PE result discussed under Replication evidence above)
+- Related: [[mehta-2026-randomized-yarn]] (extends randomized PE with a length curriculum; same length-generalization cluster)
+- Cross-reference (not vault notes, cited inline in synthesis only): Jelassi et al. 2023 (arXiv:2306.15400), Zhou et al. 2024 (arXiv:2402.09371, caveats length-generalization fragility/seed-dependence even with the "right" PE choice)

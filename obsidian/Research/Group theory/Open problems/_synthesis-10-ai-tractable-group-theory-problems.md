@@ -161,3 +161,7 @@ Easiest onboarding, cheapest decisive oracle, most open targets: **#10 (Kourovka
   - FunSearch/AlphaEvolve construction paradigm (for #6 expanders): [Nature 2023](https://www.nature.com/articles/s41586-023-06924-6)
 - Tooling reused: GAP `SmallGroups`/perfect-group libraries, Todd–Coxeter/`LowIndexSubgroupsFpGroup`, KBMAG automatic structures, the beam/BFS stack
 - SOLVED, mark accordingly: [[burau4-faithfulness]] — faithful, [arXiv:2607.05283](https://arxiv.org/abs/2607.05283) (2026)
+
+### Later additions (2026-08-31)
+
+- [[_kourovka-20-corpus]] — the 2026-08-11/08-20 Kourovka wave postdates this synthesis: the full 20-issue corpus index plus ~60 individual problem notes (12.15 through 21.137) under `Open problems/Kourovka/` — exactly this synthesis's candidate pool. Re-run the tractability screen against that corpus on the next pass.

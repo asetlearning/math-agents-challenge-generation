@@ -7,11 +7,14 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
   - status/validated
 related:
   - "[[subgroup]]"
   - "[[homomorphism]]"
   - "[[group-action]]"
+status: validated
+domain: group-theory
 ---
 
 # Group
@@ -46,3 +49,5 @@ Groups are the algebraic abstraction of symmetry. Every set of symmetries (bijec
 - [[homomorphism]] — a map G → H preserving the group structure.
 - [[group-action]] — a way for a group to act on a set, encoding symmetry.
 - [[normal-subgroup]] — a subgroup closed under conjugation (key for forming quotient groups).
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

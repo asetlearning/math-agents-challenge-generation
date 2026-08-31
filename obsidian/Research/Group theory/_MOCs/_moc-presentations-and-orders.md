@@ -10,6 +10,8 @@ tags:
   - topic/coset-enumeration
   - topic/moc
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # Group Presentations and Order — Map of Content
@@ -27,6 +29,19 @@ tags:
 - [[Research/Group theory/General/orders-and-finiteness/order-exponent]] — Group order |G|, element order, exponent, torsion — the basic vocabulary for describing finite and infinite groups. Includes the Burnside problem framing (exponent n ⟹ finite?).
 
 ---
+
+## Basic definitions
+
+Single-concept reference notes under `Research/Group theory/General/basics/` — the vocabulary the definitions above build on.
+
+- [[Research/Group theory/General/basics/group]] — the group axioms.
+- [[Research/Group theory/General/basics/subgroup]] — subgroups and generation.
+- [[Research/Group theory/General/basics/normal-subgroup]] — normality and conjugation.
+- [[Research/Group theory/General/basics/quotient-group]] — the quotient construction G/N.
+- [[Research/Group theory/General/basics/homomorphism]] — structure-preserving maps and kernels.
+- [[Research/Group theory/General/basics/group-action]] — actions, orbits, stabilizers.
+
+Directory maps: [[group-theory-overview]] (Research/Group theory/ root) and [[general-group-theory-overview]] (General/ scope note).
 
 ## Manipulation of presentations
 

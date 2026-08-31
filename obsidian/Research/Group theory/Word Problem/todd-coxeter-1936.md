@@ -99,4 +99,4 @@ Todd & Coxeter 1936 defines the **second classical semi-decision procedure** for
 - Cited by: [[epstein-et-al-1992-word-processing]] (automatic groups — builds on TC and explains when TC terminates efficiently)
 - Concept: [[Research/Group theory/General/presentations-and-relations/coset-enumeration.md]] (the vault concept note on coset enumeration methods)
 - Related: [[knuth-bendix-1970]] (dual procedure — KB rules vs. TC cosets)
-- Tools: [[Research/Group theory/Tools/GAP]] (GAP includes TC coset enumeration)
+- Tools: [[gap-overview]] (GAP includes TC coset enumeration)

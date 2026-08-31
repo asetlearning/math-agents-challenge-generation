@@ -111,3 +111,4 @@ It also has real value as the clearest first-person account of the Novikov–Adi
 - Concepts introduced/used: (none tagged this scan — proof unread)
 - Cites: (unread)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]
+- MOC: [[_moc-burnside]]

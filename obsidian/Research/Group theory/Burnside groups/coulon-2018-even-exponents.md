@@ -74,3 +74,5 @@ This is the cleanest confirmation available that **the entire geometric-small-ca
 
 - Extends: [[atkarskaya-rips-tent-2023]] (parallel combinatorial-record thread; this paper is the geometric-school counterpart, no numeric constant to compare)
 - Cited by: [[_synthesis-b25-attack-surface-2026-08-07]]
+- Extended by: [[coulon-school-partial-periodic-quotients]] (school-wide sweep building on this paper)
+- MOC: [[_moc-burnside]]

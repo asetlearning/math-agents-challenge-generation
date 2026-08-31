@@ -4,7 +4,7 @@ filters:
     - file.ext == "md"
     - file.hasTag("paper")
 formulas:
-  status_icon: if(status == "validated", "✅ synth.", if(status == "draft", "📖 unread", if(status == "rejected", "❌ rejected", "📝")))
+  status_icon: if(status == "validated", "✅ synth.", if(status == "draft", "📖 unread", if(status == "review", "🔎 review", if(status == "rejected", "❌ rejected", if(status == "superseded", "♻️ superseded", "📝")))))
   topic_tags: file.tags.filter(value.startsWith("#topic/"))
 properties:
   status:
@@ -25,6 +25,10 @@ properties:
     displayName: Owned by
   citation_count:
     displayName: Cites
+  formula.status_icon:
+    displayName: Status
+  formula.topic_tags:
+    displayName: Topics
 views:
   - type: table
     name: All papers — latest first
@@ -38,19 +42,27 @@ views:
       - year
       - authors
       - author
+    sort:
+      - property: year
+        direction: DESC
+      - property: file.name
+        direction: ASC
     limit: 100
   - type: table
-    name: By topic
-    groupBy:
-      property: formula.topic_tags
-      direction: ASC
+    name: Topics per paper
     order:
       - file.name
-      - formula.status_icon
+      - formula.topic_tags
       - domain
-      - language
       - year
-      - author
+      - formula.status_icon
+    sort:
+      - property: domain
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    columnSize:
+      formula.topic_tags: 663
   - type: table
     name: By domain
     groupBy:
@@ -62,6 +74,9 @@ views:
       - language
       - year
       - authors
+    sort:
+      - property: file.name
+        direction: ASC
   - type: table
     name: By project (project-scoped papers only)
     filters:
@@ -75,6 +90,9 @@ views:
       - domain
       - formula.status_icon
       - year
+    sort:
+      - property: file.name
+        direction: ASC
   - type: table
     name: By language
     groupBy:
@@ -85,6 +103,9 @@ views:
       - formula.status_icon
       - domain
       - year
+    sort:
+      - property: file.name
+        direction: ASC
   - type: table
     name: Non-English papers (translation review)
     filters:
@@ -97,6 +118,11 @@ views:
       - domain
       - year
       - author
+    sort:
+      - property: language
+        direction: ASC
+      - property: file.name
+        direction: ASC
   - type: table
     name: "Unread (status: draft)"
     filters:
@@ -109,6 +135,9 @@ views:
       - year
       - author
       - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC
   - type: table
     name: "Synthesized (status: validated)"
     filters:
@@ -120,3 +149,6 @@ views:
       - language
       - project
       - year
+    sort:
+      - property: file.name
+        direction: ASC

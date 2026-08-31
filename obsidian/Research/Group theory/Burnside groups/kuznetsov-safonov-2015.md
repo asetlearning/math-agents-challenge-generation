@@ -33,6 +33,8 @@ tags:
   - topic/cayley-graphs
   - paper
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # Hall's polynomials over Burnside groups of exponent three

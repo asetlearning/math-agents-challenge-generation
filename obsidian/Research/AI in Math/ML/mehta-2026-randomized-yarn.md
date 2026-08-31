@@ -31,6 +31,7 @@ tags:
   - topic/length-generalization
   - paper
   - status/draft
+status: draft
 ---
 
 # Randomized YaRN Improves Length Generalization for Long-Context Reasoning
@@ -84,3 +85,5 @@ Whether the same curriculum-is-load-bearing-even-with-randomized-PE finding hold
 
 - Cites: [[ruoss-2023-randomized-positional-encodings]] (the randomized-PE technique this paper extends)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 — synthesizes this paper's curriculum thread)
+- Related: [[kazemnejad-2023-nope]] (the NoPE positional-encoding result in the same length-generalization cluster)

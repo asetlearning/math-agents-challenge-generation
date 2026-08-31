@@ -39,6 +39,7 @@ tags:
   - paper
   - status/draft
 project: b25
+status: draft
 ---
 
 # Is B(2,5) finite or infinite? — Mixer attack rationale (Kostrikin Problem 11.48)
@@ -115,3 +116,4 @@ This is the **primary Mixer target** — the reason the project exists. Every ar
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[kourovka-11.48-kostrikin-1990]], [[kourovka-2022]], [[havas-wall-wamsley-1974]], [[algo-mixing-burnside-slides]]
 - Cited by (in vault): [[kuznetsov-shlepkin-2009]], [[kuznetsov-shlepkin-2010]], [[_synthesis-kuznetsov-b25-algorithmic-line]] (Mixer-attack framing references both Kuznetsov papers as alternative-algorithm witnesses; the synthesis routes recommendations to this open-problem note)
+- MOC: [[_moc-burnside]] (Mixer attack section)

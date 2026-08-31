@@ -10,6 +10,8 @@ tags:
   - topic/b25
   - topic/moc
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # Burnside Groups — Map of Content
@@ -23,8 +25,10 @@ tags:
 Not B(2,5)-specific — the broader question of the smallest odd exponent n proven to give an infinite free Burnside group B(m,n). Scanned 2026-07-31 for Lead's B(2,5)-push literature request.
 
 - [[_synthesis-odd-exponent-state-2026]] — full synthesis: n≥665 (Adian 1975) remains the field-accepted bound; n≥557 (Atkarskaya–Rips–Tent 2023) and n≥101 (Adian 2015) are both published/preprint claims that have NOT cleared independent community verification. Nothing found narrows exponent 5 or 7 directly. Power-free-word growth-rate literature ([[Concepts/power-free-word-growth-rates]]) is exponential for 5th powers but has no published bridge to Adian's actual proof apparatus — not usable as B(2,5) evidence.
-- [[atkarskaya-rips-tent-2023]], [[adian-2015-odd-bound]], [[lysenok-2023-sample-iterated-sc]], [[atkarskaya-kanelbelov-plotkin-rips-2021-sc-rings]], [[gorshkov-2026-moufang-axial-algebra]], [[obrien-vaughanlee-2002-r27]], [[shur-2010-power-free-growth-rates]] — individual paper notes.
+- [[atkarskaya-rips-tent-2023]], [[adian-2015-odd-bound]], [[lysenok-2023-sample-iterated-sc]], [[atkarskaya-kanelbelov-plotkin-rips-2021-sc-rings]], [[gorshkov-2026-moufang-axial-algebra]], [[obrien-vaughanlee-2002-r27]], [[shur-2010-power-free-growth-rates]], [[coulon-2018-even-exponents]], [[coulon-school-partial-periodic-quotients]], [[wagner-2020-torsion-quadratic-dehn]] — individual paper notes (the last three from the 2026-08-07 small-cancellation / partial-periodic-quotient scan).
 - [[_synthesis-gorshkov-axial-algebra-r2-2026]] — R2 deep-read of the Gorshkov preprint: precise Corollary 1 statement, confirms the group object is genuinely free B(2,5).⟨t⟩ (not a restricted-quotient trap — the index-2 extension step is elementary/harmless), lists 4 concrete computability items with cost estimates, author track record (credible, established) and citation status (none found, too recent).
+- [[_synthesis-b25-attack-surface-2026-08-07]] — 2026-08-07 campaign sweep of the literature attack surface for B(2,5) infiniteness: three of four sweep targets returned genuine structural negatives — no published shortcut exists for exponent 5.
+- [[_synthesis-rungs-to-limit-composition-2026-08-07]] — companion sweep #2: how Novikov–Adian/ART close their induction, and what a rank-independent closing parameter for n=5 would have to look like (the named target for Math-expert ideation).
 
 ---
 
@@ -52,6 +56,10 @@ Not B(2,5)-specific — the broader question of the smallest odd exponent n prov
 
 - [[algo-mixing-burnside-slides]] — The B(4,3) breakthrough (2025): two KB orderings cooperating via rule injection in 33 minutes, 2,333 rules, confluence verified. Verbatim run logs and B(4,3) relators. The proof-of-concept for all subsequent Burnside experiments.
 
+- [[matveeva-2026-ai-problem-solving]] — The current account (Tbilisi 2026), superseding the 2025 deck's numbers: B(4,3) completes in 13 s on a single rule-sharing event; B(5,3)'s word problem falls to bidirectional beam search in 1.5 s; B(2,5) reaches 76% best / 28% average reduction across the 119 challenge words. Cite this, not the deck, for current numbers.
+
+- [[kalika-2026]] — 2026 Stevens thesis on biased KB completion and algorithm mixing in B(2,5); extends the slides' B(4,3) program to the flagship B(2,5) problem.
+
 ---
 
 ## Cayley-table-closure attack (Kuznetsov line, Russian, 2009–2010)
@@ -64,11 +72,21 @@ A third algorithmic family for B(2,5): Cayley-table closure on a length-truncate
 
 - [[kuznetsov-shlepkin-2010]] — Refines detection (associativity-test variant); cluster-scale computation of $K_{35}(2,5)$ (~104 hours, 125 nodes, $|P_{35}| \approx 5^{14}$, $|C_{35}| = 104{,}409$). Theorem 3: $B(2,5) \sim B_0(2,5)$ coincide on minimal-word relations up to length 29. **Theorem 4: produces 973 explicit candidate-divergence relations at lengths 30–35; failure of any one in $B(2,5)$ would resolve Problem 11.48 in the negative (B(2,5) infinite).**
 
+- [[_synthesis-kuznetsov-b25-publications]] — Full-program synthesis of the Kuznetsov line: twenty years of structural data on $B_0(2,5)$ across the closure, growth-function, subgroup, and centralizer batches.
+
 - [[_synthesis-kuznetsov-b25-algorithmic-line]] — Synthesis of the three Kuznetsov papers. Frames the Mixer / B(2,5) verification opportunities: $|P_s(2,5)|$ baseline check, direct test of the 2 length-30 candidate relations, pre-registration of a Kuznetsov-Algorithm-I Mixer Agent for multi-witness cross-checking.
 
 ### Kuznetsov — growth functions, Cayley graph diameters, and rewriting systems (2013–2025)
 
 Later papers in the Kuznetsov line (mostly 3-page conference notes in Prikl. Diskr. Mat. Suppl.), advancing computational work on $B_0(2,5)$ quotients and subgroups.
+
+- [[kuznetsova-kuznetsov-safonov-2013]] — Parallel algorithm for computing growth functions in finite two-generator groups of period 5; the parallel entry in the growth-function line.
+
+- [[kuznetsov-2016]] — Algorithm for computing growth functions in finite two-generated groups of exponent 5; extends [[kuznetsov-kuznetsova-2013]].
+
+- [[kuznetsov-karchevsky-2016]] — On the growth functions of finite two-generator Burnside groups of exponent five; companion note replicating [[kuznetsov-2016]].
+
+- [[kuznetsov-kuznetsova-2018]] — Resource-efficient algorithm for studying growth in finite two-generator groups of exponent 5; direct continuation of the 2013/2016 growth-function papers.
 
 - [[kuznetsov-2019]] — Computes Cayley graph diameters $D_{A_4}(B_k)$ for the 34 lower central quotients of $B_0(2,5)$; proposes and verifies (for $k \le 19$) the hypothesis that the diameter equals that of a half-sized normal subgroup. Growth-function angle; unproven hypothesis.
 

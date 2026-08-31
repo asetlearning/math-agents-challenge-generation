@@ -14,7 +14,7 @@ citation_count_date: 2026-07-31
 key_concepts:
   - "[[small-cancellation-ring]]"
   - "[[multi-turn]]"
-  - "[[grobner-basis]]"
+  - "[[Concepts/grobner-bases]]"
 extends: []
 contradicts: []
 replicates: []
@@ -103,7 +103,8 @@ This is the foundational "framework" paper of the Atkarskaya–Kanel-Belov–Plo
 - Extends: (none)
 - Contradicts: (none — this note *corrects* a prior unverified n≥8000 attribution, but the correction is bibliographic, not a mathematical contradiction)
 - Replicates: (none)
-- Concepts introduced/used: `[[small-cancellation-ring]]`, `[[multi-turn]]`, `[[grobner-basis]]` (ring small cancellation, multi-turn calculus, Gröbner/Diamond-Lemma reinterpretation)
+- Concepts introduced/used: `[[small-cancellation-ring]]`, `[[multi-turn]]`, [[Concepts/grobner-bases]] (ring small cancellation, multi-turn calculus, Gröbner/Diamond-Lemma reinterpretation)
 - Cites (in bibliography, group-Burnside context): Adian, Ivanov, Lysenok, Ol'shanskii-adjacent small-cancellation sources
 - Related program paper (shared authors): [[atkarskaya-rips-tent-2023]] (pure-group odd-exponent line)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]
+- MOC: [[_moc-burnside]]

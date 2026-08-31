@@ -8,6 +8,8 @@ tags:
   - domain/group-theory
   - convention
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # Research/Group theory — Directory Map

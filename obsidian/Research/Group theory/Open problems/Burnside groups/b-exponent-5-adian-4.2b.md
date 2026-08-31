@@ -32,6 +32,7 @@ tags:
   - paper
   - status/draft
 project: b25
+status: draft
 ---
 
 # Do there exist infinite finitely generated groups of exponent 5? (Adian, Kourovka 4.2b)
@@ -106,3 +107,4 @@ This problem provides the broadest framing for the B(2,5) program: not just "is 
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[kourovka-2022]], [[havas-wall-wamsley-1974]], [[kourovka-11.48-kostrikin-1990]]
 - Cited by (in vault): (none currently)
+- MOC: [[_moc-burnside]] (the open problem section)

@@ -10,6 +10,8 @@ tags:
   - topic/finitely-presented-groups
   - content-type/code-example
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # GAP: Test word equality in a finitely presented group

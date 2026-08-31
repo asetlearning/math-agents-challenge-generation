@@ -24,6 +24,7 @@ papers_synthesized:
 key_concepts: []
 status: draft
 project: b25
+domain: group-theory
 ---
 
 # Synthesis — literature attack surface for B(2,5) infiniteness (2026-08-07 campaign sweep)
@@ -126,3 +127,10 @@ Lead ACK'd 2026-08-07: synthesis accepted as standing input to the rung-5 (G₅/
 ## Stop condition invoked
 
 Three of four sweep targets returned genuine, structural negatives rather than partial leads — stated plainly per role discipline. This is not a padding failure: a clean "no published shortcut exists" is exactly the answer Lead asked for ("confirm or refute"), and it directly supports continuing the internal per-rung program rather than diverting resources toward adapting external machinery that was never built for this exponent.
+## Related material
+
+- [[_moc-burnside]] — the Burnside MOC this sweep feeds (odd-exponent / small-cancellation section)
+- [[_synthesis-odd-exponent-state-2026]] — the 2026-07-31 scan this sweep extends
+- [[_synthesis-rungs-to-limit-composition-2026-08-07]] — companion targeted sweep #2 (rungs-to-limit composition), same campaign
+- [[coulon-2018-even-exponents]], [[coulon-school-partial-periodic-quotients]] — the partial-periodic-quotient machinery assessed here
+- [[kourovka-11.48-kostrikin-1990]] — the open problem all four sweep targets were checked against

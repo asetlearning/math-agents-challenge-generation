@@ -28,6 +28,7 @@ tags:
   - topic/finitely-presented-groups
   - paper
   - status/draft
+status: draft
 ---
 
 # Do 2-relator groups with insoluble word problem exist? (Merzlyakov, Kourovka 9.29)
@@ -102,3 +103,6 @@ This problem sets a boundary on what KB-based tools can claim: the Mixer can pro
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[kourovka-2022]]
 - Cited by (in vault): (none currently)
+- See also: [[decidability-landscape]] — this problem marks the 1-vs-2-relator decidability boundary mapped there
+- See also: [[_moc-word-problem]] — word-problem topic MOC
+- See also: [[open-problems-catalog]] — feasibility catalog entry for this problem

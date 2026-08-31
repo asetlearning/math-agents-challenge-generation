@@ -37,6 +37,7 @@ tags:
   - topic/algorithm-portfolio
   - paper
   - status/draft
+status: draft
 ---
 
 # PatternBoost: Constructions in Mathematics with a Little Help from AI
@@ -143,6 +144,7 @@ The SAT-encoding methodology in [[Research/Group theory/Open problems/Group ring
 ## Related material in vault
 
 - Cites: [[romera-paredes-2023-funsearch]] (FunSearch — same paradigm family), [[2506.13131]] (AlphaEvolve — same paradigm family)
-- Related AI-for-math: [[2306.15626]] (AI for combinatorial optimization?), [[1701.06972]] (?)
+- Related AI-for-math: [[1701.06972]] (Loos et al. 2017 — deep-network heuristics steering a classical prover's search; earlier instance of the learned-guidance-over-classical-search pattern PatternBoost iterates)
 - Gardam bridge: [[Research/Group theory/Open problems/Group rings/gardam-semidecidable-2021]] (SAT-based search = complementary computational-search paradigm)
-- MOC: `Research/AI in Math/ML/_synthesis-ml-for-math`
+- MOC: [[_synthesis-ml-for-math]]
+- [[2306.15626]] — LeanDojo (retrieval-augmented theorem proving): a contrasting AI-for-math paradigm — formal proof search vs PatternBoost's construction search

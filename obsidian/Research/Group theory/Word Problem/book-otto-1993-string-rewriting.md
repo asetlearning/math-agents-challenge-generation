@@ -7,7 +7,7 @@ isbn: "0-387-97965-4"
 url: ""
 language: en
 domain: group-theory
-status: stub
+status: draft
 methodology_type: reference
 citation_count: null
 citation_count_date:
@@ -31,7 +31,7 @@ tags:
   - topic/well-quasi-order
   - topic/higman-theorem
   - paper
-  - status/stub
+  - status/draft
 ---
 
 # String-Rewriting Systems

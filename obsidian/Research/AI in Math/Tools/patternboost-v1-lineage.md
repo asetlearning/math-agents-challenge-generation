@@ -16,6 +16,7 @@ tags:
 related:
   - "[[charton-2024-patternboost]]"
   - "[[axplorer]]"
+status: draft
 ---
 
 # PatternBoost v1 — Julia/Python Proof-of-Concept (zawagner22)
@@ -48,3 +49,10 @@ GitHub: zawagner22/transformers_math_experiments — 39 stars. Original proof-of
 ## Why we use axplorer instead
 
 axplorer is the clean Python reimplementation of the same core loop. It removes the Julia dependency (our Mixer infrastructure is Python/Rust, not Julia), eliminates file-based IPC overhead, and provides the `DataPoint` ABC as the documented extension point for new domains. There is no B(2,5)-specific code in v1 that cannot be done via axplorer's `DataPoint` interface.
+
+## Related material
+
+- Paper: [[charton-2024-patternboost]] (the PatternBoost methodology v1 prototyped)
+- Successor: [[axplorer]] (production reimplementation; use it instead of v1)
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]] (representation scan covering the BPE-vs-domain-tokenizer difference between v1 and axplorer)
+- MOC: [[_moc-ai-in-math]]

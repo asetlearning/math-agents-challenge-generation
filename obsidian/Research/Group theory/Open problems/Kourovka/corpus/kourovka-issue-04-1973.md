@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 4th Issue, 1973
@@ -205,3 +209,9 @@ b) Is every binary-finite 2-group of order greater than 2 non-simple?
 Let G be a periodic group containing an involution i and suppose that the Sylow 2-subgroups of G are either locally cyclic or generalized quaternion. Does the element iO2′ (G) of the factor-group G/O2′ (G) always lie in its centre? V. P. Shunkov
 
 15
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-03-1969]] — previous issue (1969)
+- [[kourovka-issue-05-1976]] — next issue (1976)

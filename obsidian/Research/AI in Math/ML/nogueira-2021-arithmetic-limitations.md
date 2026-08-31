@@ -31,6 +31,7 @@ tags:
   - topic/tokenization
   - paper
   - status/draft
+status: draft
 ---
 
 # Investigating the Limitations of Transformers with Simple Arithmetic Tasks

@@ -28,6 +28,7 @@ tags:
   - topic/mathematical-discovery
   - paper
   - status/draft
+status: draft
 ---
 
 # Mathematical discoveries from program search with large language models

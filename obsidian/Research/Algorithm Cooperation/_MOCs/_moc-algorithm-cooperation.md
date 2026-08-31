@@ -27,6 +27,8 @@ tags:
 
 - ⚡ [[algo-mixing-burnside-slides]] — B(4,3) solved in 33 minutes via two KB orderings cooperating: RPO + shortlex, 80-rule injection at 20k rules triggers a cascade from 22s to 14s. The proof-of-concept for cooperative KB completion.
 
+- ⚡ [[matveeva-2026-ai-problem-solving]] — **the current account** (Tbilisi 2026). B(4,3) now completes in **13 s on a single rule-sharing event** (60× standalone RPO, 2,333 rules, 1,702,360 critical pairs, 0 failures); B(5,3)'s word problem falls to bidirectional beam search in **1.5 s** where completion ran 97 h to 11.7M rules without finishing; B(2,5) reaches **76% best / 28% average** reduction across the 119 challenge words but **no word reaches `e`**. Also carries the Gröbner-bandit transfer (discounted bandit: geomean 1.22, worst case 1.75× vs 3.2–7.2× for fixed strategies) and the methodological half — shared vault, agent roles with refusal rules, proof skeletons. Cite this, not the 2025 deck, for current numbers.
+
 ---
 
 ## Synthesis
@@ -74,6 +76,7 @@ Three instantiations of the same structural motif, named differently in each com
 ## Gröbner alternative (a different partial-No oracle)
 
 - [[grobner]] — Kreuzer, Myasnikov, Rosenberger (2025 draft): Gröbner basis as a complementary word-problem oracle. Structurally a partial-No oracle for the same FPG word problem that KB searches. Cross-links [[Concepts/grobner-quotient-filter]] and [[Concepts/grobner-infinitude-probe]].
+- [[kreuzer-et-al-2010]] — Kreuzer et al. (2010): "Quotient Tests and Gröbner Bases" — the published 2010 predecessor of the 2025 draft; quotient tests as fast partial-No oracles for FPG word problems.
 
 ---
 

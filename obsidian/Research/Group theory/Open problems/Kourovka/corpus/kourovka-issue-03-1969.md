@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 3th Issue, 1969
@@ -145,3 +149,9 @@ Determine the laws of distribution of non-soluble and simple group-theoretic num
 The notion of the p-length of an arbitrary finite group was introduced in (L. A. Shemetkov, Math. USSR Sbornik, 1 (1968), 83–92). Investigate the relations between the p-length of a finite group and the invariants cp , dp , ep of its Sylow p-subgroup. L. A. Shemetkov
 
 12
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-02-1966]] — previous issue (1966)
+- [[kourovka-issue-04-1973]] — next issue (1973)

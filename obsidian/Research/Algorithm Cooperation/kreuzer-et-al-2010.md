@@ -39,7 +39,7 @@ tags:
   - topic/quotient-tests
   - topic/universal-linear-representation
   - topic/infinitude-detection
-  - topic/kourovka-problems
+  - topic/kourovka
   - paper
   - status/draft
 ---

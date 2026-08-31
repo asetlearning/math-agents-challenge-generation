@@ -10,11 +10,13 @@ tags:
   - topic/mathematical-discovery
   - topic/moc
   - status/draft
+status: draft
+domain: ai
 ---
 
 # AI in Math — Map of Content
 
-**This MOC is a curated reading path for AI applied to mathematics** — covering formal theorem proving (LLM-based agents), RL training for mathematical reasoning, ML-guided mathematical discovery, and the 2026 wave of agent-driven research results. Four sub-areas, 23 notes (2017–2026). Navigate here when you want to understand the state of the art, what's settled, and what remains open.
+**This MOC is a curated reading path for AI applied to mathematics** — covering formal theorem proving (LLM-based agents), RL training for mathematical reasoning, ML-guided mathematical discovery, and the 2026 wave of agent-driven research results. Four sub-areas plus a Tools shelf, ~46 notes (2014–2026). Navigate here when you want to understand the state of the art, what's settled, and what remains open.
 
 Cross-cluster: papers in this MOC that are relevant to the Burnside/Mixer program are flagged with ⚡.
 
@@ -74,6 +76,18 @@ Reinforcement-learning-guided tactic selection, value-network proof search, proc
 
 - [[RL/fawzi-2022-alphatensor]] — AlphaTensor (Fawzi et al. 2022, Nature): AlphaZero-style RL discovers new matrix multiplication algorithms; beats Strassen 4×4 in Z₂. ⚡ **Highest Mixer relevance**: single-player game framing = template for RL-guided Mixer rule injection. The evaluator is "does this injection reduce convergence time?"
 
+### Value networks, search, and reward design (2026-07-17 wave)
+
+Support wave for the B25 PatternBoost program — value/cost-to-go scoring, search on group-structured spaces, reward-hacking risk. Curated in depth by [[ML/_synthesis-b25-value-scoring-curriculum-auxchannel]].
+
+- [[RL/agostinelli-2019-deepcubea]] — DeepCubeA (2019): value network + weighted A* solves the Rubik's cube without human knowledge; the cost-to-go bootstrapping template. ⚡
+- [[RL/chervov-2025-cayleypy-rl]] — CayleyPy (2025): RL pathfinding on Cayley graphs — group-theory-adjacent search at scale. ⚡
+- [[RL/futuhi-sturtevant-2026-admissible-heuristics]] — learned admissible heuristics for A* (2026): when learned value functions keep optimality guarantees.
+- [[RL/segler-2018-retrosynthesis-mcts]] — Segler et al. (2018, Nature): MCTS + neural policies for chemical synthesis planning — the plan-search paradigm outside games.
+- [[RL/shypula-2021-superoptimize-real-world-programs]] — SILO self-imitation for program superoptimization (2021): search that allows locally-worse intermediate edits. ⚡
+- [[RL/skalse-2022-defining-reward-hacking]] — Skalse et al. (2022): formal definition of reward hacking; calibrates the PatternBoost score-proxy risk. ⚡
+- [[RL/2005.01917]] — Learning selection strategies in Buchberger's algorithm (2020): RL inside a computer-algebra solver. ⚡
+
 ---
 
 ## Sub-area C — ML for math (non-agent, non-RL)
@@ -104,6 +118,34 @@ Equation/conjecture discovery, neural heuristics inside solvers, embeddings-for-
 
 - [[ML/2506.13131]] — AlphaEvolve (Novikov et al. 2025): FunSearch with Gemini; 67+ mathematical problems; discovers 4×4 complex matrix multiplication with 48 multiplications (first Strassen improvement in this setting). ⚡ *Same template as FunSearch; broader validation.*
 
+- [[ML/charton-2024-patternboost]] — PatternBoost (Charton, Ellenberg, Wagner, Williamson 2024): alternating local search + transformer generation for mathematical constructions; direct continuation of the FunSearch line, and the method the whole b25_patternboost program is built on. ⚡
+
+### B25 PatternBoost program (2026-06/07 support waves)
+
+**Syntheses**: [[ML/_synthesis-b25-patternboost-tokenization]] — input/output representation gate (Phase A) for the B(2,5) PatternBoost transformer ⚡; [[ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] — Deep Round 2: value/cost-to-go scoring, length curriculum, auxiliary-tag fusion ⚡. Both curate the 2026-07-17 wave below.
+
+Tokenization / positional encoding / length generalization / curriculum / edit representation:
+
+- [[ML/charton-2022-linear-algebra-transformers]] — number encodings for transformer mathematics.
+- [[ML/nogueira-2021-arithmetic-limitations]] — tokenization limits of transformers on simple arithmetic.
+- [[ML/singh-strouse-2024-tokenization-counts]] — tokenization's impact on arithmetic in frontier LLMs.
+- [[ML/sennrich-haddow-2016-linguistic-features]] — auxiliary input features for seq2seq models (aux-channel precedent).
+- [[ML/kazemnejad-2023-nope]] — impact of positional encoding on length generalization (NoPE result).
+- [[ML/ruoss-2023-randomized-positional-encodings]] — randomized positional encodings boost length generalization.
+- [[ML/mehta-2026-randomized-yarn]] — randomized YaRN for long-context length generalization.
+- [[ML/zaremba-sutskever-2014-learning-to-execute]] — Learning to Execute (2014): curriculum learning for sequence models.
+- [[ML/agarwal-2021-polynomial-simplification-curriculum]] — curriculum nuances of transformers' polynomial simplification.
+- [[ML/petschack-2025-symmetric-group]] — learning the symmetric group large-from-small (group-theory-adjacent).
+- [[ML/gukov-2020-learning-to-unknot]] — Learning to Unknot (2020): RL/tokenization on braid words (group-theory-adjacent). ⚡
+- [[ML/guo-2020-graphcodebert]] — GraphCodeBERT: structure-aware code representations (edit-representation precedent).
+- [[ML/cao-2026-adaedit]] — AdaEdit (2026): adaptive edit-format selection for LLM editing.
+
+### Gröbner-basis learning (2026-08-09 wave)
+
+- [[ML/kera-2024-grobner-via-learning]] — Gröbner basis computation via learning (2024): transformers + backward-generation training. ⚡
+- [[ML/2311.12904]] — Learning to Compute Gröbner Bases (2023).
+- [[ML/2401.09328]] — deep-learned online stability improvement for Gröbner basis solvers (2024).
+
 ---
 
 ## Sub-area D — Agent-driven discoveries (the 2026 wave)
@@ -119,6 +161,13 @@ Concrete research-grade results *produced with AI agents* in 2026 — new proofs
 - [[aletheia-autonomous-math-2026]] — **DeepMind Aletheia** (Gemini Deep Think): Generate–Verify–Revise loop resolves 4 open Erdős problems + a fully-autonomous eigenweights paper (2026-03). ✅ Semi-autonomous, **public transcripts**. ⚡ *3-subagent loop = our two-tier guide/certify architecture; co-authored by Sergei Gukov (group-theory ML line).*
 
 ---
+
+## Tools
+
+Reference notes (not paper summaries) under `Tools/` — see [[_index|Tools index]].
+
+- [[Tools/axplorer]] — axplorer: the PatternBoost reference implementation used by the b25_patternboost program. ⚡
+- [[Tools/patternboost-v1-lineage]] — PatternBoost v1: the original Julia/Python proof-of-concept lineage (zawagner22). ⚡
 
 ## Cross-cluster connections to Group Theory / Burnside
 

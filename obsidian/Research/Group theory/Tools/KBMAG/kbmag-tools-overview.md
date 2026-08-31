@@ -10,6 +10,8 @@ tags:
   - topic/kbmag
   - convention
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # KBMAG — Overview

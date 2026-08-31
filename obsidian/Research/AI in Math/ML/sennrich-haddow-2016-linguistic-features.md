@@ -30,6 +30,7 @@ tags:
   - topic/tokenization
   - paper
   - status/draft
+status: draft
 ---
 
 # Linguistic Input Features Improve Neural Machine Translation
@@ -66,3 +67,4 @@ Whether this paper's actual reported effect size (once independently verified â€
 
 - Related: [[guo-2020-graphcodebert]] (contrasting fusion mechanism, and mechanism actually verified this session)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 â€” this paper anchors the embedding-fusion end of the R4 aux-channel thread)

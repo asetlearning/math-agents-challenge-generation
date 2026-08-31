@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 13th Issue, 1995
@@ -196,7 +200,7 @@ Does every non-soluble pro-p-group of cohomological dimension 2 contain a free n
 
 *Issue 13 (1995) · printed p. 66 · proposed by O. V. Mel’nikov*
 
-For a finitely generated pro-p-group G set an (G) = dim Fp I n /I n+1 , where I is the augmentation ideal of the group ring Fp [[G]]. We define the growth of G to be the growth of the sequence {an (G)}n∈N . a) If the growth of G is exponential, does it follow that G contains a free pro-p- subgroup of rank 2? c) Do there exist pro-p-groups of finite cohomological dimension which are not p-adic analytic, and whose growth is slower than an exponential one?
+For a finitely generated pro-p-group G set an (G) = dim Fp I n /I n+1 , where I is the augmentation ideal of the group ring `Fp [[G]]`. We define the growth of G to be the growth of the sequence {an (G)}n∈N . a) If the growth of G is exponential, does it follow that G contains a free pro-p- subgroup of rank 2? c) Do there exist pro-p-groups of finite cohomological dimension which are not p-adic analytic, and whose growth is slower than an exponential one?
 
 ## 13.37
 
@@ -313,3 +317,9 @@ A finite simple group is called a Kn -group if its order is divisible by exactly
 Let G be a T0 -group (see 12.101), i an involution in G and G = hig | g ∈ Gi. Is the centralizer CG (i) residually periodic? V. P. Shunkov
 
 70
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-12-1992]] — previous issue (1992)
+- [[kourovka-issue-14-1999]] — next issue (1999)

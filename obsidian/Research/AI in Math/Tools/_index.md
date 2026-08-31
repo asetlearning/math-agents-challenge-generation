@@ -9,6 +9,7 @@ tags:
   - topic/patternboost
   - convention
   - status/draft
+status: draft
 ---
 
 # Research/AI in Math/Tools/ — What this subtree is for

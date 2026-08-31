@@ -32,6 +32,7 @@ tags:
   - topic/computational-search-group-theory
   - paper
   - status/draft
+status: draft
 ---
 
 # The topology and geometry of units and zero-divisors: origami
@@ -111,3 +112,4 @@ Methodological note only. B(2,5) is torsion; Kaplansky does not apply directly. 
 - Related: [[kaplansky-zero-divisors]] (ZDC hub — Mineyev targets both UC and ZDC)
 - Concept hub: [[Concepts/kaplansky-unit-conjecture]]
 - Companion papers: [[gardam-2024-kaplansky-char-zero]], [[murray-2021-kaplansky-char-p]]
+- MOC: [[_moc-word-problem]] (adjacent open problems — Kaplansky cluster)

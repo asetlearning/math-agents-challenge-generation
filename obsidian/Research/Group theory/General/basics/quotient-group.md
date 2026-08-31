@@ -7,11 +7,14 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
   - status/validated
 related:
   - "[[normal-subgroup]]"
   - "[[homomorphism]]"
   - "[[group]]"
+status: validated
+domain: group-theory
 ---
 
 # Quotient Group
@@ -52,3 +55,5 @@ This is the key construction: adding relators to a presentation yields a quotien
 - [[normal-subgroup]] — N ⊴ G is the prerequisite for forming G/N.
 - [[homomorphism]] — G → G/N is the quotient homomorphism (canonical surjection).
 - [[group]] — G/N is itself a group.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

@@ -32,6 +32,7 @@ tags:
   - topic/proof-search
   - paper
   - status/draft
+status: draft
 ---
 
 # Planning chemical syntheses with deep neural networks and symbolic AI
@@ -80,3 +81,4 @@ Given B(2,5) already HAS a fast deterministic reducer (unlike DeepCubeA/DeepCube
 
 - Related: [[agostinelli-2019-deepcubea]] (the actual value-network precedent; contrast this note's rollout-based alternative against it)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 — synthesizes this paper's rollout-vs-value-network design point)

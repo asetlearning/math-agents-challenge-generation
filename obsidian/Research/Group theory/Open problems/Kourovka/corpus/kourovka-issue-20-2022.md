@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — New Problems (20th Issue), 2022
@@ -773,3 +777,9 @@ For nilpotent subgroups A, B, C of a finite group G, let MinG (A, B, C) be the s
 *Issue 20 (2022) · printed p. 163 · proposed by V. I. Zenkov*
 
 A finite group is called a Dπ -group if any two of its maximal π-subgroups are conjugate. a) Is it true that for any finite Dπ -group G and a π-Hall subgroup H of G, there are elements x, y, z ∈ G such that Oπ (G) = H ∩ H x ∩ H y ∩ H z ? b) Suppose that G is a finite Dπ -group in which all simple non-abelian composition factors are sporadic or alternating groups, and let H be a Hall π-subgroup of G. Is it true that H ∩ H x ∩ H y = Oπ (G) for some x, y ∈ G? c) Suppose that G is a finite Dπ -group with trivial soluble radical in which all simple non-abelian composition factors are sporadic groups, and let H be a Hall π-subgroup of G. Is it true that H ∩ H g = Oπ (G) for some g ∈ G?
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-19-2018]] — previous issue (2018)
+- [[kourovka-2022]] — paper note for the source notebook (arXiv:1401.0300)

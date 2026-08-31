@@ -14,6 +14,8 @@ related:
   - "[[free-groups]]"
   - "[[tietze-transformations]]"
   - "[[coset-enumeration]]"
+status: validated
+domain: group-theory
 ---
 
 # Group Presentations ⟨X | R⟩
@@ -61,3 +63,5 @@ A group is **finitely presented** if it has a presentation with finitely many ge
 - [[free-groups]] — F(X) is the starting point; G = F(X)/⟪R⟫.
 - [[tietze-transformations]] — manipulations of presentations that don't change the presented group.
 - [[coset-enumeration]] — algorithmic enumeration of cosets of a subgroup in G.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

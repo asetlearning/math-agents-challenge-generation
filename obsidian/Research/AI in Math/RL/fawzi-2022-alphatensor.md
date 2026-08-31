@@ -28,6 +28,7 @@ tags:
   - topic/monte-carlo-tree-search
   - paper
   - status/draft
+status: draft
 ---
 
 # Discovering faster matrix multiplication algorithms with reinforcement learning
@@ -103,4 +104,4 @@ AlphaTensor demonstrates that **RL can discover genuinely novel mathematics** â€
 
 - Related: [[1805.07563]] (Kaliszyk 2018 â€” RL for theorem proving; same paradigm applied to math proof rather than algorithm discovery), [[alphaproof-2024]] (AlphaZero RL applied to formal theorem proving; direct architectural ancestor)
 - Cross-vault: Mixer rule injection as RL-optimized algorithm search; see [[algo-mixing-burnside-slides]]
-- MOC: `Research/AI in Math/RL/_synthesis-rl-for-math` (forthcoming)
+- MOC: [[_synthesis-rl-for-math]]

@@ -18,6 +18,7 @@ contradicts: []
 replicates: []
 cites: []
 cited_by:
+  - "[[matveeva-2026-ai-problem-solving]]"
   - "[[havas-newman-1980]]"
   - "[[havas-robertson]]"
   - "[[kourovka-11.48-kostrikin-1990]]"
@@ -58,6 +59,7 @@ tags:
   - paper
   - status/draft
 project: b25
+status: draft
 ---
 
 # The two generator restricted Burnside group of exponent five

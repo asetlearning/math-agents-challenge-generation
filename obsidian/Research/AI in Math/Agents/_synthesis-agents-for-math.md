@@ -26,6 +26,8 @@ papers_synthesized:
 key_concepts: []
 date_range: 2020-09 to 2025-04
 project:
+status: draft
+domain: ai
 ---
 
 # Synthesis — Agents for math: LLM-driven theorem proving and autoformalization (2020–2025)

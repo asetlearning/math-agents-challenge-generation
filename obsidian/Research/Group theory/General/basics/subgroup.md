@@ -7,11 +7,14 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
   - status/validated
 related:
   - "[[group]]"
   - "[[normal-subgroup]]"
   - "[[quotient-group]]"
+status: validated
+domain: group-theory
 ---
 
 # Subgroup
@@ -49,3 +52,5 @@ If G is finite and H ≤ G, then |H| divides |G|. The index [G:H] = |G|/|H| equa
 - [[normal-subgroup]] — a subgroup H with gHg⁻¹ = H for all g ∈ G.
 - [[quotient-group]] — formed when H is a normal subgroup of G.
 - [[coset-enumeration]] (Word Problem/techniques) — algorithmic enumeration of [G:H] cosets.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

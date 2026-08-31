@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 9th Issue, 1984
@@ -343,3 +347,9 @@ Suppose that G is a (periodic) p-conjugacy biprimitively finite group (see 6.59)
 a) Is every binary finite 2-group of finite exponent locally finite? b) The same question for p-groups for p > 2. V. P. Shunkov
 
 38
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-08-1982]] — previous issue (1982)
+- [[kourovka-issue-10-1986]] — next issue (1986)

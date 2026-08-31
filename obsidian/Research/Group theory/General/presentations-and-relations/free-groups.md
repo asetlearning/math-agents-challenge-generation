@@ -13,6 +13,8 @@ tags:
 related:
   - "[[presentations]]"
   - "[[group]]"
+status: validated
+domain: group-theory
 ---
 
 # Free Groups
@@ -50,3 +52,5 @@ The word problem in F(X) is solvable in O(|w|) time (free reduction to unique no
 
 - [[presentations]] — G = F(X)/⟪R⟫; understanding F(X) is the first step.
 - [[group]] — F(X) is a group; every group is a quotient of a free group.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

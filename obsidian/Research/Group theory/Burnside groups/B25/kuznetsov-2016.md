@@ -13,7 +13,7 @@ status: draft
 citation_count: null
 citation_count_date:
 key_concepts:
-  - "[[growth-function]]"
+  - "[[Concepts/growth-functions-burnside]]"
   - "[[cayley-diameter]]"
   - "[[power-commutator-presentation]]"
   - "[[hall-polynomials]]"

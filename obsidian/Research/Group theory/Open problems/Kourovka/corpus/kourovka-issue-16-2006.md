@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 16th Issue, 2006
@@ -517,3 +521,9 @@ Do braid groups Bn , n > 4, have non-elementary hyperbolic factor groups?
 Must an infinite simple periodic group with a dihedral Sylow 2-subgroup be isomorphic to L2 (P ) for a locally finite field P of odd characteristic? V. P. Shunkov
 
 103
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-15-2002]] — previous issue (2002)
+- [[kourovka-issue-17-2010]] — next issue (2010)

@@ -7,11 +7,14 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
   - status/validated
 related:
   - "[[subgroup]]"
   - "[[quotient-group]]"
   - "[[homomorphism]]"
+status: validated
+domain: group-theory
 ---
 
 # Normal Subgroup
@@ -56,3 +59,5 @@ This is the key construction in finitely presented group theory: G = F(X) / ⟪R
 - [[subgroup]] — H ≤ G is the starting point; normality adds the extra condition.
 - [[quotient-group]] — G/N is well-defined iff N ⊴ G.
 - [[homomorphism]] — ker(φ) is always normal; conversely, every normal subgroup is a kernel.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

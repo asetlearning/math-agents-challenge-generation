@@ -15,6 +15,8 @@ related:
   - "[[presentations]]"
   - "[[tietze-transformations]]"
   - "[[free-groups]]"
+status: validated
+domain: group-theory
 ---
 
 # Coset Enumeration (Todd-Coxeter Algorithm)
@@ -69,3 +71,5 @@ See `Tools/GAP/examples/02-coset-enumeration.md` for a runnable example.
 - [[presentations]] — the input (G = ⟨X | R⟩, H specified by generators).
 - [[tietze-transformations]] — Reidemeister-Schreier (which uses coset enumeration) produces a presentation for H, then Tietze simplifies.
 - [[free-groups]] — the free group is the setting where the relator words live before quotienting.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

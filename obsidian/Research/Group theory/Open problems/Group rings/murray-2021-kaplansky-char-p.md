@@ -31,6 +31,7 @@ tags:
   - topic/computational-search-group-theory
   - paper
   - status/draft
+status: draft
 ---
 
 # More counterexamples to the unit conjecture for group rings
@@ -93,3 +94,4 @@ Methodological note only. B(2,5) is a torsion group; unit conjecture does not ap
 - Companion: [[gardam-semidecidable-2021]] (the SAT method that found the original unit)
 - Companion: [[gardam-2024-kaplansky-char-zero]] (char-0 extension)
 - Lineage context: [[gardam-2023-kaplansky-survey]] (survey covering all three conjectures)
+- MOC: [[_moc-word-problem]] (adjacent open problems — Kaplansky cluster)

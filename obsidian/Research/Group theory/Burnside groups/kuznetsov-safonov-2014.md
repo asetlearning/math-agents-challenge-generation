@@ -32,6 +32,8 @@ tags:
   - topic/finite-group-enumeration
   - paper
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # Hall's polynomials of finite two-generator groups of exponent seven

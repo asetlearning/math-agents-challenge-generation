@@ -87,3 +87,5 @@ The single most novel, most recent item surfaced in this scan. The exponent-5 ca
 - Concepts introduced/used: (none)
 - Cites: [[atkarskaya-rips-tent-2023]] (per subagent citation search; relationship not independently confirmed this scan)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]
+- Deep-read: [[_synthesis-gorshkov-axial-algebra-r2-2026]] (R2 full-text read of this preprint)
+- MOC: [[_moc-burnside]]

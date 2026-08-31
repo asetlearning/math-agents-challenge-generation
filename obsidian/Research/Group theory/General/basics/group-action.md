@@ -7,11 +7,15 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
+  - topic/coset-enumeration
   - status/validated
 related:
   - "[[group]]"
   - "[[homomorphism]]"
   - "[[subgroup]]"
+status: validated
+domain: group-theory
 ---
 
 # Group Action
@@ -65,3 +69,5 @@ where Ω^g = {ω ∈ Ω | g · ω = ω} is the set of fixed points of g.
 - [[group]] — G is the acting group.
 - [[subgroup]] — stabilizers Gω are subgroups; kernels are normal subgroups.
 - [[homomorphism]] — a group action is the same as a homomorphism G → Sym(Ω).
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

@@ -29,7 +29,7 @@ cites:
 cited_by:
   - "[[algo-mixing-burnside-slides]]"
   - "[[problems-people]]"
-  - "[[kaplansky-zero-divisors]]"
+  - "[[Concepts/kaplansky-zero-divisors]]"
 quality_notes: "Preprint draft — Section 7.5 (Burnside Problem / B(2,5)) and Example 7.9 are labeled 'TODO: Continue!'; those sections are incomplete. Alexei Myasnikov (co-author) is also the Mixer project lead ([[problems-people]]). Risk/high because the paper is incomplete and the B(2,5) application (the most relevant to this vault) is unfinished. Old deprecated tags removed: #domain/grobner → #domain/cs; #project/grobner → dropped (unregistered, no active workstream). Re-classified from #domain/cs to #domain/group-theory in Phase 12 — methodology is Gröbner-basis machinery but the paper's contribution is to a group-theory problem (Burnside / B(2,5)). Per research-folder-convention § Domain naming and [[tags]] § Axis 3 (methodology vs. contribution disambiguation, added same turn)."
 author: maumayma
 tags:
@@ -44,6 +44,7 @@ tags:
   - status/draft
   - risk/high
 project: b25
+status: draft
 ---
 
 # Quotient Tests and Gröbner Bases
@@ -147,9 +148,9 @@ The KB–Gröbner duality is the core Mixer insight: both KB completion and Grö
 
 ## Related material in vault
 
-- Extends: (none)
+- Extends: [[kreuzer-et-al-2010]]
 - Contradicts: (none)
 - Replicates: (none)
 - Concepts introduced/used: [[Concepts/grobner-quotient-filter]], [[Concepts/grobner-infinitude-probe]], [[Concepts/representation-variety]] (stubs to be created in F4.4)
-- Cites (in vault): [[havas-robertson]], [[kourovka-2022]], [[problems-people]]
-- Cited by (in vault): [[algo-mixing-burnside-slides]] (cross-referenced as a Mixer agent candidate), [[Concepts/burau4-faithfulness]], [[Concepts/kaplansky-zero-divisors]]
+- Cites (in vault): [[kreuzer-et-al-2010]], [[havas-robertson]], [[kourovka-2022]], [[problems-people]]
+- Cited by (in vault): [[algo-mixing-burnside-slides]] (cross-referenced as a Mixer agent candidate), [[problems-people]], [[Concepts/kaplansky-zero-divisors]]

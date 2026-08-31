@@ -28,16 +28,14 @@ tags:
   - agent/research
   - user/ethan-k
   - domain/group-theory
-  - topic/knuth-bendix-completion
-  - topic/burnside-groups
-  - topic/b25-problem
-  - topic/algorithm-mixing
+  - topic/knuth-bendix
+  - topic/burnside
+  - topic/b25
+  - topic/mixer
   - topic/rewriting-systems
   - topic/word-problem
-  - topic/target-words
   - topic/shortlex-ordering
-  - topic/bidirectional-mixing
-  - topic/completion-procedures
+  - topic/bidirectional
   - paper
   - status/draft
 project: b25

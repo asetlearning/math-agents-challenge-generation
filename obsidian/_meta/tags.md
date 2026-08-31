@@ -181,6 +181,10 @@ Grow the list organically. Don't pre-register topics that don't exist yet.
 - `#topic/length-generalization` — a model's ability to handle sequences longer than (or of different length from) what it saw in training, and the architectural choices (positional encoding scheme, attention pattern) that enable or block it. Tag when length generalization or long-sequence positional-encoding choice is a primary empirical finding of the paper.
 - `#topic/edit-representation` — models that generate or operate over edit operations / action sequences (insert-delete-substitute ops, rewrite-rule applications, tactic sequences) rather than the raw target sequence directly; includes Levenshtein/Insertion Transformers, neural program-repair edit models, and RL action encodings (AlphaTensor/AlphaDev). Tag when the edit/action-sequence representation itself (vs. raw generation) is the paper's subject.
 
+### Wreath-product topics (registered 2026-08-28 for the Miasnikov Diophantine-problem line)
+
+- `#topic/wreath-products` — restricted regular wreath products $A \wr B = (\bigoplus_{b \in B} A_b) \rtimes B$ and iterated wreath products, as the algebraic setting of a result (not as an incidental construction). Tag when the wreath-product structure is what the theorem is about: undecidability of the Diophantine problem in $\mathbb{Z} \wr \mathbb{Z}$ and its iterations, cyclic-retract / cyclic-centralizer criteria for transferring undecidability into $A \wr B$, or structural results about the base group and the acting group. Use alongside `#topic/diophantine-problems` and `#topic/decidability` when the contribution is a decidability verdict.
+
 ## Axis 5 — `#status/*` (lifecycle)
 
 General lifecycle:
@@ -189,6 +193,7 @@ General lifecycle:
 - `#status/validated` — Lead or Experimenter approved (depending on note type)
 - `#status/rejected` — explicitly killed; lessons captured
 - `#status/superseded` — replaced by a newer note (link forward)
+- `#status/reference` — reference material with no lifecycle (e.g. the Kourovka corpus issue notes); registered 2026-08-31
 
 Experiment-specific:
 - `#status/pending` — pre-registered, not yet run
@@ -216,6 +221,8 @@ Currently registered:
 - `#project/b25` — B(2,5), the flagship hard problem
 - `#project/b43` — B(4,3)
 - `#project/b53` — B(5,3)
+- `#project/kourovka` — Kourovka Notebook open-problems operation (crew notes under `Research/Group theory/Open problems/Kourovka/`); registered 2026-08-31
+- `#project/b29` — B(2,9) finiteness program. Registered 2026-08-11 on Maria's stage-2 GO (active deliverables: pq-tower experiment + runs/b29/, stage-1 synthesis, W1/W2 workstreams). Stage-1 notes predating registration carry `#topic/b29` only; new project-scoped notes carry both.
 
 Add new `#project/*` tags as new projects start. Discuss in `_meta/canvas-setup.md` before adding to keep them stable.
 
@@ -240,6 +247,7 @@ Add new `#project/*` tags as new projects start. Discuss in `_meta/canvas-setup.
 - `#question` — open question for the human or for Validator
 - `#convention` — meta-document defining how something should be done
 - `#content-type/code-example` — runnable code snippet (one task per file, expected output captured verbatim). Used in `Research/Group theory/Tools/<tool>/examples/`.
+- `#ai-discovery` — writeup of an AI-produced mathematical discovery (not a literature summary; used in `Research/AI in Math/Agents/`); registered 2026-08-31
 - `#type/reference` — standalone reference note for a tool, library, or software component (not a paper summary; no academic venue). Used in `Research/<domain>/Tools/` subdirs. Distinct from `#paper` (requires academic publication) and `#concept` (cross-cutting concept hub). Registered 2026-06-13.
 
 **One primary content-type per note.** A paper note gets `#paper`; an experiment note gets `#experiment`; a concept hub gets `#concept`. Don't carry both `#paper` + `#concept` on the same note — extract the concept content to a `Concepts/<name>.md` hub and link from the paper via `key_concepts:` frontmatter. Documented exception: a self-contained survey paper may carry `#paper` + `#synthesis` when the same note serves both functions (rare; substance test decides).

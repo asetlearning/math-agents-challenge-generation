@@ -66,3 +66,4 @@ Minasyan–Olshanskii–Sonkin (2008) is the one item in this whole sweep that e
 
 - Extends: [[coulon-2018-even-exponents]]
 - Cited by: [[_synthesis-b25-attack-surface-2026-08-07]]
+- MOC: [[_moc-burnside]]

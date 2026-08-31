@@ -13,6 +13,8 @@ tags:
 related:
   - "[[group]]"
   - "[[subgroup]]"
+status: validated
+domain: group-theory
 ---
 
 # Group Order, Exponent, and Torsion
@@ -43,7 +45,7 @@ The **exponent** of G is the smallest positive integer n such that gⁿ = e for 
 **The Burnside problem** asks: if exp(G) = n and G is finitely generated, must G be finite? The answer depends on n:
 - n = 1, 2, 3, 4, 6: YES (G is always finite).
 - n = 5, 7, 8, ...: open or infinite (Novikov-Adian for large odd n ≥ 665).
-- See [[Research/Group theory/Burnside groups/B25/]] for the n=5 case (the primary focus of this vault).
+- See [[_moc-burnside]] for the n=5 case (the primary focus of this vault).
 
 ## Torsion
 
@@ -72,3 +74,5 @@ An element g ∈ G is a **torsion element** (or **element of finite order**) if 
 
 - [[group]] — basic structure.
 - [[subgroup]] — Lagrange's theorem connects order of subgroups to |G|.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

@@ -20,6 +20,8 @@ papers_synthesized:
 key_concepts: []
 date_range: 2026-03 to 2026-07
 project:
+status: draft
+domain: ai
 ---
 
 # Synthesis — AI-agent mathematical discoveries (the 2026 wave)

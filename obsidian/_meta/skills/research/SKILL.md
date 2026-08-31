@@ -11,9 +11,16 @@ Ingest papers from any field into the shared Obsidian Math vault as structured, 
 
 ## Vault location
 
-`/Users/maumayma/Documents/Obsidian/Math/`
+Find the vault root (the folder containing `_meta/` and `_templates/`) in this order:
 
-If the vault is not at this path on the invoking machine, ask the user for the local vault path before proceeding.
+1. Your global memory file (`~/.claude/CLAUDE.md` for Claude Code, `~/.codex/AGENTS.md` for Codex) — setup records a `Math vault root: <path>` line there.
+2. The workshop default: `~/Desktop/math-agents/obsidian` (Windows: `%USERPROFILE%\Desktop\math-agents\obsidian`).
+3. If this skill is installed as a symlink, the vault is the symlink target's `../../..` (the skill lives at `<vault>/_meta/skills/research`).
+4. Otherwise ask the user for the local path.
+
+The same memory line records the user's vault handle — use it for `author:` frontmatter and the `#user/*` tag instead of asking every session.
+
+If `obsidian-research` MCP tools are available in this session (Codex, ChatGPT Desktop), prefer them for all vault reads/writes: `load_doctrine`, `fetch_paper`, `search_vault`, `list_tags`, `write_note`, `manage_frontmatter`, `manage_tags`, `lookup_citation`. They already point at the right vault.
 
 ## Operating doctrine
 

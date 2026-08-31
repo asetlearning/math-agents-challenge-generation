@@ -34,6 +34,7 @@ tags:
   - topic/edit-representation
   - paper
   - status/draft
+status: draft
 ---
 
 # AdaEdit: Adaptive Edit-Format Selection for Efficient LLM Code Editing
@@ -86,3 +87,5 @@ Whether a position-addressed edit format (closer to the "fragile offset" failure
 ## Related material in vault
 
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[shypula-2021-superoptimize-real-world-programs]] (same edit-representation family — learned edit proposals over programs rather than raw regeneration)
+- Related: [[gukov-2020-learning-to-unknot]] (nearest algebraic-domain precedent for the structured-moves-vs-raw-generation question this paper informs)

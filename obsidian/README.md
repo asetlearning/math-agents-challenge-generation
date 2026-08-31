@@ -88,7 +88,7 @@ Math/
   - `Components.base` — all components, by domain / hot / status
   - `Experiments.base` — all experiments, by project / status / instance, Validator verdicts
   - `Concepts.base` — cross-domain methodology by domain / author / status
-  - `Papers.base` — literature by domain / project / read status
+  - `Papers.base` — **moved to `Research/Papers.base`** — literature by domain / project / language / read status, plus a topics-per-paper view
 - **Search by tag** — every note has minimum `#agent/* #user/* #domain/* #topic/* #status/*` (project optional). See [[tags]] for the 6-axis taxonomy and topic-tagging discipline (substance test, no upper bound on count).
 - **Templates** in `_templates/` — K3 pattern (frontmatter = agent layer, body = human layer).
 - **Edit anything** — agents respect dir ownership rules.

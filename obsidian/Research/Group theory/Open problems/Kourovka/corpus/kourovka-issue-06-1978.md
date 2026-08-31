@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 6th Issue, 1978
@@ -201,3 +205,9 @@ Is every infinite periodic (conjugacy) biprimitively finite group without involu
 Is a (conjugacy, p-conjugacy) biprimitively finite group finite if it has a finite maximal subgroup (p-subgroup)? There are affirmative answers for conjugacy biprim- itively finite p-groups and for 2-conjugacy biprimitively finite groups (V. P. Shunkov, Algebra and Logic, 9, no. 4 (1970), 291–297; 11, no. 4 (1972), 260–272; 12, no. 5 (1973), 347–353), while the statement does not hold for arbitrary periodic groups, see Archive, 3.9. V. P. Shunkov
 
 22
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-05-1976]] — previous issue (1976)
+- [[kourovka-issue-07-1980]] — next issue (1980)

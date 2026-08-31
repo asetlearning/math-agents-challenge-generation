@@ -108,6 +108,7 @@ The "critical pair" concept from this paper is the Mixer's unit of information e
 
 - Concept hub: [[techniques/knuth-bendix]] (the existing concept note that cites this paper as its primary source)
 - Survey: [[dershowitz-jouannaud-1990]] (comprehensive survey including divergence theory and ordering strategies)
-- Applied tool: [[Research/Group theory/Tools/KBMAG]] (KBMAG implements KB completion for groups)
+- Applied tool: [[kbmag-tools-overview]] (KBMAG implements KB completion for groups)
+- Contrast: [[tate-2011-equality-saturation]] (equality saturation — non-destructive alternative to confluent commit)
 - Concept: [[Concepts/kb-mixing-stagnation]] (documents how KB divergence manifests in the Mixer)
 - Downstream: [[Research/Group theory/Burnside groups/B25/algo-mixing-burnside-slides]] (the B(4,3) proof using multi-ordering cooperation)

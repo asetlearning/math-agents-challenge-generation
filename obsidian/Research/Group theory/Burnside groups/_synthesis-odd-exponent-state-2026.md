@@ -28,6 +28,7 @@ papers_synthesized:
 key_concepts:
   - "[[Concepts/power-free-word-growth-rates]]"
 status: draft
+domain: group-theory
 ---
 
 # Synthesis — Current state of the odd-exponent Burnside problem, and exponent 5 specifically
@@ -137,3 +138,10 @@ Nothing in items 1–5 above resolves or narrows either problem.
 ## Stop condition invoked
 
 Literature on exponent 5/7 directly is **sparse to the point of empty** beyond what's already documented — stated plainly per role discipline rather than padded. This is itself the answer to items 3 and 6 of the request: there is no secret recent exponent-5 progress to report.
+## Related material
+
+- [[_moc-burnside]] — the Burnside MOC (this synthesis anchors its odd-exponent section)
+- [[_synthesis-b25-attack-surface-2026-08-07]] — the follow-up 2026-08-07 campaign sweep
+- [[_synthesis-gorshkov-axial-algebra-r2-2026]] — R2 deep-read of the Gorshkov preprint flagged here
+- [[atkarskaya-rips-tent-2023]], [[adian-2015-odd-bound]] — the two unverified bound-record claims this scan adjudicates
+- [[kourovka-11.48-kostrikin-1990]] — the exponent-5 open problem this state-of-the-art report serves

@@ -116,4 +116,4 @@ The Mixer's rule injection scoring (selecting the top-$k$ overlap-scored rules f
 - Extends: [[gomes-selman-2001-portfolios]] (algorithm portfolios — ManySAT is the SAT instantiation with sharing), [[marques-silva-sakallah-1999-grasp]] (CDCL — ManySAT runs CDCL in each thread)
 - Cites: [[gomes-selman-2001-portfolios]], [[marques-silva-sakallah-1999-grasp]]
 - Related: [[clarke-et-al-2000-cegar]] (CEGAR — same oracle-sharing pattern in model checking)
-- Cross-vault: [[Research/Group theory/Burnside groups/B25/algo-mixing-burnside-slides]] (B(4,3) Mixer as ManySAT-for-KB-completion), [[Concepts/mixable-api]] (the Mixer's API = ManySAT's clause pool)
+- Cross-vault: [[Research/Algorithm Cooperation/algo-mixing-burnside-slides]] (B(4,3) Mixer as ManySAT-for-KB-completion), [[Concepts/mixable-api]] (the Mixer's API = ManySAT's clause pool)

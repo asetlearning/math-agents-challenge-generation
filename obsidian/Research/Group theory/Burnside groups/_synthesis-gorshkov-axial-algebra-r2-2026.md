@@ -17,6 +17,7 @@ papers_synthesized:
   - "[[gorshkov-2026-moufang-axial-algebra]]"
 key_concepts: []
 status: draft
+domain: group-theory
 ---
 
 # Synthesis — Deep read: Gorshkov 2026 axial-algebra reformulation (R2)
@@ -81,3 +82,9 @@ Four concrete, cost-estimated items. None of these would resolve the open questi
 ## Bottom line for Lead
 
 The reformulation is real and non-trivially connects to the actual open question (not a restricted-quotient trap), modulo trusting ~35 unread interior lemmas of a brand-new, uncited preprint by a credible-but-not-yet-externally-checked author. Nothing here is computable at the scale that would move the needle on B(2,5) itself — item (a) is a cheap correctness sanity-check of the paper's own small-scale claim, item (c) is the only genuinely stack-native, low-cost, directly-relevant next step, and item (b) is explicitly a dead end for proof purposes. I would not route more Researcher time at this preprint without either (i) Lead deciding item (c) is worth a Developer ticket, or (ii) a specific request to read Lemmas 2–42 in full (a materially larger effort than this R2 timebox).
+## Related material
+
+- [[_moc-burnside]] — the Burnside MOC (odd-exponent / small-cancellation section links this deep-read)
+- [[gorshkov-2026-moufang-axial-algebra]] — the paper note this R2 deep-read expands
+- [[_synthesis-odd-exponent-state-2026]] — the 2026-07-31 scan that first surfaced the preprint
+- [[kuznetsov-filippov-2010-sjim]] — source of the $|C_{B_0(2,5)}(t)|=5^{16}$ centralizer data reused in item (b)

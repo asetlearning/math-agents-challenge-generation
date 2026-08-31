@@ -11,14 +11,18 @@ extractor: "_meta/scripts/kourovka-extract.py"
 problem_count: 1213
 answered_flagged: 65
 open_count: 1148
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka Notebook No. 20 — open-problem corpus
@@ -137,5 +141,5 @@ stderr; compare them against the table above — any drift means the parse chang
 - [[kourovka-11.48-kostrikin-1990]] — the worked example of a single-problem
   synthesis note; the model every Kourovka problem note should imitate
 - [[kourovka-crew-setup]] — how to stand up the agent crew that works this corpus
-- [[_lead-kourovka]] — the Lead agent that selects from this corpus
+- [[lead-kourovka]] — the Lead agent that selects from this corpus
 - [[group-theory-overview]] — domain hub

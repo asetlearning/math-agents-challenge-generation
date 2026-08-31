@@ -35,6 +35,7 @@ tags:
   - topic/value-network
   - paper
   - status/draft
+status: draft
 ---
 
 # Solving the Rubik's Cube with Deep Reinforcement Learning and Search (DeepCubeA) / DeepCube (Autodidactic Iteration)

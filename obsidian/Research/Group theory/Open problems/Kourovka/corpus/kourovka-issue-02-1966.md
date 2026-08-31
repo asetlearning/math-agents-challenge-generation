@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 2th Issue, 1966
@@ -169,3 +173,9 @@ Can the class of groups with the nth Engel condition [x, y, . . . , y] = 1 be | 
 Suppose that a locally finite group G is a product of two locally nilpotent subgroups. Is G necessarily locally soluble? V. P. Shunkov
 
 10
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-01-1965]] — previous issue (1965)
+- [[kourovka-issue-03-1969]] — next issue (1969)

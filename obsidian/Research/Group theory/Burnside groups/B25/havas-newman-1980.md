@@ -35,6 +35,7 @@ tags:
   - topic/finitely-presented-groups
   - paper
   - status/draft
+status: draft
 ---
 
 # Application of Computers to Questions Like Those of Burnside

@@ -30,6 +30,8 @@ papers_synthesized:
 key_concepts: []
 date_range: 2014-10 to 2026-06
 project: b25
+status: draft
+domain: ai
 ---
 
 # Synthesis — Deep Round 2: value scoring, axplorer source, curriculum, auxiliary-tag fusion

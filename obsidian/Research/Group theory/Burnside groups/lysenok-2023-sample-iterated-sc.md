@@ -91,3 +91,5 @@ Signals that iterated/graded small cancellation is currently the live methodolog
 - Concepts introduced/used: (none)
 - Cites: (none confirmed)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]; possibly [[atkarskaya-rips-tent-2023]] per an unresolved citation-graph signal — not confirmed, see quality_notes.
+- Related (in vault): [[adian-2015-odd-bound]] (same odd-exponent record lineage)
+- MOC: [[_moc-burnside]]

@@ -23,6 +23,8 @@ papers_synthesized:
 key_concepts: []
 date_range: 2017-01 to 2025-06
 project:
+status: draft
+domain: ai
 ---
 
 # Synthesis — ML for math (non-agent, non-RL): neural heuristics, equation discovery, and mathematical algorithm search (2017–2025)
@@ -115,3 +117,11 @@ For the Mixer workstream:
 - Cross-sub-area: [[fawzi-2022-alphatensor]] (RL/ — algorithm discovery via RL, structurally adjacent to FunSearch), [[trinh-2024-alphageometry]] and [[2502.03544]] (Agents/ — neuro-symbolic overlap with Agents arc 3)
 - Cross-vault: [[kuznetsov-shlepkin-2009]], [[kuznetsov-shlepkin-2010]] (target for SR experiment), [[algo-mixing-burnside-slides]] (target for evolutionary search experiment)
 - Prior syntheses: [[_synthesis-agents-for-math]], [[_synthesis-rl-for-math]]
+
+### Later additions (2026-08-31)
+
+Papers landed in ML/ after this synthesis was written, not yet folded into the four-paradigm body above:
+
+- [[charton-2024-patternboost]] — PatternBoost (2024): alternating local search + transformer generation for mathematical constructions; direct continuation of the FunSearch line organized above, and the method the b25_patternboost program is built on.
+- Gröbner-learning wave (2026-08-09): [[kera-2024-grobner-via-learning]] (Gröbner bases via transformers), [[2311.12904]] (learning to compute Gröbner bases), [[2401.09328]] (deep-learned Gröbner-solver stability).
+- Tokenization / length-generalization wave (2026-07-17, 13 notes): curated in [[_synthesis-b25-patternboost-tokenization]] and [[_synthesis-b25-value-scoring-curriculum-auxchannel]] rather than re-listed here.

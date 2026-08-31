@@ -45,6 +45,7 @@ tags:
   - topic/edit-representation
   - paper
   - status/draft
+status: draft
 ---
 
 # GraphCodeBERT: Pre-training Code Representations with Data Flow
@@ -98,3 +99,4 @@ Whether a graph-guided-attention-style fusion (structure reshapes attention conn
 
 - Related: [[sennrich-haddow-2016-linguistic-features]] (contrasting fusion mechanism — concat/sum embeddings, not attention masking)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 — this paper anchors the R4 aux-channel fusion thread)

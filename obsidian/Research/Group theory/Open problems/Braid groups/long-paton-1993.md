@@ -99,4 +99,5 @@ Long-Paton 1993 is the **predecessor to Bigelow's keystone result**. It introduc
 - Concept hub: [[Concepts/burau4-faithfulness]]
 - Cited by: [[bigelow-1999]] (which improves this result from n≥6 to n≥5)
 - Post-2020 progress: [[datta-2022]]
-- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]] (forthcoming in B3)
+- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]]
+- MOC: [[_moc-word-problem]] (open boundary cases)

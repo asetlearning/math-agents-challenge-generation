@@ -10,8 +10,7 @@ status: draft
 methodology_type: empirical
 citation_count: null
 citation_count_date: 2026-07-31
-key_concepts:
-  - "[[topic/restricted-burnside]]"
+key_concepts: []
 extends: []
 contradicts: []
 replicates: []
@@ -87,3 +86,4 @@ The closest thing found in this scan to a "direct exponent-7 result" — but it 
 - Concepts introduced/used: (restricted-Burnside topic, see [[havas-wall-wamsley-1974]] for the B(2,5) analogue)
 - Cites: (none confirmed)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]
+- MOC: [[_moc-burnside]]

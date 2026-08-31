@@ -42,4 +42,14 @@ This is the **entry point for all topic Maps of Content** in the Research/ subtr
 
 ---
 
+## Domains without a dedicated MOC yet
+
+Interim navigation entries — promote each to a real `_moc-*` file once the domain grows.
+
+- **Math Logic** (`Research/Math Logic/`, no `_MOCs/` yet): [[daniyarova-myasnikov-2025]] and [[daniyarova-myasnikov-2026]] (theory of interpretations I–II), [[pakhomov-solda-2025-generalized-higman]] (generalized Higman's theorem / iterated ideals), and the direction note [[_open-direction-wqo-ideal-kb-termination]] (wqo/ideal theory as a tool for B(2,5) KB termination).
+
+- **Methodology / Experiment Tracking** (`Research/Methodology/Experiment Tracking/`): [[_synthesis-experiment-tracking-schemas]] — schema proposal synthesized from [[dvc]], [[hydra]], [[mlflow]], [[wandb]]. The synthesis is the navigation entry point until a MOC exists.
+
+---
+
 *This index is maintained by Researcher. Add a new entry here whenever a new MOC is created. Each entry: one-line description + navigation note ("navigate when: ...").*

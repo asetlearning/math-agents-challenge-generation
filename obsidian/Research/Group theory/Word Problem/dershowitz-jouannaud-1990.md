@@ -99,5 +99,5 @@ Dershowitz & Jouannaud 1990 provides the theoretical grounding for understanding
 
 - Extends: [[knuth-bendix-1970]] (original KB paper; this survey covers and extends it)
 - Concept hub: [[techniques/knuth-bendix]] (vault concept note on KB completion)
-- Applied: [[Research/Group theory/Tools/KBMAG]] (KBMAG applies KB completion with specific orderings for groups)
+- Applied: [[kbmag-tools-overview]] (KBMAG applies KB completion with specific orderings for groups)
 - Cross-reference: [[Concepts/kb-mixing-stagnation]] (the stagnation/divergence modes documented in the Mixer context)

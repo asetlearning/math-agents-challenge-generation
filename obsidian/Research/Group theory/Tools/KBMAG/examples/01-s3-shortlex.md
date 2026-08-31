@@ -10,6 +10,8 @@ tags:
   - topic/kbmag
   - content-type/code-example
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # KBMAG: Knuth-Bendix on S3 (shortlex ordering)

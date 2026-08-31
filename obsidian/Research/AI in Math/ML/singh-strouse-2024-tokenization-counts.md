@@ -30,6 +30,7 @@ tags:
   - topic/tokenization
   - paper
   - status/draft
+status: draft
 ---
 
 # Tokenization counts: the impact of tokenization on arithmetic in frontier LLMs
@@ -83,3 +84,4 @@ Whether training a BPE vocabulary directly on a B(2,5)-word corpus (rather than 
 
 - Related: [[nogueira-2021-arithmetic-limitations]] (same general finding — surface tokenization changes arithmetic learnability — different specific mechanism)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[charton-2022-linear-algebra-transformers]] (representation-choice-dominates-learnability evidence from numeric encodings, same finding family)

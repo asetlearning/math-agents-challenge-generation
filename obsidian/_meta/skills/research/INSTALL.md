@@ -1,11 +1,13 @@
 # Installing the `/research` skill
 
+> **Preferred route:** let an agent do this — see `SETUP.md` at the math-agents repo root. It installs this skill for both Claude Code and Codex and registers your handle. The steps below are the manual equivalent for Claude Code only.
+
 This skill ingests papers into the shared Obsidian Math vault as structured summaries with a connection graph. Once installed, you can invoke it from any Claude Code session by typing `/research`.
 
 ## Prerequisites
 
 1. **Claude Code installed.** See https://docs.claude.com/en/docs/claude-code/overview.
-2. **Access to the shared Obsidian vault.** Default path: `~/Documents/Obsidian/Math/`. If your local copy lives somewhere else, you'll need to tell the skill the local path on first invocation.
+2. **Access to the shared Obsidian vault.** Clone `https://github.com/ai-math-edu-lab/math-agents` — the vault root is `<clone>/obsidian` (workshop default clone location: `~/Desktop/math-agents`).
 3. **A handle registered in the vault.** Edit `<vault>/_meta/tags.md` and add `#user/<your-handle>`, plus add yourself to `<vault>/People/<your-handle>.md` (use the existing `People/maumayma.md` as a template). Without this, the skill will ask you for your handle every session.
 
 ## Install
@@ -16,7 +18,7 @@ Skills in Claude Code live at `~/.claude/skills/<skill-name>/`. The simplest set
 
 ```bash
 mkdir -p ~/.claude/skills
-ln -s /Users/maumayma/Documents/Obsidian/Math/_meta/skills/research ~/.claude/skills/research
+ln -s ~/Desktop/math-agents/obsidian/_meta/skills/research ~/.claude/skills/research
 ```
 
 Adjust the source path if your vault is somewhere else.
@@ -25,7 +27,7 @@ Adjust the source path if your vault is somewhere else.
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills"
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills\research" -Target "C:\path\to\Obsidian\Math\_meta\skills\research"
+Copy-Item -Recurse "$env:USERPROFILE\Desktop\math-agents\obsidian\_meta\skills\research" "$env:USERPROFILE\.claude\skills\research"
 ```
 
 ### Verify

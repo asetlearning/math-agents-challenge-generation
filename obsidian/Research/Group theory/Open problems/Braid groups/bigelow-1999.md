@@ -107,4 +107,5 @@ Bigelow 1999 is the **keystone of the Burau₄ faithfulness open problem** — i
 - Predecessor: [[long-paton-1993]] (proved n≥6 unfaithful; Bigelow's paper improves to n=5)
 - Post-2020 progress: [[datta-2022]] (proves B₄ "faithful almost everywhere" — partial result)
 - Related problem: [[braid-b4-membership-6.24-makanin]] (B₄ membership as related hard problem)
-- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]] (forthcoming in B3)
+- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]]
+- MOC: [[_moc-word-problem]] (open boundary cases)

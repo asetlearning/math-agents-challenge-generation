@@ -98,3 +98,4 @@ The best available primary-source anchor for "5th-power-free words over 2 letter
 - Concepts introduced/used: [[Concepts/power-free-word-growth-rates]]
 - Cites: (none confirmed)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]
+- MOC: [[_moc-burnside]]

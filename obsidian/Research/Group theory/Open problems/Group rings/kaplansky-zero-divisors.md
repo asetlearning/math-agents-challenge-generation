@@ -29,6 +29,7 @@ tags:
   - topic/finitely-presented-groups
   - paper
   - status/draft
+status: draft
 ---
 
 # Kaplansky Zero-Divisors Conjecture (Kaplansky, c.1956)
@@ -109,3 +110,4 @@ This problem sits at the boundary of the Mixer's scope — the inventory notes i
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[problems-people]] (Winston Lee as implementer), [[grobner]] (adjacent group-ring polynomial machinery)
 - Cited by (in vault): [[Concepts/kaplansky-zero-divisors]], [[Research/Group theory/Open problems/open-problems-catalog]]
+- MOC: [[_moc-word-problem]] (adjacent open problems — Kaplansky cluster)

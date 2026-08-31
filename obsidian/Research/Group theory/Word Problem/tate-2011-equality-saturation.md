@@ -21,7 +21,7 @@ replicates: []
 cites: []
 cited_by: []
 related:
-  - "[[Research/Group theory/Word Problem/knuth-bendix.md]]"
+  - "[[Research/Group theory/Word Problem/techniques/knuth-bendix.md]]"
   - "[[Research/Group theory/Word Problem/dershowitz-jouannaud-1990]]"
 quality_notes: "The single most actionable mechanism found for the 2026-07-21 KB-ordering/reduction-length focused dig: directly explains, as a general principle (not an empirical curiosity), why a non-confluent system with MORE rules can reduce a specific target further than a minimal confluent one. Read via ar5iv abstract + subagent extraction of mechanism; not read at full implementation depth this pass (e.g. the egg PLDI 2021 paper's e-class analysis / extraction-cost-function machinery specifically) — flagged as a good next full-text read if this lever is pursued."
 author: maumayma
@@ -34,6 +34,7 @@ tags:
   - topic/divergence-and-stagnation
   - paper
   - status/draft
+status: draft
 ---
 
 # Equality Saturation: A New Approach to Optimization
@@ -80,5 +81,6 @@ Whether an e-graph-style saturation layer scales to B(2,5)'s actual rule-bank si
 
 ## Related material in vault
 
-- Related: [[Research/Group theory/Word Problem/knuth-bendix.md]] (contrasting single-path confluent-commit approach)
+- Related: [[Research/Group theory/Word Problem/techniques/knuth-bendix.md]] (contrasting single-path confluent-commit approach)
 - Related: [[Research/Group theory/Word Problem/dershowitz-jouannaud-1990]] (the classical rewriting-theory survey this paper's framing departs from)
+- Foundational: [[knuth-bendix-1970]] (the original confluent-commit completion procedure that equality saturation departs from)

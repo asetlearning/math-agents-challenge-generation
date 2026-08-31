@@ -34,6 +34,7 @@ tags:
   - topic/computational-search-group-theory
   - paper
   - status/draft
+status: draft
 ---
 
 # Group rings of infinite groups (Kaplansky survey)

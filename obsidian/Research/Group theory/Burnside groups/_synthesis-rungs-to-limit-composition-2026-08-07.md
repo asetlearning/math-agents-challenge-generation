@@ -20,6 +20,7 @@ papers_synthesized:
 key_concepts: []
 status: draft
 project: b25
+domain: group-theory
 ---
 
 # Synthesis — the rungs-to-limit composition problem (2026-08-07, targeted sweep #2)
@@ -157,3 +158,10 @@ The `e7_survives_g4.tex` argument's central move — Greendlinger's lemma applie
 ## Stop conditions invoked
 
 Two genuine access gaps, both flagged rather than papered over: Hall 1958's specific mechanism (Target 2) and the exact inequality inside Ol'shanskii's 1989 book (Target 4's derivation depth) were not independently verified this session — no accessible source was found before/despite arXiv rate-limiting. Both are flagged as open, with a concrete unblock path (library access or a retried literature pass), consistent with the same discipline applied to the Lyndon–Schupp gap in the prior sweep. Everything else in this note — the citation record, the 178-vs-13 hypothesis counts, the β=15/n>556 ART derivation, the "layered Dehn property" characterization, the "B(2,6) not nilpotent" fact, and the empty certificate-tower literature search — was independently confirmed at full-text or cross-verified-citation depth this session.
+## Related material
+
+- [[_moc-burnside]] — the Burnside MOC (odd-exponent / small-cancellation section)
+- [[_synthesis-b25-attack-surface-2026-08-07]] — companion campaign sweep #1 (attack surface), same 2026-08-07 campaign
+- [[_synthesis-odd-exponent-state-2026]] — the 2026-07-31 scan both sweeps build on
+- [[atkarskaya-rips-tent-2023]] — source of the β=15 / n>556 reformulation analyzed in Target 1
+- [[lysenok-2023-sample-iterated-sc]] — the iterated small-cancellation sample this sweep's induction analysis draws on

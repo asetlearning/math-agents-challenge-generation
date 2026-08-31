@@ -26,6 +26,8 @@ papers_synthesized:
 key_concepts: []
 date_range: 2020-06 to 2026-06
 project:
+status: draft
+domain: ai
 ---
 
 # Synthesis — Input/output representation for the B(2,5) PatternBoost transformer

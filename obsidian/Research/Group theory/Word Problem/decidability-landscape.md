@@ -10,6 +10,8 @@ tags:
   - topic/decidability
   - topic/finitely-presented-groups
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # Word Problem — Decidability Landscape
@@ -97,3 +99,10 @@ Magnus's theorem covers 1-relator groups. General FPGs are undecidable. Whether 
 Knuth-Bendix completion, when it terminates with a confluent rewriting system, gives a decision procedure for the word problem. Every word has a unique normal form under the confluent system; two words are equal iff their normal forms are equal.
 
 However: KB termination is sufficient but NOT necessary for decidability. A group may have a decidable word problem (e.g., hyperbolic groups via Dehn's algorithm) even though no finite complete rewriting system exists. Conversely, KB termination proves the group is finite (for groups where the ordering is weight-length compatible and the group has finite exponent). See `Tools/KBMAG/` for practical KB completion.
+
+## Related material
+
+- [[word-problem-overview]] — parent: Word Problem directory map
+- [[_moc-word-problem]] — the word-problem MOC (this note is its "start here" landing)
+- [[knuth-bendix]] — KB completion as a decision procedure when it terminates (expands the section above)
+- [[2-relator-word-problem-9.29-merzlyakov]] — the open 2-relator boundary case (Kourovka 9.29)

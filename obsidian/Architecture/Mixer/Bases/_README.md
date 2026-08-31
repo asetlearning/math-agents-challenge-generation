@@ -8,9 +8,13 @@ project: vault-tooling
 
 Per-file rationale for non-obvious choices in this directory. Obsidian's Bases saver strips YAML comments, so this file holds what would otherwise be a comment in the `.base` source.
 
-## `Papers.base` — `By topic` view
+## `Papers.base` — moved to `Research/Papers.base` (2026-08-31)
 
-**Choice.** Group by `formula.topic_tags`, where the formula is `file.tags.filter(value.startsWith("#topic/"))`. Tags remain the single source of truth; no `topics: []` frontmatter property duplication; no per-paper migration.
+The papers dashboard now lives next to the papers, at `Research/Papers.base`. The former grouped **`By topic` view was replaced by a flat `Topics per paper` view** (topic chips as a column): Bases groupBy on a multi-value list groups by the whole list as one composite key (empirical confirmation below), which at ~270 papers produced hundreds of one-paper groups — unreadable. The single-value groupBys (`By domain`, `By project`, `By language`) are unaffected and remain grouped; every view now carries an explicit `sort:`.
+
+### Historical: the old `By topic` groupBy
+
+**Choice (superseded).** Group by `formula.topic_tags`, where the formula is `file.tags.filter(value.startsWith("#topic/"))`. Tags remain the single source of truth; no `topics: []` frontmatter property duplication; no per-paper migration.
 
 **Why not the duplicated `topics: []` frontmatter property.** Tested empirically (see [[papersbase-by-topic-fix-2026-05-28]]): Bases groupBy on a multi-value property — whether native (`file.tags`) or formula-computed list — groups each paper by its *whole list as a single key*, producing one row per paper, not one row per tag. A dedicated `topics: []` field would therefore yield the same behavior, with the added cost of duplication and migration. The formula approach gets the same result with no schema cost.
 

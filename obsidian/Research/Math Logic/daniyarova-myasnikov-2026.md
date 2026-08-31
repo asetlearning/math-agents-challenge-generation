@@ -106,13 +106,13 @@ This paper does for **bi-interpretability** what Plotkin had already done for th
 
 ## Related material in vault
 
-- Extends: `[[daniyarova-myasnikov-2025]]` — Paper I of this series; Paper II reuses its interpretation-code definitions and extends its bi-interpretability apparatus categorically.
+- Extends: [[daniyarova-myasnikov-2025]] — Paper I of this series; Paper II reuses its interpretation-code definitions and extends its bi-interpretability apparatus categorically.
 - Contradicts: (none)
 - Replicates: (none)
-- Concepts introduced/used: `[[Concepts/bi-interpretability]]` — created at this paper's ingest, now that 2 papers (`[[daniyarova-myasnikov-2025]]` and this one) substantively engage with it.
-- Cites: `[[daniyarova-myasnikov-2025]]`
+- Concepts introduced/used: [[Concepts/bi-interpretability]] — created at this paper's ingest, now that 2 papers ([[daniyarova-myasnikov-2025]] and this one) substantively engage with it.
+- Cites: [[daniyarova-myasnikov-2025]]
 - Cited by (in vault): (none)
-- Sibling math-logic note: `[[pakhomov-solda-2025-generalized-higman]]` — the vault's third `#domain/math-logic` paper is this one; connection to the other two is field-level (order theory/reverse mathematics for Pakhomov–Soldà vs. model theory of interpretations here), not a direct citation link.
+- Sibling math-logic note: [[pakhomov-solda-2025-generalized-higman]] — the vault's third `#domain/math-logic` paper is this one; connection to the other two is field-level (order theory/reverse mathematics for Pakhomov–Soldà vs. model theory of interpretations here), not a direct citation link.
 
 ---
 

@@ -13,6 +13,8 @@ related:
   - "[[order-exponent]]"
   - "[[group]]"
   - "[[normal-subgroup]]"
+status: validated
+domain: group-theory
 ---
 
 # Classification of Finite Simple Groups
@@ -60,3 +62,5 @@ Groups in the CFSG list appear as benchmark instances for coset enumeration and 
 - [[group]] — simple groups are groups with no non-trivial normal subgroups.
 - [[normal-subgroup]] — absence of normal subgroups defines simplicity.
 - [[order-exponent]] — CFSG gives the complete list of possible orders of finite simple groups.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

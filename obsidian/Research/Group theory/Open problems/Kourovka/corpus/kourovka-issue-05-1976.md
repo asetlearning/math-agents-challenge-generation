@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 5th Issue, 1976
@@ -185,3 +189,9 @@ Let G be a locally finite group which is the product of a p-subgroup and a q-sub
 Is a periodic residually finite group finite if it satisfies the weak minimum condition for subgroups? V. P. Shunkov
 
 18
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-04-1973]] — previous issue (1973)
+- [[kourovka-issue-06-1978]] — next issue (1978)

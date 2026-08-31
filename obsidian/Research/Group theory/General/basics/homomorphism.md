@@ -7,11 +7,14 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/finitely-presented-groups
   - status/validated
 related:
   - "[[group]]"
   - "[[normal-subgroup]]"
   - "[[quotient-group]]"
+status: validated
+domain: group-theory
 ---
 
 # Homomorphism, Kernel, Image
@@ -58,3 +61,5 @@ Homomorphisms are the structure-preserving maps of group theory — they tell us
 
 - [[normal-subgroup]] — kernels are always normal; conversely, every normal subgroup is the kernel of the quotient map.
 - [[quotient-group]] — G/N is the codomain of the quotient homomorphism G → G/N.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

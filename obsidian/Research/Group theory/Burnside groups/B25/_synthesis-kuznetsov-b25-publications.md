@@ -44,6 +44,8 @@ key_concepts:
   - "[[Concepts/verification-methods-for-group-equality]]"
 date_range: 2009-01 to 2025-12
 project: b25
+status: draft
+domain: group-theory
 ---
 
 # Synthesis — The Kuznetsov computational program on B₀(2,5): twenty years of structural data

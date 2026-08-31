@@ -29,6 +29,7 @@ tags:
   - topic/finitely-presented-groups
   - paper
   - status/draft
+status: draft
 ---
 
 # The Andrews-Curtis Conjecture (Andrews-Curtis, 1965)
@@ -106,3 +107,6 @@ The connection to group theory is direct: the AC conjecture is about whether two
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[kourovka-2022]] (Kourovka 18.89 related), [[problems-people]] (lists as Mixer candidate)
 - Cited by (in vault): (none currently)
+- See also: [[2-relator-word-problem-9.29-merzlyakov]] — sibling open problem on presentations of free-group quotients
+- See also: [[open-problems-catalog]] — feasibility catalog entry for this problem
+- MOC: [[_moc-word-problem]] (open boundary cases)

@@ -9,6 +9,8 @@ tags:
   - topic/word-problem
   - convention
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # Word Problem — Directory Map

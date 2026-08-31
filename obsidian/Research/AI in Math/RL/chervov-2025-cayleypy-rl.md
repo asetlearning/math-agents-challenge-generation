@@ -36,6 +36,7 @@ tags:
   - topic/value-network
   - paper
   - status/draft
+status: draft
 ---
 
 # CayleyPy RL: Pathfinding and Reinforcement Learning on Cayley Graphs

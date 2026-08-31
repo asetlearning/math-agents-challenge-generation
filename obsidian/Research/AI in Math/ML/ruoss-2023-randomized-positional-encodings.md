@@ -38,6 +38,7 @@ tags:
   - topic/tokenization
   - paper
   - status/draft
+status: draft
 ---
 
 # Randomized Positional Encodings Boost Length Generalization of Transformers

@@ -28,6 +28,7 @@ tags:
   - topic/proof-search
   - ai-discovery
   - status/draft
+status: draft
 ---
 
 # GPT-5.6 Sol Ultra — proof of the Cycle Double Cover Conjecture

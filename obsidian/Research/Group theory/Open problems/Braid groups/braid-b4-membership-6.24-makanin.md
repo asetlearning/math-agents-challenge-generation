@@ -29,6 +29,7 @@ tags:
   - topic/decidability
   - paper
   - status/draft
+status: draft
 ---
 
 # Is the membership problem for B₄ decidable? (Makanin, Kourovka 6.24)
@@ -102,3 +103,6 @@ B₄ is the "exceptional" case in a pattern of sharp decidability thresholds. To
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[kourovka-2022]]
 - Cited by (in vault): (linked from [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness]] as related problem)
+- See also: [[_synthesis-burau4-faithfulness]] — synthesis of the B₄ open-problem frontier
+- See also: [[open-problems-catalog]] — feasibility catalog entry for this problem
+- MOC: [[_moc-word-problem]] (open boundary cases)

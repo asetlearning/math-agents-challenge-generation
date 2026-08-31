@@ -13,6 +13,8 @@ tags:
 related:
   - "[[presentations]]"
   - "[[coset-enumeration]]"
+status: validated
+domain: group-theory
 ---
 
 # Tietze Transformations
@@ -66,3 +68,5 @@ In practice, GAP's `SimplifiedFpGroup` function applies Tietze transformations a
 
 - [[presentations]] — the input/output of Tietze transformations.
 - [[coset-enumeration]] — produces a presentation for a subgroup (Reidemeister-Schreier), which is then simplified by Tietze.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

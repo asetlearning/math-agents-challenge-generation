@@ -35,6 +35,7 @@ tags:
   - topic/generate-verify-revise
   - ai-discovery
   - status/draft
+status: draft
 ---
 
 # Aletheia — Towards Autonomous Mathematics Research

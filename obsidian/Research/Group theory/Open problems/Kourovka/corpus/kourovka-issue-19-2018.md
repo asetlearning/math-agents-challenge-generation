@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 19th Issue, 2018
@@ -705,3 +709,9 @@ A subgroup H of a finite group G is called pronormal if for any g ∈ G the subg
 Do there exist infinite groups all of whose proper subgroups are cyclic of order p that do not satisfy any nontrivial group identity except xp = 1 and its conse- quences? Note that there exist infinite groups all of whose proper subgroups are infinite cyclic that do not satisfy any nontrivial group identity (due to A. Ol’shanskiı̆; see P. Zusmanovich, J. Algebra, 388 (2013), 268–286, Remark after Theorem 6.1). P. Zusmanovich
 
 146
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-18-2014]] — previous issue (2014)
+- [[kourovka-issue-20-2022]] — next issue (2022)

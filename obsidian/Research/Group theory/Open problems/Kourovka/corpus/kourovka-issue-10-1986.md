@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 10th Issue, 1986
@@ -369,3 +373,9 @@ Suppose that G is a periodic group containing an elementary abelian subgroup R o
 Does there exist a non-Chernikov group which is a product of two Chernikov subgroups? V. P. Shunkov
 
 45
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-09-1984]] — previous issue (1984)
+- [[kourovka-issue-11-1990]] — next issue (1990)

@@ -28,6 +28,7 @@ tags:
   - topic/keller-map
   - ai-discovery
   - status/draft
+status: draft
 ---
 
 # Claude Fable 5 — counterexample to the Jacobian Conjecture (dimension 3)

@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 15th Issue, 2002
@@ -384,7 +388,7 @@ For every prime p find a finite p-group of nilpotence class p such that its latt
 
 *Issue 15 (2002) · printed p. 89 · proposed by B. I. Plotkin*
 
-b) Consider the sequence u1 = [x, y], . . ., un+1 = [[un , x], [un , y]]. Is it true that an arbitrary finite group is soluble if and only if it satisfies one of these identities un = 1?
+b) Consider the sequence u1 = [x, y], . . ., `un+1 = [[un , x], [un , y]]`. Is it true that an arbitrary finite group is soluble if and only if it satisfies one of these identities un = 1?
 
 ## 15.76
 
@@ -549,3 +553,9 @@ Is a periodic group locally finite if it has an involution whose centralizer is 
 Let n be a positive integer and let w be a group word in the variables x1 , x2 , . . .. Suppose that a residually finite group G satisfies the identity wn = 1. Does it follow that the verbal subgroup w(G) is locally finite? This is the Restricted Burnside Problem if w = x1 . A positive answer was obtained also in a number of other particular cases (P. V. Shumyatsky, Quart. J. Math., 51, no. 4 (2000), 523–528). P. V. Shumyatsky
 
 93
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-14-1999]] — previous issue (1999)
+- [[kourovka-issue-16-2006]] — next issue (2006)

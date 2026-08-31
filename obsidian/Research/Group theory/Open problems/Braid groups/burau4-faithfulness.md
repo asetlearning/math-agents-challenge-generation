@@ -124,4 +124,5 @@ The Mixer analog: Datta's filter running alongside the full matrix-equality chec
 - Concepts: [[Concepts/burau4-faithfulness]]
 - Cited by (in vault): [[problems-people]] (names implementer Borys Nolikov)
 - Algorithm Cooperation: [[Research/Algorithm Cooperation/_synthesis-combinatorial-search-methods]] (partial-No oracle pattern)
-- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]] (forthcoming)
+- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]]
+- MOC: [[_moc-word-problem]] (open boundary cases)

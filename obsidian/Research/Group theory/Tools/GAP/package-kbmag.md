@@ -8,8 +8,10 @@ tags:
   - domain/group-theory
   - topic/knuth-bendix
   - topic/kbmag
-  - content-type/code-example
+  - type/reference
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # GAP package: kbmag

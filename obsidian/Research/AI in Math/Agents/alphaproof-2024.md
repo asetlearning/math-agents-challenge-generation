@@ -33,6 +33,7 @@ tags:
   - topic/neuro-symbolic
   - paper
   - status/draft
+status: draft
 ---
 
 # AI achieves silver-medal standard solving International Mathematical Olympiad problems
@@ -119,4 +120,4 @@ This is the 2024 ceiling for AI in formal mathematics. [[2504.21801]] (DeepSeek-
 - Cites: [[trinh-2024-alphageometry]]
 - Related: [[2502.03544]] (AlphaGeometry 2 full paper — the geometry sub-component of this system)
 - Cross-vault: architecture analogy with [[algo-mixing-burnside-slides]]; future Lean 4 group theory applications would connect to `Research/Group theory/Burnside groups/B25/`
-- MOC: `Research/AI in Math/Agents/_synthesis-agents-for-math` (forthcoming)
+- MOC: [[_synthesis-agents-for-math]]

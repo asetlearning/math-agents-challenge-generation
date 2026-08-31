@@ -39,6 +39,7 @@ tags:
   - paper
   - status/draft
 project: b25
+status: draft
 ---
 
 # Unsolved Problems in Group Theory: The Kourovka Notebook No. 20

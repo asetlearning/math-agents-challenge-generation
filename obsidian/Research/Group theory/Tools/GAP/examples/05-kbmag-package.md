@@ -10,6 +10,8 @@ tags:
   - topic/kbmag
   - content-type/code-example
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # GAP + kbmag: Knuth-Bendix from within GAP

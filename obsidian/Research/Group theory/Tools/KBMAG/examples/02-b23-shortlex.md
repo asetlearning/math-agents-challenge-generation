@@ -11,6 +11,8 @@ tags:
   - topic/burnside
   - content-type/code-example
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # KBMAG: Knuth-Bendix on B(2,3) (shortlex, fuller presentation)

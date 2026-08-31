@@ -110,6 +110,6 @@ The theoretical prediction from this paper: **if KB completion under any single 
 - Cited by: [[hamadi-et-al-2009-manysat]] (ManySAT implements portfolios + clause sharing — the parallel SAT instantiation)
 - Related: [[marques-silva-sakallah-1999-grasp]] (CDCL — the algorithm inside each SAT portfolio component)
 - Related: [[clarke-et-al-2000-cegar]] (CEGAR — same "parallel oracle" pattern in a different domain)
-- Cross-vault: [[Research/Group theory/Burnside groups/B25/algo-mixing-burnside-slides]] (B(4,3) Mixer result — the portfolio strategy at work)
+- Cross-vault: [[Research/Algorithm Cooperation/algo-mixing-burnside-slides]] (B(4,3) Mixer result — the portfolio strategy at work)
 - Related: [[Concepts/kb-mixing-stagnation]] (stagnation = heavy-tailed KB runtime)
 - Related: [[Concepts/mixable-api]] (the Mixer's information-sharing API = portfolio clause-sharing instantiation)

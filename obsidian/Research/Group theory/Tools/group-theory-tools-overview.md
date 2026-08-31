@@ -6,8 +6,13 @@ tags:
   - agent/research
   - user/maumayma
   - domain/group-theory
+  - topic/knuth-bendix
+  - topic/kbmag
+  - topic/word-problem
   - convention
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # Tools — Decision Tree and Directory Map

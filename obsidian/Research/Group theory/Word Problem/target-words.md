@@ -9,6 +9,8 @@ tags:
   - topic/word-problem
   - topic/finitely-presented-groups
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # Target Words in Group Theory Computation
@@ -109,7 +111,9 @@ For long target words (tens of thousands of characters), compression before redu
 
 ## Cross-references
 
-- `Tools/GAP/examples/03-word-equality.md` — GAP word equality testing
+- [[03-word-equality]] — GAP word equality testing
 - `Tools/KBMAG/examples/` — KBMAG word reduction
 - [[Research/Group theory/Burnside groups/B25/havas-wall-wamsley-1974]] — source of the B(2,5) generator numbering
 - [[Research/Group theory/Word Problem/decidability-landscape.md]] — when word equality is decidable
+- [[word-problem-overview]] — parent: Word Problem directory map
+- [[_moc-word-problem]] — the word-problem MOC (target words are a curated section there)

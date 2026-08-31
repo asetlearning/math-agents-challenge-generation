@@ -31,6 +31,8 @@ key_concepts:
   - "[[Concepts/mixable-api]]"
 date_range: 1936 to 2021
 project: mixer-core
+status: draft
+domain: methodology
 ---
 
 # Synthesis — Combinatorial and group-theoretic search: methodology landscape and Mixer-shaped patterns (2026)
@@ -191,4 +193,9 @@ These are the same structural motif. The Mixer currently has no formal name for 
 - Papers: [[knuth-bendix-1970]], [[dershowitz-jouannaud-1990]], [[todd-coxeter-1936]], [[epstein-et-al-1992-word-processing]], [[korf-1985-ida-star]], [[marques-silva-sakallah-1999-grasp]], [[1811.06128]], [[gomes-selman-2001-portfolios]], [[hamadi-et-al-2009-manysat]], [[clarke-et-al-2000-cegar]]
 - Concepts: [[Concepts/kb-mixing-stagnation]], [[Concepts/mixable-api]], [[Concepts/cayley-table-closure-algorithm]]
 - AI in Math cross-references: [[Research/AI in Math/RL/_synthesis-rl-for-math]], [[Research/AI in Math/ML/_synthesis-ml-for-math]], [[Research/AI in Math/_MOCs/_moc-ai-in-math]]
-- Cross-vault: [[Research/Group theory/Burnside groups/B25/algo-mixing-burnside-slides]] (B(4,3) Mixer — the portfolio completion with rule sharing at work), [[grobner]] (Gröbner-basis approach as an alternative partial-No oracle)
+- Cross-vault: [[algo-mixing-burnside-slides]] (B(4,3) Mixer — the portfolio completion with rule sharing at work), [[grobner]] (Gröbner-basis approach as an alternative partial-No oracle)
+
+### Later additions (2026-08-31)
+
+- [[matveeva-2026-ai-problem-solving]] — the current account (Tbilisi 2026) of the Mixer program: B(4,3) in 13 s on a single rule-sharing event, B(5,3) word problem in 1.5 s via bidirectional beam search, B(2,5) at 76% best / 28% average reduction on the 119 challenge words, plus the Gröbner-bandit transfer. Supersedes [[algo-mixing-burnside-slides]] for current numbers.
+- [[kreuzer-et-al-2010]] — "Quotient Tests and Gröbner Bases" (2010): published predecessor of [[grobner]], squarely in this synthesis's partial-No-oracle scope (Area 5).

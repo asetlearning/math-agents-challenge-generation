@@ -98,15 +98,6 @@ proof must be.
   "classical Higman suffices, the generalization is not needed here" is itself a useful answer.
 - Any concrete termination/confluence claim that emerges must go to Validator before it is relied on.
 
-## Related material in vault
-
-- Paper: [[pakhomov-solda-2025-generalized-higman]] (the source flag)
-- Adjacent group-ring / Gröbner work: `[[grobner]]` (Research/Algorithm Cooperation), if present
-- Rewriting tooling: `Research/Group theory/Tools/KBMAG/`, `Research/Group theory/Word Problem/`
-- The biased-mixer analysis threads (Parts 1–4) and the compressed-alphabet KB direction (Part 3) in
-  the B(2,5) Proxy/Reduce experiments
-- Concepts: `[[Concepts/well-quasi-order]]`, `[[Concepts/higman-lemma]]` (stubs may need creation)
-
 ## Bridge development (Math-expert, 2026-06-23)
 
 Status: proposal/development only, not a Validator verdict. I treat Alexei's relevance flag as real. The current answer-direction is that classical finite-string wqo/termination tools likely suffice for the immediate compressed-alphabet KB design, while the Pakhomov-Solda iterated-ideal/bqo machinery may be useful as a higher-level language for rule-family/stagnation questions rather than as a drop-in confluence algorithm.
@@ -243,3 +234,12 @@ The productive connection to Pakhomov–Soldà is through Q3 (stagnation as idea
 ---
 
 *Section written by Researcher, 2026-06-23. Sources S1, S3, S6–S9 confirmed from Pakhomov–Soldà bib (arXiv:2512.07685 LaTeX source). S2, S4, S5 confirmed from standard textbook knowledge. S10 unverified.*
+
+## Related material in vault
+
+- Paper: [[pakhomov-solda-2025-generalized-higman]] (the source flag)
+- Adjacent group-ring / Gröbner work: [[grobner]] (Research/Algorithm Cooperation)
+- Rewriting termination background: [[book-otto-1993-string-rewriting]], [[dershowitz-jouannaud-1990]] (see Literature sources above); tooling under `Research/Group theory/Tools/KBMAG/` and `Research/Group theory/Word Problem/`
+- The biased-mixer analysis threads (Parts 1–4) and the compressed-alphabet KB direction (Part 3) in
+  the B(2,5) Proxy/Reduce experiments
+- Concepts: `[[Concepts/well-quasi-order]]`, `[[Concepts/higman-lemma]]` (stubs may need creation)

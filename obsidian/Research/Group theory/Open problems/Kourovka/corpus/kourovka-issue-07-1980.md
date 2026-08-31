@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 7th Issue, 1980
@@ -205,3 +209,9 @@ a) A set of generators of a finitely generated group G consisting of the least p
 Suppose that F is an absolutely free group, R a normal subgroup of F , and let V be a variety of groups. It is well-known (H. Neumann, Varieties of Groups, Springer, Berlin, 1967) that the group F/V(R) is isomorphically embeddable in the V-verbal wreath product of a V-free group of the same rank as F with F/R. Find a criterion indicating which elements of this wreath product belong to the image of this embedding. A criterion is known in the case where V is the variety of all abelian groups (V. N. Remeslennikov, V. G. Sokolov, Algebra and Logic, 9, no. 5 (1970), 342– 349). G. G. Yabanzhi
 
 26
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-06-1978]] — previous issue (1978)
+- [[kourovka-issue-08-1982]] — next issue (1982)

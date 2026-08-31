@@ -100,4 +100,4 @@ IDA* also characterizes the **space of possible search strategies**: any admissi
 
 - Related: [[knuth-bendix-1970]] (KB completion is also a bounded search — each round of critical-pair generation is one IDA* iteration over the space of possible rule additions)
 - Related: [[marques-silva-sakallah-1999-grasp]] (CDCL = sophisticated IDA* with learned pruning constraints)
-- Cross-vault: [[Research/Group theory/Burnside groups/B25/algo-mixing-burnside-slides]] (bidirectional B(4,3) search; IDA*-like structure)
+- Cross-vault: [[Research/Algorithm Cooperation/algo-mixing-burnside-slides]] (bidirectional B(4,3) search; IDA*-like structure)

@@ -9,6 +9,8 @@ tags:
   - topic/kbmag
   - convention
   - status/validated
+status: validated
+domain: group-theory
 ---
 
 # KBMAG file formats — .kbprog input/output and kbprog flags

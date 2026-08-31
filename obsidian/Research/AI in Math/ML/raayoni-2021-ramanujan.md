@@ -26,6 +26,7 @@ tags:
   - topic/symbolic-regression
   - paper
   - status/draft
+status: draft
 ---
 
 # Generating conjectures on fundamental constants with the Ramanujan Machine

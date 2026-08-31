@@ -14,7 +14,7 @@ tags:
   - domain/methodology
   - topic/experiment-tracking
   - topic/reproducibility
-  - paper
+  - type/reference
   - status/draft
 ---
 

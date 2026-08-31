@@ -30,6 +30,7 @@ tags:
   - topic/value-network
   - paper
   - status/draft
+status: draft
 ---
 
 # Learning Admissible Heuristics for A*: Theory and Practice
@@ -83,3 +84,4 @@ Whether B(2,5)'s search (beam/A*-like, guided by a learned value head) actually 
 
 - Related: [[agostinelli-2019-deepcubea]] (the system whose admissibility gap this paper directly addresses)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 — synthesizes this paper's admissibility thread for the B(2,5) value head)

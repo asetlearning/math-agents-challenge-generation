@@ -112,5 +112,5 @@ In CEGAR, spurious counterexamples (words where the abstract model is wrong) gui
 - Related: [[gomes-selman-2001-portfolios]] (portfolios — same pattern from a different angle: multiple solvers cooperating)
 - Related: [[hamadi-et-al-2009-manysat]] (ManySAT — clause sharing as a form of targeted refinement)
 - Related: [[marques-silva-sakallah-1999-grasp]] (CDCL learned clauses — another "partial-No oracle" mechanism)
-- Cross-vault: [[Research/Group theory/Burnside groups/B25/algo-mixing-burnside-slides]] (Mixer B(4,3) — can be read as CEGAR with KB as the abstract verifier)
+- Cross-vault: [[Research/Algorithm Cooperation/algo-mixing-burnside-slides]] (Mixer B(4,3) — can be read as CEGAR with KB as the abstract verifier)
 - Cross-vault: [[Concepts/kb-mixing-stagnation]] (stagnation = the abstract KB being "wrong" without knowing it)

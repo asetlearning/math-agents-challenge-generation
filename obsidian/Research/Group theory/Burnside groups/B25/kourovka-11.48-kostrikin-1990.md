@@ -18,6 +18,7 @@ cites:
   - "[[havas-wall-wamsley-1974]]"
   - "[[kourovka-2022]]"
 cited_by:
+  - "[[matveeva-2026-ai-problem-solving]]"
   - "[[b25-finiteness-11.48-kostrikin]]"
   - "[[b-exponent-5-adian-4.2b]]"
   - "[[algo-mixing-burnside-slides]]"
@@ -37,6 +38,7 @@ tags:
   - paper
   - status/draft
 project: b25
+status: draft
 ---
 
 # Kourovka Problem 11.48 — Kostrikin (1990)

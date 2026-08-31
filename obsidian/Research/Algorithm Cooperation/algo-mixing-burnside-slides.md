@@ -26,6 +26,7 @@ cites:
   - "[[kourovka-11.48-kostrikin-1990]]"
   - "[[grobner]]"
 cited_by:
+  - "[[matveeva-2026-ai-problem-solving]]"
   - "[[b25-finiteness-11.48-kostrikin]]"
 quality_notes: "Internal slide deck — not a peer-reviewed paper. Contains verbatim run logs and results for B(4,3) breakthrough (33 min, 2333 rules) and validation experiments (B(2,4), B(3,3)). Key Validator flag: 'witness words' claim (~50 words for B(2,5)) is not sourced to any paper — verify before relying on as a proof strategy. B(4,3) confluence result (1,702,360 pairs, 0 failures) is empirical verification, not a proof of mixed KB soundness. Old content-type tag #concept replaced with #paper per F4.2 decision."
 author: maumayma
@@ -41,6 +42,7 @@ tags:
   - paper
   - status/validated
 project: mixer-core
+status: validated
 ---
 
 # Algorithm Mixing: From Sorting to Burnside Groups
@@ -184,10 +186,11 @@ The deck also contains the only record of the B(2,4) and B(3,3) validation exper
 
 ## Related material in vault
 
+- Extended by: [[matveeva-2026-ai-problem-solving]] — the 2026 Tbilisi successor deck. **Supersedes the B(4,3) headline number here**: 13 s to confluence with a single rule-sharing event, vs the 33 min / 54 shares recorded above. Also carries B(5,3), B(2,5), Gröbner-bandit, and agentic-methodology results this deck does not.
 - Extends: (none — founding document)
 - Contradicts: (none)
 - Replicates: (none)
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[havas-wall-wamsley-1974]], [[havas-newman-1980]], [[kourovka-11.48-kostrikin-1990]], [[grobner]]
-- Cited by (in vault): [[kourovka-11.48-kostrikin-1990]], [[b25-finiteness-11.48-kostrikin]], [[havas-newman-1980]] (cross-referenced), [[Experiments/Group Theory/Burnside Group/B25/_progress]] and multiple B25 methodology notes
+- Cited by (in vault): [[matveeva-2026-ai-problem-solving]], [[b25-finiteness-11.48-kostrikin]]
 - Also see: [[mixable-api]], [[kb-mixing-stagnation]]

@@ -34,6 +34,7 @@ tags:
   - topic/reinforcement-learning
   - paper
   - status/draft
+status: draft
 ---
 
 # Learning to Unknot
@@ -86,3 +87,4 @@ Whether an RL/PatternBoost-style policy over B(2,5) KB-rule applications (rather
 
 - Related: [[Research/AI in Math/ML/petschack-2025-symmetric-group]] (another group-theory + transformer paper from the same scan)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[chervov-2025-cayleypy-rl]] (RL navigation of group-move spaces toward canonical form — same task shape on Cayley graphs)

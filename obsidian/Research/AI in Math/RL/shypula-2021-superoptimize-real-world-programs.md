@@ -34,6 +34,7 @@ tags:
   - topic/edit-representation
   - paper
   - status/draft
+status: draft
 ---
 
 # Learning to Superoptimize Real-world Programs
@@ -85,3 +86,5 @@ Whether a self-imitation-learning approach (train a policy to imitate the B25 te
 ## Related material in vault
 
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]]
+- Related: [[agostinelli-2019-deepcubea]] (the bootstrapped-value alternative this paper's self-imitation recipe is contrasted against above)
+- Related: [[cao-2026-adaedit]] (same edit-representation family — edit-format design for LLM code editing)

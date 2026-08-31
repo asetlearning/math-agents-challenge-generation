@@ -132,3 +132,4 @@ This is not currently implemented — Borys Nolikov is listed as the implementer
 - Related problem: [[braid-b4-membership-6.24-makanin]] (B₄ membership — harder problem; Burau faithfulness assists it)
 - Algorithm Cooperation cross-link: [[Research/Algorithm Cooperation/_synthesis-combinatorial-search-methods]] (Section 7: Mixer-shaped methods — the partial-No oracle pattern)
 - Specific Mixer-shaped analogs: [[Research/Algorithm Cooperation/hamadi-et-al-2009-manysat]] (ManySAT), [[Research/Algorithm Cooperation/clarke-et-al-2000-cegar]] (CEGAR)
+- MOC: [[_moc-word-problem]] (open boundary cases — the Burau₄ faithfulness cluster)

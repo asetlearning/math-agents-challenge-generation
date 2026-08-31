@@ -32,6 +32,7 @@ tags:
   - topic/computational-search-group-theory
   - paper
   - status/draft
+status: draft
 ---
 
 # Non-trivial units of complex group rings
@@ -97,3 +98,4 @@ Methodological note only. B(2,5) is torsion; Kaplansky does not apply. The signi
 - Concept hub: [[Concepts/kaplansky-unit-conjecture]]
 - Full lineage: [[gardam-semidecidable-2021]] → [[murray-2021-kaplansky-char-p]] → this paper
 - Companion topology approach: [[mineyev-2024-kaplansky-origami]]
+- MOC: [[_moc-word-problem]] (adjacent open problems — Kaplansky cluster)

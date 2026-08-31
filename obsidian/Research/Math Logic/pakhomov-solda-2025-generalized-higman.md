@@ -110,3 +110,5 @@ So the honest framing: this paper is **the proof-theory of the termination/confl
 - Cites (in vault): (none)
 - Cited by (in vault): (none)
 - Adjacent vault work (indirect): the KBMAG / Knuth-Bendix tooling notes under `Research/Group theory/Tools/KBMAG/` and `Research/Group theory/Word Problem/` — Higman/wqo is the termination-theory background for those rewriting techniques. First note in the new `Research/Math Logic/` area.
+- Bridge note: [[_open-direction-wqo-ideal-kb-termination]] — the open research direction developing this paper's wqo/ideal machinery toward B(2,5) KB termination/confluence.
+- Sibling math-logic notes: [[daniyarova-myasnikov-2025]], [[daniyarova-myasnikov-2026]] — the vault's other `#domain/math-logic` papers (model theory of interpretations); field-level connection, not a direct citation link.

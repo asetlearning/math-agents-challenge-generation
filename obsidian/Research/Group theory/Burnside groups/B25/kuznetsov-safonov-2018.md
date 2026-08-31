@@ -14,7 +14,7 @@ citation_count: null
 citation_count_date:
 key_concepts:
   - "[[hall-polynomials]]"
-  - "[[growth-function]]"
+  - "[[Concepts/growth-functions-burnside]]"
   - "[[cayley-diameter]]"
   - "[[power-commutator-presentation]]"
 extends:

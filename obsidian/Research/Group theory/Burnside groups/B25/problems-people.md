@@ -37,6 +37,7 @@ tags:
   - paper
   - status/draft
 project: b25
+status: draft
 ---
 
 # B(2,5) Problems and People

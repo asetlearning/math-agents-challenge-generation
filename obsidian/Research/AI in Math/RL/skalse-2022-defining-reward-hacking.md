@@ -32,6 +32,7 @@ tags:
   - topic/value-network
   - paper
   - status/draft
+status: draft
 ---
 
 # Defining and Characterizing Reward Hacking
@@ -83,3 +84,4 @@ Which of the paper's nine candidate "unhackable proxy design" strategies (not en
 
 - Related: [[agostinelli-2019-deepcubea]] (a value-network precedent whose training signal, unlike B(2,5)'s, has no documented adversarial blind spot — the disanalogy that makes this paper's warning sharper for us)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 — synthesizes this paper's proxy-hackability warning for the R1 value-scoring thread)

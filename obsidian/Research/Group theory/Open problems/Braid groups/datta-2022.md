@@ -116,4 +116,5 @@ Datta 2022 is the **most significant post-2020 progress on the Burau₄ faithful
 - Cites: [[bigelow-1999]], [[long-paton-1993]]
 - Concept hub: [[Concepts/burau4-faithfulness]] (the open question this paper partially advances)
 - Combinatorial-search bridge: [[Research/Algorithm Cooperation/_synthesis-combinatorial-search-methods]] (Datta's "faithful almost everywhere" = partial-No oracle pattern from Section 7)
-- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]] (forthcoming in B3)
+- Synthesis: [[Research/Group theory/Open problems/Braid groups/_synthesis-burau4-faithfulness]]
+- MOC: [[_moc-word-problem]] (open boundary cases)

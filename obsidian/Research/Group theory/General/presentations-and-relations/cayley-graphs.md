@@ -9,11 +9,15 @@ tags:
   - domain/group-theory
   - topic/word-problem
   - topic/finitely-presented-groups
+  - topic/cayley-graphs
+  - topic/growth-functions
   - status/validated
 related:
   - "[[presentations]]"
   - "[[group-action]]"
   - "[[coset-enumeration]]"
+status: validated
+domain: group-theory
 ---
 
 # Cayley Graphs
@@ -59,3 +63,5 @@ The **growth function** γ(n) = |{g ∈ G | d(e, g) ≤ n in Γ(G, S)}| counts e
 - [[presentations]] — the generating set S comes from the presentation's generators.
 - [[group-action]] — Cayley graph = G acting on itself by left multiplication; Schreier coset graph = G acting on G/H.
 - [[coset-enumeration]] — the Todd-Coxeter algorithm constructs the Schreier coset graph.
+- [[general-group-theory-overview]] — parent: scope and map of the General/ subtree.
+- [[_moc-presentations-and-orders]] — MOC: curated path from foundational definitions to presentations and order computation.

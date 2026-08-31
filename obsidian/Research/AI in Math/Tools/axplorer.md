@@ -19,6 +19,7 @@ related:
   - "[[charton-2024-patternboost]]"
   - "[[patternboost-v1-lineage]]"
   - "[[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]"
+status: draft
 ---
 
 # axplorer — PatternBoost Reference Implementation
@@ -134,3 +135,10 @@ class BurnsideDataPoint(DataPoint):
 ## Relationship to v1
 
 The predecessor repo (zawagner22/transformers_math_experiments, 39 stars — [[patternboost-v1-lineage]]) used Julia for local search and Python for the transformer, communicating via file-based IPC. axplorer replaced Julia with Python, IPC with in-process calls, BPE with domain-specific tokenizers, and added resumable training and GPU support. The core loop is the same; axplorer is the production-quality implementation.
+
+## Related material
+
+- Paper: [[charton-2024-patternboost]] (the PatternBoost methodology this repo implements)
+- Lineage: [[patternboost-v1-lineage]] (predecessor Julia/Python proof-of-concept; see § Relationship to v1)
+- Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]] (representation-gate literature pass grounding the tokenizer correction above)
+- MOC: [[_moc-ai-in-math]]

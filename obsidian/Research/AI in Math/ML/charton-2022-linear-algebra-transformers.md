@@ -29,6 +29,7 @@ tags:
   - topic/patternboost
   - paper
   - status/draft
+status: draft
 ---
 
 # Linear algebra with transformers
@@ -82,3 +83,4 @@ Whether the same "representation choice dominates accuracy" pattern holds for di
 
 - Cited by: [[charton-2024-patternboost]] (same author, informal restatement of the same finding)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[singh-strouse-2024-tokenization-counts]] (same representation-dominates-arithmetic-learnability finding, from the tokenization-boundary side)

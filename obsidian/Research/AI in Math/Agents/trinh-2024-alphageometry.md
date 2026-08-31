@@ -30,6 +30,7 @@ tags:
   - topic/proof-search
   - paper
   - status/draft
+status: draft
 ---
 
 # Solving olympiad geometry without human demonstrations

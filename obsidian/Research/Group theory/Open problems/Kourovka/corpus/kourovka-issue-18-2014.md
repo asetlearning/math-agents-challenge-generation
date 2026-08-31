@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 18th Issue, 2014
@@ -665,3 +669,9 @@ A multilinear commutator word is any commutator of weight n in n distinct variab
 Let P = AB be a finite p-group factorized by an abelian subgroup A and a class-two subgroup B. Suppose, if necessary, A ∩ B = 1. Then is it true that hA, [B, B]i = AB0 , where B0 is an abelian subgroup of B? E. Jabara
 
 129
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-17-2010]] — previous issue (2010)
+- [[kourovka-issue-19-2018]] — next issue (2018)

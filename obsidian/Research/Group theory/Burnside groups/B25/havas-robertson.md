@@ -34,6 +34,7 @@ tags:
   - topic/finitely-presented-groups
   - paper
   - status/draft
+status: draft
 ---
 
 # Application of Computational Tools for Finitely Presented Groups

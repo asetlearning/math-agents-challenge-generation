@@ -14,7 +14,7 @@ key_concepts:
   - "[[hall-polynomials]]"
   - "[[cayley-diameter]]"
   - "[[power-commutator-presentation]]"
-  - "[[growth-function]]"
+  - "[[Concepts/growth-functions-burnside]]"
 extends:
   - "[[kuznetsov-kuznetsova-2013]]"
 contradicts: []
@@ -35,6 +35,8 @@ tags:
   - topic/finite-group-enumeration
   - paper
   - status/draft
+status: draft
+domain: group-theory
 ---
 
 # The Cayley graphs of Burnside groups of exponent 3

@@ -32,6 +32,7 @@ tags:
   - topic/tokenization
   - paper
   - status/draft
+status: draft
 ---
 
 # Analyzing the Nuances of Transformers' Polynomial Simplification Abilities

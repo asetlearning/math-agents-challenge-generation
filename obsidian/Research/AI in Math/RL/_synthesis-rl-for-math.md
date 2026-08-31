@@ -22,6 +22,8 @@ papers_synthesized:
 key_concepts: []
 date_range: 2018-05 to 2024-02
 project:
+status: draft
+domain: ai
 ---
 
 # Synthesis — RL for math: reward-learning and search in formal and informal mathematical reasoning (2018–2024)
@@ -113,4 +115,16 @@ For the Mixer workstream:
 - RL-trained provers (covered in Agents synthesis, not re-summarized here): [[alphaproof-2024]], [[2504.21801]]
 - Cross-vault: [[algo-mixing-burnside-slides]] (AlphaTensor's single-player game = Mixer injection RL blueprint)
 - Prior synthesis (Agents arc): [[_synthesis-agents-for-math]]
-- Upcoming synthesis: `Research/AI in Math/ML/_synthesis-ml-for-math.md` (sub-area C)
+- Companion synthesis (sub-area C): [[_synthesis-ml-for-math]]
+
+### Later additions (2026-08-31)
+
+Notes landed in RL/ after 2026-05-28, not yet folded into the three-bucket body above (mostly the 2026-07-17 B25 PatternBoost support wave):
+
+- [[agostinelli-2019-deepcubea]] — DeepCubeA: value network + weighted A* on the Rubik's cube; cost-to-go bootstrapping template.
+- [[chervov-2025-cayleypy-rl]] — CayleyPy: RL pathfinding on Cayley graphs (group-theory-adjacent).
+- [[futuhi-sturtevant-2026-admissible-heuristics]] — learned admissible heuristics for A*: theory and practice.
+- [[segler-2018-retrosynthesis-mcts]] — MCTS + neural policies for chemical synthesis planning.
+- [[shypula-2021-superoptimize-real-world-programs]] — SILO self-imitation superoptimization (detour-capable edit search).
+- [[skalse-2022-defining-reward-hacking]] — formal reward-hacking characterization (score-proxy risk calibration).
+- [[2005.01917]] — learning selection strategies in Buchberger's algorithm.

@@ -12,7 +12,7 @@ methodology_type: theoretical
 citation_count:
 citation_count_date:
 key_concepts:
-  - "`[[Concepts/dehn-function]]`"
+  - "[[dehn-function]]"
   - "`[[Concepts/burnside-groups]]`"
 extends: []
 contradicts: []
@@ -100,7 +100,8 @@ However, the exponent gap ($n \geq 2^{48}$ vs. our exponent 5) and the existenti
 - Extends: (none in vault)
 - Contradicts: (none)
 - Replicates: (none)
-- Concepts introduced/used: `[[Concepts/dehn-function]]`, `[[Concepts/burnside-groups]]` (stubs may need creation)
+- Concepts introduced/used: [[dehn-function]] (Word Problem techniques note); `[[Concepts/burnside-groups]]` (stub not yet created)
 - Cites (in vault): (none yet)
 - Cited by (in vault): (none yet)
-- Adjacent vault work: the B(2,5) Burnside research notes under `Research/Group theory/Burnside groups/B25/` (Kuznetsov et al.); the PatternBoost proxy program (`[[charton-2024-patternboost]]`, B25 Proxy Validation experiments) where isoperimetric/word-metric proxies are an open line.
+- Adjacent vault work: the B(2,5) Burnside research notes under `Research/Group theory/Burnside groups/B25/` (Kuznetsov et al.); the PatternBoost proxy program ([[charton-2024-patternboost]], B25 Proxy Validation experiments) where isoperimetric/word-metric proxies are an open line.
+- MOC: [[_moc-burnside]]

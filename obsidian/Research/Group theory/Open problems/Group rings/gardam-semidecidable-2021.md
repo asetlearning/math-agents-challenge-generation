@@ -32,6 +32,7 @@ tags:
   - topic/cdcl
   - paper
   - status/draft
+status: draft
 ---
 
 # Solving semidecidable problems in group theory
@@ -117,3 +118,4 @@ B(2,5) is a torsion group; Kaplansky conjectures are not directly applicable. Re
 - Char-0 extension: [[gardam-2024-kaplansky-char-zero]]
 - Methodological bridge: [[charton-2024-patternboost]] (PatternBoost: same local-enumerate + global-reseed paradigm)
 - Existing vault: [[kaplansky-zero-divisors]] (Open problems note)
+- MOC: [[_moc-word-problem]] (adjacent open problems — Kaplansky cluster)

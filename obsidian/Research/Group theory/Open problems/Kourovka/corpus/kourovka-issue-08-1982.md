@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 8th Issue, 1982
@@ -337,3 +341,9 @@ Construct a finite p-group G whose Hughes subgroup Hp (G) = hx ∈ G | |x| 6= pi
 (Well-known problem). Suppose that all proper closed subgroups of a locally compact locally nilpotent group G are compact. Is G abelian if it is non-compact? V. S. Charin
 
 32
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-07-1980]] — previous issue (1980)
+- [[kourovka-issue-09-1984]] — next issue (1984)

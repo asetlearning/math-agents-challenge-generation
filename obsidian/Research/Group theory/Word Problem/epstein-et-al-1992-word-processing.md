@@ -106,5 +106,5 @@ The **fellow-traveler property** is also directly relevant: it says that automat
 - Extends: [[todd-coxeter-1936]] (TC coset enumeration — the monograph builds on TC theory), [[knuth-bendix-1970]] (KB completion — the monograph shows KB = automatic-group-detection)
 - Cites: [[todd-coxeter-1936]], [[knuth-bendix-1970]]
 - Concept hub: [[techniques/automatic-groups]] (the vault concept note citing this book as its primary source)
-- Tool: [[Research/Group theory/Tools/KBMAG]] (KBMAG = computational implementation of this book's theory)
-- Open problem: [[Research/Group theory/Open problems/Burnside groups/]] (B(2,5) automaticity is the Burnside problem)
+- Tool: [[kbmag-tools-overview]] (KBMAG = computational implementation of this book's theory)
+- Open problem: [[b25-finiteness-11.48-kostrikin]] (B(2,5) automaticity is the Burnside problem)

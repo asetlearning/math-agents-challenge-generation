@@ -9,14 +9,18 @@ source: "Kourovka Notebook No. 20 (2022), arXiv:1401.0300v23"
 source_pdf: "Kourovka 2022.pdf"
 extracted: "2026-08-11"
 extractor: "_meta/scripts/kourovka-extract.py"
-author: <operator>
+author: maumayma
 tags:
+  - agent/lead
+  - user/maumayma
   - domain/group-theory
   - topic/kourovka
   - topic/open-problems
   - project/kourovka
   - status/reference
   - reference
+status: reference
+domain: group-theory
 ---
 
 # Kourovka No. 20 — 17th Issue, 2010
@@ -420,7 +424,7 @@ Let [u, n v] := [u, v, . . . , v ]. Is the group Mn = hx, y | x = [x, n y], y = 
 
 *Issue 17 (2010) · printed p. 109 · proposed by R. Mikhailov*
 
-Given normal subgroups R1 , . . . , Rn of a group G, let [[R1 , . . . , Rn ]] := Yh \ \ i Ri , Rj , where the product is over all I ∪ J = {1, . . . , n}, I ∩ J = ∅. i∈I j∈J Let G be a free group, and let Ri = hri iG be the normal closures of elements ri ∈ G. It is known (B. Hartley, Yu. Kuzmin, J. Pure Appl. Algebra, 74 (1991), 247–256) that the quotient (R1 ∩ R2 )/[R1 , R2 ] is a free abelian group. On the other hand, the quotient (R1 ∩ · · · ∩ Rn )/[[R1 , . . . , Rn ]] has, in general, non-trivial torsion for n ⩾ 4. Is this quotient always torsion-free for n = 3? This is known to be true if r1 , r2 , r3 are not proper powers in G.
+Given normal subgroups R1 , . . . , Rn of a group G, let `[[R1 , . . . , Rn ]]` := Yh \ \ i Ri , Rj , where the product is over all I ∪ J = {1, . . . , n}, I ∩ J = ∅. i∈I j∈J Let G be a free group, and let Ri = hri iG be the normal closures of elements ri ∈ G. It is known (B. Hartley, Yu. Kuzmin, J. Pure Appl. Algebra, 74 (1991), 247–256) that the quotient (R1 ∩ R2 )/[R1 , R2 ] is a free abelian group. On the other hand, the quotient (R1 ∩ · · · ∩ Rn )/`[[R1 , . . . , Rn ]]` has, in general, non-trivial torsion for n ⩾ 4. Is this quotient always torsion-free for n = 3? This is known to be true if r1 , r2 , r3 are not proper powers in G.
 
 ## 17.83
 
@@ -675,3 +679,9 @@ Suppose that a finite soluble group G of derived length d admits an elemen- tary
 Let T be a finite p-group admitting an elementary abelian group of auto- morphisms A of order p2 such that in the semidirect product P = T A every element of P \ T has order p. Does it follow that T is of exponent p? E. Jabara
 
 115
+
+## Related material
+
+- [[_kourovka-20-corpus]] — corpus index: provenance, extraction pipeline, per-issue counts, known limitations
+- [[kourovka-issue-16-2006]] — previous issue (2006)
+- [[kourovka-issue-18-2014]] — next issue (2014)
