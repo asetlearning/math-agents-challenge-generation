@@ -193,7 +193,7 @@ General lifecycle:
 - `#status/validated` — Lead or Experimenter approved (depending on note type)
 - `#status/rejected` — explicitly killed; lessons captured
 - `#status/superseded` — replaced by a newer note (link forward)
-- `#status/reference` — reference material with no lifecycle (e.g. the Kourovka corpus issue notes); registered 2026-08-31
+- `#status/reference` — reference material with no lifecycle; registered 2026-08-31
 
 Experiment-specific:
 - `#status/pending` — pre-registered, not yet run
@@ -221,7 +221,6 @@ Currently registered:
 - `#project/b25` — B(2,5), the flagship hard problem
 - `#project/b43` — B(4,3)
 - `#project/b53` — B(5,3)
-- `#project/kourovka` — Kourovka Notebook open-problems operation (crew notes under `Research/Group theory/Open problems/Kourovka/`); registered 2026-08-31
 - `#project/b29` — B(2,9) finiteness program. Registered 2026-08-11 on Maria's stage-2 GO (active deliverables: pq-tower experiment + runs/b29/, stage-1 synthesis, W1/W2 workstreams). Stage-1 notes predating registration carry `#topic/b29` only; new project-scoped notes carry both.
 
 Add new `#project/*` tags as new projects start. Discuss in `_meta/canvas-setup.md` before adding to keep them stable.

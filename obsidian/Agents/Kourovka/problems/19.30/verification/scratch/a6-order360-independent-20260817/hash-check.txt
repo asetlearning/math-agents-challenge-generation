@@ -1,2 +1,0 @@
-Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/independent-a6-order360.g: OK
-Agents/Kourovka/problems/19.30/verification/scratch/a6-order360-independent-20260817/verify-independent.py: OK

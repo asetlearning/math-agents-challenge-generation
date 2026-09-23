@@ -1,8 +1,0 @@
-{
-  "ambient_degree": 6,
-  "group": "AlternatingGroup(6) realized as even permutations of [1..6]",
-  "class": "all cycle-type 2^2 1^2 permutations",
-  "selected_colours": [2, 3],
-  "full_colours_expected": [2, 3, 4, 5],
-  "vertex_index_origin": 0
-}

@@ -1,5 +1,0 @@
-points=57 conic=8 internal=21
-geometric_columns=28 traded_columns=28
-gram_equal=True
-original_resolutions=8
-traded_resolutions=0

@@ -8,15 +8,5 @@
 # obsidian/_meta/agents/ on case-insensitive filesystems (macOS).
 /Agents/
 # Glob the children rather than the directory itself: git cannot re-include a
-# path whose parent directory is excluded, and we need one exception below.
+# path whose parent directory is excluded.
 obsidian/Agents/*
-
-# EXCEPTION: the Kourovka crew's research record is shared work product, not
-# local agent state — bus messages, board decisions, per-problem logs, GAP and
-# Python scripts. Committed so the post-mortem is reviewable. (Maria, 2026-08-20)
-!obsidian/Agents/Kourovka/
-
-# ...but never the vendored GAP tree, caches, or bulk scratch artifacts.
-obsidian/Agents/Kourovka/tools/
-obsidian/Agents/Kourovka/**/__pycache__/
-obsidian/Agents/Kourovka/**/*.pyc

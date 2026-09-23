@@ -65,7 +65,6 @@ domain: group-theory
 
 - [[open-problems-catalog]] — Mixer/AI feasibility catalog over the vault's open-problem notes.
 - [[_synthesis-10-ai-tractable-group-theory-problems]] — ten easier-but-open, AI-tractable group-theory problems with an explicit tractability criterion.
-- [[_kourovka-20-corpus]] — Kourovka Notebook No. 20 corpus index: gateway to the 20 issue notes and the ~60 individual problem notes under `Open problems/Kourovka/`.
 - [[andrews-curtis-conjecture]] — the Andrews-Curtis conjecture (1965): balanced presentations of the trivial group; long-standing Mixer candidate.
 
 ### Adjacent open problems — group rings (Kaplansky cluster)

@@ -1,4 +1,0 @@
-b23f6a8e09f6ff8a4957484eec3de527664ab9556a9a5e682f7603397746195a  Agents/Kourovka/problems/21.53/runs/2026-08-17-r1-a6-two-colour-separation/scratch/build_a6_instance.py
-e0b6ecf6752967c10a2d04009ce044ca3b0b5c89d36d04a3b4f6e5a893e966c5  Agents/Kourovka/problems/21.53/runs/2026-08-17-r1-a6-two-colour-separation/scratch/a6-parameters.json
-49d1c023fa08d54f0148d4bb3d53ac3790eaf0d9eaad2ae61caf23b515da2e1c  Agents/Kourovka/problems/21.53/runs/2026-08-17-r1-a6-two-colour-separation/scratch/output/a6_two_colour.dre
-76718524627e2939c73484d44683590b215dbd8102321dd38898ed926a1a09df  Agents/Kourovka/problems/21.53/runs/2026-08-17-r1-a6-two-colour-separation/scratch/output/a6_full_colour.dre

@@ -145,7 +145,16 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 
 - `defuddle <url>` for web reads (especially math papers — defuddle handles arxiv well).
 - `nuextract-cli <pdf> <schema>` for image-only / scanned PDFs (when available — see [[ocr-tooling]]).
-- RTK auto-rewrites `git`, `cargo`, `ls`, `find`, test runners.
+- RTK auto-rewrites `git`, `cargo`, `ls`, `find`, test runners — prefix shell
+  commands with `rtk` (`rtk git status`, `rtk ls <path>`, `rtk grep -rn ...`) for
+  60-90% fewer tokens on the same result. Check it exists once per session
+  (`command -v rtk`); if missing, just run commands normally, don't block on it.
+  **Never wrap GAP/Sage/Python computation or your own scripts in `rtk`** — it's
+  for file/repo inspection only; mathematical output must reach you verbatim and
+  complete. Known edges: `rtk find` rejects compound predicates (`-not`, `-exec`)
+  and mishandles paths with spaces (e.g. `Research/Group theory/...`) — use plain
+  `find` for those. `rtk proxy <cmd>` gives raw unfiltered output when needed.
+  `rtk gain` shows savings.
 - `Read` with `offset`/`limit` for huge files. `Grep` with context.
 
 ## Git safety
@@ -209,3 +218,71 @@ Escalate to Lead (Lead escalates to the human as needed) when:
 - An experiment produces a result that contradicts a published theorem → triple-check, then surface to Validator first, then Lead.
 - A note you're about to write conflicts with a note tagged `#status/disproven` → stop, surface to Lead.
 - About to touch a file outside your declared scope.
+- You need a tool that isn't installed → request the install and **keep working a
+  branch that doesn't need it** while waiting, don't park the whole task.
+- A single thinking turn runs past ~30 minutes with no computation in it → you're
+  theorizing when you should be enumerating. Stop, run something small, let the
+  output redirect you.
+
+## Rigor and persistence doctrine
+
+Lessons from a related program's failure mode, generalized: a crew can be so
+well-defended against a false positive that it produces zero true positives either.
+Both failure directions are treated as equally fatal here.
+
+### Five ways to be wrong
+
+Named so you can catch yourself:
+
+1. **Solving a different problem.** Computing in a finite quotient, a restricted
+   variant, or a slightly-restated version, then reporting on the original. State
+   exactly which object you computed in, and whether it's proven equal to the target.
+2. **Circularity.** Testing objects constructed from the assumptions being tested —
+   the test passes by construction and proves nothing. Trace where every object in a
+   computation came from before trusting the output.
+3. **Necessary mistaken for sufficient.** An invariant that must hold if a claim is
+   true, holding, is not the claim being true (abelianization is blind on `[G,G]`).
+   For every check, state what a pass proves and what it does not.
+4. **It's already known.** Spending hours rediscovering a proven theorem, or "solving"
+   something already closed elsewhere. Literature check first, before any thinking.
+5. **Walking away from the answer.** Reasoning to a candidate, then not building or
+   testing it — or abandoning a live line too early. Before writing any report, answer:
+   "what is the cheapest computation that could still close this, and why haven't I
+   run it?" If there's no answer, run it instead of writing.
+
+### Compute — run it, don't ask
+
+- **Under 10 minutes wall-clock: just run it.** No permission needed. Log the command
+  and output, move on.
+- **10 minutes to 2 hours:** run it, and send a one-line status report *while it's
+  running* — informing, not asking.
+- **Over 2 hours, or over ~8 GB RAM:** say so before starting, since it may collide
+  with another agent's job.
+- Always use `timeout` / an explicit wall-clock cap on any run.
+
+### `BLOCKER` means one thing
+
+A blocker means **"I cannot run the mathematics"** — a missing tool, an unresolvable
+path, a genuine contradiction in a problem statement. It does not mean a wrong
+`author:` field, a path string you'd prefer differently, or a typo. If you can keep
+doing mathematics, it isn't a blocker — note it and carry on.
+
+### Judging is not certifying
+
+Every agent judges mathematics — you're all reasoning about groups, and pretending
+otherwise makes you useless. State opinions and why: this line looks live, that lemma
+smells wrong, this reduction drops a hypothesis that mattered. What's reserved to
+Validator is **certification** — moving a claim's status. Use hedged language for your
+own conclusions ("I think," "this looks like," "my reading is"); certification words
+("proven," "verified," "confirmed," "correct") belong to Validator alone, regardless of
+your role. Disagreeing with a Validator verdict is allowed — say so, with reasoning; a
+verdict stands until Validator changes it or the human intervenes.
+
+### Additional forbidden actions
+
+Beyond what's forbidden above: reporting that no candidate exists when your own log
+contains one you didn't test. Declaring a line of attack over — you don't have that
+authority; report where you actually are and let Lead/the human decide what ends.
+Inventing a rule that forbids a construction (a novelty bar, an elegance bar) that
+isn't in the problem statement itself. Returning unspent time/budget without having
+spent it on the actual mathematics.

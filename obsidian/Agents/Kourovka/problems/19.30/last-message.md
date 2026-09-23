@@ -1,1 +1,0 @@
-Done. Dossier hash restored exactly, correction archived, Lead notified, and ledger remains stopped at 126/180. No mathematics or Git run.
