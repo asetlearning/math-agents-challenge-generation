@@ -59,19 +59,11 @@ domain: group-theory
 
 - [[braid-b4-membership-6.24-makanin]] — Kourovka 6.24 (Makanin, 1980): the membership problem for B₄ is the boundary case between decidable (n≤3) and undecidable (n≥5). Relevant because membership is strictly harder than the word problem and our braid-group work lives at this boundary.
 
-- [[_synthesis-burau4-faithfulness]] — the Burau₄ faithfulness cluster synthesis ([[Research/Group theory/Open problems/Braid groups/burau4-faithfulness|burau4-faithfulness]], [[bigelow-1999]], [[long-paton-1993]], [[datta-2022]]): status, approaches, and the combinatorial-search framing of the adjacent open representation question.
-
 ### Open-problem catalogs and corpora
 
 - [[open-problems-catalog]] — Mixer/AI feasibility catalog over the vault's open-problem notes.
 - [[_synthesis-10-ai-tractable-group-theory-problems]] — ten easier-but-open, AI-tractable group-theory problems with an explicit tractability criterion.
 - [[andrews-curtis-conjecture]] — the Andrews-Curtis conjecture (1965): balanced presentations of the trivial group; long-standing Mixer candidate.
-
-### Adjacent open problems — group rings (Kaplansky cluster)
-
-- [[Research/Group theory/Open problems/Group rings/kaplansky-zero-divisors|kaplansky-zero-divisors]] — Kaplansky zero-divisors conjecture (c. 1956): the cluster's problem note.
-- [[gardam-2023-kaplansky-survey]] — Gardam's survey of the Kaplansky conjectures; entry point to the cluster.
-- [[gardam-semidecidable-2021]] — the SAT-search disproof of the unit conjecture; extended by [[murray-2021-kaplansky-char-p]], [[gardam-2024-kaplansky-char-zero]], and [[mineyev-2024-kaplansky-origami]].
 
 ---
 

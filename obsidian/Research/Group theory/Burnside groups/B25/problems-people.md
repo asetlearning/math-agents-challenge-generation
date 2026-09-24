@@ -18,7 +18,6 @@ cites:
   - "[[havas-wall-wamsley-1974]]"
   - "[[grobner]]"
 cited_by:
-  - "[[kaplansky-zero-divisors]]"
   - "[[andrews-curtis-conjecture]]"
   - "[[grobner]]"
 quality_notes: "Internal planning document, not a published paper. Undated; year 2025 is best-guess from project context. The list of implementers is a snapshot — team membership may have changed. Content extracted from .docx XML; complex table/column layouts may have been missed."
@@ -95,7 +94,7 @@ Mixer building team: Vlad Stepanov, Alex Myasnikov, Max, Masha.
 
 - Aspirational/planning document; cannot verify whether implementations were completed, partially done, or abandoned.
 - No B(2,5) mathematical content — this is a coordination document, not a paper on the group theory.
-- The Andrews-Curtis and Kaplansky entries are listed here without more detail — see [[andrews-curtis-conjecture]] and [[kaplansky-zero-divisors]] for mathematical analysis.
+- The Andrews-Curtis entry is listed here without more detail — see [[andrews-curtis-conjecture]] for mathematical analysis.
 
 ## Replication evidence
 
@@ -132,4 +131,4 @@ The **Cayley Graph Approximation Algorithms** (Ushakov's approach) and **automat
 - Replicates: (none)
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[havas-wall-wamsley-1974]] (B(2,5) as primary target), [[grobner]] (Myasnikov connection)
-- Cited by (in vault): [[Research/Group theory/Open problems/open-problems-catalog]], [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness]], [[Research/Group theory/Open problems/Free groups/andrews-curtis-conjecture]], [[Research/Group theory/Open problems/Group rings/kaplansky-zero-divisors]], [[grobner]], [[Concepts/burau4-faithfulness]], [[Concepts/kaplansky-zero-divisors]]
+- Cited by (in vault): [[Research/Group theory/Open problems/open-problems-catalog]], [[Research/Group theory/Open problems/Free groups/andrews-curtis-conjecture]], [[grobner]]

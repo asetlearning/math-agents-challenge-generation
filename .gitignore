@@ -1,6 +1,7 @@
 # in case Obsidian is ever opened from the wrong path
 .obsidian/
 .DS_Store
+.idea/
 
 # Agent working dirs — never commit (logs, scratch, output, verdicts).
 # Vault content only; agent state stays local. (Maria, 2026-07-02)

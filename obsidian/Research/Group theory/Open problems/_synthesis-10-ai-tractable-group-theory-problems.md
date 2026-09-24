@@ -28,7 +28,7 @@ tags:
 
 **Purpose.** Curate ten *unsolved* group-theory problems where a Claude-agent system (search + oracle-verification + learned scoring, of the kind built for B(2,5)) has genuine traction. This is the AI-attack shortlist companion to [[open-problems-catalog]] — that note scores a broad set on Mixer feasibility; this note picks the **ten highest-leverage agentic targets** and says *how* an agent would attack each.
 
-**Companion, not duplicate.** Where a problem already has a vault note (B(2,5) finiteness, Andrews-Curtis, Burau-4, braid membership, Kaplansky), this synthesis links it and adds the *agentic attack plan*; it does not restate the mathematics.
+**Companion, not duplicate.** Where a problem already has a vault note (B(2,5) finiteness, Andrews-Curtis, braid membership), this synthesis links it and adds the *agentic attack plan*; it does not restate the mathematics.
 
 ---
 
@@ -48,7 +48,7 @@ A problem is **agentically tractable** when it reduces to a **search-with-cheap-
 
 ## The Ten (easier-but-open — all NEW to the vault)
 
-Chosen for the **easier** end: small/bounded finite search, a **single decisive cheap oracle** (GAP / Todd–Coxeter / direct computation), and a YES that is one self-certifying object. None duplicates an existing vault note (B(2,5), Andrews–Curtis, Kaplansky, Burau are deliberately NOT here).
+Chosen for the **easier** end: small/bounded finite search, a **single decisive cheap oracle** (GAP / Todd–Coxeter / direct computation), and a YES that is one self-certifying object. None duplicates an existing vault note (B(2,5), Andrews–Curtis are deliberately NOT here).
 
 ### 1. Ore-type commutator gaps in small finite groups — which groups have a non-commutator?
 **Score: 3.** New. (Ore's conjecture — every element of a non-abelian finite *simple* group is a commutator — is proven; the OPEN, *easier* neighbourhood is non-simple: characterise/enumerate the finite groups in which NOT every element is a commutator, and the extremal cases.)
@@ -139,9 +139,7 @@ The same architecture (already built for B(2,5)) generalises:
 
 ## All ten are NEW to the vault (deliberately)
 
-None of these has an existing Open-problems note — they were chosen precisely to *not* duplicate what's already tracked. The hard/heavy flagships (B(2,5) finiteness, Andrews–Curtis, Kaplansky, KB-confluence-for-B(2,5), Dehn/identity-certificate shortening) are kept in their own existing notes and the [[open-problems-catalog]]; this list is the **easier, fast-oracle** shortlist.
-
-**Note for the catalog:** [[burau4-faithfulness]] is now SOLVED (faithful, [arXiv:2607.05283](https://arxiv.org/abs/2607.05283), 2026) — mark it accordingly.
+None of these has an existing Open-problems note — they were chosen precisely to *not* duplicate what's already tracked. The hard/heavy flagships (B(2,5) finiteness, Andrews–Curtis, KB-confluence-for-B(2,5), Dehn/identity-certificate shortening) are kept in their own existing notes and the [[open-problems-catalog]]; this list is the **easier, fast-oracle** shortlist.
 
 ## Recommended first three to actually run
 
@@ -153,11 +151,10 @@ Easiest onboarding, cheapest decisive oracle, most open targets: **#10 (Kourovka
 - Kourovka source: [[kourovka-2022]]
 - AI-for-math paradigms: [[_synthesis-agents-for-math]], [[_synthesis-ai-agent-discoveries-2026]], [[charton-2024-patternboost]], [[romera-paredes-2023-funsearch]]
 - The scope/verification discipline that governs all of these: [[b25-q5-feasibility-verdict]] § CIRCULARITY ANALYSIS; the mandatory sanity gate in [[PatternBoost/methodology/patternboost-b25-loop-prereg-2026-06-30]]
-- Existing HARD flagships (kept in their own notes, deliberately NOT in this easier list): [[b25-finiteness-11.48-kostrikin]], [[andrews-curtis-conjecture]], [[kaplansky-zero-divisors]], [[wagner-2020-torsion-quadratic-dehn]]
+- Existing HARD flagships (kept in their own notes, deliberately NOT in this easier list): [[b25-finiteness-11.48-kostrikin]], [[andrews-curtis-conjecture]], [[wagner-2020-torsion-quadratic-dehn]]
 - Sources for the NEW easier problems (create per-problem stubs if pursued):
   - Ore-type / non-commutator gaps: [arXiv:2509.17587](https://arxiv.org/pdf/2509.17587) (finite groups with exactly one non-commutator); smallest non-commutator group has order 96
   - Cayley-graph diameter / growth (CayleyPy): [arXiv:2502.18663](https://arxiv.org/pdf/2502.18663), [arXiv:2509.19162](https://arxiv.org/pdf/2509.19162)
   - Kourovka bounded-existence problems solved by GAP-enumeration: [arXiv:2607.17477](https://arxiv.org/abs/2607.17477)
   - FunSearch/AlphaEvolve construction paradigm (for #6 expanders): [Nature 2023](https://www.nature.com/articles/s41586-023-06924-6)
 - Tooling reused: GAP `SmallGroups`/perfect-group libraries, Todd–Coxeter/`LowIndexSubgroupsFpGroup`, KBMAG automatic structures, the beam/BFS stack
-- SOLVED, mark accordingly: [[burau4-faithfulness]] — faithful, [arXiv:2607.05283](https://arxiv.org/abs/2607.05283) (2026)

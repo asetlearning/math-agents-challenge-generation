@@ -127,4 +127,3 @@ Notes landed in RL/ after 2026-05-28, not yet folded into the three-bucket body 
 - [[segler-2018-retrosynthesis-mcts]] — MCTS + neural policies for chemical synthesis planning.
 - [[shypula-2021-superoptimize-real-world-programs]] — SILO self-imitation superoptimization (detour-capable edit search).
 - [[skalse-2022-defining-reward-hacking]] — formal reward-hacking characterization (score-proxy risk calibration).
-- [[2005.01917]] — learning selection strategies in Buchberger's algorithm.
