@@ -4,11 +4,12 @@ kind: system-tool
 upstream: https://www.gap-system.org
 license: GPL-2.0-or-later
 ownership: upstream-pristine
-obtain: system install (e.g. `brew install gap`); GAP packages via the GAP package manager
+obtain: system install (e.g. `brew install gap`) or source build from gap-system.org; GAP packages via the GAP package manager
 build: none
 test: "`gap -q <<< 'Print(GAPInfo.Version, \"\\n\"); QUIT;'`"
 versions_in_use:
   - "4.15.1 (maumayma, /opt/homebrew/bin/gap) — record `GAPInfo.Version` per run"
+  - "4.15.1 (asetlearning, source build on Ubuntu 24.04 arm64; kbmag + nq compiled) — since 2026-09-30"
 local_patches: []
 capabilities:
   - "group theory: presentations, Tietze transformations, coset enumeration, group orders"
@@ -19,6 +20,7 @@ heavy_processes: [gap, nq]
 mcp: none
 local_checkouts:
   maumayma: /opt/homebrew/bin/gap
+  asetlearning: /home/parallels/Research/mixer/gap-4.15.1/gap
 docs: ""
 used_by: ["[[project-b25]]", "[[project-mixer-core]]"]
 tags: [meta, type/reference]
