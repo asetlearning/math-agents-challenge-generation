@@ -12,25 +12,18 @@ language: en
 domain: group-theory
 methodology_type: empirical
 relevance: 2
-key_concepts:
-  - "[[Concepts/grobner-quotient-filter]]"
-  - "[[Concepts/grobner-infinitude-probe]]"
-  - "[[Concepts/representation-variety]]"
-  - "[[Concepts/grobner-bases]]"
-extends:
-  - "[[kreuzer-et-al-2010]]"
+key_concepts: []
+extends: []
 contradicts: []
 replicates: []
 cites:
-  - "[[kreuzer-et-al-2010]]"
   - "[[havas-robertson]]"
   - "[[kourovka-2022]]"
   - "[[problems-people]]"
 cited_by:
   - "[[algo-mixing-burnside-slides]]"
   - "[[problems-people]]"
-  - "[[Concepts/kaplansky-zero-divisors]]"
-quality_notes: "Preprint draft — Section 7.5 (Burnside Problem / B(2,5)) and Example 7.9 are labeled 'TODO: Continue!'; those sections are incomplete. Alexei Myasnikov (co-author) is also the Mixer project lead ([[problems-people]]). Risk/high because the paper is incomplete and the B(2,5) application (the most relevant to this vault) is unfinished. Old deprecated tags removed: #domain/grobner → #domain/cs; #project/grobner → dropped (unregistered, no active workstream). Re-classified from #domain/cs to #domain/group-theory in Phase 12 — methodology is Gröbner-basis machinery but the paper's contribution is to a group-theory problem (Burnside / B(2,5)). Per research-folder-convention § Domain naming and [[tags]] § Axis 3 (methodology vs. contribution disambiguation, added same turn)."
+quality_notes: "Preprint draft — Section 7.5 (Burnside Problem / B(2,5)) and Example 7.9 are labeled 'TODO: Continue!'; those sections are incomplete. Alexei Myasnikov (co-author) is also the Mixer project lead ([[problems-people]]). Risk/high because the paper is incomplete and the B(2,5) application (the most relevant to this vault) is unfinished. Old deprecated tags removed: #domain/grobner → #domain/cs; #project/grobner → dropped (unregistered, no active workstream). Re-classified from #domain/cs to #domain/group-theory in Phase 12 — methodology is Gröbner-basis machinery but the paper's contribution is to a group-theory problem (Burnside / B(2,5)). Per research-folder-convention § Domain naming and [[tags]] § Axis 3 (methodology vs. contribution disambiguation, added same turn). Extends the Kreuzer-Myasnikov-Rosenberger 2010 'Quotient Tests and Gröbner Bases' methodology (paper not separately tracked in this vault); the three Mixer-integration Concepts hubs proposed for this line (Gröbner quotient filter, Gröbner infinitude probe, representation variety) were never built or exercised on B(2,5) — removed from the vault as an unexecuted line, per the same pruning already applied to the other proposed-but-never-run experiment tracks."
 author: maumayma
 tags:
   - agent/research
@@ -125,13 +118,13 @@ For the Kourovka examples (G_i and H_i), the Gröbner computation is described b
 
 **The Mixer connection is direct and explicit.** Alexei Myasnikov co-authors this paper AND leads the Mixer build ([[problems-people]]). This paper is theoretical backing for a new Mixer agent type: a Gröbner-basis solver cooperating with KB agents on the same FPG presentation.
 
-**Three Mixer integration points** (to be populated as Concepts/ hubs in F4.4):
+**Three proposed Mixer integration points** (never built or exercised on B(2,5); see quality_notes):
 
-1. **Gröbner quotient filter** ([[Concepts/grobner-quotient-filter]]): Use the SL(2, Q_R) quotient test to prune dead-end words early — a fast "No" oracle before heavier KB exploration. Structurally identical to the B(4,3) fast-fail role of the second ordering agent.
+1. **Gröbner quotient filter**: Use the SL(2, Q_R) quotient test to prune dead-end words early — a fast "No" oracle before heavier KB exploration. Structurally identical to the B(4,3) fast-fail role of the second ordering agent.
 
-2. **Gröbner infinitude probe** ([[Concepts/grobner-infinitude-probe]]): Run the minimal-polynomial test on suspected-infinite groups before committing to full KB completion. If the test confirms infinitude, KB can be abandoned early.
+2. **Gröbner infinitude probe**: Run the minimal-polynomial test on suspected-infinite groups before committing to full KB completion. If the test confirms infinitude, KB can be abandoned early.
 
-3. **Representation variety** ([[Concepts/representation-variety]]): The variety V_R of SL(n,K) representations as a coordinate system on the group's structure — potentially useful for ordering/scoring KB rule injection.
+3. **Representation variety**: The variety V_R of SL(n,K) representations as a coordinate system on the group's structure — potentially useful for ordering/scoring KB rule injection.
 
 The KB–Gröbner duality is the core Mixer insight: both KB completion and Gröbner basis computation produce canonical rewriting systems — one in string rewriting, one in polynomial arithmetic. A Mixer combining both could share structure across the two domains.
 
@@ -148,9 +141,9 @@ The KB–Gröbner duality is the core Mixer insight: both KB completion and Grö
 
 ## Related material in vault
 
-- Extends: [[kreuzer-et-al-2010]]
+- Extends: Kreuzer-Myasnikov-Rosenberger 2010, "Quotient Tests and Gröbner Bases" (not separately tracked in this vault)
 - Contradicts: (none)
 - Replicates: (none)
-- Concepts introduced/used: [[Concepts/grobner-quotient-filter]], [[Concepts/grobner-infinitude-probe]], [[Concepts/representation-variety]] (stubs to be created in F4.4)
-- Cites (in vault): [[kreuzer-et-al-2010]], [[havas-robertson]], [[kourovka-2022]], [[problems-people]]
-- Cited by (in vault): [[algo-mixing-burnside-slides]] (cross-referenced as a Mixer agent candidate), [[problems-people]], [[Concepts/kaplansky-zero-divisors]]
+- Concepts introduced/used: (none — the three proposed Concepts hubs for this line were never built)
+- Cites (in vault): [[havas-robertson]], [[kourovka-2022]], [[problems-people]]
+- Cited by (in vault): [[algo-mixing-burnside-slides]] (cross-referenced as a Mixer agent candidate), [[problems-people]]

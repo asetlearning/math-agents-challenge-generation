@@ -1,1 +1,0 @@
-Completed through the Kourovka file bus.

@@ -1,7 +1,0 @@
-RUN	PSL27-ORDER168-VANISHING-COLLISION
-GAP_VERSION	4.12.1
-INVARIANT	set of element orders attained by classes on which at least one ordi\
-nary irreducible complex character is exactly zero; multiplicities discarded
-COVERAGE	NumberSmallGroups(168)	EXPECTED	42	ACTUAL	57
-FATAL	SmallGroups-library coverage count for order 168 is not the frozen value\
- 42

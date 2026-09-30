@@ -198,4 +198,3 @@ These are the same structural motif. The Mixer currently has no formal name for 
 ### Later additions (2026-08-31)
 
 - [[matveeva-2026-ai-problem-solving]] — the current account (Tbilisi 2026) of the Mixer program: B(4,3) in 13 s on a single rule-sharing event, B(5,3) word problem in 1.5 s via bidirectional beam search, B(2,5) at 76% best / 28% average reduction on the 119 challenge words, plus the Gröbner-bandit transfer. Supersedes [[algo-mixing-burnside-slides]] for current numbers.
-- [[kreuzer-et-al-2010]] — "Quotient Tests and Gröbner Bases" (2010): published predecessor of [[grobner]], squarely in this synthesis's partial-No-oracle scope (Area 5).

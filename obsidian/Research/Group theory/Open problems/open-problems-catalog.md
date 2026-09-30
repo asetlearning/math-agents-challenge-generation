@@ -63,9 +63,9 @@ Last updated: 2026-05-22 by Researcher.
 | Score | Count | Problems |
 |-------|-------|---------|
 | score/3 | 1 | B(2,5) finiteness (11.48) |
-| score/2 | 4 | Exponent-5 infinite groups (4.2b), Burau₄ faithfulness, B₄ membership (6.24), Andrews-Curtis |
-| score/1 | 2 | Kaplansky zero-divisors, 2-relator word problem (9.29) |
-| **Total** | **7** | |
+| score/2 | 3 | Exponent-5 infinite groups (4.2b), B₄ membership (6.24), Andrews-Curtis |
+| score/1 | 1 | 2-relator word problem (9.29) |
+| **Total** | **5** | |
 
 Most open problems in group theory are score/1 or score/2. The score/3 entry (B(2,5)) is exceptional because the Mixer is already deployed against it with active experiments and existing infrastructure.
 
@@ -84,14 +84,7 @@ Most open problems in group theory are score/1 or score/2. The score/3 entry (B(
 
 | Note | Problem | Score | Source |
 |------|---------|-------|--------|
-| [[burau4-faithfulness]] | Is the Burau representation of B₄ faithful? | 2 | Well-known open problem; [[problems-people]] |
 | [[braid-b4-membership-6.24-makanin]] | Is the membership problem for B₄ decidable? | 2 | Kourovka 6.24 (Makanin, 1980) |
-
-### Group rings/
-
-| Note | Problem | Score | Source |
-|------|---------|-------|--------|
-| [[kaplansky-zero-divisors]] | Kaplansky zero-divisors conjecture | 1 | Well-known (Kaplansky, ~1956); [[problems-people]] |
 
 ### Free groups/
 
@@ -108,15 +101,11 @@ Most open problems in group theory are score/1 or score/2. The score/3 entry (B(
 
 The following catalog entries have `source_path: ""` — no paper exists in `docs/papers/`. Before extending these notes or building experiments, acquire the canonical sources:
 
-- **Burau₄ faithfulness**: Bigelow 1999 (n≥5 unfaithful, J. AMS), Long-Paton 1993 (n≥6); Birman textbook for status.
-- **Kaplansky zero-divisors**: Kaplansky 1956 (original); Linnell survey "Zero divisors and group von Neumann algebras"; Gräter et al. for constructive approaches.
 - **Andrews-Curtis conjecture**: Andrews-Curtis 1965 (Proc. Amer. Math. Soc. 16, 192–195); Akbulut-Kirby (candidate counterexamples); Bridson examples.
 
 ### Problems needing Kourovka verification
 
-- **Burau₄ faithfulness**: no Kourovka problem number identified. May not appear in the Kourovka Notebook.
 - **Andrews-Curtis (classical)**: no Kourovka problem number identified. Kourovka 18.89 is a related meta-question (ACₙ finitely presented?), not the classical conjecture.
-- **Kaplansky zero-divisors**: Kourovka 12.29 (Zalesski) and 18.80 (Passman) are related ring-theoretic questions; the classical zero-divisors conjecture does not appear to have its own Kourovka entry.
 
 ### Problems needing Validator input
 

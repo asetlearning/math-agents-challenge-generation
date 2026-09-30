@@ -1,4 +1,0 @@
-Syntax warning: Unbound global variable in Agents/Kourovka/problems/21.53/runs\
-/2026-08-18-r10-m11-two-colour-separator/scratch/m11_two_colour_gap_v2.g:186
-      j -> matrix[i][j] = colour) = expectedValency),
-                                    ^^^^^^^^^^^^^^^

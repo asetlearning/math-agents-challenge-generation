@@ -123,5 +123,4 @@ For the Mixer workstream:
 Papers landed in ML/ after this synthesis was written, not yet folded into the four-paradigm body above:
 
 - [[charton-2024-patternboost]] — PatternBoost (2024): alternating local search + transformer generation for mathematical constructions; direct continuation of the FunSearch line organized above, and the method the b25_patternboost program is built on.
-- Gröbner-learning wave (2026-08-09): [[kera-2024-grobner-via-learning]] (Gröbner bases via transformers), [[2311.12904]] (learning to compute Gröbner bases), [[2401.09328]] (deep-learned Gröbner-solver stability).
 - Tokenization / length-generalization wave (2026-07-17, 13 notes): curated in [[_synthesis-b25-patternboost-tokenization]] and [[_synthesis-b25-value-scoring-curriculum-auxchannel]] rather than re-listed here.

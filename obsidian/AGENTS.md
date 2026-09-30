@@ -3,10 +3,10 @@
 `codex` reads this file automatically on startup, from the working directory. It
 applies to **every** agent running in this vault, and it is deliberately short.
 
-If you are part of the Kourovka crew, your real instructions are the prompt you were
-launched with, plus `_meta/agents/Kourovka/_common-kourovka.md`. This file only
-carries the few things that are true for everyone and that nobody should have to be
-told twice.
+If you are part of a named agent crew (e.g. the Maestri canvas roles), your real
+instructions are the prompt you were launched with, plus that crew's shared
+conventions file (e.g. `_meta/agents/_common.md`). This file only carries the few
+things that are true for everyone and that nobody should have to be told twice.
 
 ---
 
@@ -18,10 +18,10 @@ die on this.
 
 ```bash
 rtk git status
-rtk ls Agents/Kourovka/bus/inbox/Lead
-rtk grep -rn "wreath" Agents/Kourovka/problems/
-rtk cat Agents/Kourovka/board/_board.md
-rtk find Agents/Kourovka -name "*.g"
+rtk ls "Research/Group theory/Burnside groups/B25"
+rtk grep -rn "kostrikin" "Research/Group theory/Burnside groups/B25/"
+rtk cat "Experiments/Group Theory/Burnside Group/B25/_progress.md"
+find "Experiments/Group Theory/Burnside Group/B25" -name "*.g"
 ```
 
 Check once per session with `command -v rtk`. **If it isn't installed, just run the
@@ -61,12 +61,8 @@ If you think something needs committing, say so in a message and stop.
 
 ## 3. Stay inside the vault
 
-The vault is your working root. Write vault-relative paths (`Agents/Kourovka/...`),
-never absolute ones. Machine-specific paths live in exactly one place —
-`_meta/agents/Kourovka/paths.env` — and you `source` it rather than hard-coding
-anything.
-
-The papers directory (`$KOUROVKA_PAPERS`) is **read-only**. Nothing here writes to it.
+The vault is your working root. Write vault-relative paths (e.g. `Research/Group
+theory/Burnside groups/B25/...`), never absolute ones.
 
 ## 4. Never fabricate an output
 
@@ -76,8 +72,3 @@ transcript in a mathematics vault poisons every downstream result and is the sin
 fastest way to make this program worthless.
 
 The same goes for citations: author, venue, year, or it is not a citation.
-
----
-
-*Kourovka crew: `_meta/agents/Kourovka/_common-kourovka.md` §13 has the full `rtk`
-section. Setup: `_meta/kourovka-crew-setup.md` §1.8.*

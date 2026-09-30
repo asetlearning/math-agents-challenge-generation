@@ -1,8 +1,0 @@
-sphere_sizes=(1,19,114,76) v=210
-A3_squared_coefficients=(76, 28, 28, 26)
-D_squared_coefficients=(77, 28, 28, 28)=49I+28J
-M(D+7I)_coefficients=(8, 8, 8, 8)=8J
-M_squared_coefficients=(20, 14, 1, 0)=7I+13M+J-D
-trace_branches=[(114, 0, 19, 76), (99, 15, 6, 89)]
-after_m(d+7)=0=[(114, 0, 19, 76)]
-local_component_size=12+1=13; 19_mod_13=6

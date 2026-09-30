@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "Agents/Kourovka/problems/21.53/verification/scratch/q7_resolution_bitmask_dp.py", line 84, in <module>
-    assert tuple(q(v) for v in SIX) == (6, 5, 6, 5, 3, 3)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError

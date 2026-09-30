@@ -75,8 +75,7 @@ Three instantiations of the same structural motif, named differently in each com
 
 ## Gröbner alternative (a different partial-No oracle)
 
-- [[grobner]] — Kreuzer, Myasnikov, Rosenberger (2025 draft): Gröbner basis as a complementary word-problem oracle. Structurally a partial-No oracle for the same FPG word problem that KB searches. Cross-links [[Concepts/grobner-quotient-filter]] and [[Concepts/grobner-infinitude-probe]].
-- [[kreuzer-et-al-2010]] — Kreuzer et al. (2010): "Quotient Tests and Gröbner Bases" — the published 2010 predecessor of the 2025 draft; quotient tests as fast partial-No oracles for FPG word problems.
+- [[grobner]] — Kreuzer, Myasnikov, Rosenberger (2025 draft): Gröbner basis as a complementary word-problem oracle. Structurally a partial-No oracle for the same FPG word problem that KB searches.
 
 ---
 

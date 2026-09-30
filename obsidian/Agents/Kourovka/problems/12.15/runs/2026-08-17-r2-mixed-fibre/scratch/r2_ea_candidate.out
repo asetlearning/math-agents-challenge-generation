@@ -1,7 +1,0 @@
-size=128 derived=16 centre=2 class=4
-orders=[2,2,2,2,2,2,2] H=16 Eindex=8
-witness-x=r witness-y=r*u*v^-1
-witness-orders=2,4 class-sizes=8,8 common-normal-closure-size=32
-centralizer-x-size=16 generators=[r,u,u*v,z]
-centralizer-y-size=16 generators=[r,u*a*z,u*v,z]
-normal-closure-generators=[r,u,u*v,a*z,z]

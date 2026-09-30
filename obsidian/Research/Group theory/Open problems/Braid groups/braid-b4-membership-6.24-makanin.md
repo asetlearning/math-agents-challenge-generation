@@ -16,8 +16,7 @@ contradicts: []
 replicates: []
 cites:
   - "[[kourovka-2022]]"
-cited_by:
-  - "[[burau4-faithfulness]]"
+cited_by: []
 quality_notes: "Open as of Kourovka 2022. B₄ is the unique remaining case: membership decidable for n ≤ 3, undecidable for n ≥ 5 (T.A. Makanina 1981). The old score/2 is migrated to relevance: 2 (medium) per F4.2 decisions."
 author: maumayma
 tags:
@@ -58,7 +57,7 @@ Note: the **word problem** in all Bₙ is decidable (Garside 1969).
 No constructive attack is described in the problem. Relevant approaches for specific instances:
 
 1. **Garside normal form + Todd-Coxeter:** For specific short words u, v₁,...,vₖ, coset enumeration of ⟨v₁,...,vₖ⟩ in B₄ is a decidable-per-instance procedure (may diverge for large inputs).
-2. **Burau representation filter:** If Burau₄ is faithful (see [[burau4-faithfulness]]), then Burau-matrix comparison is a complete oracle. If unfaithful, it is a fast-fail filter (different matrices → different braids; same matrices → inconclusive).
+2. **Burau representation filter:** If Burau₄ is faithful, then Burau-matrix comparison is a complete oracle. If unfaithful, it is a fast-fail filter (different matrices → different braids; same matrices → inconclusive).
 3. **Mixer hybrid:** Garside + Burau filter as concurrent agents — Burau as fast-fail, Garside as complete fallback.
 
 ## Key result
@@ -75,7 +74,7 @@ No constructive attack is described in the problem. Relevant approaches for spec
 ## Limitations / scope
 
 - Decidability of membership for B₄ is about a general algorithm — Mixer attacks specific instances, not the general question.
-- Relationship to Burau₄ faithfulness: if faithful, Burau gives a decidable membership check for B₄; if unfaithful, the gap leaves membership open. Faithfulness itself is also open (see [[burau4-faithfulness]]).
+- Relationship to Burau₄ faithfulness: if faithful, Burau gives a decidable membership check for B₄; if unfaithful, the gap leaves membership open. Faithfulness itself is a separate open question.
 
 ## Replication evidence
 
@@ -83,7 +82,7 @@ N/A — open problem. Makanina (1981) undecidability for n ≥ 5 not independent
 
 ## Why this paper matters
 
-B₄ is the "exceptional" case in a pattern of sharp decidability thresholds. Together with [[burau4-faithfulness]], it defines the "B₄ frontier": the collection of open questions about the 4-string braid group. The Mixer's hybrid Garside + Burau architecture is directly applicable to attacking specific membership instances in B₄.
+B₄ is the "exceptional" case in a pattern of sharp decidability thresholds. The Mixer's hybrid Garside + Burau architecture is directly applicable to attacking specific membership instances in B₄.
 
 ## Quotes
 
@@ -102,7 +101,6 @@ B₄ is the "exceptional" case in a pattern of sharp decidability thresholds. To
 - Replicates: (none)
 - Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
 - Cites (in vault): [[kourovka-2022]]
-- Cited by (in vault): (linked from [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness]] as related problem)
-- See also: [[_synthesis-burau4-faithfulness]] — synthesis of the B₄ open-problem frontier
+- Cited by (in vault): (none)
 - See also: [[open-problems-catalog]] — feasibility catalog entry for this problem
 - MOC: [[_moc-word-problem]] (open boundary cases)

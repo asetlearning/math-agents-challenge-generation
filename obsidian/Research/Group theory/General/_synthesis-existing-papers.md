@@ -37,10 +37,8 @@ domain: group-theory
 - [[b25-finiteness-11.48-kostrikin]] — Mixer attack rationale for 11.48
 - [[b-exponent-5-adian-4.2b]] — exponent-5 groups (Adian, 1973)
 - [[braid-b4-membership-6.24-makanin]] — B₄ membership (Makanin, 1980)
-- [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness|burau4-faithfulness]] — Burau₄ faithfulness (open since 1936)
 - [[2-relator-word-problem-9.29-merzlyakov]] — 2-relator word problem (Merzlyakov, 1984)
 - [[andrews-curtis-conjecture]] — AC conjecture (1965)
-- [[Research/Group theory/Open problems/Group rings/kaplansky-zero-divisors|kaplansky-zero-divisors]] — Kaplansky zero-divisors (~1956)
 
 **Algorithm Cooperation:**
 - [[algo-mixing-burnside-slides]] — B(4,3) breakthrough + Mixer methodology (2025)
@@ -88,13 +86,12 @@ The single most important open question across all 15 papers. [[kourovka-11.48-k
 
 ---
 
-**B. The B₄ frontier — two open problems about the 4-string braid group**
+**B. B₄ membership — an open problem about the 4-string braid group**
 
-[[braid-b4-membership-6.24-makanin]] (Kourovka 6.24) and [[Research/Group theory/Open problems/Braid groups/burau4-faithfulness|burau4-faithfulness]] are distinct but related open problems:
-- Membership problem: decidable for B₃, undecidable for B₅+, open for B₄.
-- Burau₄ faithfulness: faithful for n≤3, unfaithful for n≥5, open for n=4.
+[[braid-b4-membership-6.24-makanin]] (Kourovka 6.24): the membership problem is decidable
+for B₃, undecidable for B₅+, and open for B₄.
 
-No source in this vault shows progress on either. They share the "B₄ is the exceptional case" structure, making them natural twin problems.
+No source in this vault shows progress on it.
 
 ---
 
@@ -136,8 +133,6 @@ This convergence is the strongest cross-paper signal: **algorithm mixing is not 
 | kourovka-11.48-kostrikin-1990 | High — defines the question | Confirms what "success" means |
 | havas-newman-1980 | Medium — historical context | B(4,3) baseline (1977 era) |
 | grobner | Medium — future Mixer agent | Section 7.5 (incomplete) |
-| burau4-faithfulness | Low — different problem | Architecture analogy only |
-| kaplansky-zero-divisors | Low — torsion-free groups only | No direct B(2,5) connection |
 
 ---
 
