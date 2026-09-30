@@ -134,3 +134,6 @@ Aug-1 dump is certificate-valid as Delta's heuristic-discovery anchor.
 - [[B43/_progress]], [[B53/_progress]] — sister Burnside instances
 - [[_synthesis-b25-reduction-methods]] — cross-cutting reduction methods
 - [[kbmag-tools-overview]] — KBMAG toolchain
+
+## 2026-09-30 — B₀ challenge triviality (150 words)
+[[B25/B0 Challenge Triviality/_type|B0 Challenge Triviality]]: all 150 human challenge words (118 non-empty, 32 empty) are the identity in **restricted B₀(2,5)** (5^34, class 12, GAP/Pq). Says nothing about the free B(2,5). `#status/replicated` — [[2026-09-30-b25-b0-challenge-triviality]] (B₀(2,5) only).

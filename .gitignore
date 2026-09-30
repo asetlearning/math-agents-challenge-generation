@@ -2,6 +2,7 @@
 .obsidian/
 .DS_Store
 .idea/
+.maestri/
 
 # Agent working dirs — never commit (logs, scratch, output, verdicts).
 # Vault content only; agent state stays local. (Maria, 2026-07-02)
