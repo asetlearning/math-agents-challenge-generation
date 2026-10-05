@@ -88,6 +88,8 @@ Similarity to the 150 real challenge words (edit/Hellinger scorers) is kept as a
 
 ## Open questions
 
+- **Evidence so far (2026-07-23 run, [[patternboost-generation-results]]):** maximising raw D alone gave 0/~300k L1 words and a best D of 0.344. It shrank the words instead of growing the factor count. The objective needs a Metric-1 term or a length floor.
+
 - Does PatternBoost with an objective of the form "ρ (screen mode) × D(F*)" escape the generic regime, or does it find shortcuts? Remaining loopholes include cancellation modulo relators and long conjugators that inflate n.
 - Is there a cheap **lower** bound on area for B(2,5) words that could replace the upper-bound proxy?
 - **Depth versus area.** Compute a depth statistic from the certificate's diagram, i.e. how deeply nested the factors are relative to the boundary. A certificate with many factors can still describe a shallow "fan" diagram that relator-closure solvers finish in a few rounds. Test which of D and depth better predicts solver failure.

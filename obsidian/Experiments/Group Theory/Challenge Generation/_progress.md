@@ -60,6 +60,9 @@ Ingested the owner's PatternBoost implementation: the design writeup, the baseli
 ### 2026-10-05: new goals and metrics
 The owner defined the difficulty metrics: ρ (2.5-reduction resistance, pass at ≥ 0.5) and the Dehn proxy D on a minimised certificate (pass at ≥ 1; quadratic family is the great outcome). Challenge similarity becomes secondary. See [[challenge-gen-success-metrics]].
 
+### 2026-10-05: Dehn-proxy maximisation run analysed (run of 2026-07-23)
+PatternBoost maximising the raw D, with 2.5-reduced KB relators, over 20 iterations and about 300k candidates: **every candidate 2.5-reduces to 1** (L1: 0). Best D = 0.344 (11 factors / 32 letters), flat from iteration 3. The search raised D by shrinking words (mean length 1159 → 52) rather than adding factors. Lesson: D alone pushes toward short, easy words, so the objective needs a Metric-1 gate or a length floor. See [[patternboost-generation-results]] § Dehn-proxy run.
+
 ## Related material
 - [[project-challenge-gen]]: project profile
 - [[B25/_progress]]: B(2,5) progress (the group itself)

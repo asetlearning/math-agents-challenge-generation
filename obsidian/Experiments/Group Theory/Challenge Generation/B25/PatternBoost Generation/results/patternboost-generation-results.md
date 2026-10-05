@@ -61,6 +61,50 @@ Methodology: [[patternboost-generation-methodology]]. Data: [[patternboost-gener
 ### Caveat: what this does and does not show
 It shows that the loop **can steer** certified trivial words onto a specified target, reliably, at modest cost. It says **nothing about hardness.** The targets are generic random products of conjugates, which is exactly the "easy, generic" regime described in [[_synthesis-hard-instance-generation]].
 
+## Dehn-proxy maximisation run (2026-07-23 → 07-24)
+
+**Goal.** Use PatternBoost to generate certified trivial words that **maximise the Dehn proxy** D = #factors / |freely reduced word| (`scoring.type: dehn_function`), and record the 2.5-reduced length of every candidate in every iteration. The run predates the 2026-10-05 metric definitions in [[challenge-gen-success-metrics]], and D here is computed on the **raw** certificate, not the minimised one.
+
+**Log:** vault repo `shared/run_20260723_233147_complete_dehn_function_use_reduced_relations/run.jsonl` (1451 lines). The first line is `pb_start` with the full config; `tokenizer/` (vocabulary 141) sits alongside it. The original output dir was `output/pattern_boost_reduced_gens/run_20260723_233147`, on device `mps`, i.e. the owner's Mac.
+
+**Configuration (differences from base):**
+- **Relators:** from `relators_file: data/pattern_boost_experiments/relator_sets/relators_shortlex_rules_2.5reduced.json`. 68 loaded; with inverses the map has 132 relators. These are 2.5-reduced shortlex rewrite-rule relators, not the standard v⁵ set.
+- **Initial sampling:** `n_initial` 100000; factors 10–30; `conj_len_max` 20; `min_expanded_len` 200.
+- **Model:** GPT-2 6L/8H/256, `n_positions` 2048. Generation: `n_samples` 15000 per iteration, `max_length` 2048.
+- **Local search:** beam 1, 10 steps, deterministic conjugator moves, `conj_max_len` 20, factors 10–1000.
+- **Workflow and scoring:** 20 iterations, pool 10000, `top_k` 12000, 12 workers, seed 12345. The scoring options `reduce2_5` and `penalize_trivial` were both false. The "challenge" is R426 from the random sample; it is irrelevant to the Dehn score.
+
+**Per iteration.** Iteration "init" is the truncated initial pool. D statistics are over the local-search outputs.
+
+| Iter | Start | Candidate length mean / median / max | 2.5-reduced: non-zero count / count | D min / median / mean / max | Top-1 (D, \|w\|, #factors) |
+|---|---|---|---|---|---|
+| init | 07-23 23:31 | 1159 / 1091 / 2010 | 0 / 10000 | 0.015 / 0.015 / 0.015 / 0.021 | n/a |
+| 0 | 07-23 23:31 | 390 / 391 / 1133 | 0 / 15000 | 0.019 / 0.025 / 0.026 / 0.194 | 0.194, 36, 7 |
+| 1 | 07-24 00:42 | 253 / 258 / 420 | 0 / 14998 | 0.024 / 0.035 / 0.038 / 0.281 | 0.281, 32, 9 |
+| 2 | 07-24 08:54 | 155 / 156 / 344 | 0 / 15000 | 0.029 / 0.058 / 0.071 / 0.294 | 0.294, 34, 10 |
+| 3 | 07-24 09:16 | 95 / 89 / 275 | 0 / 15000 | 0.033 / 0.096 / 0.118 / **0.344** | 0.344, 32, 11 |
+| 4 | 09:31 | 73 / 64 / 255 | 0 / 14995 | 0.035 / 0.132 / 0.149 / 0.344 | same |
+| 5 | 09:45 | 59 / 54 / 198 | 0 / 14996 | 0.040 / 0.151 / 0.166 / 0.344 | same |
+| 6 | 09:58 | 53 / 52 / 174 | 0 / 14998 | 0.052 / 0.160 / 0.175 / 0.344 | same |
+| 8 | 10:23 | 50 / 52 / 112 | 0 / 14998 | 0.076 / 0.160 / 0.171 / 0.344 | same |
+| 10 | 10:59 | 51 / 52 / 110 | 0 / 14996 | 0.073 / 0.167 / 0.172 / 0.344 | same |
+| 13 | 11:57 | 51 / 52 / 99 | 0 / 14999 | 0.092 / 0.189 / 0.185 / 0.344 | same |
+| 16 | 12:55 | 52 / 52 / 107 | 0 / 14998 | 0.093 / 0.189 / 0.189 / 0.344 | same |
+| 19 | 13:56 | 52 / 52 / 98 | 0 / 14999 | 0.102 / 0.192 / 0.195 / 0.344 | same |
+
+Iterations 7, 9, 11–12, 14–15 and 17–18 are omitted; they follow the same trend. All 20 are in the log. The run ended at 07-24 14:17, about 14.8 h wall-clock. Most iterations took 13–20 min. Iteration 0 took about 1.2 h, mostly generating 15000 samples. Iteration 1 took about 8.2 h, an outlier, possibly host sleep.
+
+**Findings**
+1. **Metric 1 fails everywhere.** Across all 20 iterations, about 300k candidates in all, **not one** has a non-empty 2.5-reduced word (`nonzero_reduced_count` = 0 every iteration). This includes the 10000-word initial pool. It confirms the owner's observation (ρ = 0 for generated factor words), here even with 2.5-reduced KB relators and under optimisation pressure on D. No candidate reaches L1.
+2. **D is raised mainly by shrinking the word, not by adding factors.** Mean candidate length falls from 1159 (initial) to about 52, and median D rises 0.025 → 0.19. The best D reaches **0.344**: 11 factors over a 32-letter word. It plateaus from iteration 3 and never approaches the L2 target of D ≥ 1.
+3. **Convergence to one structure.** The final top-3 all have D = 0.344 (11 factors, 32 letters) and use only relators REL_29, REL_9 and REL_62, with very short conjugators. Top-1 `baabaabABAABaaBAABaaBabAAbAAbaBA` and top-2 are the same cyclic word up to inversion; top-3 (`BAbAAbaabaBAABAABabaabAAbABaaBaa`) is a different word. I checked this on the logged words.
+4. **Cost.** About 1200–1740 neighbours per local-search call, at 0.3–0.4 s per worker. Words this short are cheap, so the generator drifted toward cheap, easy instances.
+
+**Interpretation for [[challenge-gen-success-metrics]].**
+- **Inflation by padding did not show up.** The top D is far below 1. Maximising the raw D drove the search toward **short words**, which are the easiest to reduce, rather than toward factor padding. The minimised-certificate D would be at most these values.
+- **The objective must reward length or resistance.** Maximising D alone without a Metric-1 gate, a length floor or both is counter-productive. Candidate objectives: D gated by ρ; D × ρ; D with `length_range` or a minimum-length constraint.
+- **Relator provenance.** Certificate validity (L0) here rests on the 68 file relators being trivial in **free** B(2,5). They are 2.5-reduced shortlex KB rules, and 2.5 rewriting preserves triviality, but where they came from should be recorded (see [[patternboost-generation-data]]).
+
 ## Earlier single-run observations (May 18–20, 2026; owner's notes)
 These were runs against one target challenge each.
 - **May 18.** Edit and Hamming scorers; one short reduced challenge; structured `[REL_i]`/`[CONJ_j]` tokens with no BPE.
