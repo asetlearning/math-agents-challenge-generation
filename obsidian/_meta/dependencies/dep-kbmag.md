@@ -19,7 +19,7 @@ heavy_processes: [kbprog]
 mcp: none
 local_checkouts: {}
 docs: "[[kbmag-overview]]"
-used_by: ["[[project-mixer-core]]", "[[project-b25]]"]
+used_by: ["[[project-mixer-core]]", "[[project-b25]]", "[[project-challenge-gen]]"]
 tags: [meta, type/reference]
 ---
 

@@ -99,3 +99,4 @@ Whether a value/cost-to-go head can be trained for B(2,5) words using an analogo
 - Related: [[chervov-2025-cayleypy-rl]] (closest group-theory extension of value-guided search, permutation groups not free presentations)
 - Related: [[futuhi-sturtevant-2026-admissible-heuristics]] (direct critique of the admissibility gap this paper leaves open)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[shehper-2024-ac-hardness]] (AC-trivialisation RL; its App. D generates training data by random walks from known seeds, the same pattern as DeepCubeA's backward scrambles)

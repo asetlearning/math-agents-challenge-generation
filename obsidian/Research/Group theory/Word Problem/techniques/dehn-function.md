@@ -59,3 +59,6 @@ This note is a brief overview. Full treatment (van Kampen diagrams, NP-hardness 
 - [[decidability-landscape]] — where Dehn function fits in the full decidability picture (hyperbolic → linear Dehn function)
 - [[knuth-bendix]] — sibling technique: KB completion as an alternative word-problem algorithm
 - [[automatic-groups]] — sibling technique: automatic structure generalizes Dehn's algorithm to quadratic time
+- [[kapovich-2003-generic-case-complexity]] — Dehn's algorithm in a hyperbolic quotient as the linear-time generic non-triviality check (Cor. 4.1)
+- [[elder-2015-random-trivial-words]] — trivial-word sampler by relator insertion; the insertions along a trajectory bound the area of the sampled word
+- [[2607.26241]] — WPNet: trivial words built by ≤ 150 tangling operations, so their area is ≤ 150; the exponential Dehn function of BS(1,2) is cited as motivation but never measured

@@ -160,6 +160,16 @@ Grow the list organically. Don't pre-register topics that don't exist yet.
 
 - `#topic/wreath-products` — restricted regular wreath products $A \wr B = (\bigoplus_{b \in B} A_b) \rtimes B$ and iterated wreath products, as the algebraic setting of a result (not as an incidental construction). Tag when the wreath-product structure is what the theorem is about: undecidability of the Diophantine problem in $\mathbb{Z} \wr \mathbb{Z}$ and its iterations, cyclic-retract / cyclic-centralizer criteria for transferring undecidability into $A \wr B$, or structural results about the base group and the acting group. Use alongside `#topic/diophantine-problems` and `#topic/decidability` when the contribution is a decidability verdict.
 
+### Hard-instance generation topics (registered 2026-10-05 for the #project/challenge-gen literature scan)
+
+- `#topic/hard-instance-generation` — procedures that produce problem instances which are hard for solvers yet have a known answer (planted solutions, adversarial/learned instance generators, curricula of hard levels, hard trivial words or AC-trivial presentations). Tag when generating or characterising hard instances is a primary contribution, not when a paper merely evaluates on a fixed benchmark.
+- `#topic/planted-solutions` — instance ensembles built around a hidden solution (planted / quietly planted random CSP and k-SAT, hidden assignments), including the question of whether the planted ensemble is distinguishable from the uniform one. Tag when the planting construction or its statistical indistinguishability is analysed.
+- `#topic/average-case-hardness` — why random/generic instances are easy or hard: generic-case and average-case complexity of decision problems, phase transitions and hard regions in random CSPs, hardness measures for search instances. Tag when the paper's subject is the hardness distribution over instances, not worst-case complexity alone.
+- `#topic/andrews-curtis` — the Andrews–Curtis conjecture and AC-equivalence of balanced presentations of the trivial group: potential counterexamples (Akbulut–Kirby, Miller–Schupp), search for AC-trivialisations (genetic, RL, automated deduction), and certificates of AC-equivalence.
+- `#topic/trivial-words` — words representing the identity in a finitely presented group, studied as objects: random sampling of trivial words, generating trivial words with controlled difficulty, criteria detecting triviality, learning to reduce trivial words (Dehn-function / area hardness). Distinct from `#topic/word-problem` (decision procedures in general).
+- `#topic/curriculum-learning` — training-distribution design for learners: curricula, unsupervised environment design, teacher/adversary-generated tasks at the frontier of the learner's ability. Tag when the generated task distribution is a primary contribution.
+- `#topic/proof-certificates` — machine-checkable evidence that accompanies a computed answer (explicit move sequences, derivations, witnesses) so that the claim can be verified cheaply and independently of the search that found it. Tag when producing or checking certificates is a substantive part of the paper.
+
 ## Axis 5 — `#status/*` (lifecycle)
 
 General lifecycle:
@@ -197,6 +207,7 @@ Currently registered:
 - `#project/b43` — B(4,3)
 - `#project/b53` — B(5,3)
 - `#project/b29` — B(2,9) finiteness program. Registered 2026-08-11 on Maria's stage-2 GO (active deliverables: pq-tower experiment + runs/b29/, stage-1 synthesis, W1/W2 workstreams). Stage-1 notes predating registration carry `#topic/b29` only; new project-scoped notes carry both.
+- `#project/challenge-gen` — Challenge generation: generating hard instances that come with a built-in proof (certificate) of the target property, for benchmarking and training search algorithms (ML/LLM/RL). Phase 1: hard trivial words ("challenges") in B(2,5); later Andrews–Curtis and other search-reducible open problems. Registered 2026-10-05 by asetlearning. B(2,5)-specific challenge notes may carry both `#project/challenge-gen` and `#project/b25`. Profile: [[project-challenge-gen]]
 
 Add new `#project/*` tags as new projects start. Each registered project should have a **project profile** at `_meta/projects/project-<name>.md` (repos, commands, provenance fields, protected interfaces), per [[projects-and-dependencies-convention]]. Discuss in `_meta/canvas-setup.md` before adding to keep them stable.
 

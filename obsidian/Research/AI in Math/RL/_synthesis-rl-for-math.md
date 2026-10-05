@@ -127,3 +127,11 @@ Notes landed in RL/ after 2026-05-28, not yet folded into the three-bucket body 
 - [[segler-2018-retrosynthesis-mcts]] — MCTS + neural policies for chemical synthesis planning.
 - [[shypula-2021-superoptimize-real-world-programs]] — SILO self-imitation superoptimization (detour-capable edit search).
 - [[skalse-2022-defining-reward-hacking]] — formal reward-hacking characterization (score-proxy risk calibration).
+
+### Later additions (2026-10-05)
+
+Challenge-generation literature scan (`#project/challenge-gen`), not folded into the body above:
+
+- [[shehper-2024-ac-hardness]] — Shehper et al. (2024): Andrews–Curtis trivialisation as a long-horizon, sparse-reward RL environment; BFS/greedy/PPO/Transformer on 1190 Miller–Schupp presentations; operational (compute-level) and topological (barcode) hardness notions.
+- [[dennis-2020-paired]] — PAIRED (2020): regret-maximising adversarial environment design; a learned task generator that keeps RL curricula at the learner's frontier.
+- Reading path: [[_moc-hard-instance-generation]]

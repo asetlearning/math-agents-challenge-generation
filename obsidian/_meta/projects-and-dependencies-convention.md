@@ -104,7 +104,7 @@ Rules for services:
 ## Current entries
 
 - Dependencies: [[dep-algo-mixer]], [[dep-kbmag]], [[dep-gap]], [[dep-sage]]
-- Projects: [[project-mixer-core]], [[project-b25]]
+- Projects: [[project-mixer-core]], [[project-b25]], [[project-challenge-gen]]
 - The `b43`, `b53` and `b29` projects don't have profiles yet. Until they do, Lead states repo, commands and provenance fields in the brief. The Mixer-based B43/B53 runs can borrow [[project-mixer-core]]. Lead writes the missing profile the next time that project is tasked.
 
 ## Related material

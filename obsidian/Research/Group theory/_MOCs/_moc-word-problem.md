@@ -25,6 +25,7 @@ domain: group-theory
 - [[word-problem-overview]] — the Word Problem folder's own directory map: what lives where in this subtree.
 
 - [[Research/Group theory/Word Problem/decidability-landscape]] — The complete picture: word problem statement, Novikov-Boone undecidability for general FPGs, decidability results for free / abelian / 1-relator / hyperbolic / automatic groups with verbatim theorem citations and complexity bounds. Start here for an overview.
+- [[kapovich-2003-generic-case-complexity]] — Kapovich–Myasnikov–Schupp–Shpilrain (2003): generic-case complexity. Word, conjugacy and membership problems are generically linear-time even in groups with undecidable word problem, because trivial words have density zero. The generic-case counterpart to the worst-case landscape.
 
 ---
 
@@ -53,6 +54,14 @@ domain: group-theory
 
 ---
 
+## Trivial words / sampling
+
+- [[elder-2015-random-trivial-words]] — Elder–Rechnitzer–Janse van Rensburg (2015): Metropolis chain on trivial words (conjugation + relator insertion); every state trivial by construction; stationary law depends only on length (cogrowth estimates, Thompson's F).
+- [[2607.26241]] — WPNet (Fink 2026): GNN that learns the word problem for BS(1,2) and an Artin group; trained on trivial words built by bounded "tangling" (≤ 150 insertions).
+- Reading path for hard trivial words and certified instance generation: [[_moc-hard-instance-generation]]
+
+---
+
 ## Open boundary cases
 
 - [[2-relator-word-problem-9.29-merzlyakov]] — Kourovka 9.29 (Merzlyakov, 1984): 1-relator groups are decidable (Magnus); general FPGs are undecidable (Novikov-Boone); the 2-relator case is open. Included here to define the undecidability boundary adjacent to all our computational work.
@@ -64,6 +73,9 @@ domain: group-theory
 - [[open-problems-catalog]] — Mixer/AI feasibility catalog over the vault's open-problem notes.
 - [[_synthesis-10-ai-tractable-group-theory-problems]] — ten easier-but-open, AI-tractable group-theory problems with an explicit tractability criterion.
 - [[andrews-curtis-conjecture]] — the Andrews-Curtis conjecture (1965): balanced presentations of the trivial group; long-standing Mixer candidate.
+- [[miasnikov-1999-ac-genetic]] — Miasnikov (1999): genetic-algorithm search for AC-trivialisations; first AC-trivialisation of AK(2); all AK and Miller–Schupp presentations of total length ≤ 12.
+- [[carreras-2026-ac-certificates]] — Carreras (2026): replayable AC-move certificates with an independent verifier for the six length-14 Miller–Schupp holdouts of Shehper et al.
+- Concept hub: [[Concepts/andrews-curtis-moves]] — AC moves, AC-equivalence, and move sequences as certificates.
 
 ---
 
@@ -90,3 +102,4 @@ domain: group-theory
 - [[_moc-burnside]] — The Burnside word problem (B(2,5) target words) as the primary open application.
 - [[_moc-knuth-bendix]] — KB completion as the word-problem algorithm of choice for our groups.
 - [[_moc-presentations-and-orders]] — How group presentations define the word problem in the first place.
+- [[_moc-hard-instance-generation]] — hard trivial words, AC-trivial presentations and other certified hard instances (`#project/challenge-gen`).

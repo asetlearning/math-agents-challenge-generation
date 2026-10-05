@@ -104,3 +104,4 @@ GRASP's CDCL architecture IS the "partial-No oracle" pattern in its most develop
 - Cited by: [[hamadi-et-al-2009-manysat]] (ManySAT extends GRASP to parallel clause sharing)
 - Related: [[gomes-selman-2001-portfolios]] (algorithm portfolios running multiple CDCL solvers in parallel)
 - Cross-vault: [[Concepts/kb-mixing-stagnation]] (KB's "learned rules" are structurally analogous to CDCL's learned clauses)
+- Related: [[achlioptas-jia-moore-2004-hiding-assignments]] (2-hidden planted 3-SAT, tested on zChaff, a CDCL solver in the GRASP lineage)

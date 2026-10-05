@@ -108,3 +108,4 @@ This is the strongest existing precedent for "yes, learning a distance-to-identi
 - Related: [[agostinelli-2019-deepcubea]] (bootstrapped value iteration + weighted A*, the other main value-guided-search precedent)
 - Related: [[gukov-2020-learning-to-unknot]], [[petschack-2025-symmetric-group]] (other group-theory + transformer/RL precedents from Phase A, none of which target distance-to-identity specifically)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[shehper-2024-ac-hardness]] (RL path-to-base search on the graph of balanced presentations under AC moves; hardness via compute level and path length)

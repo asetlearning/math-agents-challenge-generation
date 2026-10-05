@@ -29,6 +29,7 @@ Not B(2,5)-specific — the broader question of the smallest odd exponent n prov
 - [[_synthesis-gorshkov-axial-algebra-r2-2026]] — R2 deep-read of the Gorshkov preprint: precise Corollary 1 statement, confirms the group object is genuinely free B(2,5).⟨t⟩ (not a restricted-quotient trap — the index-2 extension step is elementary/harmless), lists 4 concrete computability items with cost estimates, author track record (credible, established) and citation status (none found, too recent).
 - [[_synthesis-b25-attack-surface-2026-08-07]] — 2026-08-07 campaign sweep of the literature attack surface for B(2,5) infiniteness: three of four sweep targets returned genuine structural negatives — no published shortcut exists for exponent 5.
 - [[_synthesis-rungs-to-limit-composition-2026-08-07]] — companion sweep #2: how Novikov–Adian/ART close their induction, and what a rank-independent closing parameter for n=5 would have to look like (the named target for Math-expert ideation).
+- [[coulon-2018-trivial-elements-criterion]] — Coulon (2018): for **sufficiently large odd** exponents (threshold n₀ not computed; in any case n ≥ 100), a word is trivial in B_r(n) iff finitely many elementary moves reduce it to the empty word, a free-group certificate of triviality. Says nothing about B(2,5).
 
 ---
 

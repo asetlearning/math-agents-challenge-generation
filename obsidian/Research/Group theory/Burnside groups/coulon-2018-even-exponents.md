@@ -76,3 +76,4 @@ This is the cleanest confirmation available that **the entire geometric-small-ca
 - Cited by: [[_synthesis-b25-attack-surface-2026-08-07]]
 - Extended by: [[coulon-school-partial-periodic-quotients]] (school-wide sweep building on this paper)
 - MOC: [[_moc-burnside]]
+- Sibling: [[coulon-2018-trivial-elements-criterion]] (same author; triviality criterion for free Burnside groups of sufficiently large odd exponent)

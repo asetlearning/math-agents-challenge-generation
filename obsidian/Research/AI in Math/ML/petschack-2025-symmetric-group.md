@@ -18,7 +18,8 @@ extends: []
 contradicts: []
 replicates: []
 cites: []
-cited_by: []
+cited_by:
+  - "[[2607.26241]]"
 related:
   - "[[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]"
   - "[[Research/AI in Math/ML/gukov-2020-learning-to-unknot]]"
@@ -88,3 +89,4 @@ Whether an identity-augmentation-style padding scheme (using B(2,5)-relation-pre
 - Related: [[Research/AI in Math/ML/gukov-2020-learning-to-unknot]] (closer task-shape analog: word simplification, not word→fixed-object prediction)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-value-scoring-curriculum-auxchannel]] (Deep Round 2 — re-reads this paper for the padding/curriculum threads)
+- Cited by: [[Research/AI in Math/ML/2607.26241]] (WPNet; cites this as ref [78] for identity-augmentation, the same local-insertion style of trivial-word generation)

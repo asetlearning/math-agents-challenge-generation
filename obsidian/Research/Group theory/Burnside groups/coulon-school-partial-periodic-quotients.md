@@ -18,6 +18,7 @@ replicates: []
 cites: []
 cited_by:
   - "[[_synthesis-b25-attack-surface-2026-08-07]]"
+  - "[[coulon-2018-trivial-elements-criterion]]"
 quality_notes: "Comparative/landscape note covering 5 papers by abstract only (arXiv API metadata, not full-text-fetched except where noted) — used to map the shape of a research program, not to extract a specific theorem for citation. Individual claims below are abstract-only unless flagged verbatim."
 author: maumayma
 tags:
@@ -44,7 +45,7 @@ Landscape note, not a single-paper summary — written to answer Lead's sweep-ta
 | Coulon, "Small cancellation theory and Burnside problem" | 1302.6933 | 2013 | Expository notes on Delzant–Gromov's geometric approach | No — expository, no number found in extracted text |
 | Coulon, "Partial periodic quotient of groups acting on a hyperbolic space" | 1311.0855 | 2013 | Constructs partial-`n`-periodic quotients for any non-elementary acylindrical action; application to mapping class groups (fixed power of every pseudo-Anosov identified with periodic/reducible element) | Abstract only checked — "arbitrarily large" framing consistent with [[coulon-2018-even-exponents]] |
 | Coulon, "Growth of periodic quotients of hyperbolic groups" | 1211.4271 | 2012 | Shows growth rate of `G/G^n` (odd `n`) tends to growth rate of `G` as `n→∞`; gives a convergence-rate *estimate* | Asymptotic-in-`n` result, not a threshold; not exponent-5-relevant by construction |
-| Coulon, "A criterion for detecting trivial elements of Burnside groups" | 1211.4267 | 2012 | Necessary+sufficient condition to decide whether a free-group element is trivial in `B(m,n)` for "sufficiently large odd exponent," stated independent of the infiniteness proof itself | No number in abstract |
+| [[coulon-2018-trivial-elements-criterion\|Coulon, "A criterion for detecting trivial elements of Burnside groups"]] | 1211.4267 | 2012 | Necessary+sufficient condition to decide whether a free-group element is trivial in `B(m,n)` for "sufficiently large odd exponent," stated independent of the infiniteness proof itself | No number in abstract |
 | Coulon–Sela, "Equations in Burnside groups" | 2112.07409 | 2021 | Studies structure of periodic quotients of hyperbolic groups: Hopf/co-Hopf property, isomorphism problem, free splittings, automorphism group | Abstract only; presupposes the same "sufficiently large" regime |
 | Coulon–Steenbock, "Product set growth in Burnside groups" | 2102.10885 | 2021 | Lower bound on growth of sub-semigroups of a periodic quotient of a torsion-free hyperbolic group, generalizing Razborov–Safin | Abstract only |
 | Gruber–Mackay, "Random triangular Burnside groups" | 1810.01805 | 2018 | Random-group model: `n`-periodic quotients of triangular random groups at density `d ∈ (1/3, d_crit)` are infinite for `n` "large enough"; produces groups with fixed points on all `L^p` isometric actions | "For every fixed large enough `n`" — explicitly unquantified in the abstract |
@@ -65,5 +66,5 @@ Minasyan–Olshanskii–Sonkin (2008) is the one item in this whole sweep that e
 ## Related material in vault
 
 - Extends: [[coulon-2018-even-exponents]]
-- Cited by: [[_synthesis-b25-attack-surface-2026-08-07]]
+- Cited by: [[_synthesis-b25-attack-surface-2026-08-07]], [[coulon-2018-trivial-elements-criterion]] (full note on the 1211.4267 criterion listed in the table above)
 - MOC: [[_moc-burnside]]

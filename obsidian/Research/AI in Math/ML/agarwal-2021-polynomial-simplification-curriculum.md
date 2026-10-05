@@ -82,3 +82,4 @@ Whether curriculum ordered by REDUCTION-STEP COUNT (steps needed to reach the re
 - Related: [[zaremba-sutskever-2014-learning-to-execute]] (curriculum-for-length caution, different architecture/domain)
 - Related: [[mehta-2026-randomized-yarn]] (curriculum + randomized PE composition, modern transformer)
 - Synthesis: [[Research/AI in Math/ML/_synthesis-b25-patternboost-tokenization]]
+- Related: [[dennis-2020-paired]] (PAIRED: adversarially generated curricula at the learner's frontier, a learned alternative to hand-designed curricula)

@@ -112,3 +112,4 @@ It also has real value as the clearest first-person account of the Novikov–Adi
 - Cites: (unread)
 - Cited by (in vault): [[_synthesis-odd-exponent-state-2026]]
 - MOC: [[_moc-burnside]]
+- Related: [[coulon-2018-trivial-elements-criterion]] (geometric-school triviality criterion for large odd exponents; no explicit threshold)

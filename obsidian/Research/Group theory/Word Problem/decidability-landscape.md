@@ -106,3 +106,4 @@ However: KB termination is sufficient but NOT necessary for decidability. A grou
 - [[_moc-word-problem]] — the word-problem MOC (this note is its "start here" landing)
 - [[knuth-bendix]] — KB completion as a decision procedure when it terminates (expands the section above)
 - [[2-relator-word-problem-9.29-merzlyakov]] — the open 2-relator boundary case (Kourovka 9.29)
+- [[kapovich-2003-generic-case-complexity]] — generic-case contrast: the same decision problems are generically linear-time, even in groups with undecidable word problem (Cor. 4.1 maps worst-case classes to generic classes)
