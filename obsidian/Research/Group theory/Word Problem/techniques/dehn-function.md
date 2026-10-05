@@ -53,6 +53,7 @@ This terminates in O(n) steps for hyperbolic groups.
 This note is a brief overview. Full treatment (van Kampen diagrams, NP-hardness results for specific Dehn functions, the Bridson-Pittet theorem, etc.) is in the references above. See also `Tools/GAP/examples/` for practical word-reduction in specific groups.
 
 ## Related material
+- [[myasnikov-ushakov-2011-random-van-kampen]]: depth, a filling function contrasted with area; random diagrams are hyperbolic
 
 - [[word-problem-overview]] — parent directory map for Word Problem subtree
 - [[_moc-word-problem]] — the word-problem MOC that surfaces this technique

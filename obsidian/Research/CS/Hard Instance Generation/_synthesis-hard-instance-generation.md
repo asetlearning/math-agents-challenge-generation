@@ -126,6 +126,7 @@ For phase 1 of challenge-gen:
 Route open question 1 (witness generic-case hardness) to a math expert/Validator. Route questions 2–4 to an Experimenter once the code repo is registered in the profile.
 
 ## Related vault material
+- Later addition (2026-10-05): [[myasnikov-ushakov-2011-random-van-kampen]], an anchor for the claim that generic instances are easy (depth)
 
 - Papers: see `papers_synthesized`
 - Concepts: [[Concepts/certified-instance-generation]], [[Concepts/quiet-planting]], [[Concepts/andrews-curtis-moves]]

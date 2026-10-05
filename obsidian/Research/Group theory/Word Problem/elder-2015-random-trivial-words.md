@@ -135,6 +135,7 @@ This is the standard reference for sampling trivial words directly, as opposed t
 - [[project-challenge-gen]]: project profile.
 
 ## Related material in vault
+- [[myasnikov-ushakov-2011-random-van-kampen]]: random relator-insertion words are generic and shallow
 
 - Extends: —
 - Contradicts: —

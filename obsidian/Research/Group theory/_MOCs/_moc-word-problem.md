@@ -56,6 +56,8 @@ domain: group-theory
 
 ## Trivial words / sampling
 
+- [[myasnikov-ushakov-2011-random-van-kampen]]: Myasnikov–Ushakov (2011). Random van Kampen diagrams are hyperbolic; introduces depth as a filling function.
+
 - [[elder-2015-random-trivial-words]] — Elder–Rechnitzer–Janse van Rensburg (2015): Metropolis chain on trivial words (conjugation + relator insertion); every state trivial by construction; stationary law depends only on length (cogrowth estimates, Thompson's F).
 - [[2607.26241]] — WPNet (Fink 2026): GNN that learns the word problem for BS(1,2) and an Artin group; trained on trivial words built by bounded "tangling" (≤ 150 insertions).
 - Reading path for hard trivial words and certified instance generation: [[_moc-hard-instance-generation]]

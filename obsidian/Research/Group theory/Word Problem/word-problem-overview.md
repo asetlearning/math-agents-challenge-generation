@@ -38,6 +38,7 @@ This directory covers the word problem in finitely presented groups as a topic: 
 Content populated in F6.2.
 
 ## Related material
+- [[myasnikov-ushakov-2011-random-van-kampen]]: random van Kampen diagrams and the depth filling function
 
 - [[group-theory-overview]] — parent: Research/Group theory/ directory map
 - [[_moc-word-problem]] — the word-problem MOC (this overview is the entry point; MOC is the reading path)

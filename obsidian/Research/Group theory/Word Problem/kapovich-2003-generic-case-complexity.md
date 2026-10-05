@@ -17,7 +17,8 @@ extends: []
 contradicts: []
 replicates: []
 cites: []
-cited_by: []
+cited_by:
+  - "[[myasnikov-ushakov-2011-random-van-kampen]]"
 quality_notes: "Foundational paper of generic-case complexity in group theory (192 citations, Semantic Scholar, 2026-10-05). DOI 10.1016/S0021-8693(03)00167-4. Summary written from the arXiv v3 full text; section/page numbers refer to that version. The Stevens author PDF is a 2-page fragment, not the full paper."
 author: asetlearning
 project: challenge-gen
