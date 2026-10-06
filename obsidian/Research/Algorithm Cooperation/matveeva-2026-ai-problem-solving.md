@@ -329,3 +329,4 @@ The Miasnikov section is the external evidence for that claim: the same setup, p
 - MOC: [[_moc-algorithm-cooperation]] — the cooperating-partial-oracles paradigm this deck instantiates.
 - Also see: [[gomes-selman-2001-portfolios]] and [[hamadi-et-al-2009-manysat]] for the portfolio/clause-sharing theory the mixing recipe mirrors; [[grobner]] for the other Gröbner line in this vault (Kreuzer–Myasnikov–Rosenberger, quotient tests); [[Research/AI in Math/_MOCs/_moc-ai-in-math]] for the agentic-systems context of pp.15–19.
 - People: [[People/maumayma]]
+- Challenge generation: [[kapovich-2003-generic-case-complexity]] (random words are almost never trivial, so hard challenge words like the 119 must be constructed, not sampled), [[2607.26241]] (WPNet's short tangled trivial words, the opposite end of the hardness spectrum from the 119 words), [[_moc-hard-instance-generation]] (reading path)

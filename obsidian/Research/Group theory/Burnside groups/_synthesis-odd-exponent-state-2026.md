@@ -145,3 +145,4 @@ Literature on exponent 5/7 directly is **sparse to the point of empty** beyond w
 - [[_synthesis-gorshkov-axial-algebra-r2-2026]] — R2 deep-read of the Gorshkov preprint flagged here
 - [[atkarskaya-rips-tent-2023]], [[adian-2015-odd-bound]] — the two unverified bound-record claims this scan adjudicates
 - [[kourovka-11.48-kostrikin-1990]] — the exponent-5 open problem this state-of-the-art report serves
+- [[coulon-2018-trivial-elements-criterion]] — Coulon's triviality criterion for sufficiently large odd exponents; threshold n₀ not computed, nothing about n = 5

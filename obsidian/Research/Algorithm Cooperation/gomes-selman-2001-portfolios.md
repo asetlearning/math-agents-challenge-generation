@@ -113,3 +113,4 @@ The theoretical prediction from this paper: **if KB completion under any single 
 - Cross-vault: [[Research/Algorithm Cooperation/algo-mixing-burnside-slides]] (B(4,3) Mixer result — the portfolio strategy at work)
 - Related: [[Concepts/kb-mixing-stagnation]] (stagnation = heavy-tailed KB runtime)
 - Related: [[Concepts/mixable-api]] (the Mixer's information-sharing API = portfolio clause-sharing instantiation)
+- Related: [[achlioptas-jia-moore-2004-hiding-assignments]] (hard satisfiable planted 3-SAT; heavy-tailed runtimes bear on how its median-run hardness figures should be read)

@@ -88,6 +88,12 @@ Support wave for the B25 PatternBoost program — value/cost-to-go scoring, sear
 - [[RL/skalse-2022-defining-reward-hacking]] — Skalse et al. (2022): formal definition of reward hacking; calibrates the PatternBoost score-proxy risk. ⚡
 - [[RL/2005.01917]] — Learning selection strategies in Buchberger's algorithm (2020): RL inside a computer-algebra solver. ⚡
 
+### Hard instances: Andrews–Curtis (2026-10-05 challenge-gen wave)
+
+Curated in depth by [[Research/CS/_MOCs/_moc-hard-instance-generation]].
+
+- [[RL/shehper-2024-ac-hardness]] — Shehper et al. (2024): AC-trivialisation of balanced presentations as an RL environment; PPO and a Transformer on 1190 Miller–Schupp presentations; operational (compute-level) and topological (persistent-H₀ barcode) hardness notions.
+
 ---
 
 ## Sub-area C — ML for math (non-agent, non-RL)
@@ -146,6 +152,10 @@ Tokenization / positional encoding / length generalization / curriculum / edit r
 - [[ML/2311.12904]] — Learning to Compute Gröbner Bases (2023).
 - [[ML/2401.09328]] — deep-learned online stability improvement for Gröbner basis solvers (2024).
 
+### Learning the word problem (2026-10-05 challenge-gen wave)
+
+- [[ML/2607.26241]] — WPNet (Fink 2026): contrastive GNN on words of BS(1,2) and a rank-101 Artin group; separates trivial from perturbed words up to length 5000 and predicts geodesic length; trivial training words come from bounded "tangling" (≤ 150 insertions).
+
 ---
 
 ## Sub-area D — Agent-driven discoveries (the 2026 wave)
@@ -185,3 +195,4 @@ Papers with ⚡ above have documented connections to the Burnside / Mixer progra
 
 - [[Research/Group theory/_MOCs/_moc-burnside]] — the Burnside group research cluster; Mixer targets; Kuznetsov computational line.
 - [[Research/Group theory/_MOCs/_moc-knuth-bendix]] — the KB completion algorithm cluster; Mixer's core algorithm.
+- [[Research/CS/_MOCs/_moc-hard-instance-generation]] — hard instances with a known answer (planting, learned samplers, AC presentations, trivial words); the `#project/challenge-gen` reading path.

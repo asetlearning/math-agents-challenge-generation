@@ -124,3 +124,9 @@ Papers landed in ML/ after this synthesis was written, not yet folded into the f
 
 - [[charton-2024-patternboost]] — PatternBoost (2024): alternating local search + transformer generation for mathematical constructions; direct continuation of the FunSearch line organized above, and the method the b25_patternboost program is built on.
 - Tokenization / length-generalization wave (2026-07-17, 13 notes): curated in [[_synthesis-b25-patternboost-tokenization]] and [[_synthesis-b25-value-scoring-curriculum-auxchannel]] rather than re-listed here.
+
+### Later additions (2026-10-05)
+
+Challenge-generation literature scan (`#project/challenge-gen`), not folded into the body above:
+
+- [[2607.26241]] — WPNet (Fink 2026): contrastive GNN that learns the word problem in BS(1,2) and an Artin group (99.93% mean accuracy up to length 5000, geodesic-length prediction, breaks Wagner–Magyarik); trivial training words come from bounded "tangling". Reading path: [[_moc-hard-instance-generation]].

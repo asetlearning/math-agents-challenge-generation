@@ -129,3 +129,5 @@ These should be added when Lead routes a specific research question or when a ca
 - **[[kourovka-2022]]** — the Kourovka Notebook summary note; the catalog draws selectively from it.
 - **[[algo-mixing-burnside-slides]]** — the slide deck that established the Mixer methodology and set B(2,5) as the primary target. Score/3 for 11.48 directly reflects the existing project infrastructure described there.
 - **[[verification-methods-for-group-equality]]** — complements this catalog: given a problem instance, which verification method applies? This catalog tells Lead WHICH problems to attack; the verification-methods note tells Validator HOW to verify outputs.
+- **[[miasnikov-1999-ac-genetic]]** — genetic-algorithm search for AC-trivialisations (first AC-trivialisation of AK(2)); search-based evidence for the Andrews–Curtis entry.
+- **[[carreras-2026-ac-certificates]]** — machine-checkable AC-equivalence certificates at the length-14 Miller–Schupp frontier; a model for publishing search results on catalog problems (certificate plus independent verifier).

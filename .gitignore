@@ -12,3 +12,6 @@
 # Glob the children rather than the directory itself: git cannot re-include a
 # path whose parent directory is excluded.
 obsidian/Agents/*
+
+# Local secrets (GitHub token etc.) — never commit
+.env

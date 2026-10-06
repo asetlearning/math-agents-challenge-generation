@@ -79,8 +79,20 @@ Three instantiations of the same structural motif, named differently in each com
 
 ---
 
+## Hard instances for these solvers (2026-10-05 challenge-gen wave)
+
+Generators of hard satisfiable SAT/CSP instances that stress the CDCL and portfolio solvers above. Full reading path: [[_moc-hard-instance-generation]].
+
+- [[achlioptas-jia-moore-2004-hiding-assignments]] — 2-hidden planted 3-SAT: hiding a complementary pair cancels the planted solution's pull; about as hard as unplanted random 3-SAT for zChaff, Satz, WalkSAT and SP.
+- [[krzakala-zdeborova-2009-quiet-planting]] — quiet planting in random CSPs (q-colouring): planted ensemble indistinguishable from random below a computable density; does not carry over to random k-SAT.
+- [[2606.15979]] — SQ-quiet planting of many solutions in k-SAT; quiet is not hard (falls to Gaussian elimination without noise); untested against CDCL portfolios.
+- [[sato-2019-hisampler]] — HiSampler: a learned sampler maximising a specific solver's cost (MiniSat among the targets); solver-relative hardness, no known answer.
+
+---
+
 ## Related MOCs
 
 - [[Research/Group theory/_MOCs/_moc-knuth-bendix]] — KB completion technique depth; KBMAG tools; the Gröbner alternative. Navigate there for KB-specific implementation.
 - [[Research/Group theory/_MOCs/_moc-word-problem]] — Word problem decidability landscape; KB + TC + automatic groups as the algorithmic toolkit. Navigate there for the broader decidability context.
 - [[Research/AI in Math/_MOCs/_moc-ai-in-math]] — Full AI-in-math subtree: formal theorem proving, RL for math, ML for combinatorial discovery. Navigate there for the AI dimension of cooperative search.
+- [[Research/CS/_MOCs/_moc-hard-instance-generation]] — hard-instance generation (planted SAT/CSP, learned samplers, hard trivial words): instances for stress-testing these solvers.

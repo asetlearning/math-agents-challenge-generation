@@ -11,14 +11,18 @@ language: en
 domain: group-theory
 methodology_type: theoretical
 relevance: 2
-key_concepts: []
+key_concepts:
+  - "[[Concepts/andrews-curtis-moves]]"
 extends: []
 contradicts: []
 replicates: []
 cites:
   - "[[kourovka-2022]]"
   - "[[problems-people]]"
-cited_by: []
+cited_by:
+  - "[[shehper-2024-ac-hardness]]"
+  - "[[miasnikov-1999-ac-genetic]]"
+  - "[[carreras-2026-ac-certificates]]"
 quality_notes: "No source document in docs/papers/ — content written from general knowledge. Paper acquisition needed: Andrews-Curtis 1965 (Proc. Amer. Math. Soc. 16, 192–195); Akbulut-Kirby for potential counterexamples AK(n); Bridson examples. No classical Kourovka entry identified (18.89 is a related but different meta-question about ACₙ finitely presented?). Old score/2 migrated to relevance: 2 per F4.2 decisions. Source unavailable at 2026-05-28 re-fetch; content preserved from original note."
 author: maumayma
 tags:
@@ -104,9 +108,10 @@ The connection to group theory is direct: the AC conjecture is about whether two
 - Extends: (none)
 - Contradicts: (none)
 - Replicates: (none)
-- Concepts introduced/used: (F4.4 will populate via `key_concepts:`)
+- Concepts introduced/used: [[Concepts/andrews-curtis-moves]]
 - Cites (in vault): [[kourovka-2022]] (Kourovka 18.89 related), [[problems-people]] (lists as Mixer candidate)
-- Cited by (in vault): (none currently)
+- Cited by (in vault): [[miasnikov-1999-ac-genetic]] (genetic-algorithm AC search; first AC-trivialisation of AK(2), all AK/MS presentations of total length ≤ 12), [[shehper-2024-ac-hardness]] (AC-trivialisation as an RL environment; hardness notions on 1190 Miller–Schupp presentations), [[carreras-2026-ac-certificates]] (replayable AC-move certificates for the length-14 Miller–Schupp holdouts)
 - See also: [[2-relator-word-problem-9.29-merzlyakov]] — sibling open problem on presentations of free-group quotients
 - See also: [[open-problems-catalog]] — feasibility catalog entry for this problem
 - MOC: [[_moc-word-problem]] (open boundary cases)
+- Hard-instance generation: [[_moc-hard-instance-generation]] (AC-trivial presentations as certified hard instances for `#project/challenge-gen`)

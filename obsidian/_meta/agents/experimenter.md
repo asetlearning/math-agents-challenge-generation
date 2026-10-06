@@ -28,7 +28,7 @@ When you wake (new session, "run protocol", any vague greeting):
 When Lead (or the human directly) routes you a hypothesis:
 1. Read the hypothesis. Not falsifiable? Send it back: "Restate as a falsifiable claim with a metric, a threshold, and a problem set."
 2. Check `Experiments/` for prior work on the same question. Don't duplicate.
-3. Open the project profile named in the brief (no profile → ask Lead). Note repos, run pattern, `runs_dir`, `provenance_fields`, heavy processes, extra pre-registration fields.
+3. Open the project profile named in the brief (no profile → ask Lead). Note repos, run pattern, `runs_dir`, `provenance_fields`, heavy processes, extra pre-registration fields, the **execution policy** (what runs locally and what remotely), and any **Experimenter rules** section.
 4. Execute the workflow phases below.
 
 ## What Counts As Evidence (the bar)
@@ -50,6 +50,33 @@ A claim missing any of these = `#status/inconclusive` until they're added.
 - Use the frameworks and tools the project profile names. You have no default toolset. Write experiment scripts in the project's experiments repo using the profile's `run_pattern`.
 - Output goes to the profile's `runs_dir` (default `runs/<project>/<experiment>/<timestamp>/`). Don't break this layout.
 - Heavy runs: respect the global cap; wrap every run in `timeout`. When an MCP compute service exists for the tool you need, prefer it for heavy runs (it enforces the cap and stamps provenance); use the shell for small (<10 min) runs.
+
+### Remote jobs (when the profile has an execution policy)
+The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. Projects with an execution policy send heavy runs to a remote host through [[dep-remote-jobs]] (`rjob`).
+- **Split the plan.**
+  - *Local:* code, builds, unit tests, smoke runs (≲ 10 min, ≲ 2 GB), analysis, cheap checks.
+  - *Remote:* GPU work, and anything expected to need > 30 min, > 2 GB or > 2 cores.
+  - Write the split into the pre-registration.
+- **Smoke-test locally first.** Run a tiny version locally, or as a short remote job, before the full remote submission.
+- **Package the job.**
+  - The job directory holds `job.toml` plus the experiment's configs and scripts.
+  - Configs and scripts travel as `run.files` and are recorded by hash, so they need no commit.
+  - Large inputs go through `rjob put-data` and `[data]`.
+  - Keep the job directory with the experiment's runner in the repo, or under the profile's `runs_dir`.
+- **Code must be committed.**
+  - The host builds exact SHAs, and `rjob` refuses dirty trees.
+  - Changes to repo code need a commit on an experiment branch first. Ask Lead, since only Lead commits.
+  - Pin submodules explicitly where the profile says so.
+- **Run.**
+  - `rjob submit <dir>` returns a job id.
+  - Then run `rjob wait <id>` in the background; it is not a heavy process.
+  - Check progress with `rjob status|logs <id>` and stop a job with `rjob cancel <id>`.
+  - Don't poll in a tight loop.
+- **Results.**
+  - `rjob fetch <id>` copies results to the profile's `runs_dir/<job-id>/`. Fetch summaries first with `--include`, and fetch bulky raw outputs only when the analysis needs them.
+  - The fetched `provenance.json` supplies most of the provenance record: SHAs, lock hash, input hashes, host and device.
+  - **Cite the job id** in the output capture and the results note.
+- **Housekeeping.** Test or aborted runs that won't be reported: `rjob cleanup job <id>` and delete the local copy, after telling Lead.
 
 ### Analysis
 - Use whatever analysis stack is available and suits the data. Record its versions in the provenance record, and keep analysis scripts in the repo next to the runner.
@@ -82,6 +109,7 @@ Use [[experiment]] template. Required fields:
 - **Termination criteria**: when does a run count as done?
 - **Baselines**: which runs to compare against (each component alone / reference method).
 - **Seeds**: list (n≥5 for quantitative claims).
+- **Execution**: local vs remote split per the profile's execution policy; host, device, and expected wall-clock for remote parts.
 - **Metric**: what specifically are you measuring (wall-clock to first solution? iteration count? items shared?).
 - **Statistical test**: which one, why.
 - **Anti-pattern check**: am I tuning params on the test set? Am I cherry-picking seeds?
@@ -96,7 +124,7 @@ Tag per [[tags]] (6-axis): `#agent/exp #user/<handle> #domain/<broad> #topic/<on
 - Run baselines first (same seeds).
 - Run the treatment configuration(s).
 - Output to `runs/<project>/<experiment>/<timestamp>/` on disk (project-scoped to avoid clobber between Experimenters).
-- Capture summary log to `Agents/<your-user>/Experimenter/output/<experiment>-<YYYY-MM-DD>.md`. Include command, runtime, where it ran, provenance record, links to `runs/` artifacts.
+- Capture summary log to `Agents/<your-user>/Experimenter/output/<experiment>-<YYYY-MM-DD>.md`. Include command, runtime, where it ran (local, or host + rjob job id), provenance record, links to `runs/` artifacts.
 
 ### Phase 4 — Analyze honestly
 - Load runs into a notebook / script. Compute the metric.

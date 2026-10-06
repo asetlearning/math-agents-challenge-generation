@@ -188,6 +188,13 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - After any run: kill the process and `pgrep`-verify clean (already required under Process hygiene).
 - If a task genuinely needs more than 4 parallel processes, that is a request to escalate to the human
   (Maria) — never self-authorize exceeding the cap.
+- **Scope: the cap is local to the agents' machine (the VM).**
+  - **Remote jobs don't count.** A job submitted to a remote host through a project's remote runner (e.g. `rjob`, see the profile's execution policy) runs under that host's own scheduler slots, and the host enforces them.
+  - **Not heavy:**
+    - the client calls (`rjob submit|status|wait|fetch`);
+    - a background `rjob wait`.
+  - **Still check disk** before fetching large outputs.
+  - **Moving heavy work remote:** if a project's execution policy says a run belongs remote, run it remotely rather than squeezing it into the local cap.
 
 ## Test discipline (mandatory)
 
