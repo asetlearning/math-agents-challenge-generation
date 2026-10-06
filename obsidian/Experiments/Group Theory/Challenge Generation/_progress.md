@@ -63,6 +63,19 @@ The owner defined the difficulty metrics: ρ (2.5-reduction resistance, pass at 
 ### 2026-10-05: Dehn-proxy maximisation run analysed (run of 2026-07-23)
 PatternBoost maximising the raw D, with 2.5-reduced KB relators, over 20 iterations and about 300k candidates: **every candidate 2.5-reduces to 1** (L1: 0). Best D = 0.344 (11 factors / 32 letters), flat from iteration 3. The search raised D by shrinking words (mean length 1159 → 52) rather than adding factors. Lesson: D alone pushes toward short, easy words, so the objective needs a Metric-1 gate or a length floor. See [[patternboost-generation-results]] § Dehn-proxy run.
 
+### 2026-10-05: remote execution set up (code only; Mac not yet configured)
+The VM (2 CPUs, about 3 GB RAM, no GPU) cannot run PatternBoost at scale, so the owner set an execution policy:
+- **local:** code, compiling, tests, smoke runs and analysis;
+- **remote:** GPU work, and anything expected to exceed 30 min or 2 GB.
+
+New repo [[dep-remote-jobs]] (`rjob`):
+- ships exact commits, including the tcgraph submodule, to the host as git bundles;
+- builds once per SHA;
+- queues jobs on GPU/CPU slots;
+- returns results to `~/Research/challenge-gen/runs/<job-id>/` with `provenance.json`.
+
+Decision: Docker is not used on the Mac, because it has no MPS inside containers. Docker becomes the backend for future Linux/CUDA servers. The end-to-end test passes in the VM. Waiting on the Mac admin setup (`docs/mac-setup.md`) and on creation of the GitHub repo.
+
 ## Related material
 - [[project-challenge-gen]]: project profile
 - [[B25/_progress]]: B(2,5) progress (the group itself)

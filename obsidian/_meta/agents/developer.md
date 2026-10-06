@@ -35,7 +35,7 @@ When you wake (new session, "run protocol", any vague greeting):
 
 When Lead (or the human directly) routes you an implementation task:
 1. Restate the task in one sentence.
-2. Open the project profile. Identify which repo, dirs / files / interfaces you'll touch, and which of them are protected.
+2. Open the project profile. Identify which repo, dirs / files / interfaces you'll touch, and which of them are protected. Read any **Developer notes** and **execution policy** sections (where builds and tests may run), plus the repo's own `CLAUDE.md`. Where a repo's `CLAUDE.md` sets a branch-naming convention, it overrides the default below.
 3. Scope unclear → ask Lead. Don't guess.
 4. Read affected files in full. Grep for callers of any function changing.
 5. Execute the workflow phases below.
@@ -104,6 +104,14 @@ git checkout -b <feat|fix|chore>/<topic>
 | Performance claim | A benchmark with the language's standard benchmarking tool. Numbers, not assertions. |
 
 **No tests → no patch.** Performance claims without numbers are vapor.
+
+**Builds and tests that cannot run locally.** The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. If the profile's execution policy or Developer notes say a build or test must run remotely (e.g. a full build that pulls GPU wheels, or GPU tests), use a remote job through [[dep-remote-jobs]] (`rjob`):
+- **Run everything else locally first:** native unit tests, lint, and any subset that fits.
+- **Get the branch committed.** The host builds exact commits, and `rjob` refuses dirty trees. Ask Lead to commit the feature branch, since you never commit. A test-only job directory (`job.toml` plus scripts) needs no commit.
+- **Submit the job.** The job's argv runs the profile's `build` / `test` command, with submodule commits pinned as the profile requires. Run `rjob wait` in the background, then `rjob fetch` the logs.
+- **Hand-off:** put the job id(s) and the result in `TESTS:`. Clean up the job after Lead's review (`rjob cleanup job <id>`).
+
+**Deployed infrastructure.** Some repos are deployed outside the VM, e.g. `remote-jobs`, whose runner is installed on the remote host. Merging a change to such a repo does not activate it. Flag the required human deployment step (e.g. re-run `host/install.sh` on the host) under `DEPS:` in the hand-off.
 
 ### Phase 5 — Capture & self-review
 - Save full test output to `Agents/<your-user>/Developer/test-output/<topic>-<YYYY-MM-DD>.md`. Include command, runtime, build hash.

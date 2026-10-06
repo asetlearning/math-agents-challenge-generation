@@ -8,7 +8,7 @@ obtain: "git clone https://github.com/asetlearning/tcgraph_agentic.git — or as
 build: "cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j  # out-of-source only; Debug adds ASan + -Wall -Werror"
 test: "cd build && ctest   # 2026-10-05: 8/9 pass; test_pb_local_search does not compile on main (see Known pitfalls)"
 versions_in_use:
-  - "main @ 26f4f5a9 (2026-07-24) — tip of the agentic repo, as of 2026-10-05"
+  - "main @ a0d5e92 (2026-10-05: CLAUDE.md merged; code unchanged since 26f4f5a9, 2026-07-24)"
   - "c09327705a (2026-06-18) — the commit pinned as submodule in b25_pyproject_agentic main (13 commits behind main)"
 local_patches: []
 capabilities:
@@ -22,7 +22,7 @@ heavy_processes: [experiments.b25_cayley_graph_approximation, experiments.b25_re
 mcp: none
 local_checkouts:
   asetlearning: ~/Research/challenge-gen/tcgraph_agentic   # also ~/Research/challenge-gen/b25_pyproject_agentic/cpp/tcgraph (submodule)
-docs: "repo README.md, pattern_boost/README.md, CODE_GUIDELINES.md, CLAUDE.md (branch docs/agent-context, pending approval)"
+docs: "repo README.md, pattern_boost/README.md, CODE_GUIDELINES.md, CLAUDE.md (agent context; merged to main via PR #1, a0d5e92, 2026-10-05)"
 used_by: ["[[project-challenge-gen]]"]
 tags: [meta, type/reference]
 ---
@@ -69,7 +69,7 @@ This is our C++20 group-theory core for B(2,5) work. Generators are encoded as i
 - **Hybrid scorer limitations.** `HybridScorer` ignores each sub-scorer's `reduce2_5` and `penalize_trivial`. `DehnFunctionScorer` throws inside Hybrid, since it is `scoreSample` only.
 - **Local search has no visited set,** and every neighbour is expanded twice. Cost is O(beam × neighbours × steps × score).
 - **Toolchain.** `std::format` needs GCC 13+ or Clang 17+. spdlog and CLI11 are fetched at configure time, so network access is needed.
-- **Agent docs.** There is no `CLAUDE.md` on main. One was added on branch `docs/agent-context` on 2026-10-05 and is not merged.
+- **Agent docs.** `CLAUDE.md` is on main since 2026-10-05 (PR #1, a0d5e92). Keep it in sync with code changes.
 
 ## Related material
 - [[projects-and-dependencies-convention]]

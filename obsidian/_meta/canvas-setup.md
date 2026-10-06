@@ -39,7 +39,7 @@ Terminals:
 | **Lead** | `math-lead` | Orchestrator + code-quality gate + commit ritual. Primary human interface. |
 | **Researcher** | `math-researcher` | Multi-domain literature. Restructure authority over `Research/` and `Concepts/`. |
 | **Developer** | `math-developer` | Implementation in each project's stack + framework/perf expertise. |
-| **Experimenter** | `math-experimenter` | General + cross-domain experiments (everything except B(2,5)). |
+| **Experimenter** | `math-experimenter` | General + cross-domain experiments: everything except the B(2,5) program owned by Experimenter-B25. `#project/challenge-gen` work, B(2,5) challenge generation included, belongs here or to a spawned `Experimenter-ChallengeGen` (Step 6). |
 | **Experimenter-B25** | `math-experimenter-b25` | B(2,5) specialist. Always on. Owns `Experiments/Group Theory/Burnside Group/B25/**`. |
 | **Validator** | `math-validator` | Independent math oracle. Math verdicts override all peers. |
 | **Math Expert** | `math-expert` | Idea-generator / advisor. Proposes, never certifies. |
@@ -130,7 +130,7 @@ Behavioral rules (in prompts) keep work-changing requests through Lead. Direct l
 
 When Researcher identifies a viable new cross-domain application, spawn a per-domain Experimenter (Lead writes a project profile for the new domain first):
 
-- Name: `Experimenter-<domain>` (e.g. `Experimenter-Grobner`, `Experimenter-Biology`).
+- Name: `Experimenter-<domain>` (e.g. `Experimenter-Grobner`, `Experimenter-Biology`, `Experimenter-ChallengeGen` for [[project-challenge-gen]]).
 - Role: use `math-experimenter` (the general role) — the per-domain focus comes from the brief Lead gives them.
 - Working dir + model: same as the general Experimenter.
 - Connect to Lead, Researcher, Validator (mesh).

@@ -8,15 +8,16 @@ repos:
 dependencies:
   - "[[dep-tcgraph-agentic]] — may-modify (on branches; bump the b25 submodule pin to the right tcgraph_agentic commit when bindings change)"
   - "[[dep-gap]] — read-only; oracle and validator (word problem in finite / polycyclic quotients, e.g. B₀(2,5) via ANUPQ)"
+  - "[[dep-remote-jobs]] — infrastructure; every remote (GPU / long / >2 GB) run goes through rjob (see Execution policy)"
   - "[[dep-kbmag]] — read-only; validator (Knuth-Bendix / rewriting), run as the GAP package or standalone kbprog — an independent path from GAP's word problem"
 build: "b25: git submodule init && git config submodule.cpp/tcgraph.url https://github.com/asetlearning/tcgraph_agentic.git && git submodule update && uv sync  (C++ rebuild: uv sync --reinstall-package b25-pyproject). tcgraph standalone: cmake -B build && cmake --build build"
 test: "uv run pytest tests/ -v (b25); cd build && ctest (tcgraph). Plus, for any generator change: certificate check on a regression sample (see Test matrix)"
 smoke: "uv run python -m experiments.pattern_boost.pattern_boost_main run configs/pattern_boost_smoke.yaml — NOTE: its challenges path is hard-coded to /media/psf/b25_pyproject/...; point it at a local sample first"
 lint: "C++: clang-format -style=file (tcgraph CODE_GUIDELINES.md); Python: none configured"
 languages: [Python 3.12, C++20, GAP]
-run_pattern: "timeout <cap> uv run python -m experiments.pattern_boost.pattern_boost_main run|sweep configs/<x>.yaml   (baseline challenges: experiments.pattern_boost.experiment_local_search sample configs/generate_sample.yaml)"
-runs_dir: "b25 repo: output/run_<ts>/ and <output_dir>/sweep_<ts>/combo_NNNN_<slug>/trial_NNNN/ (run.jsonl, run.matches.jsonl, tokenizer/, iter_NNNN/); sweep_summary.json at sweep root. Existing sweeps: data/pattern_boost_experiments/pb_sweep/ (outside git)"
-provenance_fields: [b25 git SHA, tcgraph_agentic SHA actually checked out in cpp/tcgraph, uv.lock hash, config YAML (as run), relator source + hash, challenge file + hash, sweep/run seeds, torch/transformers versions, GAP version + kbmag build if validation ran, certificate (FactoredWord JSON) format version, host (CPU/GPU/RAM), wall-clock — NOTE: the code currently logs only the config]
+run_pattern: "remote (default for real runs): rjob submit <job.toml> → rjob wait <id> → rjob fetch <id> (examples: ~/Research/remote-jobs/examples/pb-smoke). Local (smoke only): timeout <cap> uv run python -m experiments.pattern_boost.pattern_boost_main run|sweep configs/<x>.yaml   (baseline challenges: experiments.pattern_boost.experiment_local_search sample configs/generate_sample.yaml)"
+runs_dir: "~/Research/challenge-gen/runs/<rjob-job-id>/ (outputs/, provenance.json, manifest.json, log.txt); full copy stays on the host in ~gpuworker/rjob/jobs/<id>/ until cleanup. Inside a run, b25 layout: <output_dir>/run.jsonl, run.matches.jsonl, iter_NNNN/; sweeps <output_dir>/sweep_<ts>/combo_NNNN_<slug>/trial_NNNN/ + sweep_summary.json. Legacy sweeps: data/pattern_boost_experiments/pb_sweep/ (outside git)"
+provenance_fields: [rjob job id + host (provenance.json records the next three automatically), b25 git SHA, tcgraph_agentic SHA actually checked out in cpp/tcgraph, uv.lock hash, config YAML (as run), relator source + hash, challenge file + hash, sweep/run seeds, torch/transformers versions, GAP version + kbmag build if validation ran, certificate (FactoredWord JSON) format version, host (CPU/GPU/RAM), wall-clock — NOTE: b25 itself logs only the config; runs through rjob get SHAs, uv.lock hash, input hashes, host and device in provenance.json]
 heavy_processes: [pattern_boost_main, pb.local_search, "2.5-power reduction of long words (tcgraph greedyReduce*; also inside scorers with reduce2_5)", attempt_to_decide_if_trivial, gap, kbprog]
 protected_interfaces:
   - "FactoredWord JSON {word, relator_indices, relator_names, conjugators, version} — the triviality certificate"
@@ -107,6 +108,47 @@ The certificate is the **factor word**: w = ∏ cᵢ⁻¹ R[idxᵢ] cᵢ. It is 
 
 The model never emits letters directly, so malformed generations decode to `None` and are dropped. Every candidate in the pool is a product of conjugates by construction.
 
+## Execution policy — local VM vs remote (owner, 2026-10-05)
+
+The agents' VM is restricted: 2 CPUs, about 3 GB RAM, no GPU. Experiments are therefore split, and the plan for each experiment says which part runs where.
+
+| Where | What |
+|---|---|
+| **Local (VM)** | Code generation and edits, compiling, unit tests (`pytest`, `ctest`), smoke runs (≲ 10 min, ≲ 2 GB), analysis of fetched results, cheap checks on small sets (certificate re-expansion, abelianization, ρ/D on up to a few hundred short words) |
+| **Remote ([[dep-remote-jobs]])** | Anything needing a GPU (PatternBoost training and sampling, sweeps); anything expected to run > 30 min, use > 2 GB, or want > 2 cores (2.5-reduction in certify mode on large or long-word sets, TC experiments, local-search sweeps) |
+
+- **Host.** For now it is the owner's Mac (M1, 8 cores, 64 GB, MPS), with 1 GPU slot and 7 CPU slots. Later hosts are Linux/CUDA servers using a container backend. Docker is not used on the Mac, because it has no MPS inside containers.
+- **Code reaches the host only as committed SHAs** from an experiment branch; dirty trees are refused. The tcgraph submodule commit is explicit per job, and the `[code.submodules."cpp/tcgraph"]` override sets it when the b25 pin is stale.
+- **Each result directory is cited by its job id.** `provenance.json` supplies most of the provenance fields above.
+
+## Agent assignment and Experimenter rules
+
+- **Who runs experiments.** The general Experimenter, or a spawned **`Experimenter-ChallengeGen`** terminal ([[canvas-setup]] Step 6), runs challenge-gen experiments with this profile. It is not Experimenter-B25: that role owns the B(2,5) finiteness program in `Burnside Group/B25/`, and challenge-gen lives in `Experiments/Group Theory/Challenge Generation/`.
+- **Rules for every challenge-gen run:**
+  1. **Remote by default for PatternBoost.** Follow the execution policy above and the remote-jobs workflow in [[experimenter]].
+  2. **Pin tcgraph explicitly** in every job (`[code.submodules."cpp/tcgraph"]`). The committed b25 pin `c09327705a` does not build against b25's bindings.
+  3. **Seeds must not collide.** Target-sampling seeds must differ from PatternBoost's pool seeds; in sweeps these are `seed + combo·10000 + trial`. Otherwise targets sit in the initial pool and the run measures nothing.
+  4. **Same-distribution targets test steering, not hardness.** Any hardness claim uses the metrics in [[challenge-gen-success-metrics]]: ρ in certify mode, and D on the minimised certificate F*. Report baselines on random factor words from the same sampler.
+  5. **L0 before anything else.** Re-expand stored certificates independently, and use only standard relators or relators certified in free B(2,5).
+  6. **Name the group.** Never call a word "trivial in B(2,5)" on B₀(2,5) or finite-quotient evidence. Route such claims to Validator.
+  7. **Record the scorer and full config.** The 2026-05 baseline lost its scorer because `pattern_boost_sweep_1.yaml` was never kept. Keep the job directory, which rjob also records by hash.
+  8. **Tests are not results.** Clean up test and aborted runs, and keep them out of results notes.
+
+## Developer notes
+
+- **Where builds and tests run.**
+  - **tcgraph:** builds and tests locally (`cmake -B build && cmake --build build -j`, then `ctest`), C++ only.
+  - **b25:** its full build (`uv sync`) and `pytest` must run **remotely**. On linux/aarch64 the locked torch pulls several GB of NVIDIA wheels, which the VM cannot hold.
+  - Use an rjob job modelled on `~/Research/remote-jobs/examples/b25-build-tcgraph-main`, with `argv = ["python", "-m", "pytest", "tests/", "-v"]` for tests. See [[developer]] § Builds and tests that cannot run locally.
+- **Changes spanning b25 and tcgraph** (a public C++ signature used by the bindings, a new scorer, etc.):
+  1. tcgraph change on a tcgraph_agentic branch, with a C++ test and local `ctest`.
+  2. The matching change in b25 `cpp/bindings*.cpp` (and the Python callers) on a b25 branch.
+  3. A remote build and test job of the b25 branch with `[code.submodules."cpp/tcgraph"] sha = "<tcgraph branch>"`.
+  4. After both merges (owner approval), bump b25's submodule pin to the merged tcgraph commit.
+  - The committed `.gitmodules` URL (gt-computations/tcgraph) is unreachable: use the local `submodule.cpp/tcgraph.url` override ([[dep-b25-pyproject-agentic]]). Fixing the URL needs owner approval.
+- **Branch naming.** These repos (b25_pyproject_agentic, tcgraph_agentic, remote-jobs) use `NN-short-slug` (issue-numbered), or `docs/…` / `fix/…`. Nothing merges to `main` without the owner's approval.
+- **Changes to `remote-jobs`** go live only after the owner re-runs `host/install.sh` on the Mac. The job contract and the SSH verb boundary are protected; see [[dep-remote-jobs]].
+
 ## Known issues (as of 2026-10-05; documented, not fixed)
 - **Submodule.** b25's `.gitmodules` points `cpp/tcgraph` at `gt-computations/tcgraph`, not `asetlearning/tcgraph_agentic`. The pin `c09327705a` is 13 commits behind tcgraph_agentic main and predates the scorers b25 binds. Use the local URL override and check out the right commit; see [[dep-b25-pyproject-agentic]].
 - **tcgraph_agentic main** fails to build `test_pb_local_search`, which uses the removed `scoreWord`; see [[dep-tcgraph-agentic]].
@@ -129,7 +171,7 @@ Every generated instance ships with a **certificate**, e.g. a generation trace o
 ## Protected interfaces — why each one exists
 
 - **Challenge + certificate format.** Benchmarks, training pipelines and validators all consume it. Once defined, changes need a version bump and Lead approval.
-- **`runs/challenge-gen/` layout.** Results tables and the progress note link into it.
+- **`~/Research/challenge-gen/runs/<job-id>/` layout** (from [[dep-remote-jobs]]). Results tables and the progress note link into it by job id.
 
 ## Experiment template fields
 

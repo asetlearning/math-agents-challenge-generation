@@ -8,7 +8,7 @@ obtain: "git clone https://github.com/asetlearning/b25_pyproject_agentic.git; th
 build: "uv sync   # Python 3.12, scikit-build-core + pybind11 build the tcgraph_ext extension; force C++ rebuild: uv sync --reinstall-package b25-pyproject"
 test: "uv run pytest tests/ -v"
 versions_in_use:
-  - "main @ 7d32335b (2026-07-24) — as of 2026-10-05; submodule cpp/tcgraph pinned at c09327705a"
+  - "main @ 7e50fea (2026-10-05: CLAUDE.md merged; code unchanged since 7d32335b, 2026-07-24); submodule cpp/tcgraph still pinned at c09327705a, so remote jobs override it to tcgraph main"
 local_patches: []
 capabilities:
   - "challenge generation: PatternBoost loop (GPT-2 over factor-word token streams + C++ beam local search + scoring + top-k selection) producing words trivial in B(2,5) by construction (products of conjugates of relators)"
@@ -20,7 +20,7 @@ heavy_processes: [pattern_boost_main (model training + parallel local search), "
 mcp: none
 local_checkouts:
   asetlearning: ~/Research/challenge-gen/b25_pyproject_agentic
-docs: "repo README.md, CLAUDE.md (refreshed on branch docs/agent-context, pending approval), experiments/pattern_boost/README.md, experiments/dashboards/README.md"
+docs: "repo README.md, CLAUDE.md (agent context; merged to main via PR #1, 7e50fea, 2026-10-05), experiments/pattern_boost/README.md, experiments/dashboards/README.md"
 used_by: ["[[project-challenge-gen]]"]
 tags: [meta, type/reference]
 ---
