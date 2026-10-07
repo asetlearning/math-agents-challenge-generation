@@ -83,6 +83,12 @@ The owner's rpo (917) and shortlex (2378) "trivial, no powers" sets of 2026-03-2
 - The rest were deduplicated up to rotation, inversion and the 8 letter automorphisms.
 - **All 820 were then proved trivial in B(2,5)** by Knuth–Bendix: kbprog on `b25_full` (815 relators, all 5th powers), capped at 100k rules, with RPO and shortlex orderings. Every word reduces to the identity under at least one system, every parent word under both, and 0/825 negative controls reduce. The parents came from the March 2026 kbprog rule banks.
 
+The HWW challenges are registered too:
+- [[ds-b25-hww-challenges-nonempty-20260930]]: 118 non-empty freely reduced words, validated trivial in B₀(2,5).
+- [[ds-b25-hww-challenges-2-5reduced-20260319]]: their 2.5-reduced form, copied from the owner's tcgraph checkout.
+
+The non-empty file turned out **not** to be 2.5-reduced; the reduced file is the one to use as targets. A 2026-10-07 GAP rerun found all 236 words (original and reduced) trivial in B₀(2,5).
+
 Datasets are now registered per [[datasets-convention]] (template `dataset-note`, tag `#dataset`, notes in `Datasets/`, files in the repo's `data/`).
 
 ## Related material
