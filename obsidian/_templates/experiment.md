@@ -13,6 +13,7 @@ tags: [agent/exp, user/<handle>, domain/<...>, topic/<one+>, project/<subproject
 ## Pre-registration
 
 ### Problem set
+- Datasets: `[[<ds-dataset-note>]]` — sha256 verified: <yes/no> (registered datasets per `[[datasets-convention]]`; one line each)
 - Problems: <e.g. "B(4,3) with presentation X, B(5,3) with presentation Y, sorting random arrays of size N">
 - Sizes / instances: <list>
 

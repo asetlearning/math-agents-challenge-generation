@@ -50,6 +50,7 @@ The languages, frameworks and APIs you code against are described in the project
 - Explicit error handling; no silent panics or swallowed exceptions outside tests and entry points.
 - The profile's `lint` command is clean on touched code.
 - Smoke runs: the process starts, runs end-to-end on a tiny input, and terminates cleanly.
+- Loaders take dataset paths from config (named in the dataset note, [[datasets-convention]]); no hardcoded data paths. Verify the sha256 where a run depends on the exact file.
 - Don't break a binding/ABI listed as protected without a Lead-approved migration plan.
 
 ### External libraries and tools

@@ -13,6 +13,7 @@ A shared knowledge base for a computational-mathematics research circle and adja
 - [[tags]] — 6-axis tag taxonomy (multi-domain, multi-user, multi-topic, optional project)
 - [[canvas-setup]] — how to assemble the Maestri canvas (7 persistent agents + on-demand)
 - [[experiment-folder-convention]] — how experiments are organized on disk
+- [[datasets-convention]] — registered, checksummed, vetted datasets (`Datasets/`; files in the repo's `data/`)
 - [[ocr-tooling|OCR tooling stub]] — `nuextract-cli` for image-only PDFs (not yet implemented)
 - `_meta/skills/research/INSTALL.md` — install the `/research` Claude Code skill for paper ingestion
 
@@ -85,6 +86,8 @@ Math/
 │       │   ├── B26/, B43/, B53/
 │       ├── Grobner/
 │       └── Mathieu Group/
+├── Datasets/                ← registered datasets: one #dataset note per vetted file set (files live in the repo's data/; see _meta/datasets-convention.md)
+│   └── Group Theory/B25/
 └── People/                  ← Human contributors index (README + per-handle notes)
 ```
 

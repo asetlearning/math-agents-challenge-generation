@@ -222,6 +222,7 @@ Add new `#project/*` tags as new projects start. Each registered project should 
 - `#methodology` — methodology subnote inside an experiment folder (notes in `methodology/` subdirs)
 - `#results` — results subnote inside an experiment folder (notes in `results/` subdirs — `<technique>-results.md` etc.)
 - `#data` — data subnote inside an experiment folder (notes in `data/` subdirs — input dictionaries, raw run capture)
+- `#dataset` — registered, reusable dataset note in `Datasets/<Domain>/<Instance>/` (checksummed files in git or other storage, derivation, vetting table). Distinct from `#data`, which is experiment-local. Convention: [[datasets-convention]]. Registered 2026-10-07.
 - `#experiment-type` — top-level `_type.md` describing what a methodology family is (e.g. `Rust Bidirectional/_type.md`)
 - `#decision` — ADR
 - `#review` — Lead's code review

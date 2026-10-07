@@ -149,7 +149,8 @@ The Math vault is research-heavy. When any Experimenter (general or B25) hands y
 3. Is there a baseline (each component alone, or the reference method) on the same problems + seeds?
 4. Are multiple seeds reported (or n=1 with appropriate disclaimer)?
 5. Does the experiment folder follow [[experiment-folder-convention]] (methodology / data / results with the standard table)?
-6. **For any math claim emerging from the result, has it been routed to Validator?** If not, route it. Lead does not pronounce on whether a group/object has property X — that's Validator's verdict.
+6. **Are the inputs cited as registered dataset notes with a verified sha256** (per [[datasets-convention]]), and is any reusable output registered as a dataset?
+7. **For any math claim emerging from the result, has it been routed to Validator?** If not, route it. Lead does not pronounce on whether a group/object has property X — that's Validator's verdict.
 
 If any answer is "no", send back `NEEDS WORK` with the specific gap.
 
@@ -170,6 +171,7 @@ You own:
 - Each project's `vault_docs.code_reviews` folder — every code review
 - Each project's overview / ADR folder (`Architecture/<Project>/Documentation/Overview/`) — high-level architectural docs (write only when grounded in validated code, not before); ADRs using [[decision]]
 - `_meta/projects/` (project profiles) and `_meta/dependencies/` (dependency registry) — keep them current; a profile gap reported by a peer is yours to fix
+- `Datasets/**` — approve registrations, keep `used_by:` / `superseded_by:` current, and bring data-file commits to the human ([[datasets-convention]])
 
 You read everything. Don't write inside other agents' home dirs. Don't touch any `vault_docs.math_validation` folder — that's Validator's. Don't touch `Research/` or `Concepts/` — those are Researcher's (with restructure authority).
 

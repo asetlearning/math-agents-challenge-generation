@@ -76,7 +76,17 @@ New repo [[dep-remote-jobs]] (`rjob`):
 
 Decision: Docker is not used on the Mac, because it has no MPS inside containers. Docker becomes the backend for future Linux/CUDA servers. The end-to-end test passes in the VM. Waiting on the Mac admin setup (`docs/mac-setup.md`) and on creation of the GitHub repo.
 
+### 2026-10-07: first registered dataset; datasets convention
+The owner's rpo (917) and shortlex (2378) "trivial, no powers" sets of 2026-03-21 were vetted and combined into [[ds-b25-trivial-2-5reduced-aut8-20261007]] (820 words; validated by the owner on 2026-10-07).
+- All 3295 words pass abelianization and are trivial in B₀(2,5) (GAP + anupq), in original and reduced form.
+- 180 words were not 2.5-reduced; 152 of them reduce to the empty word, which proves them trivial in B(2,5). Those 152 were dropped.
+- The rest were deduplicated up to rotation, inversion and the 8 letter automorphisms.
+- **All 820 were then proved trivial in B(2,5)** by Knuth–Bendix: kbprog on `b25_full` (815 relators, all 5th powers), capped at 100k rules, with RPO and shortlex orderings. Every word reduces to the identity under at least one system, every parent word under both, and 0/825 negative controls reduce. The parents came from the March 2026 kbprog rule banks.
+
+Datasets are now registered per [[datasets-convention]] (template `dataset-note`, tag `#dataset`, notes in `Datasets/`, files in the repo's `data/`).
+
 ## Related material
+- [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
 - [[B25/_progress]]: B(2,5) progress (the group itself)
 - [[andrews-curtis-conjecture]]: candidate phase-2 problem

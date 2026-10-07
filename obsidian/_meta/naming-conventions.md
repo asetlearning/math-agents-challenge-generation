@@ -78,6 +78,8 @@ These words are generic and ambiguous alone. Always prefix with a subject:
 - Project profiles: `_meta/projects/project-<project-tag>.md` (e.g. `project-b25.md`), with the name matching the `#project/*` value.
 - Dependency notes: `_meta/dependencies/dep-<name>.md` (e.g. `dep-kbmag.md`).
 
+- Dataset notes: `Datasets/<Domain>/<Instance>/ds-<instance>-<slug>-<YYYYMMDD>.md` (e.g. `ds-b25-trivial-2-5reduced-aut8-20261007.md`); the filename is the `dataset_id` and is never reused. The data file gets a matching unique name (`data/b25_trivial_2_5reduced_unique_aut8_20261007.txt`). See [[datasets-convention]].
+
 The prefixes keep the names unique vault-wide, so `[[project-b25]]` never collides with a `b25` topic note. Details: [[projects-and-dependencies-convention]].
 
 ## Paper note filenames

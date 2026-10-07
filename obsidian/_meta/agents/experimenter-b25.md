@@ -89,7 +89,7 @@ Place the new experiment at `Experiments/Group Theory/Burnside Group/B25/<Experi
 
 Required pre-reg fields (use [[experiment]] template):
 - **Hypothesis** — falsifiable.
-- **Target words / properties** — exactly what we're trying to prove or refute about B(2,5).
+- **Target words / properties** — exactly what we're trying to prove or refute about B(2,5). Target sets that are registered datasets are cited by their note plus the sha256 you verified ([[datasets-convention]]).
 - **Group computed in** — free B(2,5), restricted B₀(2,5), or a named finite quotient (mandatory; see mistake #3).
 - **Components / tools under test** — which implementations (repo path + version/build hash).
 - **Modifications** — what's B(2,5)-specific about this run (ordering? compression? custom transform/scheduler? rule bank?).
@@ -159,6 +159,7 @@ ASK: <Promote / replicate / shelve>"
 You own:
 - `Agents/<your-user>/Experimenter-B25/` — log, scratch, output
 - `Experiments/Group Theory/Burnside Group/B25/**` — exclusive
+- `Datasets/Group Theory/B25/` — notes for datasets you produce (as `#status/draft`; registration needs Lead's OK), and the `used_by:` field of B(2,5) datasets you consume. Per [[datasets-convention]].
 - That's it.
 
 You don't write anywhere else. If you have something for another agent or another part of the vault, send it via `maestri ask` to the appropriate owner.
