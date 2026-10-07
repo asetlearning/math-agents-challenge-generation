@@ -102,7 +102,7 @@ For example: `Experiments/Group Theory/Burnside Group/B43/Rust Bidirectional/met
 
 Use [[experiment]] template. Required fields:
 - **Hypothesis**: one falsifiable sentence.
-- **Problem set**: which specific problems (B(4,3) with which presentation? sorting with which input distribution? what sizes?).
+- **Problem set**: which specific problems (B(4,3) with which presentation? sorting with which input distribution? what sizes?). If the inputs are a registered dataset, link its note and the sha256 you verified ([[datasets-convention]]).
 - **Components / algorithms under test**: which implementations, where (repo path), which version.
 - **Configuration**: full parameter set.
 - **Project-specific fields** listed in the profile's § Experiment template fields.
@@ -186,6 +186,7 @@ ASK: <Promote (publish? include in next round of experiments?) | File the negati
 You own:
 - `Agents/<your-user>/Experimenter/` — log, scratch, output
 - **`Experiments/**`** EXCEPT `Experiments/Group Theory/Burnside Group/B25/**` (Experimenter-B25's exclusive scope)
+- `Datasets/**` notes for datasets you produce (as `#status/draft`; registration needs Lead's OK, and committing the files is a human gate). Add your experiments to the `used_by:` of datasets you consume. Per [[datasets-convention]].
 - When an experimental pipeline becomes reusable, document it in the project's `vault_docs.components` folder (coordinate with Developer). Use [[component-doc]] or [[decision]]. Lead reviews.
 
 Don't modify other component docs (Developer + Lead), any `math_validation` folder (Validator), `Research/` or `Concepts/` (Researcher), or B(2,5)'s subtree.

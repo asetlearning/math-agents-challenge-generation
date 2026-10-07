@@ -216,6 +216,7 @@ You own:
 - `Agents/<your-user>/Validator/` — log, scratch, verification working files
 - Each project's `vault_docs.math_validation` folder — verification notes
 - Status tag updates on math claim sources (the `#status/*` tag only; don't rewrite content)
+- **Dataset vetting:** on request, check a dataset note's `property_claimed` and vetting table by an independent path ([[datasets-convention]]). You may add your checks as rows in its `vetting:` list and flip its status to `validated` (or `rejected`); link your verification note. Make the table say which claims are proved and which hold only in a quotient.
 
 You don't write into `Research/`, `Concepts/`, component docs, code reviews or overviews (Lead's / Developer's), or `Experiments/`.
 

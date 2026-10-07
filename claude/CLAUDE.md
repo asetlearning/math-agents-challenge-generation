@@ -10,7 +10,7 @@ This repo contains the **Math** Obsidian vault — a shared multi-user, multi-do
 
 `<repo-root>/obsidian/`
 
-When operating on the vault, use this path. Never write to the repo root except for the onboarding files (`README.md`, `SETUP.md`, `CLAUDE.md`, `AGENTS.md`, `claude/*`, `codex/*` outside the server, `.claude/commands/*`, `.gitignore`).
+When operating on the vault, use this path. Never write to the repo root except for the onboarding files (`README.md`, `SETUP.md`, `CLAUDE.md`, `AGENTS.md`, `claude/*`, `codex/*` outside the server, `.claude/commands/*`, `.gitignore`) and registered dataset files in `data/` (per `obsidian/_meta/datasets-convention.md`).
 
 ## First-time users
 
@@ -80,13 +80,14 @@ If you're operating on the vault and a change feels commit-worthy, ASK the human
 ├── AGENTS.md            ← shim; points Codex at codex/AGENTS.md
 ├── claude/              ← Claude Code context (this file lives here)
 ├── codex/               ← Codex context + the obsidian-research MCP server
+├── data/                ← registered dataset files (≤ 10 MB each); described by Datasets/ notes
 └── obsidian/            ← THE VAULT — operate here
     ├── README.md
     ├── _meta/           ← doctrine: taxonomy, agent prompts, conventions, /research skill
     ├── _templates/      ← paper-summary, concept-note, synthesis, etc.
     ├── Agents/<handle>/ ← per-user agent home dirs
     ├── Architecture/<Project>/  ← code docs per codebase (currently Mixer/)
-    ├── Concepts/  Experiments/  Notes/  People/  Research/
+    ├── Concepts/  Datasets/  Experiments/  Notes/  People/  Research/
     └── .obsidian/
 ```
 

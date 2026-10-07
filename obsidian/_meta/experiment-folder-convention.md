@@ -63,6 +63,7 @@ Inputs and artifacts the experiment consumes or produces. Subfolders/files as ap
 - **Scripts**: location reference (repo + path in the project's code repo, per its project profile, e.g. `<repo>:experiments/<exp>/run.py`). **Do not copy scripts into the vault** — the source of truth is the repo. Vault links to repo paths.
 - **Constants** (`constants.md`): a markdown table listing fixed parameters used across runs (problem size, alphabet, fixed seeds if any, bounded resources).
 - **Data used** (`data.md`): description of input data — where it lives (path), what it contains, summary statistics. If the data is a presentation (group theory) or a benchmark file (SAT), include or link the canonical reference.
+- **Registered datasets**: if an input (or a reusable output) is a registered dataset, **link its note** (`Datasets/<Domain>/<Instance>/ds-<...>.md`) with the sha256 actually used, and don't re-describe it here. Outputs that other experiments will reuse get registered as datasets. See [[datasets-convention]].
 - **Logs**: link to log paths in the repo (`runs/<project>/<experiment>/<timestamp>/`). **Do not paste full logs into the vault.** Paste excerpts only when illustrating a specific finding.
 
 ### `results/`

@@ -25,6 +25,11 @@ tags: [agent/human, user/asetlearning, domain/group-theory, topic/b25, topic/pat
 
 Logs: per-trial `run.jsonl` (structured JSON) under the sweep directory. The code does not record SHAs or seeds beyond the config.
 
+Registered datasets for this project are listed in [[project-challenge-gen]] § Problem instances. They include:
+- the 118 HWW challenges, [[ds-b25-hww-challenges-nonempty-20260930]];
+- their 2.5-reduced form, [[ds-b25-hww-challenges-2-5reduced-20260319]], which is the target set for later phases;
+- [[ds-b25-trivial-2-5reduced-aut8-20261007]]: 820 shorter words proved trivial in B(2,5).
+
 ## Related material
 - [[patternboost-generation-methodology]] · [[patternboost-generation-constants]] · [[patternboost-generation-results]]
 - [[dep-b25-pyproject-agentic]]

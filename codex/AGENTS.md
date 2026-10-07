@@ -59,7 +59,7 @@ following the same doctrine, which lives at:
     ├── _meta/       doctrine: taxonomy, agent prompts, conventions, skills
     ├── _templates/  paper-summary, concept-note, synthesis, …
     ├── Research/    paper summaries + MOCs + syntheses
-    ├── Concepts/  Experiments/  People/  Agents/<handle>/  Architecture/
+    ├── Concepts/  Datasets/  Experiments/  People/  Agents/<handle>/  Architecture/
 ```
 
 When unsure what the user wants: new user → `SETUP.md`; paper in hand →

@@ -35,6 +35,7 @@ vault_docs:
   math_validation: Architecture/Mixer/Documentation/Math Validation/   # shared location until the project has its own
   experiments: Experiments/Group Theory/Challenge Generation/
   progress: Experiments/Group Theory/Challenge Generation/_progress.md
+  datasets: Datasets/Group Theory/B25/   # files in the fork's data/ (never the original math-agents), per [[datasets-convention]]
 tags: [meta, convention, project/challenge-gen]
 ---
 
@@ -71,6 +72,11 @@ We need a way to sample instances that share properties with the hard ones. This
 | later (candidate) | other search-reducible open problems | TBD | not started |
 
 For B(2,5), triviality in the restricted quotient B₀(2,5) is **necessary but not sufficient** for triviality in the free B(2,5) (see [[B25/_progress]]). A certificate must prove triviality in the group the experiment claims.
+
+**Registered datasets** ([[datasets-convention]]):
+- [[ds-b25-hww-challenges-nonempty-20260930]]: the 118 HWW challenges (non-empty, freely reduced, not 2.5-reduced). Trivial in B₀(2,5), replicated; open in B(2,5).
+- [[ds-b25-hww-challenges-2-5reduced-20260319]]: the same 118 after greedy 2.5-reduction (≈32% shorter). Trivial in B₀(2,5); validated 2026-10-07.
+- [[ds-b25-trivial-2-5reduced-aut8-20261007]]: 820 candidate trivial words, 2.5-reduced, unique up to rotation, inversion and the 8 letter automorphisms. Proved trivial in B(2,5) by Knuth–Bendix reduction (kbprog on `b25_full`), also trivial in B₀(2,5); validated 2026-10-07. No per-word certificates stored.
 
 ## Components under test
 

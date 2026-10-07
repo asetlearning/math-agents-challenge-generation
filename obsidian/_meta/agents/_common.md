@@ -212,6 +212,14 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - Random seeds: log them. If an experiment isn't deterministic, document the noise floor.
 - **Persist expensive corpus-independent artifacts.** Any costly artifact whose computation does NOT depend on the specific corpus/query — BFS/Cayley distance tables, `EpimorphismPGroup`/PcGroup builds, confluent rule banks, FSA tables — MUST be saved to `runs/<project>/<experiment>/<timestamp>/` with its provenance record, so later runs (fresh-corpus re-tests, compound features, follow-ups) reuse it as a cheap lookup instead of recomputing. Rationale: a ~62-min `Q5 = B₀/γ₆` BFS (9.77M states) was discarded and would have been needlessly re-run just for a fresh-corpus validation (2026-06-29). Corpus-independent ≠ throwaway.
 
+## Datasets (all roles)
+
+Reusable data (challenge sets, corpora, relator banks, labelled sets) is registered as a **dataset note** in `Datasets/<Domain>/<Instance>/`, per [[datasets-convention]] (template [[dataset-note]]).
+- **Cite datasets by their note, never by a bare path.** Verify the file's sha256 against the note before use and record it in the provenance; a mismatch is a stop condition.
+- **Datasets are immutable.** A changed file is a new dataset with `supersedes:`; never edit a registered file in place.
+- **State the object of every vetting check** (free group proof vs finite-quotient consistency vs syntactic). Don't let a dataset's name or `property_claimed` overstate what was checked.
+- Committing a registered dataset file (the vault repo's `data/`, ≤ 10 MB; the fork, never the original math-agents) is a human gate, like any commit. Add it by name; parent and intermediate files stay untracked.
+
 ## Done = verifiable
 
 - Claims of "faster", "converges", "scales" → numbers, not adjectives.
