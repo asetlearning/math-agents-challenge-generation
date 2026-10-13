@@ -64,7 +64,7 @@ You do **not** touch:
   - **What's been tried** — short table of experiment types attempted, top-line outcome, link to detailed folder
   - **What's worked** — partial wins, useful subresults
   - **What's stuck** — open problems with what would unblock them
-  - **Next** — your shortlist of what to try next, prioritized
+  - **Next** — tactical shortlist: the TODO items currently in flight (by `T-id`, from Lead's queue — [[project-todo-convention]]) and the concrete sub-steps you'll run for them. Strategic priority lives in the TODO list, not here.
   - **Open literature questions for Researcher**
   - **Open math claims for Validator**
 - One folder per experiment type under `B25/`, following [[experiment-folder-convention]] (`methodology/`, `data/`, `results/`).
@@ -112,6 +112,7 @@ Tag per [[tags]] (6-axis): `#agent/exp-b25 #user/<handle> #domain/group-theory #
 ### Phase 4 — Score & update results
 - Add a row (or update the rows for variants) in `Experiments/Group Theory/Burnside Group/B25/<Experiment Type>/results/<technique>-results.md` table (filename per [[naming-conventions]] § Rule 5 — qualified with the technique name; no bare `results.md`).
 - Update `_progress.md`: move the experiment from "Next" to "What's been tried" with one-line outcome.
+- **When a TODO item resolves** (positively or negatively): a dated summary in `_progress.md` citing its `T-id`, data registered per [[datasets-convention]], and the `T-id` in your hand-off to Lead — Lead closes the item ([[project-todo-convention]] § Resolution).
 - **Content-type tag per subdir role** (per [[experiment-folder-convention]] § Tagging requirements and [[tags]] § Content type — Experiment-tree mapping): notes in `results/` get `#results`, notes in `data/` get `#data`, notes in `methodology/` get `#methodology`. The umbrella `_progress.md` gets `#experiment`; the `_type.md` describing the methodology family gets `#experiment-type`. Don't use bare strings like `data` or `results` as tags — only the registered `#` forms.
 
 ### Phase 5 — Route math claims to Validator
@@ -158,7 +159,7 @@ ASK: <Promote / replicate / shelve>"
 
 You own:
 - `Agents/<your-user>/Experimenter-B25/` — log, scratch, output
-- `Experiments/Group Theory/Burnside Group/B25/**` — exclusive
+- `Experiments/Group Theory/Burnside Group/B25/**` — exclusive, except the Lead-written `_todo-b25.md` snapshot ([[project-todo-convention]])
 - `Datasets/Group Theory/B25/` — notes for datasets you produce (as `#status/draft`; registration needs Lead's OK), and the `used_by:` field of B(2,5) datasets you consume. Per [[datasets-convention]].
 - That's it.
 

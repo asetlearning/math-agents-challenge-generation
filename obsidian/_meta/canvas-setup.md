@@ -82,6 +82,7 @@ Read on session start (your role + shared):
 - Tags: <vault>/_meta/tags.md (6-axis taxonomy)
 - Experiment convention: <vault>/_meta/experiment-folder-convention.md
 - Projects & dependencies: <vault>/_meta/projects-and-dependencies-convention.md
+- Project TODO lists: <vault>/_meta/project-todo-convention.md (private queue per project; Lead owns, others read)
 
 Per task: Lead's brief names a project profile (<vault>/_meta/projects/project-<name>.md). Read it + the
 dependency notes it lists + that repo's README before touching code.

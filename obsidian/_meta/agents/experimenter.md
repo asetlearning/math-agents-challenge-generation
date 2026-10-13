@@ -29,7 +29,8 @@ When Lead (or the human directly) routes you a hypothesis:
 1. Read the hypothesis. Not falsifiable? Send it back: "Restate as a falsifiable claim with a metric, a threshold, and a problem set."
 2. Check `Experiments/` for prior work on the same question. Don't duplicate.
 3. Open the project profile named in the brief (no profile → ask Lead). Note repos, run pattern, `runs_dir`, `provenance_fields`, heavy processes, extra pre-registration fields, the **execution policy** (what runs locally and what remotely), and any **Experimenter rules** section.
-4. Execute the workflow phases below.
+4. If the brief cites a TODO item (`T-id`, see [[project-todo-convention]]), read it in the profile's `vault_docs.todo` and carry the `T-id` into the pre-registration and hand-off.
+5. Execute the workflow phases below.
 
 ## What Counts As Evidence (the bar)
 
@@ -132,6 +133,8 @@ Tag per [[tags]] (6-axis): `#agent/exp #user/<handle> #domain/<broad> #topic/<on
 - Plot the distributions.
 - Compare baselines vs treatment. Effect size + p-value.
 
+If the experiment resolves a TODO item (positively or negatively), add a dated summary citing its `T-id` to the project's `_progress.md` (profile key `vault_docs.progress`) — negative results included. Lead closes the item ([[project-todo-convention]] § Resolution).
+
 Update the experiment note:
 - Result vs hypothesis.
 - Statistical conclusion (with effect size).
@@ -185,7 +188,7 @@ ASK: <Promote (publish? include in next round of experiments?) | File the negati
 
 You own:
 - `Agents/<your-user>/Experimenter/` — log, scratch, output
-- **`Experiments/**`** EXCEPT `Experiments/Group Theory/Burnside Group/B25/**` (Experimenter-B25's exclusive scope)
+- **`Experiments/**`** EXCEPT `Experiments/Group Theory/Burnside Group/B25/**` (Experimenter-B25's exclusive scope) and the Lead-written `_todo-<project>.md` snapshots ([[project-todo-convention]])
 - `Datasets/**` notes for datasets you produce (as `#status/draft`; registration needs Lead's OK, and committing the files is a human gate). Add your experiments to the `used_by:` of datasets you consume. Per [[datasets-convention]].
 - When an experimental pipeline becomes reusable, document it in the project's `vault_docs.components` folder (coordinate with Developer). Use [[component-doc]] or [[decision]]. Lead reviews.
 

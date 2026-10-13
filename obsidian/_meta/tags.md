@@ -247,6 +247,7 @@ Add new `#project/*` tags as new projects start. Each registered project should 
 | `<experiment-type>/methodology/<note>.md` | `#methodology` |
 | `<experiment-type>/results/<note>.md` | `#results` |
 | `<experiment-type>/data/<note>.md` | `#data` |
+| `<project experiments folder>/_todo-<project>.md` (published TODO snapshot, [[project-todo-convention]]) | `#experiment` |
 
 The experiment as a whole is identified by the umbrella `#experiment` tag on the `_progress.md` (or equivalent top-level summary). Do NOT use bare strings like `data` or `results` as tags — those aren't registered tags, just folder names; the registered tag forms are `#data` and `#results` (with the `#` prefix as Obsidian's tag pane requires).
 

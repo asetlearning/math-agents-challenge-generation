@@ -24,6 +24,9 @@ vault_docs:
   code_reviews: <vault folder>
   math_validation: <vault folder>
   experiments: <vault folder>
+  progress: <experiments folder>/_progress.md
+  todo: Agents/<handle>/Lead/todo/todo-<project>.md   # private, gitignored — [[project-todo-convention]]
+  todo_published: <experiments folder>/_todo-<project>.md   # Lead-written snapshot, only on human request
 tags: [meta, convention, project/<project>]
 ---
 

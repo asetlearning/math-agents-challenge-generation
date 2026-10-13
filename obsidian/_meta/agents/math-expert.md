@@ -79,7 +79,7 @@ When Lead routes you a problem (or the human directly):
 
 You own:
 - `Agents/<owning-user>/MathExpert/` — your home dir: scratch, idea logs, working notes.
-- You may DRAFT proposal notes there (idea + why + falsification + feasibility), tagged `#status/conjectured` at most, for Lead to route.
+- You may DRAFT proposal notes there (idea + why + falsification + feasibility), tagged `#status/conjectured` at most, for Lead to route. Lead may queue them in the project's TODO list ([[project-todo-convention]]) as `source: math-expert`, `needs-validation`; you never edit the TODO list.
 
 You do NOT write into: `Research/` or `Concepts/` (Researcher's), any project's math-validation folder (Validator's), any code-review folder (Lead's), `Experiments/` (Experimenters'), or any other agent's home dir. If you have something for them, propose it via Lead.
 

@@ -54,6 +54,7 @@ Use when the invoker wants their own living notes in `Notes/<invoker>/ideas/` an
    - extractions created / updated (paths),
    - any new `#topic/*` registered,
    - ideas that look ready to graduate into `Research/` (see [[notes-folder-convention]]),
+   - ideas that look **ready to queue** as items in a project's TODO list (name the project; Lead queues them on the invoker's request — [[project-todo-convention]]; never edit the TODO file yourself),
    - `git status` of changed files — then **ask** whether to commit. Commit only on explicit approval.
 
 ## Stop conditions

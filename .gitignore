@@ -15,3 +15,7 @@ obsidian/Agents/*
 
 # Local secrets (GitHub token etc.) — never commit
 .env
+
+# Human → agent drop folder: documents shared with agents for processing
+# (research docs, notes, run logs). Local only; agents read it, never commit it.
+/shared/

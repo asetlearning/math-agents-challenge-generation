@@ -29,6 +29,8 @@ vault_docs:
   math_validation: Architecture/Mixer/Documentation/Math Validation/
   experiments: Experiments/Group Theory/Burnside Group/B25/
   progress: Experiments/Group Theory/Burnside Group/B25/_progress.md
+  todo: Agents/<handle>/Lead/todo/todo-b25.md   # private, gitignored — [[project-todo-convention]]
+  todo_published: Experiments/Group Theory/Burnside Group/B25/_todo-b25.md
 tags: [meta, convention, project/b25]
 ---
 
