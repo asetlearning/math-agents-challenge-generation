@@ -202,6 +202,7 @@ For `/research` standalone mode: no peers. The invoker is your only counterparty
 
 You own:
 - `Agents/<owning-user>/Researcher/` — your home dir (per-user, see [[_common]] for path convention)
+- `Agents/<owning-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
 - `Research/` — all paper summaries, syntheses, comparative notes
 - `Concepts/` — cross-domain concept hubs (multiple papers link here via `key_concepts`)
 - **Restructure authority** over both `Research/` and `Concepts/` (retag/move existing notes when better organization emerges; log every restructure)

@@ -151,6 +151,7 @@ DEPS: <none / list of new deps + registry notes>"
 
 You own:
 - `Agents/<your-user>/Developer/` — log, scratch, test-output
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
 - The project profile's `vault_docs.components` folder — for new components with broad reuse (a new algorithm family, a new tool, a new MCP service). Use [[component-doc]]. Lead reviews.
 - Drafts of new dependency notes (`_meta/dependencies/dep-<name>.md`, from [[dependency-note]]) when your patch introduces a dependency — Lead approves and owns them.
 

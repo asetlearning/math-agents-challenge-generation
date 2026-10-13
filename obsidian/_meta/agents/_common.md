@@ -79,6 +79,27 @@ DEADLINE: <none | needed by <event>>
 
 `VERDICT` is reserved for Lead's code reviews and Validator's math verdicts. Long context in linked vault notes, not in the message.
 
+### Message log (mandatory)
+
+Every inter-agent `maestri ask` is recorded in a shared, append-only message log, written by **both ends**:
+
+- **Location:** `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — one file per month (the month of the entry's timestamp). `_shared/` is the per-user folder for data all roles share; like the rest of `Agents/`, it is gitignored and never committed.
+- **Sender** appends a `SENT` line right after each `maestri ask`.
+- **Receiver** appends a `RECV` line on receiving a message, before acting on it.
+- **Entry format** — one line, header fields only (the body stays in the linked notes):
+
+  ```
+  - 2026-10-13 14:05 | SENT | Lead → Developer | REQUEST | <TOPIC> | <PROJECT or -> | <CONTEXT or -> | ASK: <one line, truncated>
+  - 2026-10-13 14:06 | RECV | Lead → Developer | REQUEST | <TOPIC> | <PROJECT or -> | <CONTEXT or -> | ASK: <one line, truncated>
+  ```
+
+  The arrow is always sender → receiver; `SENT` / `RECV` says which end wrote the line. Use your canvas name (e.g. `Experimenter-B25`, `Experimenter-Grobner`). A missing header field is logged as `-`.
+- **How to write:** one shell append per line, so concurrent agents don't interleave — `mkdir -p "<vault>/Agents/<your-user>/_shared" && printf '%s\n' "<line>" >> "<vault>/Agents/<your-user>/_shared/message-log-$(date +%Y-%m).md"`. The file is created on first append; no frontmatter or tags (housekeeping, not a content note). Don't use `obsidian edit` or the `Edit`/`Write` tools on it (read-modify-write races with other agents).
+- **Never** edit, reorder or delete existing lines.
+- **Scope:** inter-agent `maestri ask` traffic only — not chat with the human, not cold-start handshakes. A `SENT` without a matching `RECV` marks a message that was lost or never processed.
+
+The message log is the communication record; your role `log.md` remains your own work record.
+
 ## Multi-user authorship
 
 This vault is shared across multiple humans (you + colleagues). Every note carries:
@@ -103,7 +124,7 @@ See [[tags]] for the full 6-axis taxonomy. Tag minimum per note: one `#agent/*` 
 
 ## Obsidian write rules
 
-- **Your home dir is `Agents/<your-user>/<your-role>/`** where `<your-user>` is the human handle who owns this canvas session (typically `maumayma`, but the vault is multi-user — other contributors get their own `Agents/<their-handle>/` subtree). That is the *only* directory you write to in `Agents/`. **Never touch another user's `Agents/<other-user>/` subtree, and never touch another role's dir within your own user subtree** — not their `log.md`, not their scratch, nothing. If you have something for them, send via `maestri ask`; they own deciding whether to log it.
+- **Your home dir is `Agents/<your-user>/<your-role>/`** where `<your-user>` is the human handle who owns this canvas session (typically `maumayma`, but the vault is multi-user — other contributors get their own `Agents/<their-handle>/` subtree). That is the *only* directory you write to in `Agents/`, **plus appending to the shared message log in `Agents/<your-user>/_shared/`** (see § Message log). **Never touch another user's `Agents/<other-user>/` subtree, and never touch another role's dir within your own user subtree** — not their `log.md`, not their scratch, nothing. If you have something for them, send via `maestri ask`; they own deciding whether to record it in their `log.md`.
 - **Path qualification with obsidian-cli is mandatory.** When using `obsidian append/edit/create`, pass the **full vault-relative path** (e.g. `Agents/maumayma/Experimenter/log.md`), not just `log` — multiple `log.md` files exist and name-resolution will pick the wrong one. Read the result back to confirm.
 - **Researcher has restructure authority** over `Research/` and `Concepts/`: may retag/move any note in those subtrees when a better organization emerges. Must log every restructure in `Agents/<owning-user>/Researcher/log.md` with before/after. This authority is unique to Researcher. Other agents only touch their own home dirs.
 - **Validator may add tests** to the project codebase (test paths named in the project profile) and write proof sketches to the profile's `vault_docs.math_validation` folder. Doesn't touch other Architecture areas.

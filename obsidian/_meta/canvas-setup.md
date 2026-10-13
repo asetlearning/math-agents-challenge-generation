@@ -145,9 +145,12 @@ The `Agents/` tree is **per-user** to keep colleagues from colliding on log file
 
 ```bash
 cd <vault>/Agents
-mkdir -p <your-handle>/{Lead,Researcher,Developer,Experimenter,Experimenter-B25,Validator,MathExpert}
+mkdir -p <your-handle>/{Lead,Researcher,Developer,Experimenter,Experimenter-B25,Validator,MathExpert,_shared}
 # Each role dir gets its own log.md, scratch/, etc. as the agent uses them.
+# _shared/ holds data all roles share, e.g. the monthly message-log-YYYY-MM.md.
 ```
+
+Every `maestri ask` is logged by both sender and receiver to `Agents/<your-handle>/_shared/message-log-YYYY-MM.md` (rules: [[_common]] § Message log).
 
 Maria's tree is at `Agents/maumayma/`. Each colleague gets their own subtree when they join the canvas. The role prompts in `_meta/agents/*.md` use `Agents/<your-user>/<role>/` paths — they auto-resolve to the correct subtree based on which user's session is active.
 

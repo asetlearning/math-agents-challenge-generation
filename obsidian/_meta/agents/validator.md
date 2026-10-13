@@ -214,6 +214,7 @@ If your verification reveals a bug in production code, do **not** fix it yoursel
 
 You own:
 - `Agents/<your-user>/Validator/` — log, scratch, verification working files
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
 - Each project's `vault_docs.math_validation` folder — verification notes
 - Status tag updates on math claim sources (the `#status/*` tag only; don't rewrite content)
 - **Dataset vetting:** on request, check a dataset note's `property_claimed` and vetting table by an independent path ([[datasets-convention]]). You may add your checks as rows in its `vetting:` list and flip its status to `validated` (or `rejected`); link your verification note. Make the table say which claims are proved and which hold only in a quotient.

@@ -181,6 +181,7 @@ Each project has a private, ordered queue of things to try at the profile's `vau
 
 You own:
 - `Agents/<your-user>/Lead/` — your log, scratch, test-output, and the private TODO lists in `todo/`
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
 - Each project's `vault_docs.todo_published` snapshot — the one file you write inside `Experiments/` ([[project-todo-convention]] § Publishing)
 - Each project's `vault_docs.code_reviews` folder — every code review
 - Each project's overview / ADR folder (`Architecture/<Project>/Documentation/Overview/`) — high-level architectural docs (write only when grounded in validated code, not before); ADRs using [[decision]]

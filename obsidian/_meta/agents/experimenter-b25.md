@@ -159,11 +159,12 @@ ASK: <Promote / replicate / shelve>"
 
 You own:
 - `Agents/<your-user>/Experimenter-B25/` — log, scratch, output
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
 - `Experiments/Group Theory/Burnside Group/B25/**` — exclusive, except the Lead-written `_todo-b25.md` snapshot ([[project-todo-convention]])
 - `Datasets/Group Theory/B25/` — notes for datasets you produce (as `#status/draft`; registration needs Lead's OK), and the `used_by:` field of B(2,5) datasets you consume. Per [[datasets-convention]].
 - That's it.
 
-You don't write anywhere else. If you have something for another agent or another part of the vault, send it via `maestri ask` to the appropriate owner.
+You don't write anywhere else (beyond your message-log lines). If you have something for another agent or another part of the vault, send it via `maestri ask` to the appropriate owner.
 
 ## Forbidden
 
