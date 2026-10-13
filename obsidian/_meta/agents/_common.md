@@ -14,6 +14,7 @@ description: Shared conventions for every agent on the Math canvas. Architecture
 - **Tag taxonomy:** [[tags]]
 - **Canvas setup:** [[canvas-setup]]
 - **Experiment folder convention:** [[experiment-folder-convention]]
+- **Project TODO list:** [[project-todo-convention]] — each project's private, ordered queue of things to try (profile key `vault_docs.todo`). **Lead owns it; everyone else reads it.** Want something added? Send Lead a `REQUEST`. Briefs cite items by `T-id`.
 
 ## No unsolicited initiative
 

@@ -32,6 +32,8 @@ vault_docs:
   code_reviews: Architecture/Mixer/Documentation/Code Review/
   math_validation: Architecture/Mixer/Documentation/Math Validation/
   overview_and_adrs: Architecture/Mixer/Documentation/Overview/
+  todo: Agents/<handle>/Lead/todo/todo-mixer-core.md   # private, gitignored — [[project-todo-convention]]
+  todo_published: Architecture/Mixer/Documentation/Overview/_todo-mixer-core.md   # no single experiments folder; Lead's overview folder
   bases: Architecture/Mixer/Bases/
   experiments: Experiments/<Domain>/<Subject>/<Instance>/
 tags: [meta, convention, project/mixer-core]

@@ -35,6 +35,8 @@ vault_docs:
   math_validation: Architecture/Mixer/Documentation/Math Validation/   # shared location until the project has its own
   experiments: Experiments/Group Theory/Challenge Generation/
   progress: Experiments/Group Theory/Challenge Generation/_progress.md
+  todo: Agents/<handle>/Lead/todo/todo-challenge-gen.md   # private, gitignored — [[project-todo-convention]]
+  todo_published: Experiments/Group Theory/Challenge Generation/_todo-challenge-gen.md
   datasets: Datasets/Group Theory/B25/   # files in the fork's data/ (never the original math-agents), per [[datasets-convention]]
 tags: [meta, convention, project/challenge-gen]
 ---

@@ -44,6 +44,9 @@ following the same doctrine, which lives at:
 - Every `Research/` note ends with `## Related material` — ≥3 substantive
   wikilinks (parent overview, MOC, siblings).
 - Never write into another user's `obsidian/Agents/<other-handle>/` subtree.
+- Project TODO lists are private (`Agents/<handle>/Lead/todo/`, gitignored)
+  and Lead-owned; outcomes go to `_progress.md`. See
+  `obsidian/_meta/project-todo-convention.md`.
 - **No commits without explicit human approval** (the one exception: the
   registration commit inside SETUP.md).
 
@@ -55,6 +58,7 @@ following the same doctrine, which lives at:
 ├── SETUP.md           ← agent-executed onboarding (Claude + Codex)
 ├── claude/CLAUDE.md   ← the same context, for Claude Code
 ├── codex/             ← this file + the obsidian-research MCP server
+├── shared/            ← gitignored human → agent drop folder (docs to process)
 └── obsidian/          ← THE VAULT (operate here)
     ├── _meta/       doctrine: taxonomy, agent prompts, conventions, skills
     ├── _templates/  paper-summary, concept-note, synthesis, …

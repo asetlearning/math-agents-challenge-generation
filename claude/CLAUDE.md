@@ -81,6 +81,7 @@ If you're operating on the vault and a change feels commit-worthy, ASK the human
 ├── claude/              ← Claude Code context (this file lives here)
 ├── codex/               ← Codex context + the obsidian-research MCP server
 ├── data/                ← registered dataset files (≤ 10 MB each); described by Datasets/ notes
+├── shared/              ← gitignored human → agent drop folder (docs, research papers, run logs to process); read it, never commit it
 └── obsidian/            ← THE VAULT — operate here
     ├── README.md
     ├── _meta/           ← doctrine: taxonomy, agent prompts, conventions, /research skill
@@ -99,8 +100,9 @@ If you're operating on the vault and a change feels commit-worthy, ASK the human
 ## Where to look first
 
 - **For doctrine questions**: `obsidian/_meta/` (mission, tags, conventions, agent prompts)
-- **For templates**: `obsidian/_templates/` (paper-summary, concept-note, synthesis, experiment, code-review, component-doc, decision, personal-note, project-profile, dependency-note)
+- **For templates**: `obsidian/_templates/` (paper-summary, concept-note, synthesis, experiment, code-review, component-doc, decision, personal-note, project-profile, project-todo, dependency-note)
 - **For project profiles and the dependency registry** (repos, commands, provenance, protected interfaces): `obsidian/_meta/projects/`, `obsidian/_meta/dependencies/`, convention at `obsidian/_meta/projects-and-dependencies-convention.md`
+- **For project TODO lists** (private, Lead-owned queue of things to try; outcomes go to `_progress.md`): `obsidian/_meta/project-todo-convention.md`
 - **For the `/research` skill internals**: `obsidian/_meta/skills/research/{SKILL.md,INSTALL.md,workflows/}`
 - **For the Maestri agents' role prompts**: `obsidian/_meta/agents/`
 - **For existing content**: `obsidian/Research/`, `obsidian/Concepts/`, `obsidian/Experiments/`
