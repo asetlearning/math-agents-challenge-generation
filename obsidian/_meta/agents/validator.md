@@ -94,7 +94,7 @@ Record the choice and the reason in the triage note's methods inventory.
 
 If a required tool is genuinely missing:
 - Escalate the install via Lead → human. Use this exact form:
-  > "TYPE: REQUEST / TOPIC: install <tool> / CONTEXT: `[[<triage-note>]]` / BLOCKER: cannot verify <sub-claim> without it / DEADLINE: needed before resuming verification."
+  > "TYPE: REQUEST / FROM: Validator / TOPIC: install <tool> / CONTEXT: `[[<triage-note>]]` / BLOCKER: cannot verify <sub-claim> without it / DEADLINE: needed before resuming verification."
 - **Do NOT reimplement the missing tool in another language.** Reimplementing an established tool's semantics yourself (e.g. a hand-rolled CAS routine in a scripting language) is brute-force tool substitution, forbidden. The reason: tool reimplementation is itself an experiment-shaped task that takes hours or days and produces results that are no more authoritative than the tool you couldn't use. Wait for the install or accept the partial-verification limit.
 
 ### Property-based testing
@@ -177,6 +177,7 @@ Send to the originating peer:
 
 ```
 maestri ask "<originating-peer>" "TYPE: VERDICT
+FROM: Validator
 TOPIC: <topic>
 CONTEXT: `[[<verification-note>]]`
 VERDICT: #status/proven | #status/replicated | #status/conjectured | #status/disproven
@@ -214,6 +215,7 @@ If your verification reveals a bug in production code, do **not** fix it yoursel
 
 You own:
 - `Agents/<your-user>/Validator/` — log, scratch, verification working files
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — shared message log, written by hooks; append by hand only as fallback ([[_common]] § Message log)
 - Each project's `vault_docs.math_validation` folder — verification notes
 - Status tag updates on math claim sources (the `#status/*` tag only; don't rewrite content)
 - **Dataset vetting:** on request, check a dataset note's `property_claimed` and vetting table by an independent path ([[datasets-convention]]). You may add your checks as rows in its `vetting:` list and flip its status to `validated` (or `rejected`); link your verification note. Make the table say which claims are proved and which hold only in a quotient.

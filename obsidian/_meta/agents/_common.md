@@ -70,6 +70,7 @@ When messaging a peer via `maestri ask "<Name>" "..."`:
 
 ```
 TYPE: <REQUEST | REPORT | QUESTION | BLOCKER | VERDICT>
+FROM: <your canvas name, e.g. Lead, Experimenter-B25>
 TOPIC: <one line>
 PROJECT: <[[project-<name>]] — mandatory on any REQUEST that involves code, runs or experiments>
 CONTEXT: <wikilink>
@@ -77,7 +78,31 @@ ASK: <what you need, or "FYI">
 DEADLINE: <none | needed by <event>>
 ```
 
-`VERDICT` is reserved for Lead's code reviews and Validator's math verdicts. Long context in linked vault notes, not in the message.
+`VERDICT` is reserved for Lead's code reviews and Validator's math verdicts. Long context in linked vault notes, not in the message. Keep `TYPE:` as the first header line and always fill `FROM:` — the message-log hook uses them to recognize and attribute incoming messages.
+
+### Message log (automatic)
+
+Every inter-agent `maestri ask` is recorded in a shared, append-only message log. **Claude Code hooks write it deterministically** — you don't append to it yourself.
+
+- **Location:** `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — one file per month. `_shared/` is the per-user folder for data all roles share; like the rest of `Agents/`, it is gitignored and never committed.
+- **Writer:** `claude/hooks/maestri_message_log.py` (repo root), installed per machine in `~/.claude/settings.json` — see [[canvas-setup]] § Step 7. It runs only inside Maestri terminals.
+  - `SENT` — sender side, before each `maestri ask` runs (one line per target; `--batch` included, `--raw` skipped).
+  - `REPLY` — sender side, after the `ask` returns: the synchronous answer, or `(no reply: …)` on timeout/error.
+  - `RECV` — receiver side, when a prompt whose header contains `TYPE:` arrives.
+- **Entry format** — one line, header fields + ASK (the body stays in linked notes):
+
+  ```
+  - 2026-10-13 14:05:12 | SENT | Lead → Developer | REQUEST | <TOPIC> | <PROJECT or -> | <CONTEXT or -> | ASK: <one line, truncated>
+  - 2026-10-13 14:05:14 | RECV | Lead → Developer | REQUEST | <TOPIC> | <PROJECT or -> | <CONTEXT or -> | ASK: <one line, truncated>
+  - 2026-10-13 14:09:40 | REPLY | Developer → Lead | REPLY: <first 1000 chars of the answer, on one line>
+  ```
+
+  The arrow is always sender → receiver. Names are canvas names (sender from `maestri list` → `You:`; on `RECV`, from the `FROM:` field). A missing field is `-`; a sender the hook couldn't determine is `?`. Hook failures appear as `ERROR` lines.
+- **Never** edit, reorder or delete lines; don't open the file with `obsidian edit` or the `Edit`/`Write` tools (races with the hooks).
+- **Fallback only:** if the hook is not installed on your machine (no `maestri_message_log.py` entry in `~/.claude/settings.json`), tell the human and append the `SENT` / `RECV` lines yourself with a single shell append: `printf '%s\n' "<line>" >> "<vault>/Agents/<your-user>/_shared/message-log-$(date +%Y-%m).md"`.
+- **Scope:** inter-agent `maestri ask` traffic only — not chat with the human, not cold-start handshakes. A `SENT` without a matching `RECV` marks a message that was lost or never processed.
+
+The message log is the communication record; your role `log.md` remains your own work record.
 
 ## Multi-user authorship
 
@@ -103,7 +128,7 @@ See [[tags]] for the full 6-axis taxonomy. Tag minimum per note: one `#agent/*` 
 
 ## Obsidian write rules
 
-- **Your home dir is `Agents/<your-user>/<your-role>/`** where `<your-user>` is the human handle who owns this canvas session (typically `maumayma`, but the vault is multi-user — other contributors get their own `Agents/<their-handle>/` subtree). That is the *only* directory you write to in `Agents/`. **Never touch another user's `Agents/<other-user>/` subtree, and never touch another role's dir within your own user subtree** — not their `log.md`, not their scratch, nothing. If you have something for them, send via `maestri ask`; they own deciding whether to log it.
+- **Your home dir is `Agents/<your-user>/<your-role>/`** where `<your-user>` is the human handle who owns this canvas session (typically `maumayma`, but the vault is multi-user — other contributors get their own `Agents/<their-handle>/` subtree). That is the *only* directory you write to in `Agents/`, **plus the shared message log in `Agents/<your-user>/_shared/`, which hooks write for you** (see § Message log). **Never touch another user's `Agents/<other-user>/` subtree, and never touch another role's dir within your own user subtree** — not their `log.md`, not their scratch, nothing. If you have something for them, send via `maestri ask`; they own deciding whether to record it in their `log.md`.
 - **Path qualification with obsidian-cli is mandatory.** When using `obsidian append/edit/create`, pass the **full vault-relative path** (e.g. `Agents/maumayma/Experimenter/log.md`), not just `log` — multiple `log.md` files exist and name-resolution will pick the wrong one. Read the result back to confirm.
 - **Researcher has restructure authority** over `Research/` and `Concepts/`: may retag/move any note in those subtrees when a better organization emerges. Must log every restructure in `Agents/<owning-user>/Researcher/log.md` with before/after. This authority is unique to Researcher. Other agents only touch their own home dirs.
 - **Validator may add tests** to the project codebase (test paths named in the project profile) and write proof sketches to the profile's `vault_docs.math_validation` folder. Doesn't touch other Architecture areas.

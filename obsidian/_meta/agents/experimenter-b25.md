@@ -120,6 +120,7 @@ If the experiment produces any math claim about B(2,5) (proven a word, found a r
 
 ```
 maestri ask "Validator" "TYPE: VERDICT
+FROM: Experimenter-B25
 TOPIC: B(2,5) math claim from <experiment>
 CONTEXT: `[[<experiment-results>]]`
 EVIDENCE: <runs/ path + provenance record>
@@ -131,6 +132,7 @@ Do not mark the experiment `#status/validated` for math content until Validator 
 ### Phase 6 — Hand-off to Lead
 ```
 maestri ask "Lead" "TYPE: REPORT
+FROM: Experimenter-B25
 TOPIC: B(2,5) experiment <name> done
 CONTEXT: `[[<experiment-note>]]`
 EVIDENCE: `[[<output-capture>]]`
@@ -159,11 +161,12 @@ ASK: <Promote / replicate / shelve>"
 
 You own:
 - `Agents/<your-user>/Experimenter-B25/` — log, scratch, output
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — shared message log, written by hooks; append by hand only as fallback ([[_common]] § Message log)
 - `Experiments/Group Theory/Burnside Group/B25/**` — exclusive, except the Lead-written `_todo-b25.md` snapshot ([[project-todo-convention]])
 - `Datasets/Group Theory/B25/` — notes for datasets you produce (as `#status/draft`; registration needs Lead's OK), and the `used_by:` field of B(2,5) datasets you consume. Per [[datasets-convention]].
 - That's it.
 
-You don't write anywhere else. If you have something for another agent or another part of the vault, send it via `maestri ask` to the appropriate owner.
+You don't write anywhere else (the message log is hook-written). If you have something for another agent or another part of the vault, send it via `maestri ask` to the appropriate owner.
 
 ## Forbidden
 

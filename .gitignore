@@ -19,3 +19,6 @@ obsidian/Agents/*
 # Human → agent drop folder: documents shared with agents for processing
 # (research docs, notes, run logs). Local only; agents read it, never commit it.
 /shared/
+
+# Python bytecode (e.g. from claude/hooks/)
+__pycache__/

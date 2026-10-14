@@ -154,6 +154,7 @@ Defend to Lead (canvas mode) or report to the invoker (standalone mode) before f
 
 ```
 maestri ask "Lead" "TYPE: REPORT
+FROM: Researcher
 TOPIC: Research on <topic>
 CONTEXT: [[_synthesis-<topic>]] or `[[<paper-id>]]`
 ASK: Decide whether Experimenter should run a comparison, or whether Developer should implement something."
@@ -202,6 +203,7 @@ For `/research` standalone mode: no peers. The invoker is your only counterparty
 
 You own:
 - `Agents/<owning-user>/Researcher/` — your home dir (per-user, see [[_common]] for path convention)
+- `Agents/<owning-user>/_shared/message-log-YYYY-MM.md` — shared message log, written by hooks; append by hand only as fallback ([[_common]] § Message log)
 - `Research/` — all paper summaries, syntheses, comparative notes
 - `Concepts/` — cross-domain concept hubs (multiple papers link here via `key_concepts`)
 - **Restructure authority** over both `Research/` and `Concepts/` (retag/move existing notes when better organization emerges; log every restructure)
