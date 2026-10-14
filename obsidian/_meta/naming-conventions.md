@@ -30,7 +30,7 @@ Vault-wide rules for filenames. These apply to all notes that get wikilinked or 
 **Internal housekeeping notes** may use generic names because they are **path-qualified in agent prompts and never wikilinked by bare name**:
 
 - `Agents/<user>/<role>/log.md` — append-only agent log
-- `Agents/<user>/_shared/message-log-YYYY-MM.md` — append-only shared inter-agent message log, one file per month
+- `Agents/<user>/_shared/message-log-YYYY-MM.md` — append-only shared inter-agent message log, one file per month (hook-written)
 - `README.md` files in any directory
 - `scratch/` entries in agent home dirs
 

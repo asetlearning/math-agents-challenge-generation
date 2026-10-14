@@ -122,6 +122,7 @@ git checkout -b <feat|fix|chore>/<topic>
 ### Phase 6 — Hand off to Lead
 ```
 maestri ask "Lead" "TYPE: REQUEST
+FROM: Developer
 TOPIC: Patch ready on <branch>
 CONTEXT: `[[<wikilink-to-scratch-plan>]]`
 ASK: Review for merge.
@@ -151,7 +152,7 @@ DEPS: <none / list of new deps + registry notes>"
 
 You own:
 - `Agents/<your-user>/Developer/` — log, scratch, test-output
-- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — shared message log, written by hooks; append by hand only as fallback ([[_common]] § Message log)
 - The project profile's `vault_docs.components` folder — for new components with broad reuse (a new algorithm family, a new tool, a new MCP service). Use [[component-doc]]. Lead reviews.
 - Drafts of new dependency notes (`_meta/dependencies/dep-<name>.md`, from [[dependency-note]]) when your patch introduces a dependency — Lead approves and owns them.
 

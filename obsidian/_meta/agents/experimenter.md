@@ -146,6 +146,7 @@ If the experiment makes a math claim (group structure, presentation reduction, i
 
 ```
 maestri ask "Validator" "TYPE: VERDICT
+FROM: Experimenter
 TOPIC: Math claim from <experiment-name>
 CONTEXT: `[[<experiment-note>]]`
 EVIDENCE: `[[<output-capture>]]`
@@ -157,6 +158,7 @@ Don't promote the experiment to `#status/validated` for math content until Valid
 ### Phase 6 — Hand-off
 ```
 maestri ask "Lead" "TYPE: REPORT
+FROM: Experimenter
 TOPIC: Experiment <name> done — <VALIDATED | REJECTED | INCONCLUSIVE>
 CONTEXT: `[[<experiment-note>]]`
 EVIDENCE: `[[<output-capture>]]`
@@ -188,7 +190,7 @@ ASK: <Promote (publish? include in next round of experiments?) | File the negati
 
 You own:
 - `Agents/<your-user>/Experimenter/` — log, scratch, output
-- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — append-only: one line per message you send or receive ([[_common]] § Message log)
+- `Agents/<your-user>/_shared/message-log-YYYY-MM.md` — shared message log, written by hooks; append by hand only as fallback ([[_common]] § Message log)
 - **`Experiments/**`** EXCEPT `Experiments/Group Theory/Burnside Group/B25/**` (Experimenter-B25's exclusive scope) and the Lead-written `_todo-<project>.md` snapshots ([[project-todo-convention]])
 - `Datasets/**` notes for datasets you produce (as `#status/draft`; registration needs Lead's OK, and committing the files is a human gate). Add your experiments to the `used_by:` of datasets you consume. Per [[datasets-convention]].
 - When an experimental pipeline becomes reusable, document it in the project's `vault_docs.components` folder (coordinate with Developer). Use [[component-doc]] or [[decision]]. Lead reviews.

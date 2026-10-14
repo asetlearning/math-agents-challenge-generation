@@ -150,7 +150,15 @@ mkdir -p <your-handle>/{Lead,Researcher,Developer,Experimenter,Experimenter-B25,
 # _shared/ holds data all roles share, e.g. the monthly message-log-YYYY-MM.md.
 ```
 
-Every `maestri ask` is logged by both sender and receiver to `Agents/<your-handle>/_shared/message-log-YYYY-MM.md` (rules: [[_common]] § Message log).
+Every `maestri ask` is logged to `Agents/<your-handle>/_shared/message-log-YYYY-MM.md` by Claude Code hooks (rules: [[_common]] § Message log). Install them once per machine — canvas agents run outside this repo, so the hooks go in your **user** settings, `~/.claude/settings.json`, under `"hooks"`:
+
+```json
+"PreToolUse":       [{"matcher": "Bash", "hooks": [{"type": "command", "timeout": 10, "command": "python3 \"<repo>/claude/hooks/maestri_message_log.py\" sent --vault \"<vault>\" --handle <your-handle>"}]}],
+"PostToolUse":      [{"matcher": "Bash", "hooks": [{"type": "command", "timeout": 10, "command": "python3 \"<repo>/claude/hooks/maestri_message_log.py\" reply --vault \"<vault>\" --handle <your-handle>"}]}],
+"UserPromptSubmit": [{"hooks": [{"type": "command", "timeout": 10, "command": "python3 \"<repo>/claude/hooks/maestri_message_log.py\" recv --vault \"<vault>\" --handle <your-handle>"}]}]
+```
+
+Append these entries to any existing lists for the same events. The script does nothing outside Maestri terminals and always exits 0, so it never blocks an agent. Restart running Claude Code sessions after installing.
 
 Maria's tree is at `Agents/maumayma/`. Each colleague gets their own subtree when they join the canvas. The role prompts in `_meta/agents/*.md` use `Agents/<your-user>/<role>/` paths — they auto-resolve to the correct subtree based on which user's session is active.
 
