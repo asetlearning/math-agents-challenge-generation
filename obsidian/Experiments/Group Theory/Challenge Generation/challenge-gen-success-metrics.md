@@ -88,7 +88,50 @@ Source: T-003 stage 1 ([[t003-gated-dehn-search-2026-10-14#Results]]) and the Pe
 - **D_P** = N*_P / n. Like D, it is an **upper bound** for area/n, never the area: the count depends on the deletion order, and larger cancelling tuples are not searched.
 - **D_dataset_P** = (number of dataset-relator factors in F*_P) / n. Standard factors are not counted.
 
-**Decision.** For any relator set containing both standard and dataset relators, the **headline D** is D_dataset_P. Full D and D_P are always reported next to it. (Consequence, not part of the decision: for a pure dataset relator set (R-D), D_dataset_P = D_P.) Whether the level thresholds (L2: D ≥ 1) apply to the headline D is not stated in the decision; open question for the owner. To be revisited if a method places standard cells genuinely inside the diagram (T-018), so that they are no longer padding.
+**Decision.** For any relator set containing both standard and dataset relators, the **headline D** is D_dataset_P. Full D and D_P are always reported next to it. (Consequence, not part of the decision: for a pure dataset relator set (R-D), D_dataset_P = D_P.) **Levels (owner decision 2026-10-14, closing the open question).** L2 and every D threshold (for example the T-003 bar 0.200) are read on the headline D: D_dataset_P on mixed relator sets, D_P on pure sets. Full D is always reported alongside. A path-length D (D_path, T-016 overlap chains) is never a headline D and never counts toward L2.
+
+**Provenance rule (owner decision 2026-10-14, after T-016).** Words built as chains (rewriting-path constructions: a strip of cells with nearly bounded |w̄|) report D_path in its own column, never as headline D. Their level label **caps at L1 by construction**, even when N*_P/|w̄| ≥ 1, because for pure-dataset words D_P and D_path coincide numerically but D_path measures path length, not area.
+
+## Owner decision 2026-10-14: headline D_c for all constructions (T-023)
+Source: Developer's T-023 results (b25 PR #13), as relayed by Lead. Loop erasure and Peiffer deletion leave further cheaper certificates:
+- about 25% of T-003 R-M finalists have adjacent inverse cells;
+- T-016 chains compress hard once blocks are replaced by single relators (best E1c word: N* 55 → N*_c 7).
+
+**Definition.** D_c = N*_c/|w̄|. N*_c is the factor count after, in order:
+1. loop erasure;
+2. Peiffer-pair deletion (to the fixpoint, as for F*_P);
+3. inverse-cell reduction (adjacent inverse cells, i.e. cancelling pairs in the folded diagram, deleted);
+4. relator-closure compression: every contiguous block of factors whose expansion is cyclically a table entry is replaced by one factor. The table is all 1,630 R7 entries (b25_full, v^{5k} with |v| ≤ 7, and inverses, multiples included).
+
+Like D, it is an upper bound for area/|w̄|, never the area.
+
+**Decision.** D_c is the **headline certificate measure for all constructions**, and all D thresholds (L2: ≥ 1; bars such as 0.200) are read on it. D, D_P, D_area, b₁ and N_int are reported alongside. Earlier headline measures (D_P, D_dataset_P) are kept as columns. The T-003 and T-016 headline tables are updated once Developer's numbers are final.
+
+**Mixed relator sets (owner decision 2026-10-14).** On sets that mix dataset and standard relators, the headline is **D_dataset_c** = (dataset-relator factors of the compressed certificate F_c)/|w̄|, with the full D_c alongside. On pure sets the headline is D_c.
+
+## Owner decision 2026-10-14: vertex depth as the area-vs-path classification
+Source: Math Expert's vertex-depth criterion ([[2026-10-14-vertex-depth-criterion]]), which replaces the edge-based N_int and b₁ of [[2026-10-14-area-vs-path-criterion]]. Those counted tiny triangles in chains as interior. All statistics are computed on the compressed, reduced certificate F_c (headline) and on the raw certificate (diagnostic).
+- **Deep cell:** no vertex of the cell lies on the boundary ∂Δ (one touching point counts as touching).
+- **Peeling and depth:** remove all cells touching ∂Δ, recompute the boundary, and repeat; depth(cell) is the removal round, counting from 0. **maxdepth** is the largest depth, and **N_deep** counts the cells of depth ≥ 1.
+- **Normalised against the ideal square with the same N** (N ≥ 9): T_deep = N_deep/(√N − 2)² and T_depth = maxdepth/((√N − 1)/2).
+- **Classification:**
+  - **path-like** iff N_deep = 0;
+  - **area-like** iff T_deep ≥ 0.5 and T_depth ≥ 0.5;
+  - **thick strip** otherwise.
+  - Hub degree and cut width are diagnostics. The 0.5 cutoffs are conjectured (Math Expert).
+- **V_int** = number of interior vertices, the shaping term of the T-018 objective J = (N_deep + 0.25·V_int)/|w̄|.
+- **Depth success criterion (T-018):** the first L1-certified, novel B(2,5) word with maxdepth ≥ 2 and T_deep ≥ 0.5. D and D_c are tracked but not expected to reach 1. Math Expert's sizing conjecture: a square-like disc has |w̄| ≈ 4√N·e, so D ≥ 1 needs N ≳ 16e², about 1,300 cells for |v| ≤ 7.
+
+**D_area (owner decision 2026-10-14).** When T-023 provides it, D_area = N_int/|w̄| (interior cells of the folded diagram, Math Expert's [[2026-10-14-area-vs-path-criterion]]) is reported alongside D and D_path, not as headline.
+
+**Novelty (owner decision 2026-10-14, after T-016).** For every construction, "novel" means G2 **and** the all-classes check: R₂.₅(w) is not the canonical class of any of the 1,640 relators, used or not ([[challenge-gen-glossary#novel L1 and the guards G1 and G2]]).
+
+**Standard guard (owner decision 2026-10-14, from Validator's T-016 review).** For EVERY construction, a word counts as L1 and novel only if it also passes:
+1. **Non-increasing 2.5-closure:** the closure contains neither the empty word nor any relator class. This catches the greedy reducer's move-order dead ends: 14 of 190 T-016 E1 words, and 20 of 199 E1c L1 words, reduce to empty this way.
+2. **Exhaustive ≤ 2-cell certificate test** over the relator table: no certificate with at most 2 cells.
+3. **N*_c reported next to D.**
+
+It is reported as "no cheaper certificate found by these tests", never as an area statement. To be revisited if a method places standard cells genuinely inside the diagram (T-018), so that they are no longer padding.
 
 ## Success levels
 

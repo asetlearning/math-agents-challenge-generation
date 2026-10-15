@@ -111,7 +111,20 @@ H1 falsified for stage 1: no certified L1 word with D ≥ 0.2. Best D = D_P = 0.
 
 Closed (owner, 2026-10-14): T-003 closed, H1 and H2 falsified (max D_P 0.13 < 0.200). Headline D_dataset_P: R-D 0.083 (novel 0.067), R-M ≤ 0.039.
 
-Decision (owner, 2026-10-14, after T-003): for relator sets that mix standard and dataset relators, the headline D is D_dataset_P, the dataset factors of F*_P over |w|. Full D and D_P are always reported next to it. To be revisited if a method places standard cells genuinely inside the diagram (T-018). See [[challenge-gen-success-metrics]] § Owner decision 2026-10-14 (headline D) and [[challenge-gen-glossary#headline D, D_P and D_dataset_P]].
+Decision (owner, 2026-10-14, after T-003): for relator sets that mix standard and dataset relators, the headline D is D_dataset_P, the dataset factors of F*_P over |w|. Full D and D_P are always reported next to it. To be revisited if a method places standard cells genuinely inside the diagram (T-018). See [[challenge-gen-success-metrics]] § Owner decision 2026-10-14 (headline D) and [[challenge-gen-glossary#headline D, D_P and D_dataset_P]]. Levels (owner, same day): L2 and all D thresholds are read on the headline D.
+
+### 2026-10-14: T-016 overlap chaining (local, VM only)
+The 820 dataset relators share long cyclic pieces far beyond chance: 174,885 pairs with θ ≥ 0.3, against 482 in a power-free random null (363×); max θ 0.976. Chains glued along them (pre-registered walk) are almost all killed by the reducer. Its 2 L1 words are reducer-equivalent to an unused dataset relator, so H2 holds only by the letter of G2, and H3 is falsified. An exploratory screen-gated walk gives 197 certified L1 chain words, 190 novel even against all 1,640 relator classes, with path-length D up to 1.43 on |w̄| ≈ 42 (50 with D_path ≥ 1). |w̄| is nearly bounded, so this is path length, not area, and not an L2 claim. Pending Validator and the owner. Chains need conjugators of about 30 letters and about 950 PatternBoost tokens. Status inconclusive. [[t016-overlap-chaining-2026-10-14#Results]]
+
+Decisions (owner, 2026-10-14, after T-016):
+- **Provenance rule:** chain-built words report D_path in its own column, and their level caps at L1.
+- **Novelty:** the all-classes check is standard next to G2 for every construction.
+- **Code:** PR #12 is open; Lead merges after Validator.
+- **E1 confirmation (E1c):** fresh seed and start set, pre-registered. Confirmed: 199/204 certified L1, 193 novel with D_path > 0.2, 36 with ≥ 1 (max 1.31). Caveat: each walk collapses onto a single start lineage, and the two lineages converge on shared words, so this is a replication rather than an independent sample.
+
+Follow-ups (owner-approved, 2026-10-14, pre-registered addenda):
+- **Diverse-lineage walk E1d** (cap of 5 per lineage): 201/204 certified L1, 175 novel with D_path > 0.2 from 23 lineages and 336 relators. But 0 reach D_path ≥ 1 (max 0.92), so the D_path ≥ 1 region is narrow and lineage-specific.
+- **Triangle census:** 4,379 distinct-class triangles (three relators around one vertex, b₁ = 1) against 1 in the power-free null. They are depleted 39× against a configuration model (355k ± 12k), which supports Math Expert's sphere conjecture. T-022 verdict: "possible but not favoured". Code on PR #12 (`e0f5f7a`).
 
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
