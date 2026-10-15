@@ -64,6 +64,8 @@ The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. Projects with an execut
   - Configs and scripts travel as `run.files` and are recorded by hash, so they need no commit.
   - Large inputs go through `rjob put-data` and `[data]`.
   - Keep the job directory with the experiment's runner in the repo, or under the profile's `runs_dir`.
+- **Estimate resources honestly.** `[resources]` sets `device` (cpu | mps | cuda | gpu | auto), `cpus`, `gpus` (default 1 for GPU devices) and, when known, `mem_gb`. These estimates decide which host the job goes to and what may run beside it; they are not enforced limits.
+- **Which host.** The project's `rjob.toml` (see the profile's execution policy) lists the hosts it may use. `rjob submit` places the job on the first host that can run its device and has room now, and prints `host: <alias> (<reason>)`. Pin a host only when the experiment needs it (`host = "..."` in job.toml, or `--host`), and say why in the pre-registration. `rjob hosts` shows every host's free capacity and queue.
 - **Code must be committed.**
   - The host builds exact SHAs, and `rjob` refuses dirty trees.
   - Changes to repo code need a commit on an experiment branch first. Ask Lead, since only Lead commits.
@@ -71,11 +73,11 @@ The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. Projects with an execut
 - **Run.**
   - `rjob submit <dir>` returns a job id.
   - Then run `rjob wait <id>` in the background; it is not a heavy process.
-  - Check progress with `rjob status|logs <id>` and stop a job with `rjob cancel <id>`.
+  - Check progress with `rjob status|logs <id>` and stop a job with `rjob cancel <id>`. Commands on a job id find its host from the local record; no `--host` needed.
   - Don't poll in a tight loop.
 - **Results.**
   - `rjob fetch <id>` copies results to the profile's `runs_dir/<job-id>/`. Fetch summaries first with `--include`, and fetch bulky raw outputs only when the analysis needs them.
-  - The fetched `provenance.json` supplies most of the provenance record: SHAs, lock hash, input hashes, host and device.
+  - The fetched `provenance.json` supplies most of the provenance record: SHAs, lock hash, input hashes, host, device and the GPU ids used.
   - **Cite the job id** in the output capture and the results note.
 - **Housekeeping.** Test or aborted runs that won't be reported: `rjob cleanup job <id>` and delete the local copy, after telling Lead.
 
