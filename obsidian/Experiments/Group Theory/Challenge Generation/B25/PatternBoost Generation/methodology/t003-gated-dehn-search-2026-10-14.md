@@ -1,14 +1,14 @@
 ---
 title: t003-gated-dehn-search-2026-10-14
 hypothesis: "A PatternBoost search over ordered factor sequences (r_i, c_i), with the 820 dataset relators (alone or mixed with standard v^5), the F*-based D as objective and the L1 gate, finds certified L1 words with D above the T-002 random-product maximum 0.200; it does not reach L2 (D >= 1)."
-status: pending
+status: rejected
 author: asetlearning
 date: 2026-10-14
 todo: T-003
 project: challenge-gen
 instance: B(2,5)
 experiment_type: patternboost-generation
-tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/b25, topic/patternboost, topic/trivial-words, topic/hard-instance-generation, topic/proof-certificates, project/challenge-gen, status/pending, methodology]
+tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/b25, topic/patternboost, topic/trivial-words, topic/hard-instance-generation, topic/proof-certificates, project/challenge-gen, status/rejected, methodology]
 ---
 
 # T-003: PatternBoost search maximising D under the L1 gate — pre-registration
@@ -153,6 +153,10 @@ Owner approval (relayed by Lead, 2026-10-14): (1) the 7 stage-1 configurations a
 
 - **Deviation (owner decision 2026-10-14, padding loophole, option 1).** D stays as defined. Every certified finalist and every run additionally reports n_dataset_fstar, n_standard_fstar, padding fraction (1 − ρ_min16), D_dataset and dataset core (definitions: [[challenge-gen-glossary#Padding breakdown (T-003)]]). Code: `experiments/challenge_gen/t003/padding.py`, called by `eval_pb` from `b98c938`; the stage-1 jobs run `86b1672`, so the breakdown is computed locally on their fetched outputs (no resubmission). Whether to tighten the metric (ρ ≥ 0.9 on R-M, or D on dataset factors only) is decided by the owner after stage 1.
 
+- **Analysis change (Lead, 2026-10-14, T-020).** Configurations are compared on **D_P** = N*_P/|w|, with D reported next to it. N*_P is the number of factors left after loop erasure and Peiffer-pair deletion (`reduce_certificate`, b25 main `1736ac1`, [[2026-10-14-t020-peiffer-loophole]]). D_P is an upper bound for the area, not the area. Every certified word with D ≥ 0.2 is listed with N*, N*_P, |w| and its relator set. Computed locally by `padding.py`. Job 1 (newest merge): D 0.15 → D_P 0.11.
+
+- **Deviation (owner-approved 2026-10-14): placeholder challenge.** RD-A job `20261014-122144-8d760b` failed after 32 min. The workflow stops on a challenge match, and the placeholder challenge was dataset word 1 (32 letters). R-D × A has no length floor, so local search reproduced that word from a single factor at iteration 0, before any dump (`save_every` 5). `eval_pb` then had nothing to evaluate. RD-B (`20261014-122146-d1994d`, also unfloored) was cancelled while running. Fix: the placeholder is now `a` (`challenge_unmatchable.json`). Every expansion has zero exponent sums, so it has even length and can never match; the D scorer ignores the challenge. PR #10, b25 main `33eab3f`. RM-C and RD-C (finished) and RM-B and RM-C-unseeded (floored, so a 32-letter match is impossible) keep the old placeholder. Resubmitted from `33eab3f`, same configs, seed 3000001: RD-A `20261014-152320-272295`, RD-B `20261014-152322-08953f`.
+
 ## Smoke (local VM, 2026-10-14, seed 3000000)
 
 `smoke_components` (no torch on the VM, so model training and sampling are timed on the first remote job instead):
@@ -172,6 +176,66 @@ Owner approval (relayed by Lead, 2026-10-14): (1) the 7 stage-1 configurations a
 - `eval_pb` tested end to end on a synthetic run directory (47 finalists, 47 L0, 47 L1, G2 computed).
 
 ## Results
-Stage 1 (score merge): running (job ids above).
+**Stage 1 (score merge, seed 3000001), finished 2026-10-14 19:34 EDT.** All six runs completed 15 iterations. Mac time: 7.1 h for stage 1, including the failed RD-A (0.55 h) and the cancelled RD-B (0.17 h); 8.4 h with job 1. The budget is 32 h.
 
-**Newest-merge run (job 1, `20261014-110539-4e4d92`, R-M × C, seed 3000001; not a stage-1 result).** PatternBoost 82 min (15 iterations), evaluation seconds. Search outputs passing the gate per iteration: 737, 61, 18, 18, 5, 2, 3, 8, 8, 5, 5, 6, 3, 5, 1 (of about 2,200); best gated D 0.08 → 0.17 (iteration 11) → 0.15; mean \|w\| about 150. The final pool held one gate passer: certified L0 and L1 (ρ_min16 = 0.50), D = 0.15, **not novel** (G2). It is one 50-letter dataset factor (inverse of line 35) plus 14 standard v⁵ factors (conjugators of length 0–2) at exactly \|w\| = 100: the reducer removes the standard parts and keeps the relator's 50 letters, so ρ_min16 = 0.5 while all 15 factors count in N*. On R-M, D can therefore be raised by padding one dataset relator with standard factors up to the ρ ≥ 0.5 limit; G2 identifies such words as non-novel.
+Jobs: RM-C `20261014-122140-506aac`, RD-C `20261014-122142-4b625c`, RD-A `20261014-152320-272295`, RD-B `20261014-152322-08953f`, RM-B `20261014-122148-7248a7`, RM-C-unseeded `20261014-122150-080af8`.
+
+Finalists: about 370–380 per run (top 200 + 10% sample of the final pool). D_P is the T-020 upper bound for the area after Peiffer-pair deletion. Numbers: `~/Research/challenge-gen/runs/t003-stage1-summary.json` (local), per-word `eval/padding.jsonl`.
+
+| Config | L1 / evaluated | Novel (G2) | Best D_P (= best D) | Best D_P, novel | Median D | L1 with D > 0.066 (novel) | D > 0.200 | Best gated D, iter 0 → 4 → 14 | Final-pool median \|w\| |
+|---|---|---|---|---|---|---|---|---|---|
+| RM-C | 367/369 | 46 | 0.130 | 0.120 | 0.110 | 367 (46) | 0 | 0.08 → 0.10 → 0.13 | 100 |
+| RM-B (+floor) | 364/369 | 313 | 0.130 | 0.120 | 0.099 | 364 (313) | 0 | 0.053 → 0.06 → 0.09 | 100 |
+| RM-C unseeded | 372/377 | 265 | 0.123 | 0.123 | 0.110 | 372 (265) | 0 | 0.07 → 0.09 → 0.123 | 100 |
+| RD-A | 376/380 | 151 | 0.083 | 0.067 | 0.055 | 28 (1) | 0 | 0.056 → 0.075 → 0.083 | 65 |
+| RD-B | 379/380 | 270 | 0.083 | 0.066 | 0.041 | 10 (0) | 0 | 0.049 → 0.074 → 0.075 | 63 |
+| RD-C | 363/380 | 357 | 0.060 | 0.060 | 0.050 | 0 (0) | 0 | 0.04 → 0.05 → 0.06 | 101 |
+
+- **D_P (T-020).** Peiffer pairs occur only on R-M: 40–76 words per run, at most 4 factors removed. They never change a run's best word, so best D_P = best D everywhere. Median D_P is within 0.003 of median D in every run.
+- **D ≥ 0.2: none.** No pool held a gate passer with D ≥ 0.2, so there are no words to list:
+  - The score merge keeps pool bests monotone.
+  - For A and C the gated score is D, and the final bests are ≤ 0.13.
+  - For B the score is D·ρ_screen with ρ ≥ 0.5, so a D = 0.2 passer would score ≥ 0.1. The B bests are 0.09 and 0.075.
+  - The `eval_pb` scan of all dumps for D > 0.200 found 0 candidates.
+- **Padding breakdown.**
+  - R-M runs: every L1 finalist contains standard factors, and the median is 8–10 of them in F*. For 314–340 of about 370 words, the standard factors leave no trace in the reduced word (dataset core).
+    - Median padding fraction (1 − ρ_min16): 0.48 (RM-C), 0.28 (RM-B), 0.40 (unseeded).
+    - Best D_dataset: 0.02–0.039.
+  - R-D runs: no standard factors. Median padding fraction 0.04–0.21; D_dataset = D.
+- **Numbers for the owner's metric decision.**
+  - (a) ρ_min16 ≥ 0.9:
+    - RM-C 0 words, unseeded 0 words, RM-B 15 words (best D 0.10, best D_dataset 0.03).
+    - RD-A 95 (best D 0.075), RD-B 266 (0.075), RD-C 67 (0.053).
+  - (b) D on dataset factors only: best R-M 0.039 vs best R-D 0.083.
+  - Under either rule, R-D leads. Its best (0.083; novel 0.067) is about 2.7× the T-002 pure-dataset L1 maximum (0.031) and just above the L1 maximum of 0.066.
+
+**Hypotheses (stage 1, one seed).**
+- **H1, H2: falsified for stage 1.** No certified L1 word has D > 0.200; the maximum is 0.13. The best D_P is 0.65 of the bar.
+- **H3: holds.** No L2 word.
+- **H4: holds.** Gate passers certified L1: 95.5% (RD-C), 98.6–99.7% (the other runs).
+- **H5: holds.** Without the floor, the R-D median |w| falls from 111/113 (initial candidates) to 65/63 (final pool), −41% and −44%. With the floor it ends at 100–101. On R-M the floor is binding: final-pool median |w| = 100 exactly.
+- **H6: holds on D and D_P** (B: 0.13 vs 0.083; C: 0.13 vs 0.06). **Reverses on D_dataset** (R-M 0.039/0.02 vs R-D 0.083/0.06). The R-M advantage is standard-factor padding, as the hypothesis's own reason predicted.
+- **H7: open, weak.** Best gated D after 5 iterations: seeded RM-C 0.10 vs unseeded 0.09; final 0.13 vs 0.123. One seed only; H7 needs 2 of 3. But seeded RM-C finalists are mostly **not novel** under G2: 46 of 367, against 265 of 372 unseeded and 313 of 364 for seeded RM-B. Seeding R-M × C converged on padded copies of dataset relators, the job-1 pattern. Among novel words, unseeded RM-C is as good as seeded (best D_P 0.123 vs 0.120).
+- **H8: holds.** 2,255 of 2,255 evaluated finalists pass the independent L0 check.
+
+**Stage 2: skipped** by the pre-registered rule, because no run beats D = 0.200.
+
+**Closed (owner decision 2026-10-14).** T-003 is closed with H1 and H2 falsified: the maximum D_P is 0.13, below 0.200. Status `rejected`.
+
+Headline D under the owner's metric decision of 2026-10-14 for mixed relator sets ([[challenge-gen-success-metrics]]). D_dataset_P counts only the dataset factors of F*_P, divided by |w|:
+
+| Config | Best D_dataset_P | Best D_dataset_P, novel | Best D_dataset_P, ρ ≥ 0.9 | Best word (\|w\|, dataset factors / N*_P) |
+|---|---|---|---|---|
+| RM-C | 0.020 | 0.020 | — | 100, 2 / 11 |
+| RM-B | 0.039 | 0.039 | 0.030 | 102, 4 / 11 |
+| RM-C unseeded | 0.020 | 0.020 | — | 100, 2 / 10 |
+| RD-A | 0.083 | 0.067 | 0.075 | 36, 3 / 3 |
+| RD-B | 0.083 | 0.066 | 0.075 | 36, 3 / 3 |
+| RD-C | 0.060 | 0.060 | 0.053 | 100, 6 / 6 |
+| Job 1 (newest merge) | 0.010 | — (not novel) | — | 100, 1 / 11 |
+
+These best values equal the best D_dataset on F* (the padding breakdown above), so Peiffer deletion does not change them. R-D configurations lead. For R-D runs the headline equals D = D_P.
+
+Trajectories: R-D runs plateau after iteration 5. R-M runs still gain about 0.005 per 2 iterations at iteration 14, and their gain comes from padding at the 100-letter floor.
+
+**Newest-merge run (job 1, `20261014-110539-4e4d92`, R-M × C, seed 3000001; not a stage-1 result).** PatternBoost 82 min (15 iterations), evaluation seconds. Search outputs passing the gate per iteration: 737, 61, 18, 18, 5, 2, 3, 8, 8, 5, 5, 6, 3, 5, 1 (of about 2,200); best gated D 0.08 → 0.17 (iteration 11) → 0.15; mean \|w\| about 150. The final pool held one gate passer: certified L0 and L1 (ρ_min16 = 0.50), D = 0.15 (D_P = 0.11 after Peiffer-pair deletion, T-020), **not novel** (G2). It is one 50-letter dataset factor (inverse of line 35) plus 14 standard v⁵ factors (conjugators of length 0–2) at exactly \|w\| = 100: the reducer removes the standard parts and keeps the relator's 50 letters, so ρ_min16 = 0.5 while all 15 factors count in N*. On R-M, D can therefore be raised by padding one dataset relator with standard factors up to the ρ ≥ 0.5 limit; G2 identifies such words as non-novel.

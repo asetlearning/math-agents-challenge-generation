@@ -106,6 +106,13 @@ Decision (owner, 2026-10-14, T-002): novelty guard G2 is the definition of "nove
 ### 2026-10-14: T-003 pre-registered (not run)
 PatternBoost search over ordered (rᵢ, cᵢ) maximising D on F* under the L1 gate; relator sets R-D (820 dataset words) and R-M (plus 44 standard v⁵); objective variants A (gated D), B (× ρ_screen), C (+ length floor); seeded with T-002 L1 words; 21 remote runs in two stages, awaiting approval. [[t003-gated-dehn-search-2026-10-14]]
 
+### 2026-10-14: T-003 stage 1 done (6 rjob runs, 7.1 h Mac)
+H1 falsified for stage 1: no certified L1 word with D ≥ 0.2. Best D = D_P = 0.13 (R-M), 0.083 (R-D). On R-M the gain is padding with standard factors (best D on dataset factors only 0.039; R-D 0.083 ≈ 2.7× the T-002 pure-dataset maximum). Gate sound (95–99.7% certified), L0 2,255/2,255, no L2. Stage 2 skipped by the pre-registered rule. [[t003-gated-dehn-search-2026-10-14#Results]]
+
+Closed (owner, 2026-10-14): T-003 closed, H1 and H2 falsified (max D_P 0.13 < 0.200). Headline D_dataset_P: R-D 0.083 (novel 0.067), R-M ≤ 0.039.
+
+Decision (owner, 2026-10-14, after T-003): for relator sets that mix standard and dataset relators, the headline D is D_dataset_P, the dataset factors of F*_P over |w|. Full D and D_P are always reported next to it. To be revisited if a method places standard cells genuinely inside the diagram (T-018). See [[challenge-gen-success-metrics]] § Owner decision 2026-10-14 (headline D) and [[challenge-gen-glossary#headline D, D_P and D_dataset_P]].
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile

@@ -77,6 +77,19 @@ Source: the T-001 baselines ([[hardness-baselines-results]]). The heuristic redu
 
 **Decision.** Any hardness claim uses ρ_min16 = min over the 16 images of |R₂.₅(image)| / |w̄|. Screening may use the generated word only; all 16 images are computed on finalists. The definitions above are unchanged; this fixes which representative a reported ρ refers to. Implementation: `--min16` in `experiments/challenge_gen/hardness/run_baselines.py` (b25 branch `12-hardness-harness`), record fields `min16_lens`, `min16_len`, `rho_min16`; the level classification uses ρ_min16 when the flag is set.
 
+## Owner decision 2026-10-14: headline D for mixed relator sets (T-003, T-020)
+
+Source: T-003 stage 1 ([[t003-gated-dehn-search-2026-10-14#Results]]) and the Peiffer check ([[2026-10-14-t020-peiffer-loophole]]).
+- On a relator set that mixes standard v⁵ and dataset relators (R-M), D can be raised by padding. Standard factors that the reducer removes add cells but leave no trace in R₂.₅(w): R-M best D 0.13, but best D on dataset factors only 0.039.
+- Loop erasure also leaves Peiffer pairs (two factors M⁻¹f_i M f_j = 1 that cancel only together).
+
+**Definitions** (all on the freely reduced word w̄, n = |w̄|):
+- **F*_P, N*_P.** The certificate after alternating loop erasure and Peiffer-pair deletion until the factor count stops changing (`reduce_certificate` in b25 `experiments/challenge_gen/hardness/minimise.py`). N*_P = |F*_P| ≤ N* = |F*|.
+- **D_P** = N*_P / n. Like D, it is an **upper bound** for area/n, never the area: the count depends on the deletion order, and larger cancelling tuples are not searched.
+- **D_dataset_P** = (number of dataset-relator factors in F*_P) / n. Standard factors are not counted.
+
+**Decision.** For any relator set containing both standard and dataset relators, the **headline D** is D_dataset_P. Full D and D_P are always reported next to it. (Consequence, not part of the decision: for a pure dataset relator set (R-D), D_dataset_P = D_P.) Whether the level thresholds (L2: D ≥ 1) apply to the headline D is not stated in the decision; open question for the owner. To be revisited if a method places standard cells genuinely inside the diagram (T-018), so that they are no longer padding.
+
 ## Success levels
 
 | Level | Criterion | Meaning |

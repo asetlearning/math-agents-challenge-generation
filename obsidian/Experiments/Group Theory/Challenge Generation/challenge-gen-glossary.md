@@ -30,7 +30,12 @@ Notation used in the definitions: |u| is word length, w̄ the freely reduced exp
 | control (positive / negative) | A set whose metric value is known in advance, used to check the harness | T-001 2026-10-13 | [[#positive and negative control]] |
 | cyc(w̄), n_cyc | Cyclic reduction of w̄ and its length | T-001 2026-10-13 | [[#rho_cyc and the cyclic reduction]] |
 | D | \|F*\|/\|w̄\|, Dehn-function proxy on the minimised certificate | owner 2026-10-05 | [[challenge-gen-success-metrics#Metric 2: Dehn-function proxy (theoretical difficulty)]] |
-| D_dataset | Dataset factors of F* divided by \|w\|; the 'D on dataset factors only' alternative, reported next to D | owner decision 2026-10-14 (T-003) | [[#Padding breakdown (T-003)]] |
+| D_dataset | Dataset factors of F* divided by \|w\|; the 'D on dataset factors only' alternative of the T-003 padding breakdown, superseded as headline by D_dataset_P | owner decision 2026-10-14 (T-003) | [[#Padding breakdown (T-003)]] |
+| D_dataset_P | Dataset-relator factors of F*_P divided by \|w̄\|; the headline D for mixed relator sets | owner decision 2026-10-14 (after T-003) | [[#headline D, D_P and D_dataset_P]] |
+| D_P | N*_P/\|w̄\|: D after loop erasure and Peiffer-pair deletion to a fixpoint; an upper bound for area/n | T-020 2026-10-14; comparison metric by owner decision 2026-10-14 | [[#headline D, D_P and D_dataset_P]] |
+| F*_P, N*_P | Certificate after alternating loop erasure and Peiffer-pair deletion until no factor is removed; N*_P = \|F*_P\| | T-020 2026-10-14 | [[#headline D, D_P and D_dataset_P]] |
+| headline D | The D figure a report leads with: D_dataset_P for relator sets mixing standard and dataset relators; D and D_P always reported next to it | owner decision 2026-10-14 (after T-003) | [[#headline D, D_P and D_dataset_P]] |
+| Peiffer pair | Two factors f_i, f_j (i < j) of a certificate with f_j = (M⁻¹f_i M)⁻¹ freely, M = f_{i+1}⋯f_{j−1}; then f_i M f_j = M, so deleting both leaves w unchanged, but loop erasure keeps them | T-020 2026-10-14 | [[2026-10-14-t020-peiffer-loophole]] |
 | D_raw | \|F\|/\|w̄\| on the unminimised certificate | T-001 2026-10-13 | [[#D_raw]] |
 | dataset core (dataset_core) | True if R₂.₅(w) has the same canonical class as the reduction of w_D, the expansion of F* without its standard factors | owner decision 2026-10-14 (T-003) | [[#Padding breakdown (T-003)]] |
 | dataset relators (820) | The 820 proved-trivial, 2.5-reduced words used as relators in T-002 | dataset 2026-10-14 (T-012) | [[#standard relators and dataset relators]] |
@@ -175,6 +180,13 @@ Owner decision 2026-10-14: D stays as defined; these fields are reported next to
 - **D_dataset** = n_dataset_fstar / \|w\|.
 - **Dataset core** (`dataset_core`). Let w_D be the freely reduced expansion of F* with every standard factor deleted (dataset factors keep their conjugators and order). The word has a dataset core if canon(R₂.₅(w)) equals canon(R₂.₅(w_D)) (certify mode) or canon(cyc(w_D)), with canon as in [[#canon (canonical class)]]. Then the standard factors left no trace in the reduced word: they are pure padding. This is my operational reading of "R₂.₅(w) is, up to G2, a product of dataset relators only"; a word with no standard factors has a dataset core by definition.
 - Per-run figures for the owner's decision on tightening the metric (ρ ≥ 0.9 on R-M, or D on dataset factors only): counts with standard factors and with a dataset core, median padding fraction, best D and D_dataset (all / novel / with ρ_min16 ≥ 0.9), counts above 0.066 and 0.200.
+
+### headline D, D_P and D_dataset_P
+Owner decision 2026-10-14, after T-003 ([[challenge-gen-success-metrics#Owner decision 2026-10-14: headline D for mixed relator sets (T-003, T-020)]]):
+- **F*_P, N*_P.** Start from F, then alternate loop erasure and deletion of [[2026-10-14-t020-peiffer-loophole|Peiffer pairs]] until the factor count stops changing (`reduce_certificate`, b25 `experiments/challenge_gen/hardness/minimise.py`). F*_P is the result and N*_P = |F*_P|. A pair deletion can make a block contiguous that a second loop erasure then removes, so a single pass of each is not a fixpoint. The expansion is unchanged at every step.
+- **D_P** = N*_P/|w̄|. It is an upper bound for area/|w̄|, never the area: the count depends on the deletion order, and cancelling tuples larger than pairs are not searched.
+- **D_dataset_P** = (dataset-relator factors in F*_P)/|w̄|. It differs from D_dataset (T-003 padding breakdown) only in using F*_P instead of F*. On the T-003 stage-1 runs the best values coincide.
+- **Headline D.** For relator sets mixing standard and dataset relators, reports lead with D_dataset_P and always give D and D_P next to it. Reason: on R-M, standard factors that the reducer removes inflate D without making the word harder (T-003: best D 0.13, best D_dataset_P 0.039). To be revisited if a method places standard cells genuinely inside the diagram (T-018). For a pure dataset relator set, D_dataset_P = D_P.
 
 ## Related material
 - [[challenge-gen-success-metrics]]: owner definitions (certificate, ρ, D, levels) and the ρ_min16 decision
