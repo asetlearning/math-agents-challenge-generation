@@ -69,7 +69,7 @@ When in doubt, qualify.
 When messaging a peer via `maestri ask "<Name>" "..."`:
 
 ```
-TYPE: <REQUEST | REPORT | QUESTION | BLOCKER | VERDICT>
+TYPE: <REQUEST | REPORT | QUESTION | BLOCKER | VERDICT | ACK>
 FROM: <your canvas name, e.g. Lead, Experimenter-B25>
 TOPIC: <one line>
 PROJECT: <[[project-<name>]] — mandatory on any REQUEST that involves code, runs or experiments>
@@ -78,7 +78,7 @@ ASK: <what you need, or "FYI">
 DEADLINE: <none | needed by <event>>
 ```
 
-`VERDICT` is reserved for Lead's code reviews and Validator's math verdicts. Long context in linked vault notes, not in the message. Keep `TYPE:` as the first header line and always fill `FROM:` — the message-log hook uses them to recognize and attribute incoming messages.
+`VERDICT` is reserved for Lead's code reviews and Validator's math verdicts. `ACK` is a short acknowledgement of a received message (received, understood, will do); it carries no new request or result, and `ASK:`, `CONTEXT:`, `PROJECT:` and `DEADLINE:` may be omitted. Long context in linked vault notes, not in the message. Keep `TYPE:` as the first header line and always fill `FROM:` — the message-log hook uses them to recognize and attribute incoming messages.
 
 ### Message log (automatic)
 
