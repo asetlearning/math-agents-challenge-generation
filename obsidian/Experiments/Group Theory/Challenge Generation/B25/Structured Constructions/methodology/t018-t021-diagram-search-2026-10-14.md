@@ -43,6 +43,7 @@ Sources:
   3. **Success criterion:** the first B(2,5) word with maxdepth ≥ 2 and T_deep ≥ 0.5 (L1-certified, novel). D and D_c are tracked but not expected to reach 1.
   4. **Negative controls:** T-003 and T-016 words must have N_deep = 0 (Developer is computing them).
   5. **Headline:** D_c on pure sets. This experiment uses a pure set.
+- **Revision 4** (owner 2026-10-15): final area-like rule, wrapped-relator guard, depth-sum J and maxdepth-vs-N logging (section below).
 
 ## Check against the merged code (b25 main `6f71817`, 2026-10-15)
 PRs #12 (T-016, `ef86020`) and #13 (T-023 + inverse-cell reduction + depth, `6f71817`) are merged.
@@ -53,8 +54,13 @@ PRs #12 (T-016, `ef86020`) and #13 (T-023 + inverse-cell reduction + depth, `6f7
 - **The negative control is restated (this revision).** On the compressed certificate, chain words *can* have N_deep > 0: compression folds them into small diagrams that enclose a cell (E1: 10 words, E1c: 10, E1d: 46, all with maxdepth 1). The control is therefore: **no T-003 or T-016 word is area-like under the final rule, and none has maxdepth ≥ 2.** Status: passes. Max maxdepth is 1 over 2,256 T-003 words and the 611 T-016 E1/E1c/E1d finalists, and no word has N_deep ≥ 2 with N ≥ 16.
 - **The standard guard is not in the harness yet.** Developer was asked on 2026-10-14 to fold Validator's closure test and the ≤ 2-cell test into it (`hardness/guard.py`), exhaustive for all |w̄| including the vertex and stem cases when |w̄| ≥ 64, with a table argument. **This gates the start.**
 
-## Area-like rule (PLACEHOLDER: owner decision pending)
-Owner 2026-10-14: area-like requires **N ≥ 16 and N_deep ≥ 2**, in addition to T_deep ≥ 0.5 and T_depth ≥ 0.5; deep cells with N < 16 make a word **small enclosed**. Math Expert has proposed a refinement under owner review: replace N_deep ≥ 2 by "a dual-connected deep core of ≥ 2 cells, or maxdepth ≥ 2", add a wrapped-relator guard and a depth-sum J. This section is finalised when the decision arrives; H2 (maxdepth ≥ 2 and T_deep ≥ 0.5) is unaffected by either version.
+## Area-like rule, guard and objective (owner decision 2026-10-15)
+Final rule from [[challenge-gen-success-metrics]] § Owner decision 2026-10-15 (Math Expert's [[2026-10-14-depth-followups]]; Validator reviews it in parallel with the run):
+- **area-like** iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, and (a dual-connected deep core of ≥ 2 cells, or maxdepth ≥ 2); **small enclosed** iff N_deep ≥ 1 and N < 16; **thick strip** iff N_deep ≥ 1, N ≥ 16 and not area-like; path-like iff N_deep = 0.
+- **Wrapped-relator guard:** N_deep = 1 with every other cell touching both ∂Δ and the deep cell → "wrapped relator", not novel. It is applied with the finalist novelty checks.
+- **J = (Σ depth(c) + 0.25·V_int)/|w̄|** replaces (N_deep + 0.25·V_int)/|w̄| as the beam score. `diagram.objective_J` on main still implements the old J, so T-018 computes the new J itself unless Developer's update lands first. The same applies to `diagram.shape()`.
+- **maxdepth vs N:** logged at every N reached, per lineage, with a log N against √N fit across seeds as the hyperbolicity falsifier.
+- H2 is unchanged.
 
 ## Standard guard (owner decision 2026-10-14; applied as a finalist gate)
 Every finalist must also pass:
@@ -135,6 +141,7 @@ Existing terms used as defined: D, D_P, D_c, N*_c, D_area, D_path, provenance ru
    - Gates are checked in order 2, 1, 4, 3 (cheapest first). Score J; at most 5 states per seed lineage. Tie-breaking seed 18000001.
    - A greedy run (beam 1) is reported as a reference.
    - Logged per step: the best and median maxdepth, N_deep, T_deep, T_depth, V_int, D, D_c and |w̄|, and the stall count.
+   - Logged per lineage at every N reached: maxdepth (for the log N against √N fit).
 4. **Finalists and evaluation.**
    - The 200 best distinct boundary words by J (at most 10 per lineage), plus, per lineage, the state with the highest maxdepth and the best state per step count {5, 10, 20, 40, 60}.
    - Independent harness on the 1,630-entry table: L0, F*, F*_P, the exact power test, certify-mode R₂.₅ and ρ_min16 when the test fails, G2, and the **all-classes check** against the 1,630 R7 classes and the 1,640 dataset classes.

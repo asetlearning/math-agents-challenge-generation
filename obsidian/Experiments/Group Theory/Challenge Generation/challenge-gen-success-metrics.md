@@ -133,6 +133,20 @@ Source: Math Expert's vertex-depth criterion ([[2026-10-14-vertex-depth-criterio
 
 It is reported as "no cheaper certificate found by these tests", never as an area statement. To be revisited if a method places standard cells genuinely inside the diagram (T-018), so that they are no longer padding.
 
+## Owner decision 2026-10-15: final area-like rule, wrapped-relator guard, depth-sum J
+Source: Math Expert's follow-ups ([[2026-10-14-depth-followups]]), after T-023 showed 10 E1c chain words with one deep cell each on the compressed certificate (9 of them the same 60-letter dataset relator, #212). These are rings of 6–9 cells around one relator, so the word is conjugate to that relator rather than thick. The three proposals are accepted as below. They are `#status/conjectured`, and Validator reviews them in parallel with the T-018 start, not before it.
+1. **Area-like rule (final; replaces "N_deep ≥ 2" of the 10-14 rule).**
+   - **area-like** iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, and either the deep cells contain a **dual-connected core of ≥ 2 cells** (deep cells sharing an edge path, connected in the dual graph restricted to deep cells) or **maxdepth ≥ 2**;
+   - **small enclosed** iff N_deep ≥ 1 and N < 16;
+   - **thick strip** iff N_deep ≥ 1, N ≥ 16, and the diagram is not area-like (owner, 2026-10-15: thick strip kept for large non-area-like diagrams);
+   - **path-like** iff N_deep = 0.
+   - Why: two wrapped relators joined by a chain have N_deep = 2 yet stay path-like at the larger scale.
+2. **Wrapped-relator guard (novelty).** If the compressed, reduced diagram has N_deep = 1 and every other cell touches both ∂Δ and the deep cell, the word is reported as **"wrapped relator"** and is **not novel**, in the same way as a word that is reducer-equivalent to a relator. This applies to every construction.
+3. **Objective J (T-018 and later depth searches):** J = (Σ_cells depth(c) + 0.25·V_int)/|w̄|. This replaces (N_deep + 0.25·V_int)/|w̄|. The depth-sum term is 0 for a chain, 1 for a wrapped relator and 10 for a 5×5 grid (whose full J numerator is 14, since V_int = 16), so a second ring is worth more than extra first-ring cells.
+4. **maxdepth-vs-N logging (falsifier).** Every depth search logs maxdepth at every N it reaches, per lineage, and reports a log N against √N fit across seeds. If the curve looks logarithmic, the presentation behaves hyperbolically at these scales: D stays bounded and the area route is closed for those relators. Report that as a finding.
+
+The success criterion (maxdepth ≥ 2 and T_deep ≥ 0.5 on an L1-certified, novel word) is unchanged. Not adopted for now: novelty by centre relator, ring-diagram templates, and a T-016 ring-growth follow-up around #212.
+
 ## Success levels
 
 | Level | Criterion | Meaning |

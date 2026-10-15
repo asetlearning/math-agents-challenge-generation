@@ -126,6 +126,8 @@ Follow-ups (owner-approved, 2026-10-14, pre-registered addenda):
 - **Diverse-lineage walk E1d** (cap of 5 per lineage): 201/204 certified L1, 175 novel with D_path > 0.2 from 23 lineages and 336 relators. But 0 reach D_path ≥ 1 (max 0.92), so the D_path ≥ 1 region is narrow and lineage-specific.
 - **Triangle census:** 4,379 distinct-class triangles (three relators around one vertex, b₁ = 1) against 1 in the power-free null. They are depleted 39× against a configuration model (355k ± 12k), which supports Math Expert's sphere conjecture. T-022 verdict: "possible but not favoured". Code on PR #12 (`e0f5f7a`).
 
+Decision (owner, 2026-10-15, T-018 area-like rule): Math Expert's three follow-ups are accepted. (1) area-like needs N ≥ 16, T_deep and T_depth ≥ 0.5, and a dual-connected deep core of ≥ 2 cells or maxdepth ≥ 2; otherwise a word with deep cells is small enclosed (N < 16) or a thick strip (N ≥ 16). (2) A wrapped-relator guard: one deep cell ringed by the rest is not novel. (3) J becomes the depth sum. maxdepth against N is logged as the hyperbolicity falsifier. Validator reviews in parallel with the run. See [[challenge-gen-success-metrics]] § Owner decision 2026-10-15.
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
