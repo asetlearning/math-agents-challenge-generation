@@ -125,7 +125,14 @@ The agents' VM is restricted: 2 CPUs, about 3 GB RAM, no GPU. Experiments are th
 | **Local (VM)** | Code generation and edits, compiling, unit tests (`pytest`, `ctest`), smoke runs (≲ 10 min, ≲ 2 GB), analysis of fetched results, cheap checks on small sets (certificate re-expansion, abelianization, ρ/D on up to a few hundred short words) |
 | **Remote ([[dep-remote-jobs]])** | Anything needing a GPU (PatternBoost training and sampling, sweeps); anything expected to run > 30 min, use > 2 GB, or want > 2 cores (2.5-reduction in certify mode on large or long-word sets, TC experiments, local-search sweeps) |
 
-- **Host.** For now it is the owner's Mac (M1, 8 cores, 64 GB, MPS), with 1 GPU slot and 7 CPU slots. Later hosts are Linux/CUDA servers using a container backend. Docker is not used on the Mac, because it has no MPS inside containers.
+- **Hosts.** Listed in `~/Research/challenge-gen/rjob.toml` (order = preference); `rjob submit` places each job on the first host that can run its device and has room, and `rjob hosts` shows their load.
+
+  | Alias | Host | Device | Capacity |
+  |---|---|---|---|
+  | `mac` | owner's Mac (M1, 10 cores, 64 GB) | `mps` | 1 GPU, 9 CPU slots |
+  | `gpuserver` | Linux x86_64 server (being set up) | `cuda` | 1 GPU now; CPU and memory set by `install.sh` |
+
+  Both run natively (per-SHA build + uv venv); Docker is not used on the Mac, because it has no MPS inside containers. PatternBoost jobs that do not depend on MPS-vs-CUDA numerics may use `device = "gpu"` so either host can take them; runs compared within one experiment should stay on one device type and say so in the pre-registration.
 - **Code reaches the host only as committed SHAs** from an experiment branch; dirty trees are refused. The tcgraph submodule commit is explicit per job, and the `[code.submodules."cpp/tcgraph"]` override sets it when the b25 pin is stale.
 - **Each result directory is cited by its job id.** `provenance.json` supplies most of the provenance fields above.
 

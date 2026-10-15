@@ -9,17 +9,19 @@ build: "none (stdlib Python 3.11+)"
 test: "python3 tests/test_runner.py   # end-to-end with a fake ssh; 2026-10-05: all 28 checks pass, hostile-command and streaming-fetch fixes included"
 versions_in_use:
   - "main @ 47b2e83 (2026-10-05): initial runner merged via PRs #1 and #2 (branch 1-initial-runner, now deleted)"
+  - "branch 3-multi-host, PR #4 (2026-10-14/15, issue #3, awaiting owner review): per-project host lists, placement, GPU ids, mem_gb, Linux server setup; per-OS installer detection (abdb6a0); review fixes (75776ec); follow-up issue #5 (hosts decide whether a job fits)"
 local_patches: []
 capabilities:
   - "infrastructure: ship exact commits (with submodules) from the VM to a host as git bundles over a locked SSH forced command; no GitHub credentials on the host"
   - "infrastructure: per-commit cached builds on the host (git worktree + uv venv; default recipe = b25 Dockerfile: uv sync --frozen --no-install-project --group build, then uv pip install -e . --no-build-isolation); submodule pin overridable per job"
   - "infrastructure: job queue with GPU (1) and CPU (7 on the Mac) slots, timeouts, cancel (process groups), states queued|building|running|done|failed|cancelled|timeout|dead"
+  - "infrastructure (3-multi-host): several hosts per project via <project>/rjob.toml; placement by device and free capacity; per-job GPU ids (CUDA_VISIBLE_DEVICES); optional mem_gb estimates; host recorded per job id"
   - "infrastructure: resumable, sha256-verified fetch of outputs to <runs_dir>/<job-id>/, with --include subsets and provenance.json (repo + submodule SHAs, uv.lock hash, job spec, input hashes, host, torch, device)"
 heavy_processes: []
 mcp: none
 local_checkouts:
   asetlearning: ~/Research/remote-jobs
-docs: "README.md, CLAUDE.md, docs/mac-setup.md, docs/execution-policy.md"
+docs: "README.md, CLAUDE.md, docs/mac-setup.md, docs/server-setup.md (3-multi-host), docs/execution-policy.md"
 used_by: ["[[project-challenge-gen]]"]
 tags: [meta, type/reference]
 ---
@@ -29,8 +31,8 @@ tags: [meta, type/reference]
 ## What it is
 The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` is the only channel from that VM to stronger compute.
 
-- **Current host:** the owner's Mac (M1, 8 cores, 64 GB, MPS). Jobs run there under the unprivileged `gpuworker` account.
-- **Future hosts:** Linux/CUDA servers, reached the same way.
+- **Current host:** the owner's Mac (M1, 10 cores, 64 GB, MPS). Jobs run there under the unprivileged `gpuworker` account.
+- **More hosts (branch `3-multi-host`):** any SSH-reachable Linux server (CUDA or CPU), set up the same way (`docs/server-setup.md`). Each project lists its hosts in an `rjob.toml` in the project directory.
 - **Client:** agents use the `rjob` CLI in the VM.
 - **Host side:** `run_job.py`, behind an SSH key locked with `restrict,command=run-job`.
 
@@ -41,13 +43,14 @@ The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` 
   2. `rjob wait <id>` blocks until the job finishes; run it in the background.
   3. `rjob fetch <id>` brings results to `~/Research/challenge-gen/runs/<id>/` for this project.
 - **Inspect:** `rjob status|logs|list|info|cancel`.
-- **Large inputs:** `rjob put-data <file>` uploads them once; they are content-addressed.
+- **Large inputs:** `rjob put-data <file>` uploads them once per host; they are content-addressed. `rjob submit` uploads a job's `[data]` to the host it was placed on.
+- **Which host** (branch `3-multi-host`): `rjob submit` places a job on the first project host that can run its `device` and has room for its `gpus`, `cpus` and `mem_gb`; otherwise on the capable host with the shortest queue. Priority: `--host`, then `$RJOB_HOST` (outranks the project file), then `host = "..."` in job.toml, then placement. Later commands on the job id use the host recorded at submit; a job missing from the record goes to `$RJOB_HOST`, else the project host that knows the id, else `mac`. `rjob hosts` shows every host's load.
 - **Which tasks go remote** is set in the project's execution policy (see [[project-challenge-gen]]):
   - GPU work, and anything expected to exceed about 30 minutes or 2 GB, runs remotely;
   - editing, compiling, unit tests, smoke runs and analysis stay local.
 
 ## Protected surfaces
-- **Job spec / `job.json`** (`name`, `code{repo,sha,submodules,build_steps}`, `resources`, `run{argv,files,outputs}`, `data`, `runs_dir`). A future container backend must honour the same contract.
+- **Job spec / `job.json`** (`name`, `code{repo,sha,submodules,build_steps}`, `resources{device,cpus,timeout_hours,gpus?,mem_gb?}`, `run{argv,files,outputs}`, `data`, `runs_dir`). A future container or Slurm backend must honour the same contract; changes are additive only.
 - **`provenance.json` and `manifest.json`.** Experiment notes cite job ids and rely on these fields.
 - **The SSH verb set and the forced-command boundary.** Over SSH, no verb may execute client-supplied strings.
 
@@ -62,7 +65,9 @@ The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` 
   - The first `install.sh` picked up the owner's uv from PATH. Since the fix merged into main (47b2e83), it always uses `~/.local/bin/uv`, and the host config now points to gpuworker's own uv.
   - The owner's home was listable by other accounts (the macOS default). The owner set `chmod 700 /Users/alex`, so gpuworker is now blocked from everything there.
   - Keep both properties when changing hosts or installers.
-- **Docker is not used on the Mac.** Docker on macOS runs a Linux VM without Metal/MPS, so containers would be CPU-only. Mac jobs therefore run natively, as builds pinned to a commit SHA. A container backend (`docker run --gpus all`) is planned for Linux/CUDA servers. b25's `Dockerfile` is stale: it runs `git submodule update` without `.git`, and compose forces amd64.
+- **Docker is not used on the Mac.** Docker on macOS runs a Linux VM without Metal/MPS, so containers would be CPU-only. Mac jobs therefore run natively, as builds pinned to a commit SHA. Linux servers also run natively for now (owner, 2026-10-14); a container backend (`docker run --gpus all`) or Slurm scheduling is optional later, behind the same job contract. b25's `Dockerfile` is stale: it runs `git submodule update` without `.git`, and compose forces amd64.
+- **Hosts update separately (3-multi-host).** A host runs the `run_job.py` copied by its last `install.sh`. The new client works with older runners (placement falls back to "idle host"), but GPU ids, `mem_gb` scheduling and the extended `info` need `install.sh` re-run on that host.
+- **Estimates are not limits.** `mem_gb` and `cpus` only steer scheduling; a job that exceeds them can starve its neighbours or hit the OOM killer.
 - **Job code is unrestricted** as the worker account, so the account must hold nothing of value. A `sandbox-exec` wrapper is a TODO.
 
 ## Related material
