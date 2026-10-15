@@ -127,6 +127,11 @@ Follow-ups (owner-approved, 2026-10-14, pre-registered addenda):
 - **Triangle census:** 4,379 distinct-class triangles (three relators around one vertex, b₁ = 1) against 1 in the power-free null. They are depleted 39× against a configuration model (355k ± 12k), which supports Math Expert's sphere conjecture. T-022 verdict: "possible but not favoured". Code on PR #12 (`e0f5f7a`).
 
 Decision (owner, 2026-10-15, T-018 area-like rule): Math Expert's three follow-ups are accepted. (1) area-like needs N ≥ 16, T_deep and T_depth ≥ 0.5, and a dual-connected deep core of ≥ 2 cells or maxdepth ≥ 2; otherwise a word with deep cells is small enclosed (N < 16) or a thick strip (N ≥ 16). (2) A wrapped-relator guard: one deep cell ringed by the rest is not novel. (3) J becomes the depth sum. maxdepth against N is logged as the hyperbolicity falsifier. Validator reviews in parallel with the run. See [[challenge-gen-success-metrics]] § Owner decision 2026-10-15.
+Amended (owner, 2026-10-15, after Validator's verdict [[2026-10-15-final-area-rule-and-wrapped-guard]]):
+- area-like requires maxdepth ≥ 2, because ladders and strips gamed the label at N 16–40;
+- the wrapped-relator novelty gate is withdrawn: it is unsound modulo the ring and fired on 0 of 10 E1c cases. Novelty adds the exact free-group conjugacy test (0 of 611 T-016 finalists hit), and the G* "enclosed relator" is a diagnostic only;
+- the area-like label is a diagnostic, and the evidence is H2 plus the maxdepth-vs-N fit;
+- Math Expert's size-2 deep-core conjecture is disproven (8 of 203 E1_screen words, N < 16).
 
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset

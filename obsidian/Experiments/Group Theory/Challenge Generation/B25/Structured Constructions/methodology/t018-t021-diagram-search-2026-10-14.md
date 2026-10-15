@@ -43,7 +43,7 @@ Sources:
   3. **Success criterion:** the first B(2,5) word with maxdepth ≥ 2 and T_deep ≥ 0.5 (L1-certified, novel). D and D_c are tracked but not expected to reach 1.
   4. **Negative controls:** T-003 and T-016 words must have N_deep = 0 (Developer is computing them).
   5. **Headline:** D_c on pure sets. This experiment uses a pure set.
-- **Revision 4** (owner 2026-10-15): final area-like rule, wrapped-relator guard, depth-sum J and maxdepth-vs-N logging (section below).
+- **Revision 4** (owner 2026-10-15): final area-like rule, depth-sum J and maxdepth-vs-N logging (section below). Amended the same day after Validator's verdict: maxdepth ≥ 2 is required for area-like, and the wrapped-relator gate is replaced by the exact conjugacy test plus a G* diagnostic.
 
 ## Check against the merged code (b25 main `6f71817`, 2026-10-15)
 PRs #12 (T-016, `ef86020`) and #13 (T-023 + inverse-cell reduction + depth, `6f71817`) are merged.
@@ -56,8 +56,8 @@ PRs #12 (T-016, `ef86020`) and #13 (T-023 + inverse-cell reduction + depth, `6f7
 
 ## Area-like rule, guard and objective (owner decision 2026-10-15)
 Final rule from [[challenge-gen-success-metrics]] § Owner decision 2026-10-15 (Math Expert's [[2026-10-14-depth-followups]]; Validator reviews it in parallel with the run):
-- **area-like** iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, and (a dual-connected deep core of ≥ 2 cells, or maxdepth ≥ 2); **small enclosed** iff N_deep ≥ 1 and N < 16; **thick strip** iff N_deep ≥ 1, N ≥ 16 and not area-like; path-like iff N_deep = 0.
-- **Wrapped-relator guard:** N_deep = 1 with every other cell touching both ∂Δ and the deep cell → "wrapped relator", not novel. It is applied with the finalist novelty checks.
+- **area-like** iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5 and **maxdepth ≥ 2** (amended after Validator's verdict [[2026-10-15-final-area-rule-and-wrapped-guard]]; deep_core is reported). The label is a diagnostic, and the evidence is H2 plus the maxdepth-vs-N fit; **small enclosed** iff N_deep ≥ 1 and N < 16; **thick strip** iff N_deep ≥ 1, N ≥ 16 and not area-like; path-like iff N_deep = 0.
+- **Novelty adds the exact test:** w cyclically equal to a rotation of a table relator or its inverse means not novel. It is applied with the finalist novelty checks. **"Enclosed relator (modulo ring)"** (Validator's G*) is reported per finalist as a diagnostic, never as a gate. The earlier wrapped-relator gate is withdrawn.
 - **J = (Σ depth(c) + 0.25·V_int)/|w̄|** replaces (N_deep + 0.25·V_int)/|w̄| as the beam score. `diagram.objective_J` on main still implements the old J, so T-018 computes the new J itself unless Developer's update lands first. The same applies to `diagram.shape()`.
 - **maxdepth vs N:** logged at every N reached, per lineage, with a log N against √N fit across seeds as the hyperbolicity falsifier.
 - H2 is unchanged.
