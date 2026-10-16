@@ -222,6 +222,23 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
   - **Still check disk** before fetching large outputs.
   - **Moving heavy work remote:** if a project's execution policy says a run belongs remote, run it remotely rather than squeezing it into the local cap.
 
+### Memory cap and rjob fallback (mandatory; owner 2026-10-16)
+
+On 2026-10-15/16 an unbounded 6-worker Python job on the VM used ~4.6 GB of RAM and swap. The kernel OOM killer then killed `maestri-app` twice, which took every agent session down with it. Maestri's processes carry oom_score_adj 200–300, so the kernel prefers them over the job that is actually using the memory. To prevent this:
+
+- **Every local run that is not trivial goes through `capjob`** (`~/.local/bin/capjob`): any script, `uv run python …`, enumeration, search or test suite expected to run longer than ~1 min or to use more than a few hundred MB. Only one-liners (`python3 -c` checks, `git`, `rjob`, `pgrep`) are exempt.
+  ```
+  capjob [--mem 2G] [--swap 1G] [--cpus 2] [--out DIR] [--rjob JOB.toml] -- CMD ...
+  ```
+  It runs CMD in its own systemd scope capped at `--mem`, `--swap` and `--cpus`, with oom_score_adj 1000, so the job dies instead of Maestri. Thread variables (OMP/MKL/OPENBLAS/RAYON, `RJOB_CPUS`) default to `--cpus`. Never raise the caps above 2G / 2 CPUs locally. A run that needs more belongs on `rjob` from the start (execution policy: over ~30 min, 2 GB or 2 cores).
+- **Fallback when the cap kills the job:** exit code 75 or 76, with `CAPJOB:` lines on stderr.
+  - `--rjob JOB.toml` given: capjob submits that spec. Exit 76 and the job id are printed.
+  - Otherwise capjob writes `<project>/jobs/capjob/<name>-<stamp>/job.toml` and submits it automatically (exit 76) when it is safe: the code is committed and the tree is clean, `--out` names the results directory, and no argument is an absolute path outside the repo.
+  - If any of those is missing, it leaves the draft and exits 75. **You must then finish the draft** (commit the code, move inputs into `[run] files` or `[data]`, set `outputs`), `rjob submit` it, and tell Lead. Never re-run the killed job locally with a bigger cap.
+  - So: commit before running, and always pass `--out`. That makes the fallback automatic.
+- **Pools count against the cap:** a multiprocessing pool shares the one `--mem` and `--cpus` budget. Size pools to `RJOB_CPUS`, not to `os.cpu_count()`.
+- After an exit-76 fallback, track the job with `rjob wait <id>` (background) and `rjob fetch <id>`, and cite the job id in the experiment note.
+
 ## Test discipline (mandatory)
 
 - New algorithm / component → tests showing it runs end-to-end on a small problem.
