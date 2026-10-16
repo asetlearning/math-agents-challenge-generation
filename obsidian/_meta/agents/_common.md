@@ -78,6 +78,8 @@ ASK: <what you need, or "FYI">
 DEADLINE: <none | needed by <event>>
 ```
 
+**Anything that needs Lead goes through `maestri ask "Lead"` (mandatory; owner 2026-10-16).** This covers a plan awaiting approval, a question, a blocker, a finished milestone, a REPORT or a VERDICT. Never end your turn with it only printed in your own terminal: Lead does not see your screen, and nothing reaches Lead unless you send it. If you are waiting for Lead's go, the last thing you do is send the message that asks for it. (On 2026-10-16 a port plan with open questions sat unseen on the Developer's screen for 30 minutes.)
+
 `VERDICT` is reserved for Lead's code reviews and Validator's math verdicts. `ACK` is a short acknowledgement of a received message (received, understood, will do); it carries no new request or result, and `ASK:`, `CONTEXT:`, `PROJECT:` and `DEADLINE:` may be omitted. Long context in linked vault notes, not in the message. Keep `TYPE:` as the first header line and always fill `FROM:` — the message-log hook uses them to recognize and attribute incoming messages.
 
 ### Message log (automatic)
@@ -188,7 +190,7 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 ## Git safety
 
 - Agents never commit the vault and never run `git init` inside it (vault commits are a human decision).
-- Only Lead commits. Others never run `git commit`, `git push`, `git rebase`, `git config`.
+- Only Lead commits. Others never run `git commit`, `git push`, `git rebase`, `git config`. This applies to **every repo** (the vault, tcgraph, b25, remote-jobs, ...). Agents leave their changes in the working tree and send Lead a "ready for review" REPORT (repo, worktree and branch, files, what changed, test results). **No agent's commit goes in until Lead has reviewed and approved it**; Lead commits with the owner identity and pushes (owner 2026-10-16).
 - Working branches: `feat/<topic>`, `fix/<topic>`, `chore/<topic>`. Never `main` directly.
 - Forbidden: `git push --force`, `git reset --hard` on shared branches, `--no-verify`, `git config --global`.
 
@@ -244,7 +246,13 @@ On 2026-10-15/16 an unbounded 6-worker Python job on the VM used ~4.6 GB of RAM 
 1. **Every algorithm or procedure that can run in a heavy experiment is implemented in C++** in the project's C++ core (for challenge-gen: tcgraph, see [[dep-tcgraph-agentic]]). Examples: search, attachment and candidate generation, gates, power tests, reduction, compression and closure, certificate minimisation, diagram folding and depth, guards and novelty checks.
 2. **Group-theoretic algorithms belong in C++** (word, relator, certificate and diagram algorithms), unless the code is a temporary proof of concept or a test.
 3. **Prototypes may be written in Python** to test and refine an idea. They must be **ported to C++ before any large-scale experiment** uses them. "Large-scale" means any full run, sweep or rjob job, or anything over the local smoke size. The Python prototype stays as the reference implementation: the port ships with equivalence tests (Python vs C++ on the same inputs, identical results) and a timing comparison.
-4. **Python is the interface:** bindings (for tcgraph, `tcgraph_ext`), orchestration, configs, analysis and plots. Any C++ algorithm an experiment needs gets a Python binding.
+4. **The C++ core is one unified library (owner 2026-10-16).** tcgraph is a single coherent library, not a heap of separate pieces. Anyone working in it reads and follows **its own `CLAUDE.md` and `CODE_GUIDELINES.md`** (module layout, naming, invariants, workflow).
+   - **Reuse existing code whenever possible. Never duplicate code.** Words, letters, relators, certificates and factors use the existing types and algorithms (`Word` in `include/word.h`, the reduction, relator, factor and minimisation code). There is no second word type, and no second free/cyclic reduction, inverse or rotation.
+   - **Additions** are allowed: new functions or files inside existing modules and targets, and **a new folder or target when it is logically a new component of the library** (for example, van Kampen diagram analysis). Every new component must reuse the existing code from the other subtrees (words, reduction, relators, certificates) and must not re-create any of it.
+   - **Modifying existing code** (changing a signature, behaviour or implementation, refactoring, moving types between modules, editing tcgraph's docs) **needs owner approval through Lead.** Until it is approved, continue within the existing bounds.
+   - Where an existing implementation's semantics differ from a prototype, report it and decide; don't fork.
+   - Before porting, the developer maps each prototype function to reuse, an addition or a modification, and Lead and the owner approve the mapping. (On 2026-10-16 the first T-018 port re-implemented words and free reduction in a separate `hardness/` library; it was reworked.)
+5. **Python is the interface:** bindings (for tcgraph, `tcgraph_ext`), orchestration, configs, analysis and plots. Any C++ algorithm an experiment needs gets a Python binding.
 
 Consequences:
 - An experiment plan whose heavy loop runs in Python is a prototype plan. Lead does not approve a full run on it, and the port is planned first.
