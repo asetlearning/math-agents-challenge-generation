@@ -153,6 +153,26 @@ Source: Math Expert's follow-ups ([[2026-10-14-depth-followups]]), after T-023 s
 
 The success criterion (maxdepth ≥ 2 and T_deep ≥ 0.5 on an L1-certified, novel word) is unchanged. Not adopted for now: novelty by centre relator, ring-diagram templates, and a T-016 ring-growth follow-up around #212.
 
+## Owner decision 2026-10-16: strict depth and trivial a⁵ cells (headline N≥2, D_c,≥2)
+Source: Math Expert's junction-repair revision 2 ([[2026-10-16-junction-repair-rule]] § 7); Validator's check ([[2026-10-16-t018-area-like-dataset-words-check]] Part 3); Experimenter's strict-depth check (T-018 note).
+
+**Why.** Cells v⁵ with |v| = 1 (a⁵, b⁵ and their inverses) only normalise syllable exponents in ℤ₅ * ℤ₅. They carry no area. In T-018 they made up 36–62% of every certificate and 44–79% of the deep cells. They also formed shields that made inner cells look deep:
+- the H2 candidate (seed line 51) had standard maxdepth 2 but strict maxdepth 0;
+- the D_c ≥ 1 of the line-48 finalists came from 36 a⁵-type cells out of 63.
+
+**Definitions** (on the compressed certificate over cyclic cores; the root length of a cell is the length of the primitive root of its cyclic core):
+- **Trivial cell:** root length 1. **N≥2** = number of cells with root length ≥ 2. **D_c,≥2** = N≥2/|w̄|.
+- **Strict depth (S2).** Peeling as in [[challenge-gen-success-metrics#Owner decision 2026-10-14: vertex depth as the area-vs-path classification]], except that trivial cells are absorbed into the exterior whenever they touch it, and this absorption is repeated after every peeled layer (the least fixed point; it terminates and is order-independent, Validator). So a trivial cell never counts as depth. "Touching" includes contact at a single vertex.
+- **Strict maxdepth, N_deep, deep_core:** as before, but under strict depth, counting non-trivial cells only.
+- **T_deep and T_depth** are normalised by the **full N** (conservative). The variant normalised by N≥2 is reported alongside.
+- Cells with root length 2 are reported separately. S1 (absorb once) and S3 (root lengths 1 and 2 trivial) are sensitivity columns.
+
+**Decision.**
+- The **headline measures are N≥2 and D_c,≥2**. N*_c and D_c are kept as columns.
+- **The area-like rule, H2 and the objective J use strict depth.** Area-like iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, strict maxdepth ≥ 2 and strict deep_core ≥ 2. J = (Σ strict depth(c) + 0.25·V_int)/|w̄|.
+- All D thresholds (L2: ≥ 1; bars such as 0.200) are read on D_c,≥2.
+- Earlier results are re-stated under these definitions (see [[_progress]] 2026-10-16).
+
 ## Success levels
 
 | Level | Criterion | Meaning |

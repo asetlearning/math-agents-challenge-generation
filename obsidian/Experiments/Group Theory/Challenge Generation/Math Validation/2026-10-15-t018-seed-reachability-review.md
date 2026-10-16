@@ -66,3 +66,16 @@ The same gate-off control (all arcs ≥ 2, mild 4.5-power test), one length trip
 - Compared in total: 8 of the 12 feasible unordered triples, plus (2,3,4). Every one agrees exactly, apart from the lens boundaries for (2,6,7), which are explained in §3.
 - Not compared: (4,6,7) and (5,5,7) were killed at the 2G cap (the Experimenter's `triangle_exhaustive` keeps every positive boundary in memory under the mild test); (5,6,7) and (6,6,7) were not run. Following the capjob rule I did not raise the cap. I judge an rjob run unnecessary: the machinery is already replicated on 8 triples, and the real (2.5) result does not depend on this control, because my own enumeration covers all triples.
 - Process note: on 2026-10-16 my earlier 6-way parallel run of this control (no cap) was very probably the job that triggered the OOM kills. All later runs went through capjob.
+
+## Addendum 2026-10-16 — Math Expert's R8/R9 counting ([[2026-10-16-r8-r9-move-set]] §1)
+Same method as for A1–A3: brute force over root lengths ≤ K, arcs between need(ℓ) and the Fine-Wilf bound (capped at the shorter cell, nested arcs allowed), gaps capped by T(ℓ_m) − 1 and by the A2 recurrence cap. Script `scratch/seed/r89_count.py`.
+- **Single-arc pairs: confirmed.** R8 adds (1,8), (2,8), (3,8); R9 adds (1,9), (2,9), (3,9), (4,9). No ℓ ≥ 5 is admissible with ℓ′ ≤ 9. The stated inequality ℓ′ ≥ ⌊2.5ℓ⌋ + 2 − ℓ + gcd is need(ℓ) ≤ H(ℓ,ℓ′), rearranged.
+- **Chain survivors: confirmed exactly.**
+  - Middle 7: (2,3) with arcs 7, 8 and (3,3) with arcs 8, 8.
+  - Middle 8: (3,3), arcs 8–9 against H = 9.
+  - Middle 9: (3,3) with arcs 8, 8; (3,4) with arcs 8, 11; (4,4) with arcs 11, 11.
+  - All are at or within 1 of the Fine-Wilf maximum. The closed form ℓ_m ≤ e₁+e₂−g₁−g₂+2p_min−6 is the A2 cap with both arcs at their maximum. My count also applies the per-gap T−1 cap and the cell-length cap; neither changes the list.
+  - As at R7 (where (2,3,7) had no actual cell match), these are counting survivors only. Existence needs the enumeration.
+- **"Boundary cells with ℓ ≥ 5 always need ≥ 2 internal arcs": true only as "not a single arc with one exposed run".** The counting excludes a cell whose exposure is one run. A cell can also have one arc plus other cells touching its exposed part at vertices, or only vertex/stem contacts. Its exposure then splits into several runs, each < T(ℓ). With k contact points a cell can survive with total exposure up to about k·(T−1) (a 5-cell: one arc of length ≥ 1 plus one vertex contact suffices numerically; three contact points and no arc at all). For N ≤ 3 this was excluded by counting; for N ≥ 4 it is not. Correct statement: such a cell needs at least 2 separate attachments (arcs or contact points). A pre-filter for larger seeds must not require 2 arcs.
+
+**Verdict:** §1 counting **proved** (replicated exactly), with the one correction to the "≥ 2 internal arcs" phrasing.

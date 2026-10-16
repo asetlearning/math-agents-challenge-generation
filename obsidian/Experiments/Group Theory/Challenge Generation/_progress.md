@@ -151,6 +151,19 @@ Decisions (owner, 2026-10-16):
 - **Full run:** add triangle attachments, raise the per-lineage cap by a pre-registered addendum, then run 29 seeds × 60 steps.
 - **R8 question:** Math Expert assesses whether |v| ≤ 8–9 would give more depth or area; Experimenter estimates the cost of an R8 comparison afterwards. Lead's reading: longer roots should ease power-free growth, but not raise D (more exposure per cell, and area over R8 ≤ area over R7).
 
+### 2026-10-16: strict depth — the T-018 H2 candidate does not stand
+- **Strict-depth check** (Experimenter, replicated by Validator, [[2026-10-16-t018-area-like-dataset-words-check]] Part 3). a⁵-type cells (root length 1) are 36–62% of every certificate and 44–79% of the deep cells.
+  - Under strict depth (S2) the line-51 words (the smoke H2 candidate) have **strict maxdepth 0**: their depth was an a⁵ shield. **H2 has no result.**
+  - Of the area-like dataset seeds **only line 48** keeps strict maxdepth ≥ 2. Its novel finalists keep the seed's 9 strict-deep cells, so the depth is inherited, not grown.
+  - **No word is strictly area-like** under the adopted S2 (T over the full N): line 48 has strict T_deep 0.307 < 0.5 (T_depth 0.62, maxdepth 2), and its finalists 0.255 and 0.245. None of the 11 certificates passes all three conditions. Under the N≥2 normaliser line 48 would pass (T_deep 1.15), so the label hinges on that choice (Validator, Part 3b).
+  - **D_c ≥ 1 was an artefact**: D_c,≥2 is 0.23–0.49 (line-48 finalists 0.49 under S2).
+- **Per-attachment breakdown of the 473 smoke power-gate failures:** all m = 1 (normalisation only) 154 (33%); repairable 232 (49%); at least one unrepairable run 87 (18%).
+
+Decisions (owner, 2026-10-16):
+- **Metrics:** strict depth S2 (vertex contact, T_deep/T_depth over the full N); headline N≥2 and D_c,≥2; the area-like rule, H2 and J on strict depth ([[challenge-gen-success-metrics]] § Owner decision 2026-10-16).
+- **C++ port:** add exponent normalisation and strict depth to the port. The first comparison is B0 against B0+N; junction repair and R8 follow.
+- **The Mac full run (Python, job 20261016-130522-7373b4)** continues until the C++ code is ready. Then its completed results are collected for the Python-vs-C++ comparison, and the run restarts on the C++ implementation.
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
