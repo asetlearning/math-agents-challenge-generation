@@ -26,13 +26,15 @@ protected_interfaces:
   - "sweep_summary.json + run.matches.jsonl layout — dashboard and vault results tables read them"
   - "tcgraph_ext binding API — b25 scripts depend on it"
 hot_paths:
+  - "Policy (owner 2026-10-16): heavy-experiment and group-theoretic algorithms live in tcgraph (C++) with tcgraph_ext bindings; Python prototypes must be ported before large-scale runs ([[_common]] § Implementation language)"
+  - "T-018 diagram search (port in progress 2026-10-16): attachment generation (vertex/triangle), power gate, compression/closure (minimise), diagram fold/depth/stats, guard, novelty — Python reference in experiments/challenge_gen/{hardness,t018}"
   - "LocalSearcher::search — O(beam × ~250+ neighbours × steps × score cost); no visited set; neighbours expanded twice"
   - "scorers with reduce2_5 / length_range reduce_before_scoring — greedyReduceCyclicExhaustive, findSquares O(n²)"
   - "edit-distance scorer — O(|w|·|c|) per challenge"
 vault_docs:
   components: TBD
-  code_reviews: TBD
-  math_validation: Architecture/Mixer/Documentation/Math Validation/   # shared location until the project has its own
+  code_reviews: Experiments/Group Theory/Challenge Generation/Code Review/
+  math_validation: Experiments/Group Theory/Challenge Generation/Math Validation/   # own folder since 2026-10-14 (was the shared Mixer folder)
   experiments: Experiments/Group Theory/Challenge Generation/
   progress: Experiments/Group Theory/Challenge Generation/_progress.md
   todo: Agents/<handle>/Lead/todo/todo-challenge-gen.md   # private, gitignored — [[project-todo-convention]]
@@ -54,6 +56,48 @@ Full definitions are in [[challenge-gen-success-metrics]]. In short, generate wo
 - **Metric 2, Dehn proxy.** D = |F*| / |w̄| on the **minimised** certificate F*: freely cancelling factor blocks are removed by loop erasure. It is an upper bound on area, and it counts only for words passing Metric 1. Good: D ≥ 1. Great: a family with |F*| ≈ c·n², i.e. quadratic area.
 - **Success levels:** L0 valid (certified), L1 hard (Metric 1), L2 L1 + D ≥ 1, L3 quadratic family.
 - **Similarity** to the 150 challenge words is now secondary and optional.
+
+## The search problem (owner, 2026-10-14) — the crucial part
+
+Every generator in this project is a **search over factor words**, and the goal of the search is to **maximise D** while keeping the word hard to reduce.
+
+**Search space.** A candidate is an *ordered* sequence of N pairs
+
+$$F = \big((r_1, c_1), (r_2, c_2), \dots, (r_N, c_N)\big), \qquad F \mapsto \prod_{i=1}^{N} r_i^{\,c_i} = \prod_{i=1}^{N} c_i^{-1} r_i\, c_i ,$$
+
+- rᵢ ∈ R^± : a relator from the chosen relator set R, or its inverse;
+- cᵢ ∈ F(a,b) : an arbitrary freely reduced conjugator;
+- N : variable.
+
+All three choices are search variables: **which relators**, **which conjugators**, and **in what order**. The factors do not commute, so reordering the same pairs gives a different word. Every such F lies in the normal closure ⟨⟨R⟩⟩, so its expansion is trivial in B(2,5) by construction (given relators trivial in free B(2,5)); the search never has to prove triviality.
+
+**Objective.** Let w = the freely reduced expansion of F, and F* the minimised certificate (freely cancelling factor blocks removed, see [[challenge-gen-success-metrics]]). Maximise
+
+$$D(F) = \frac{|F^*|}{|w|} = \frac{N^*}{|w|}$$
+
+**subject to** the L1 gate: R₂.₅(w) ≠ 1 and ρ_min16(w) ≥ 0.5 ([[challenge-gen-glossary]]). D is large only when the conjugated factors **cancel heavily against each other under free reduction**: many relator cells, short boundary word. With random choices there is almost no cancellation, so |w| ≈ Σ(|rᵢ| + 2|cᵢ|) and D ≈ 1/(mean factor length) — this is why T-000 to T-002 never approached D ≥ 1. Finding pairs and orders that cancel heavily while the result still resists 2.5-reduction is what makes the problem hard.
+
+**What must not count as progress.** Padding that cancels to nothing — e.g. adjacent factors r^c (r^c)⁻¹ — is removed by the F* minimisation, so it cannot inflate D. Shrinking |w| by making the word easy is blocked by the L1 gate (the 2026-07-23 Dehn run drifted to 32-letter words with D = 0.34 when the gate was missing).
+
+**Search parameters** (record all of them in every run):
+
+| Parameter | Meaning | Examples so far |
+|---|---|---|
+| Relator set R | Where the rᵢ come from; must be certified trivial in free B(2,5) | standard v⁵ with \|v\| ≤ L (L = 1, 2, 3); the 820 dataset words [[ds-b25-trivial-2-5reduced-aut8-20261014]]; mixes |
+| N range | Number of factors (before and after minimisation) | 1–60 (T-001/T-002) |
+| Conjugator bound | Maximum \|cᵢ\| and its distribution | uniform 0..8, 0..20 |
+| Word-length bounds | Floor/cap on \|w\| (blocks the "short and easy" drift) | `min_expanded_len`, `length_range` |
+| Move set | Local-search moves on F | replace rᵢ; mutate cᵢ; insert / delete a factor; *reorder* (swap adjacent factors) |
+| Search strategy | How candidates are proposed | random sampling; beam local search; PatternBoost model; later RL / evolution |
+| Objective and gate | Score the search maximises | D with the L1 gate (screen ρ on the pool, ρ_min16 on finalists) |
+
+### Cautions on D (owner, 2026-10-14; from Math Expert's proposal of 2026-10-14, kept in the owner's private notes)
+
+- **Dehn functions of finite groups are linear.** The *Dehn function* of a presentation gives, for each n, the largest area (minimal number of relator cells) needed to prove a trivial word of length ≤ n is trivial. Every finite group has a linear Dehn function (with an enormous constant, depending on the group's order). So if B(2,5) is finite, the true area of any trivial word is ≤ C·|w|, and a family *proved* to need quadratic area would prove B(2,5) infinite. Validated 2026-10-14 ([[2026-10-14-t020-peiffer-loophole]], claim 3): the argument holds over the *infinite* presentation {u⁵} (pigeonhole on trivial subwords of length ≤ |G|, finitely many of them, so their areas have a finite maximum). The converse is false: some infinite groups also have linear Dehn functions, so a linear-looking D proves nothing about finiteness. Literature ([[_synthesis-proof-recording-kb-tools-2026-10-14]]): no published linear bound over the n-th-power presentation for large odd n (closest: a linear Dehn *spectrum*, Osin–Rybak 2022); nothing is known for n = 5. Consequences: D is an upper bound on area from the certificate we found, not the true area; L3 must be phrased as "no cheaper certificate found at feasible sizes", never as a proved quadratic lower bound.
+- **Watch item: how Dehn-function behaviour shows up in experiments.** For every result with D ≥ 0.2, record N*, |w| and the relator set, and look for (a) a cheaper certificate (a later run or a shorter relator set gives smaller D for the same w), (b) how D scales with |w| across a family (linear, quadratic, saturating), (c) whether D measures area or only path length (bounded |w| with growing N*, as in overlap chaining). Lead reviews this in every results report.
+- **D depends on the relator set R.** The same w can have small D over R-M and large D over standard relators |v| ≤ 7. Compare D only across runs with the same R, and always state R.
+- **Headline D on mixed relator sets (owner, 2026-10-14, after T-003).** When R mixes dataset and standard relators (e.g. R-M), the headline number is **D_dataset** = (number of dataset factors in F*_P) / |w|, where F*_P is the certificate after loop erasure and the T-020 pair deletion. Full D and D_P = |F*_P| / |w| are always reported next to it. Reason: in T-003 the standard factors in about 85–90 % of R-M words left no trace in the reduced word (padding), inflating D. To be revisited if a method places standard cells genuinely inside the diagram (T-018).
+- **F* interleaving loophole.** Loop erasure does not remove two factors that cancel only after being moved past the factors between them (a *Peiffer move*). They inflate N* without adding area; T-020 adds a check before T-003 configurations are compared.
 
 ## Idea & motivation
 
@@ -141,13 +185,14 @@ The agents' VM is restricted: 2 CPUs, about 3 GB RAM, no GPU. Experiments are th
 - **Who runs experiments.** The general Experimenter, or a spawned **`Experimenter-ChallengeGen`** terminal ([[canvas-setup]] Step 6), runs challenge-gen experiments with this profile. It is not Experimenter-B25: that role owns the B(2,5) finiteness program in `Burnside Group/B25/`, and challenge-gen lives in `Experiments/Group Theory/Challenge Generation/`.
 - **Rules for every challenge-gen run:**
   1. **Remote by default for PatternBoost.** Follow the execution policy above and the remote-jobs workflow in [[experimenter]].
-  2. **Pin tcgraph explicitly** in every job (`[code.submodules."cpp/tcgraph"]`). The committed b25 pin `c09327705a` does not build against b25's bindings.
+  2. **Pin tcgraph explicitly** in every job (`[code.submodules."cpp/tcgraph"]`). Since 2026-10-14 (b25 PR #3, merge `9eb98c6`) b25 main pins tcgraph `1b52b4d` (seeded sampler, T-011), which builds; still pin explicitly so the job records the SHA.
   3. **Seeds must not collide.** Target-sampling seeds must differ from PatternBoost's pool seeds; in sweeps these are `seed + combo·10000 + trial`. Otherwise targets sit in the initial pool and the run measures nothing.
   4. **Same-distribution targets test steering, not hardness.** Any hardness claim uses the metrics in [[challenge-gen-success-metrics]]: ρ in certify mode, and D on the minimised certificate F*. Report baselines on random factor words from the same sampler.
   5. **L0 before anything else.** Re-expand stored certificates independently, and use only standard relators or relators certified in free B(2,5).
   6. **Name the group.** Never call a word "trivial in B(2,5)" on B₀(2,5) or finite-quotient evidence. Route such claims to Validator.
   7. **Record the scorer and full config.** The 2026-05 baseline lost its scorer because `pattern_boost_sweep_1.yaml` was never kept. Keep the job directory, which rjob also records by hash.
   8. **Tests are not results.** Clean up test and aborted runs, and keep them out of results notes.
+  9. **Define every term once.** A new metric, level, guard, mode or naming scheme is defined in the same change that introduces it: project-wide terms in [[challenge-gen-glossary]] (one line + origin + link; the owner's metric definitions stay normative in [[challenge-gen-success-metrics]]), type-local terms in the `## Terms` section of the experiment type's `_type.md`. Reports to Lead use only defined terms or define them inline. Lead checks this before relaying a report to the owner.
 
 ## Developer notes
 
@@ -165,10 +210,10 @@ The agents' VM is restricted: 2 CPUs, about 3 GB RAM, no GPU. Experiments are th
 - **Changes to `remote-jobs`** go live only after the owner re-runs `host/install.sh` on the Mac. The job contract and the SSH verb boundary are protected; see [[dep-remote-jobs]].
 
 ## Known issues (as of 2026-10-05; documented, not fixed)
-- **Submodule.** b25's `.gitmodules` points `cpp/tcgraph` at `gt-computations/tcgraph`, not `asetlearning/tcgraph_agentic`. The pin `c09327705a` is 13 commits behind tcgraph_agentic main and predates the scorers b25 binds. Use the local URL override and check out the right commit; see [[dep-b25-pyproject-agentic]].
+- **Submodule.** b25's `.gitmodules` points `cpp/tcgraph` at `gt-computations/tcgraph`, not `asetlearning/tcgraph_agentic`. Pin fixed 2026-10-14: b25 main now pins `1b52b4d` (was `c09327705a`, which predated the scorers b25 binds). The URL still needs the local override; see [[dep-b25-pyproject-agentic]].
 - **tcgraph_agentic main** fails to build `test_pb_local_search`, which uses the removed `scoreWord`; see [[dep-tcgraph-agentic]].
-- **No provenance or seeds** are logged: no SHAs or data hashes, and model init and training are unseeded. Data files are not in git.
-- **Pool merge** keeps the newest entries, not the best. Sweep-level logs land in trial logs.
+- **No provenance or seeds** are logged: no SHAs or data hashes, and model init and training are unseeded. The C++ factor-word sampler is seeded since 2026-10-14 (T-011; reproducible per standard library, Linux vs macOS may differ). Data files are not in git.
+- **Pool merge** keeps the newest entries, not the best, by default. Fixed opt-in 2026-10-14 (b25 PR #6, merge 5e900ee): set `workflow.pool_merge: score` to keep the top entries by their entry-time (gated) score; required for any gated objective (T-003 job 1 lost all but 18 of 2,000 L1 passers in 3 iterations with the default). Sweep-level logs land in trial logs.
 - **Which group.** "Match" means exact cyclic equality with a target and says nothing about hardness. The challenge words are known trivial only in B₀(2,5).
 
 ## Core requirement — certificates
@@ -207,6 +252,7 @@ In [[experiment]], also fill:
 - [[dep-gap]], [[dep-kbmag]]
 - [[B25/PatternBoost Generation/_type|PatternBoost Generation]]: first experiment type
 - [[challenge-gen-success-metrics]]: difficulty metrics and success levels
+- [[challenge-gen-glossary]]: project glossary (all terms, one place)
 - [[andrews-curtis-conjecture]]
 - [[_synthesis-hard-instance-generation]]: literature scan of 2026-10-05 (12 papers)
 - [[_moc-hard-instance-generation]]: reading path

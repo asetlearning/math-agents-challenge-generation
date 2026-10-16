@@ -30,7 +30,7 @@ import subprocess
 import sys
 import time
 
-TYPES = ("REQUEST", "REPORT", "QUESTION", "BLOCKER", "VERDICT")
+TYPES = ("REQUEST", "REPORT", "QUESTION", "BLOCKER", "VERDICT", "ACK")
 TYPE_RE = re.compile(r"^\s*TYPE:\s*(%s)\b" % "|".join(TYPES), re.M)
 ASK_RE = re.compile(r"""(?:^|[\s;&|(`"'])(?:\S*/)?["']?(?:maestri|\$\{?MAESTRI_CLI\}?)["']?\s+ask\b""")
 ASK_LEN = 200

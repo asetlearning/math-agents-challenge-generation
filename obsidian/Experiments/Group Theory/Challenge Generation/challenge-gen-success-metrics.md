@@ -71,6 +71,108 @@ Guidance for using it sparingly:
 - **Good challenge:** D(w) ≥ 1 on F*, i.e. at least as many factors as letters.
 - **Great success:** quadratic growth, |F*| ≍ c·n². This is a property of a **family** across lengths n, not of a single word. Fit the exponent α in |F*| ∝ n^α over Metric-1-passing words at several n; α ≈ 2 is the target. A single word only has a ratio.
 
+## Owner decision 2026-10-14: representative convention for ρ (T-001)
+
+Source: the T-001 baselines ([[hardness-baselines-results]]). The heuristic reducer is rotation-invariant but **not invariant under letter relabelling or inversion**: for 2 of the 820 words of [[ds-b25-trivial-2-5reduced-aut8-20261007]], 13 of 16 and 15 of 16 images (8 letter automorphisms × inversion) reduce to the empty word, while the stored strings were fixed points of the parent form. Validator: the words are trivial in free B(2,5) (proven).
+
+**Decision.** Any hardness claim uses ρ_min16 = min over the 16 images of |R₂.₅(image)| / |w̄|. Screening may use the generated word only; all 16 images are computed on finalists. The definitions above are unchanged; this fixes which representative a reported ρ refers to. Implementation: `--min16` in `experiments/challenge_gen/hardness/run_baselines.py` (b25 branch `12-hardness-harness`), record fields `min16_lens`, `min16_len`, `rho_min16`; the level classification uses ρ_min16 when the flag is set.
+
+## Owner decision 2026-10-14: headline D for mixed relator sets (T-003, T-020)
+
+Source: T-003 stage 1 ([[t003-gated-dehn-search-2026-10-14#Results]]) and the Peiffer check ([[2026-10-14-t020-peiffer-loophole]]).
+- On a relator set that mixes standard v⁵ and dataset relators (R-M), D can be raised by padding. Standard factors that the reducer removes add cells but leave no trace in R₂.₅(w): R-M best D 0.13, but best D on dataset factors only 0.039.
+- Loop erasure also leaves Peiffer pairs (two factors M⁻¹f_i M f_j = 1 that cancel only together).
+
+**Definitions** (all on the freely reduced word w̄, n = |w̄|):
+- **F*_P, N*_P.** The certificate after alternating loop erasure and Peiffer-pair deletion until the factor count stops changing (`reduce_certificate` in b25 `experiments/challenge_gen/hardness/minimise.py`). N*_P = |F*_P| ≤ N* = |F*|.
+- **D_P** = N*_P / n. Like D, it is an **upper bound** for area/n, never the area: the count depends on the deletion order, and larger cancelling tuples are not searched.
+- **D_dataset_P** = (number of dataset-relator factors in F*_P) / n. Standard factors are not counted.
+
+**Decision.** For any relator set containing both standard and dataset relators, the **headline D** is D_dataset_P. Full D and D_P are always reported next to it. (Consequence, not part of the decision: for a pure dataset relator set (R-D), D_dataset_P = D_P.) **Levels (owner decision 2026-10-14, closing the open question).** L2 and every D threshold (for example the T-003 bar 0.200) are read on the headline D: D_dataset_P on mixed relator sets, D_P on pure sets. Full D is always reported alongside. A path-length D (D_path, T-016 overlap chains) is never a headline D and never counts toward L2.
+
+**Provenance rule (owner decision 2026-10-14, after T-016).** Words built as chains (rewriting-path constructions: a strip of cells with nearly bounded |w̄|) report D_path in its own column, never as headline D. Their level label **caps at L1 by construction**, even when N*_P/|w̄| ≥ 1, because for pure-dataset words D_P and D_path coincide numerically but D_path measures path length, not area.
+
+## Owner decision 2026-10-14: headline D_c for all constructions (T-023)
+Source: Developer's T-023 results (b25 PR #13), as relayed by Lead. Loop erasure and Peiffer deletion leave further cheaper certificates:
+- about 25% of T-003 R-M finalists have adjacent inverse cells;
+- T-016 chains compress hard once blocks are replaced by single relators (best E1c word: N* 55 → N*_c 7).
+
+**Definition.** D_c = N*_c/|w̄|. N*_c is the factor count after, in order:
+1. loop erasure;
+2. Peiffer-pair deletion (to the fixpoint, as for F*_P);
+3. inverse-cell reduction (adjacent inverse cells, i.e. cancelling pairs in the folded diagram, deleted);
+4. relator-closure compression: every contiguous block of factors whose expansion is cyclically a table entry is replaced by one factor. The table is all 1,630 R7 entries (b25_full, v^{5k} with |v| ≤ 7, and inverses, multiples included).
+
+Like D, it is an upper bound for area/|w̄|, never the area.
+
+**Decision.** D_c is the **headline certificate measure for all constructions**, and all D thresholds (L2: ≥ 1; bars such as 0.200) are read on it. D, D_P, D_area, b₁ and N_int are reported alongside. Earlier headline measures (D_P, D_dataset_P) are kept as columns. The T-003 and T-016 headline tables are updated once Developer's numbers are final.
+
+**Mixed relator sets (owner decision 2026-10-14).** On sets that mix dataset and standard relators, the headline is **D_dataset_c** = (dataset-relator factors of the compressed certificate F_c)/|w̄|, with the full D_c alongside. On pure sets the headline is D_c.
+
+## Owner decision 2026-10-14: vertex depth as the area-vs-path classification
+Source: Math Expert's vertex-depth criterion ([[2026-10-14-vertex-depth-criterion]]), which replaces the edge-based N_int and b₁ of [[2026-10-14-area-vs-path-criterion]]. Those counted tiny triangles in chains as interior. All statistics are computed on the compressed, reduced certificate F_c (headline) and on the raw certificate (diagnostic).
+- **Deep cell:** no vertex of the cell lies on the boundary ∂Δ (one touching point counts as touching).
+- **Peeling and depth:** remove all cells touching ∂Δ, recompute the boundary, and repeat; depth(cell) is the removal round, counting from 0. **maxdepth** is the largest depth, and **N_deep** counts the cells of depth ≥ 1.
+- **Normalised against the ideal square with the same N** (N ≥ 9): T_deep = N_deep/(√N − 2)² and T_depth = maxdepth/((√N − 1)/2).
+- **Classification:**
+  - **path-like** iff N_deep = 0;
+  - **area-like** iff T_deep ≥ 0.5 and T_depth ≥ 0.5;
+  - **thick strip** otherwise.
+  - Hub degree and cut width are diagnostics. The 0.5 cutoffs are conjectured (Math Expert).
+- **V_int** = number of interior vertices, the shaping term of the T-018 objective J = (N_deep + 0.25·V_int)/|w̄|.
+- **Depth success criterion (T-018):** the first L1-certified, novel B(2,5) word with maxdepth ≥ 2 and T_deep ≥ 0.5. D and D_c are tracked but not expected to reach 1. Math Expert's sizing conjecture: a square-like disc has |w̄| ≈ 4√N·e, so D ≥ 1 needs N ≳ 16e², about 1,300 cells for |v| ≤ 7.
+
+**D_area (owner decision 2026-10-14).** When T-023 provides it, D_area = N_int/|w̄| (interior cells of the folded diagram, Math Expert's [[2026-10-14-area-vs-path-criterion]]) is reported alongside D and D_path, not as headline.
+
+**Novelty (owner decision 2026-10-14, after T-016).** For every construction, "novel" means G2 **and** the all-classes check: R₂.₅(w) is not the canonical class of any of the 1,640 relators, used or not ([[challenge-gen-glossary#novel L1 and the guards G1 and G2]]).
+
+**Standard guard (owner decision 2026-10-14, from Validator's T-016 review).** For EVERY construction, a word counts as L1 and novel only if it also passes:
+1. **Non-increasing 2.5-closure:** the closure contains neither the empty word nor any relator class. This catches the greedy reducer's move-order dead ends: 14 of 190 T-016 E1 words, and 20 of 199 E1c L1 words, reduce to empty this way.
+2. **Exhaustive ≤ 2-cell certificate test** over the relator table: no certificate with at most 2 cells.
+3. **N*_c reported next to D.**
+
+It is reported as "no cheaper certificate found by these tests", never as an area statement. To be revisited if a method places standard cells genuinely inside the diagram (T-018), so that they are no longer padding.
+
+## Owner decision 2026-10-15: final area-like rule, wrapped-relator guard, depth-sum J
+Source: Math Expert's follow-ups ([[2026-10-14-depth-followups]]), after T-023 showed 10 E1c chain words with one deep cell each on the compressed certificate (9 of them the same 60-letter dataset relator, #212). The proposals read these as rings of 6–9 cells around one relator. Validator later found that they are caps of 2–4 cells plus a chain tail ([[2026-10-15-final-area-rule-and-wrapped-guard]]). The proposals were accepted, then amended the same day after Validator's verdict (see *Amendment* below). The rule is `#status/conjectured`.
+1. **Area-like rule (final; replaces "N_deep ≥ 2" of the 10-14 rule).**
+   - **area-like** iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, **maxdepth ≥ 2** (amended), and the deep cells contain a **dual-connected core of ≥ 2 cells** (deep cells sharing an edge path, connected in the dual graph restricted to deep cells).;
+   - **small enclosed** iff N_deep ≥ 1 and N < 16;
+   - **thick strip** iff N_deep ≥ 1, N ≥ 16, and the diagram is not area-like (owner, 2026-10-15: thick strip kept for large non-area-like diagrams);
+   - **path-like** iff N_deep = 0.
+   - Why: two wrapped relators joined by a chain have N_deep = 2 yet stay path-like at the larger scale.
+2. **Enclosed relator: a diagnostic, not a novelty gate (amended).** Novelty adds the **exact test**: a word is not novel if its cyclically reduced form is a rotation of a table relator or its inverse, i.e. it is conjugate in F to a relator. This applies to every construction. The geometric pattern is reported, not gated, as **"enclosed relator (modulo ring)"** under Validator's condition G*: N_deep = 1, every other cell touches the deep cell c₀, and c₀'s relator class (up to inverse and rotation) is not among the other cells' classes. It means w ~ r^{±1} in F/⟨⟨ring⟩⟩, not in F. A silent flag never certifies novelty.
+3. **Objective J (T-018 and later depth searches):** J = (Σ_cells depth(c) + 0.25·V_int)/|w̄|. This replaces (N_deep + 0.25·V_int)/|w̄|. The depth-sum term is 0 for a chain, 1 for a wrapped relator and 10 for a 5×5 grid (whose full J numerator is 14, since V_int = 16), so a second ring is worth more than extra first-ring cells.
+4. **maxdepth-vs-N logging (falsifier).** Every depth search logs maxdepth at every N it reaches, per lineage, and reports a log N against √N fit across seeds. If the curve looks logarithmic, the presentation behaves hyperbolically at these scales: D stays bounded and the area route is closed for those relators. Report that as a finding.
+
+**Amendment (owner, 2026-10-15, after Validator's verdict [[2026-10-15-final-area-rule-and-wrapped-guard]]).**
+- **maxdepth ≥ 2 is now required for area-like.** Without it, 3×k ladders (k = 6–8), 4×k strips (k = 5, 6) and a wrapped pair with a chain tail at N = 16 came out area-like, because T_depth ≥ 0.5 needs only maxdepth 1 for N ≲ 40. The 4×4 grid is the only legitimate case lost.
+- **The wrapped-relator novelty gate is withdrawn** (it is replaced by item 2 as amended). Its premise fails: the ring condition gives conjugacy only modulo the ring, and the 3×3 commutator grid is a counterexample. It also fired on 0 of the 10 motivating E1c cases. The exact test finds 0 of 611 T-016 finalists conjugate in F to a relator.
+- **The area-like label is a diagnostic.** The evidence for area is the maxdepth-vs-N fit (item 4) and H2.
+- **Math Expert's conjecture is false:** "no chain word has a connected deep core of size 2". 8 of 203 compressed E1_screen words have two distinct deep relators sharing a 28-edge path, all with N < 16.
+
+The success criterion (maxdepth ≥ 2 and T_deep ≥ 0.5 on an L1-certified, novel word) is unchanged. Not adopted for now: novelty by centre relator, ring-diagram templates, and a T-016 ring-growth follow-up around #212.
+
+## Owner decision 2026-10-16: strict depth and trivial a⁵ cells (headline N≥2, D_c,≥2)
+Source: Math Expert's junction-repair revision 2 ([[2026-10-16-junction-repair-rule]] § 7); Validator's check ([[2026-10-16-t018-area-like-dataset-words-check]] Part 3); Experimenter's strict-depth check (T-018 note).
+
+**Why.** Cells v⁵ with |v| = 1 (a⁵, b⁵ and their inverses) only normalise syllable exponents in ℤ₅ * ℤ₅. They carry no area. In T-018 they made up 36–62% of every certificate and 44–79% of the deep cells. They also formed shields that made inner cells look deep:
+- the H2 candidate (seed line 51) had standard maxdepth 2 but strict maxdepth 0;
+- the D_c ≥ 1 of the line-48 finalists came from 36 a⁵-type cells out of 63.
+
+**Definitions** (on the compressed certificate over cyclic cores; the root length of a cell is the length of the primitive root of its cyclic core):
+- **Trivial cell:** root length 1. **N≥2** = number of cells with root length ≥ 2. **D_c,≥2** = N≥2/|w̄|.
+- **Strict depth (S2).** Peeling as in [[challenge-gen-success-metrics#Owner decision 2026-10-14: vertex depth as the area-vs-path classification]], except that trivial cells are absorbed into the exterior whenever they touch it, and this absorption is repeated after every peeled layer (the least fixed point; it terminates and is order-independent, Validator). So a trivial cell never counts as depth. "Touching" includes contact at a single vertex.
+- **Strict maxdepth, N_deep, deep_core:** as before, but under strict depth, counting non-trivial cells only.
+- **T_deep and T_depth** are normalised by the **full N** (conservative). The variant normalised by N≥2 is reported alongside.
+- Cells with root length 2 are reported separately. S1 (absorb once) and S3 (root lengths 1 and 2 trivial) are sensitivity columns.
+
+**Decision.**
+- The **headline measures are N≥2 and D_c,≥2**. N*_c and D_c are kept as columns.
+- **The area-like rule, H2 and the objective J use strict depth.** Area-like iff N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, strict maxdepth ≥ 2 and strict deep_core ≥ 2. J = (Σ strict depth(c) + 0.25·V_int)/|w̄|.
+- All D thresholds (L2: ≥ 1; bars such as 0.200) are read on D_c,≥2.
+- Earlier results are re-stated under these definitions (see [[_progress]] 2026-10-16).
+
 ## Success levels
 
 | Level | Criterion | Meaning |
