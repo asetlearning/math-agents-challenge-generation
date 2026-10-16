@@ -49,7 +49,7 @@ The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` 
 - **Which tasks go remote** is set in the project's execution policy (see [[project-challenge-gen]]):
   - GPU work, and anything expected to exceed about 30 minutes or 2 GB, runs remotely;
   - editing, compiling, unit tests, smoke runs and analysis stay local.
-- **Local runs go through `capjob`** (2026-10-16; `client/capjob`, remote-jobs PR #7). It caps memory and CPU, by default at 2 GB, 1 GB swap and 2 CPUs, with oom_score_adj 1000. When the cap kills a job it falls back to `rjob submit`, either automatically or by leaving a draft job.toml (exit 75). It was added after OOM kills of `maestri-app` on 2026-10-15/16. Rule: [[_common]] § Memory cap and rjob fallback.
+- **Local runs go through `capjob`** (2026-10-16; `client/capjob`, merged in remote-jobs PR #7, main @ 7eb813c). It caps memory and CPU, by default at 2 GB, 1 GB swap and 2 CPUs, with oom_score_adj 1000. When the cap kills a job it falls back to `rjob submit`, either automatically or by leaving a draft job.toml (exit 75). It was added after OOM kills of `maestri-app` on 2026-10-15/16. Rule: [[_common]] § Memory cap and rjob fallback.
 
 ## Protected surfaces
 - **Job spec / `job.json`** (`name`, `code{repo,sha,submodules,build_steps}`, `resources{device,cpus,timeout_hours,gpus?,mem_gb?}`, `run{argv,files,outputs}`, `data`, `runs_dir`). A future container or Slurm backend must honour the same contract; changes are additive only.
