@@ -59,3 +59,10 @@ Method: cells u^5 for every primitive cyclically reduced word u (|u| <= 7), all 
 2. Cells are the R7 relators v^5 and (replicated) u^(5k); "folded, reduced diagram" is WLOG for a given boundary word.
 3. A shape argument (chain, triangle, lens, vertex/stem excluded by counting) rather than an enumeration of the topology; I believe it complete for three cells.
 4. Property of one family of presentations, not of the free group B(2,5).
+
+## Addendum 2026-10-16 — remaining positive controls
+The same gate-off control (all arcs ≥ 2, mild 4.5-power test), one length triple per capjob (2G, 1 CPU).
+- Added: (4,5,7): 38,784 = 38,784 boundaries, mild-power-free 32,624 = 32,624. (5,5,6): 20,592 = 20,592, mild 16,864 = 16,864.
+- Compared in total: 8 of the 12 feasible unordered triples, plus (2,3,4). Every one agrees exactly, apart from the lens boundaries for (2,6,7), which are explained in §3.
+- Not compared: (4,6,7) and (5,5,7) were killed at the 2G cap (the Experimenter's `triangle_exhaustive` keeps every positive boundary in memory under the mild test); (5,6,7) and (6,6,7) were not run. Following the capjob rule I did not raise the cap. I judge an rjob run unnecessary: the machinery is already replicated on 8 triples, and the real (2.5) result does not depend on this control, because my own enumeration covers all triples.
+- Process note: on 2026-10-16 my earlier 6-way parallel run of this control (no cap) was very probably the job that triggered the OOM kills. All later runs went through capjob.

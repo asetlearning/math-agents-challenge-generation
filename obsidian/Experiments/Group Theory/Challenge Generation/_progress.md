@@ -139,6 +139,18 @@ Amended (owner, 2026-10-15, after Validator's verdict [[2026-10-15-final-area-ru
 - **Table fix:** 1,080 of the 1,630 R7 entries are not cyclically reduced. Diagram statistics now fold over cyclic cores (b25 PR #17, merged at `714caa9`; [[2026-10-16-core-table-conversion-check]]).
 - **Decision (owner, 2026-10-16): revision 5 approved.** The seeds are the 29 certified power-free dataset words. H2 counts only for lineages from the 22 seeds that are not area-like; the 7 area-like seed lineages are reported separately ('depth kept vs grown'). A seed is never a finalist. Next: step 0 and the smoke run (29 seeds × 15 steps) under capjob. [[t018-t021-diagram-search-2026-10-14]]
 
+### 2026-10-16: T-018 step 0 and smoke run (29 seeds, 15 steps)
+- **Step 0 passed:** depth controls 72 of 72, D_c reproduction, negative controls (no T-016 word area-like) and a hand-built positive control.
+- **Smoke run:** all lineages stall by step 11; 18 of 29 seeds never grow. 49 finalists, all power-free and passing the guard; 24 novel, 5 of them area-like.
+- **H2 candidate:** seed line 51 (a thick strip) reaches novel area-like words at steps 9–10 (|w| 51/53, N*_c 37/39, D_c ≈ 0.73, maxdepth 2, T_deep 0.72/0.67). Validator found no cheaper certificate. Replicated as "a certificate with maxdepth 2 exists", not as quadratic area. It is from the smoke run; H2 is evaluated on the full run.
+- **H4 flag:** line-48 novel finalists have D_c 1.15/1.14 on cheaper 63/65-cell certificates, as an upper bound only (growth looks non-minimal). No claim of area ≥ |w|.
+- **Dataset seeds re-checked:** 6 area-like, not 7 (line 47 has a 24-cell certificate and is a thick strip); line 48 reaches maxdepth 3, D_c 1.06. [[2026-10-16-t018-area-like-dataset-words-check]]
+
+Decisions (owner, 2026-10-16):
+- **Generator:** the exhaustive boundary-relative attachment generator is accepted as a recorded deviation; the random patch library could not pass the gates.
+- **Full run:** add triangle attachments, raise the per-lineage cap by a pre-registered addendum, then run 29 seeds × 60 steps.
+- **R8 question:** Math Expert assesses whether |v| ≤ 8–9 would give more depth or area; Experimenter estimates the cost of an R8 comparison afterwards. Lead's reading: longer roots should ease power-free growth, but not raise D (more exposure per cell, and area over R8 ≤ area over R7).
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
