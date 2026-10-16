@@ -43,6 +43,7 @@ Sources:
   3. **Success criterion:** the first B(2,5) word with maxdepth ≥ 2 and T_deep ≥ 0.5 (L1-certified, novel). D and D_c are tracked but not expected to reach 1.
   4. **Negative controls:** T-003 and T-016 words must have N_deep = 0 (Developer is computing them).
   5. **Headline:** D_c on pure sets. This experiment uses a pure set.
+- **Revision 5 (draft)**: seeds from certified power-free dataset words (section below); the relaxed-seed route is not needed.
 - **Revision 4** (owner 2026-10-15): final area-like rule, depth-sum J and maxdepth-vs-N logging (section below). Amended the same day after Validator's verdict: maxdepth ≥ 2 is required for area-like, and the wrapped-relator gate is replaced by the exact conjugacy test plus a G* diagnostic.
 
 ## Check against the merged code (b25 main `6f71817`, 2026-10-15)
@@ -78,10 +79,10 @@ Every word the project has produced so far is path-like: random products (T-002)
 ## Relator set R7 (T-021)
 - **Source:** `b25_full`, the Knuth–Bendix input of March 2026. It is in algo-mixer at `experiments/_inputs/kbmag/b25_full`, with an identical copy at `kbmag_source/standalone/kb_data/b25_full`, sha256 `b1d511fe…ba32ee`. Header: "815 relations from freely reduced words up to length 7".
 - **Content** (parsed 2026-10-14): 815 relators v^{5k}.
-  - 795 are primitive v⁵, with |v| = 1, 2, 3, 4, 5, 6, 7 contributing 2, 2, 8, 21, 64, 178, 520 relators.
-  - 20 are multiples v^{5k} with k = 2–7 of roots with |v| ≤ 3.
+  - **747** are primitive v⁵ (corrected 2026-10-15 by Experimenter's count, owner-confirmed; earlier text said 795, with |v| = 1…7 contributing 2, 2, 8, 21, 64, 178, 520, and that per-|v| split is superseded).
+  - **68** are multiples v^{5k} (k ≥ 2) of roots with |v| ≤ 3: 52 of 1-letter roots, 12 of 2-letter roots, 4 of 3-letter roots (earlier text said 20).
 - **Tables:**
-  - **Move table:** the 795 primitive v⁵ and their inverses (1,590). Patches use only these.
+  - **Move table:** the 747 primitive v⁵ and their inverses (**1,494**; corrected from 1,590). Patches use only these. Cells use the cyclic core, with conjugator q·core[:a], because some table relators are stored as q u⁵ q⁻¹.
   - **Compression and certificate table:** all 815 and their inverses (1,630, hash-pinned), including the multiples. The L0 relator check is `relator_is_fifth_power`.
 - **Pure set:** the headline is D_c. D_dataset_c does not apply.
 
@@ -185,6 +186,62 @@ Reported, not hypotheses:
 - **L1 by construction is still re-certified** by the harness (all 16 images) on finalists.
 - **Novelty:** G2 plus the all-classes check against both tables.
 - **Thresholds 0.5 are conjectured** (Math Expert); they are stated before the run and not tuned afterwards.
+
+## Step-0 seed findings (Experimenter, 2026-10-15)
+**1. No power-free 2- or 3-cell seed patch exists** over the 1,494-entry move set (|v| ≤ 7, primitive roots). Exhaustive, on t018-diagram-search@4349ba3: 2-cell patches 0 reach the needed arcs; triangles 0 of 231,000 anchor pairs reach a third cell meeting the Fine–Wilf bounds (60 of 343 length triples feasible); chains 235.1M candidate triples, 87M pass the exposed-run test, 0 power-free (about 41 CPU-min). Caveats: the triangle path never reached its last stage even with the bounds weakened by 3, so it has no positive control (its third-cell lookup matched the sampler on 12,990 of 12,990 triangles); the chain path does; the |v| = 1 chains are script-only; **Validator replicated the conclusion** ([[2026-10-15-t018-seed-reachability-review]]): 2-cell 0; chains 108 identical plus 48 nested; triangles plus lenses 383,760 candidates, 0; so 'no power-free seed at N ≤ 3' is safe to build on. **Caveat: do not cite the 60/343 length-triple pruning as complete.** My triple test assumes one arc per pair, so it misses lens triangles (two cells sharing two arcs with a third glued between them; 22 more length triples have real matches) and silently skips nested end cells. No re-run is needed for the conclusion.
+
+**2. Constructive test (owner step 1): power-free relations over R7 exist.** `hardness/powerfree.py has_power_cyclic` (all periods h, exact windows ⌈2.5h⌉) on the 820 dataset words: **492 are cyclic power-free** (lengths 32 to 123; shortest 32, 2 words of length 32). 491 of the 492 reduce to IdWord under the `rec` kbprog system on `b25_full` (sha b1d511fe…ba32ee, the same file as the R7 table, 815 equations v^(5k), |v| ≤ 7). The remaining one is dataset line 431, the known miss. Every kbprog rule is a consequence of the R7 relators, so these 491 words are trivial in G₇ = ⟨a, b | R7⟩, hence **have an R7 certificate in the existence sense**. The negative controls (0 of 825) were recorded in kb-verify-20261007. Likewise the recomputed R₂.₅ outputs: T-016 E1c 147 of 161 L1 words give a power-free R (all 147 trivial in G₇), E1d 85 of 201 (85), E1_screen 131 of 145 (131); T-002 L1 words with certify cost ≤ 20 s: 1,571 of 5,121 give a power-free R (1,185 distinct, lengths from 32), 1,567 trivial in G₇ (the other 4 are not decided by `rec`); the 100 costliest T-002 words (> 20 s, about 2.6 CPU-h) were not recomputed. **Not yet available: an explicit R7 certificate (cell list, N).** kbprog keeps no derivations, so N is unknown. This is b₂ settled constructively (a power-free relation in N(R7) exists); it says nothing about the area of the certificate.
+
+## Finding: power-free dataset words with R7 certificates (dataset words, NOT novel; Experimenter, 2026-10-16)
+Of the 820 dataset words, 492 are cyclic power-free and 491 are trivial in G₇ under the `rec` kbprog system on `b25_full` (see Step-0 seed findings). I turned the rewriting paths into explicit certificates (`t018/kbcert.py`, branch t018-diagram-search): each used rule l → r is certified on its own by a search of 2.5-moves of period ≤ 7 (each move is one R7 cell), the rule certificates are composed along the rewriting path, and the product is re-expanded and compared with the word (independent L0). The best of 16 rotation/inversion variants is kept, and the diagram statistics are computed on the compressed reduced certificate F_c over the **core table** (the cyclic cores of the 1,630 entries; see the note below).
+- **Words ≤ 53 letters: 29 of 30 certified** (line 41 not certified: all 16 variants needed a period > 7 rule; not a statement about triviality). All 29 pass the standard guard.
+- **Power-free does not force depth.** Lines 1 and 3 (32 and 33 letters) are path-like with N*_c 4 and 11 and maxdepth 0.
+- **But it does not forbid it either: 7 of 29 are area-like** under the final rule (N ≥ 16, T_deep ≥ 0.5, T_depth ≥ 0.5, deep_core ≥ 2, maxdepth ≥ 2), with N*_c from 33 to 56 and D_c up to 1.08. Another 1 reach maxdepth 2 without being area-like.
+- **Caveat (upper bounds).** N*_c is an upper bound on the area, never the area; my certificates are not minimised, and a different certificate of the same word can have different depth statistics. The words are dataset words, so none counts for the success criterion or H2 (not novel).
+
+| line | |w| | N raw | N*_c | D_c | maxdepth | N_deep | class |
+|---|---|---|---|---|---|---|
+| 1 | 32 | 28 | 4 | 0.125 | 0 | 0 | path-like |
+| 3 | 33 | 63 | 11 | 0.333 | 0 | 0 | path-like |
+| 39 | 51 | 94 | 14 | 0.275 | 1 | 1 | small enclosed |
+| 28 | 49 | 100 | 16 | 0.327 | 1 | 1 | thick strip |
+| 23 | 48 | 107 | 17 | 0.354 | 1 | 1 | thick strip |
+| 44 | 52 | 53 | 17 | 0.327 | 0 | 0 | path-like |
+| 62 | 53 | 97 | 17 | 0.321 | 1 | 1 | thick strip |
+| 12 | 41 | 123 | 19 | 0.463 | 0 | 0 | path-like |
+| 35 | 50 | 33 | 19 | 0.380 | 0 | 0 | path-like |
+| 51 | 53 | 155 | 19 | 0.358 | 1 | 1 | thick strip |
+| 63 | 53 | 170 | 20 | 0.377 | 1 | 6 | thick strip |
+| 42 | 51 | 190 | 23 | 0.451 | 1 | 2 | thick strip |
+| 22 | 47 | 180 | 24 | 0.511 | 1 | 6 | thick strip |
+| 40 | 51 | 77 | 25 | 0.490 | 0 | 0 | path-like |
+| 52 | 53 | 198 | 25 | 0.472 | 1 | 2 | thick strip |
+| 20 | 47 | 117 | 30 | 0.638 | 1 | 9 | thick strip |
+| 2 | 32 | 77 | 31 | 0.969 | 1 | 10 | thick strip |
+| 18 | 46 | 82 | 32 | 0.696 | 1 | 10 | thick strip |
+| 36 | 51 | 99 | 33 | 0.647 | 2 | 14 | area-like |
+| 57 | 53 | 159 | 33 | 0.623 | 1 | 6 | thick strip |
+| 17 | 46 | 98 | 34 | 0.739 | 2 | 12 | area-like |
+| 34 | 50 | 118 | 34 | 0.680 | 1 | 11 | thick strip |
+| 47 | 52 | 144 | 40 | 0.769 | 2 | 18 | area-like |
+| 13 | 42 | 113 | 41 | 0.976 | 2 | 25 | area-like |
+| 21 | 47 | 108 | 42 | 0.894 | 2 | 18 | area-like |
+| 43 | 51 | 122 | 42 | 0.824 | 2 | 7 | thick strip |
+| 49 | 52 | 144 | 49 | 0.942 | 2 | 20 | area-like |
+| 64 | 53 | 154 | 52 | 0.981 | 1 | 13 | thick strip |
+| 48 | 52 | 98 | 56 | 1.077 | 2 | 24 | area-like |
+
+**Core table.** 1,080 of the 1,630 `b25_full` entries are not cyclically reduced (written as products such as (Bab)⁵ that are not even freely reduced). Folding such a cell gives a spur and self-shared edges: over the raw table the Euler check b₁ = V_int fails (b₁ = 52, V_int = 22 on line 1's F*_P). The **core table** (cyclic core of each entry, classes unchanged, cell (k, c) → (k, q⁻¹c) with fr(R_k) = q·core·q⁻¹) passes. Diagram statistics, J and N*_c use the core table; classes, the guard, novelty and the move set are unaffected. Developer to confirm, Validator to check.
+
+## Revision 5 (draft, owner approved "A then B" 2026-10-15): seeds from certified power-free dataset words
+Replaces steps 1 and 2 of Method (the 2-/3-cell patch library as a seed source). Reason: no power-free 2- or 3-cell patch exists (Step-0 seed findings), but power-free relations with explicit R7 certificates do (finding above).
+1. **Seed source.** The 29 certified power-free dataset words of length ≤ 53 (table above), each with its compressed certificate F_c over the core table. One lineage per word (no random library, no stratification; seed 18000001 kept for tie-breaking). If wanted later: the remaining power-free dataset words (up to 123 letters) by the same method.
+2. **Seeds need not be novel.** They are dataset words. A finalist must satisfy the full finalist checks (G2 + all classes + `novelty.conjugate_to_relator` on R7 and the dataset classes) and must differ from its own seed: **the seed state itself is never a finalist**, and any state that is still the seed's cyclic word or a conjugate of a dataset word fails novelty as usual.
+3. **Growth, gates and objective unchanged:** patch attachment (2-/3-cell patches from the library of Method step 1 serve as attachments only), gates in order 2, 1, 4, 3, half-exposure, exact boundary power test, final area-like rule, J = (depth_sum + 0.25·V_int)/|w̄| on the compressed certificate, beam 100, at most 60 growth steps, standard_guard with NOVELTY_CHECKS on finalists. Diagram statistics use the **core table**.
+4. **Consequence for the success criterion.** 7 seeds are already area-like and L1/path-free (power-free, so ρ_min16 = 1) but not novel. The criterion is therefore the *novel* word: a finalist reached by at least one growth step that passes novelty and is area-like. To stop this being a one-step formality the report gives, per lineage, the number of growth steps to the first novel area-like state and whether depth is kept or grown (maxdepth and N_deep against the seed's).
+5. **Falsifier / logging:** unchanged (maxdepth at every N per lineage, log N against √N fit across lineages). The lineages now start at N*_c 4 to 56, so the fit is done on N reached, not on steps.
+6. **H1–H6 unchanged**, except that the seed-count wording in H1 ("200 seeds") reads "29 seeds". Step-0 controls (grid/ladder depth, negative controls, D_c reproduction at N*_c 7 and D_c 0.167, hand-built positive control) are still to run on the merged code and the core table before anything else; nothing has been run on the search itself.
+7. **Cost.** Seed certification took ~2 min for 29 words on 2 cores under capjob. The search cost estimate comes from the smoke run.
 
 ## Related material
 - [[2026-10-14-cancellation-constructions]] (ideas 2 and 3) · [[2026-10-14-area-vs-path-criterion]] · [[2026-10-14-vertex-depth-criterion]]

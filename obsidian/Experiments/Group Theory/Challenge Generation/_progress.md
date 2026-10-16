@@ -133,6 +133,12 @@ Amended (owner, 2026-10-15, after Validator's verdict [[2026-10-15-final-area-ru
 - the area-like label is a diagnostic, and the evidence is H2 plus the maxdepth-vs-N fit;
 - Math Expert's size-2 deep-core conjecture is disproven (8 of 203 E1_screen words, N < 16).
 
+### 2026-10-15/16: T-018 seeds (step 0) and revision 5
+- **No power-free seed at N ≤ 3:** no 2- or 3-cell patch over the 1,494-entry move set has a 2.5-power-free boundary. 2-cell exhaustive, with a Fine–Wilf proof; triangles, lenses and chains exhaustive. Validator replicated it independently ([[2026-10-15-t018-seed-reachability-review]]). The 60/343 pruning is not complete (lens triangles, nested end cells).
+- **Power-free relations exist:** 491 of 820 dataset words are cyclically power-free and trivial over R7 (kbprog). 29 of the 30 with |w| ≤ 53 now have explicit R7 certificates. On the compressed certificate over cyclic cores, 7 are area-like (N*_c 33–56, maxdepth 2, D_c 0.62–1.08; line 48 D_c 1.077). These are dataset words, so not novel. N*_c is an upper bound, and the certificates are not minimised. Validator's independent check is pending; no claim before it.
+- **Table fix:** 1,080 of the 1,630 R7 entries are not cyclically reduced. Diagram statistics now fold over cyclic cores (b25 PR #17, merged at `714caa9`; [[2026-10-16-core-table-conversion-check]]).
+- **Decision (owner, 2026-10-16): revision 5 approved.** The seeds are the 29 certified power-free dataset words. H2 counts only for lineages from the 22 seeds that are not area-like; the 7 area-like seed lineages are reported separately ('depth kept vs grown'). A seed is never a finalist. Next: step 0 and the smoke run (29 seeds × 15 steps) under capjob. [[t018-t021-diagram-search-2026-10-14]]
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile

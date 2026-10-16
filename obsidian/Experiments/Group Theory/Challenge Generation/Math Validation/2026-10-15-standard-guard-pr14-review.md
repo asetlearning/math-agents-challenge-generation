@@ -72,3 +72,13 @@ On R7 (`b25_full`, 1,630 entries) the guard reproduces Developer's counts exactl
 
 ## Verdict
 **GO** for merge at c3c89df on the math. `#status/replicated` for the closure (independent agreement, plus the earlier brute-force completeness check of the move enumerator); the ≤ 2-cell exhaustiveness is a proof sketch under the two preconditions, supported by the fuzz. Nothing here is an area statement.
+
+## Addendum — PR #16 (guard follow-ups) @ 2f8bd90 (2026-10-15)
+Diff c3c89df..2f8bd90 (guard.py, diagram_stats.py, tests; 16 lines of code). All three recommendations are implemented as asked.
+- **Rec 1.** `RelatorIndex` appends the inverse of every relator the table lacks, after the given entries; `n_given` records the original count. This removes precondition 1 of §2. Re-run of my test (C): the dataset-only table (no inverses) now finds **800 of 800** planted inverse+forward pairs (before: 0 of 800). Duplicate input entries would add a duplicate inverse, which is harmless.
+- **Rec 2.** `guard_novelty_ok` is the hook's own result (`extra["not_conjugate_to_relator"]`; `None` when no hook is run), so a failed novelty check is now distinguishable from a ≤ 2-cell hit.
+- **Rec 3.** The docstring now says hits are screens, not triviality claims, and names the B₀(2,5) caveat.
+- **Side effect.** `guard_table_size` is the closed index size; `guard_table_sha256` hashes the table as given. Rows from before and after PR #16 therefore differ in `guard_table_size` for the same table. This is a record-keeping point only.
+- **Regression checks (code extracted at 2f8bd90).** Closure vs my independent closure on 611 finalists: 0 disagreements, same counts as before. Planted ≤ 2-cell fuzz: 5,997 of 5,997 found. Hook effect on `guard_passed`: 0 of 1,500 differ. I did not run Developer's test suite (pytest is not installed here).
+
+**Verdict: GO** for merge at 2f8bd90 on the math. Precondition 2 of §2 (non-empty cyclic cores) is still not enforced, but is met by every current caller.
