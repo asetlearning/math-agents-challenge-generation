@@ -26,6 +26,8 @@ protected_interfaces:
   - "sweep_summary.json + run.matches.jsonl layout — dashboard and vault results tables read them"
   - "tcgraph_ext binding API — b25 scripts depend on it"
 hot_paths:
+  - "Policy (owner 2026-10-16): heavy-experiment and group-theoretic algorithms live in tcgraph (C++) with tcgraph_ext bindings; Python prototypes must be ported before large-scale runs ([[_common]] § Implementation language)"
+  - "T-018 diagram search (port in progress 2026-10-16): attachment generation (vertex/triangle), power gate, compression/closure (minimise), diagram fold/depth/stats, guard, novelty — Python reference in experiments/challenge_gen/{hardness,t018}"
   - "LocalSearcher::search — O(beam × ~250+ neighbours × steps × score cost); no visited set; neighbours expanded twice"
   - "scorers with reduce2_5 / length_range reduce_before_scoring — greedyReduceCyclicExhaustive, findSquares O(n²)"
   - "edit-distance scorer — O(|w|·|c|) per challenge"

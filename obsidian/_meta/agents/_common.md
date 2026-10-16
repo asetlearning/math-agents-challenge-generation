@@ -239,6 +239,18 @@ On 2026-10-15/16 an unbounded 6-worker Python job on the VM used ~4.6 GB of RAM 
 - **Pools count against the cap:** a multiprocessing pool shares the one `--mem` and `--cpus` budget. Size pools to `RJOB_CPUS`, not to `os.cpu_count()`.
 - After an exit-76 fallback, track the job with `rjob wait <id>` (background) and `rjob fetch <id>`, and cite the job id in the experiment note.
 
+## Implementation language: C++ core, Python interface (mandatory; owner 2026-10-16)
+
+1. **Every algorithm or procedure that can run in a heavy experiment is implemented in C++** in the project's C++ core (for challenge-gen: tcgraph, see [[dep-tcgraph-agentic]]). Examples: search, attachment and candidate generation, gates, power tests, reduction, compression and closure, certificate minimisation, diagram folding and depth, guards and novelty checks.
+2. **Group-theoretic algorithms belong in C++** (word, relator, certificate and diagram algorithms), unless the code is a temporary proof of concept or a test.
+3. **Prototypes may be written in Python** to test and refine an idea. They must be **ported to C++ before any large-scale experiment** uses them. "Large-scale" means any full run, sweep or rjob job, or anything over the local smoke size. The Python prototype stays as the reference implementation: the port ships with equivalence tests (Python vs C++ on the same inputs, identical results) and a timing comparison.
+4. **Python is the interface:** bindings (for tcgraph, `tcgraph_ext`), orchestration, configs, analysis and plots. Any C++ algorithm an experiment needs gets a Python binding.
+
+Consequences:
+- An experiment plan whose heavy loop runs in Python is a prototype plan. Lead does not approve a full run on it, and the port is planned first.
+- Developer owns the C++ ports and bindings (on branches, with the tcgraph submodule pin bumped in b25). Validator cross-checks the math layer, including the Python-vs-C++ equivalence on property tests.
+- Background (2026-10-16): T-018's search, gates, compression and diagram statistics were pure Python, so the full run needed up to 16 h on 9 Mac cores. tcgraph was used only for 2.5-reduction.
+
 ## Test discipline (mandatory)
 
 - New algorithm / component → tests showing it runs end-to-end on a small problem.

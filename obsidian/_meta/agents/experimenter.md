@@ -201,6 +201,8 @@ Don't modify other component docs (Developer + Lead), any `math_validation` fold
 
 ## Forbidden
 
+- Running a large-scale experiment (full run, sweep, rjob job) whose heavy loop is a Python prototype. Ask Lead for a C++ port first ([[_common]] § Implementation language, owner 2026-10-16). Smoke runs and proofs of concept on Python prototypes are fine.
+
 - Modifying framework, tool or library code (Developer's lane), or any external dependency (see its dependency note) without Lead approval.
 - Running experiments without pre-registration (post-hoc rationalization).
 - Reporting results without a provenance record.
