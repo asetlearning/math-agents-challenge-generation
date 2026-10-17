@@ -497,7 +497,10 @@ What was learned:
   - tcgraph consolidation (PRs #5 and #6);
   - `capjob`.
 
-**Follow-up:** T-024 (depth versus word length: onion construction and long words, relators beyond R7, efficient search). The Validator's check of the Math Expert's ring and accretion argument will be appended when it arrives.
+**Follow-up:** T-024 (depth versus word length: onion construction and long words, relators beyond R7, efficient search). **Addendum (2026-10-17): the ring and accretion argument, checked by the Validator** ([[2026-10-16-t018-ring-accretion-argument-check]]).
+- (a) Strict depth 2 needs a closed ring: **confirmed qualitatively**. The Math Expert's ~19/25-cell counts are not lower bounds: line 48's depth-2 structure has only 6 non-trivial cells inside its ring.
+- (b) Existence: **confirmed, with a correction**. Depth 2 holds on the Validator's 55-cell certificate; the stored 56-cell one gives 1.
+- (c) "A stall after 6–16 steps gives maxdepth ≤ 1 in any geometry" **does not follow**. L34 added +20 non-trivial cells and reached standard depth 3, but at step 14 its 8 non-trivial standard-deep cells sit under 22 cells of root length 1, which S2 absorbs. So the limit is the root-length mix of what this generator attaches, on stored certificates. "Any geometry" is untested.
 
 ## Related material
 - [[2026-10-14-cancellation-constructions]] (ideas 2 and 3) · [[2026-10-14-area-vs-path-criterion]] · [[2026-10-14-vertex-depth-criterion]]
