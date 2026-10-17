@@ -59,3 +59,6 @@ Source: `Agents/asetlearning/MathExpert/proposals/2026-10-16-t018-close-or-conti
 **Suggested wording:** "Under J-ranked accretion with quota 3, lineages stall after 6–16 steps. Burial does occur (standard depth up to 3), but by |v| = 1 cells. No non-inherited lineage reached S2 depth 2, even on cheaper certificates (54 words probed). Whether depth 2 can be grown is open; it is not excluded by the cell budget."
 
 **Scope:** argued from the S2 definition, plus measurements on line 48 / L48 and on the restart data. No minimality and no geometry claims.
+
+## Addendum 2026-10-17: corrected target
+(b) is unaffected and holds a fortiori. Line 48 is strictly power-free (no exponent ≥ 2.5), hence 2.5-reduced. (c)'s qualification gains one item: the restart arms searched only the strictly power-free subspace (see [[2026-10-16-t018-restart-negative-check]], addendum 2026-10-17).

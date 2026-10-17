@@ -79,3 +79,39 @@ Same method as for A1–A3: brute force over root lengths ≤ K, arcs between ne
 - **"Boundary cells with ℓ ≥ 5 always need ≥ 2 internal arcs": true only as "not a single arc with one exposed run".** The counting excludes a cell whose exposure is one run. A cell can also have one arc plus other cells touching its exposed part at vertices, or only vertex/stem contacts. Its exposure then splits into several runs, each < T(ℓ). With k contact points a cell can survive with total exposure up to about k·(T−1) (a 5-cell: one arc of length ≥ 1 plus one vertex contact suffices numerically; three contact points and no arc at all). For N ≤ 3 this was excluded by counting; for N ≥ 4 it is not. Correct statement: such a cell needs at least 2 separate attachments (arcs or contact points). A pre-filter for larger seeds must not require 2 arcs.
 
 **Verdict:** §1 counting **proved** (replicated exactly), with the one correction to the "≥ 2 internal arcs" phrasing.
+
+## Addendum 2026-10-17: re-check under the corrected target (2.5-reduced, exponent > 2.5 forbidden)
+Lead request (owner correction, [[challenge-gen-success-metrics]] § Owner decision 2026-10-17). Everything above used "power-free" = no exponent ≥ 2.5 (window ⌈2.5h⌉, exposure < ⌈2.5ℓ⌉). Under the corrected rule:
+- A window of period h is forbidden from length T(h) = ⌊2.5h⌋ + 1: 3, 6, 8, 11, 13, 16, 18 for h = 1..7.
+- An exposed run may be up to ⌊2.5ℓ⌋.
+- The single-arc need becomes need(ℓ) = ⌈2.5ℓ⌉: 3, 5, 8, 10, 13, 15, 18. It drops by 1 for even ℓ.
+
+Scripts: `scratch/seed/` with `STRICT=1`: `strict_enum.py`, `strict_count.py`, `strict_verify.py`, `strict_l1.py`; outputs in `strict/`. The new C detector `cyc_has_power_gt` agrees with a brute-force test on 40,000 cyclic words (0 disagreements; 2,579 of them have maximum exponent exactly 2.5, which the old test rejects and the new one accepts).
+
+| Item | Old (≥ 2.5) | Corrected (> 2.5) |
+|---|---|---|
+| 2-cell (Fine-Wilf) | excluded | **still excluded**. The argument: need(ℓ) = ⌈2.5ℓ⌉, while a shared arc is ≤ ℓ + ℓ′ − 2 < 2.5·max(ℓ, ℓ′), so the larger cell always over-exposes. Nested a⁵ in a 6- or 7-cell exposes ≥ 25 letters. Enumeration: 0 candidates. |
+| A1 single-arc pairs | (1, ≥4), (2,7), (3,7) | (1, ≥4), **(2,5), (2,6)**, (2,7), (3,7) |
+| A2 recurrence cap | valid for all single-arc ends | **valid only when the arc is ≥ ⌊2.5ℓ_s⌋ + 1.** For even ℓ_s a single-arc end can have arc exactly 2.5ℓ_s, which is an allowed exact 2.5-power, so its recurrence forbids nothing. |
+| A3 chain survivors | (2,3,7), (3,3,7) | (2,3,7), (3,3,7), **(2,2,5), (2,2,6), (2,2,7)** with arcs 5/5 (plus (2,2,7) arcs 6/7, 7/6, 7/7) |
+| Chains, enumeration | 0 power-free | **16 distinct 2.5-reduced boundaries** (64 before identifying rotations and inversion), lengths 25 (4), 30 (4), 35 (8), all with maximum exponent exactly 2.5 |
+| Chains, all 16 cell types | 0 | the same 16; the u^(5k) cells add none. Short boundaries are all empty (13,356) or length 5 with a power (1,620). |
+| Triangles and lenses (primitive cells, and all types) | 0 | **still 0** (383,760 / 388,992 candidates; smallest maximum exponent 3.5) |
+
+**The 16 chains.**
+- Shape: two end cells (v_a)⁵ with |v_a| = 2, each glued by an arc of exactly 5 (= 2.5|v_a|; this equals the Fine-Wilf maximum H(2, ℓ_m) = 5 for ℓ_m = 5 and 6, and is below H(2, 7) = 7). The middle cell has |v_m| = 5, 6 or 7.
+- In every case the two end cells are the same relator. Example: (BA)⁵, (babab)⁵, (BA)⁵ gives the boundary BABABababaBABABababaababa.
+- Checks:
+  - all 64 rebuild as explicit products of three conjugates of R7 cells (free and cyclic reduction, equal up to rotation);
+  - brute force gives maximum exponent exactly 2.5;
+  - the counting survivors (2,2,5), (2,2,6), (2,2,7) with arcs 5/5 match the enumeration exactly.
+- **They are not L1 seeds.** R₂.₅ in certify mode (all shifts) sends all 16 to the empty word, on every one of the 16 images: ρ_min16 = 0. The length-neutral moves at exactly 2.5 are enough to remove the end cells.
+
+**Shape completeness under the new rule.** The old argument "a cell with only point contacts exposes 5ℓ > 2(T − 1)" fails for even ℓ, because 5ℓ = 2·⌊2.5ℓ⌋. The list of shapes is still complete for N ≤ 3, by planarity. A cell with two distinct contact points to the rest of a disc diagram with ≤ 3 cells encloses a region, and that region must be filled by an arc-glued cell. So a cell without arcs has exactly one contact point and exposes its whole boundary, 5ℓ letters. Zero gaps (lens with point ends) are inside the chain model.
+
+**Verdict (corrected rule):**
+- "No 2-cell patch": **holds**.
+- "No 3-cell patch with a 2.5-reduced boundary": **REFUTED**. 16 chain boundaries (|v| = 2 ends, arcs 5, middle |v| 5–7) exist; triangles and lenses still give none.
+- All 16 are R₂.₅-trivial (ρ_min16 = 0), so the practical conclusion "no useful N ≤ 3 seed" survives, now for the reason "the reducer kills them" rather than "not reduced".
+- Counting arguments for larger seeds must use need = ⌈2.5ℓ⌉ and must not apply A2 to even-ℓ ends at arc 2.5ℓ.
+- Scope as before: N ≤ 3, R7 cells.

@@ -76,3 +76,12 @@ Triage: [[2026-10-16-t018-restart-negative-and-tcgraph-pr5-pr6-triage]]. Data: b
 **Scope.**
 - Verified: the 374 stored certificates, and cheaper certificates of the 54 probed words (13 targeted + 41 broad).
 - Not verified: minimal area, or certificates outside my merge neighbourhood. All 374 states were recomputed; certificate dependence was probed on the words that have standard depth ≥ 2.
+
+## Addendum 2026-10-17: corrected target (2.5-reduced, exponent > 2.5 forbidden)
+- The strict-depth recomputation does not depend on the power gate.
+- All 374 restart states are strictly power-free (my C detector: 0 have an exponent ≥ 2.5), hence also 2.5-reduced. Every statement about these states (histograms, L48 lineage, probe) stands.
+- **Scope narrows:**
+  - The arms ran with the old gate (gate 2 power test at ≥ 2.5, exposure < ⌈2.5|v|⌉). They never accepted a state containing an exact 2.5-power with an even period.
+  - "H2 falsified" is therefore established for the strictly power-free search space only. The corrected 2.5-reduced space is larger and was not searched.
+  - The N ≤ 3 re-check ([[2026-10-15-t018-seed-reachability-review]], addendum 2026-10-17) shows the extra space is not empty at small N. Its only new members there, 16 chains with |v| = 2 end cells, are R₂.₅-trivial, though.
+- Verdict unchanged as a statement about the runs; the reading "no 2.5-reduced state of this generator reaches strict maxdepth 2" is not established.

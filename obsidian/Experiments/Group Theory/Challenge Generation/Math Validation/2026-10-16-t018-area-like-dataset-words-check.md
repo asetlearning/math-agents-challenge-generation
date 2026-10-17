@@ -100,3 +100,6 @@ S2: root-length-1 cells are absorbed (vertex contact, least fixed point) before 
 - **But with the full-N normaliser, line 48 is not strictly area-like.** Its strict T_deep is 0.307 (below 0.5), with T_depth 0.623 and maxdepth 2. L48 steps 4/5: T_deep 0.255 / 0.245.
 - No certificate here passes all of maxdepth ≥ 2, T_deep ≥ 0.5 and T_depth ≥ 0.5 under S2 (line 13 has T_deep 0.52 but maxdepth 1).
 - So the corrected record should read **"no word is strictly area-like"**, not "only line 48". Line 48 is the only one with strict maxdepth ≥ 2. Under the N_≥2 variant (Part 3) line 48 would pass T_deep (1.15); the label therefore depends on the normaliser choice.
+
+## Addendum 2026-10-17: corrected target
+The 7 words were checked strictly power-free (no exponent ≥ 2.5), which implies 2.5-reduced. The verdicts stand. The population they come from (491 strictly power-free dataset words) is a subset of the 2.5-reduced dataset words; the larger set was not examined here.
