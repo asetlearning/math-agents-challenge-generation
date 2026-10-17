@@ -173,6 +173,16 @@ Source: Math Expert's junction-repair revision 2 ([[2026-10-16-junction-repair-r
 - All D thresholds (L2: ≥ 1; bars such as 0.200) are read on D_c,≥2.
 - Earlier results are re-stated under these definitions (see [[_progress]] 2026-10-16).
 
+## Owner decision 2026-10-17: the target is 2.5-reduced (no power with exponent > 2.5); exact 2.5-powers are allowed
+**Correction of a definition used since T-018.** The 2.5 reducer replaces a power u^p by u^-(5-p). It shortens the word only when p > 2.5; at p = 2.5 the length stays the same (a length-neutral move, still sometimes useful). So the property we want of constructed words and boundaries is:
+- **2.5-reduced** (the target, everywhere): no window with exponent **strictly greater than 2.5**, in linear windows and in the cyclic word (windows of length ≤ n of the doubled word). Exact 2.5-powers are allowed. For period h the forbidden window length is ⌊2.5h⌋ + 1: 2.5h + 1 for even h, ⌈2.5h⌉ = 2.5h + 0.5 for odd h.
+- **Strictly power-free** (no exponent ≥ 2.5, windows ⌈2.5h⌉): the gate actually used in T-018, the T-024 census and M1, `powerfree.py` and the C++ `hasPower25*`. It is stricter than intended (it forbids exact 2.5-powers for even periods) and is kept only as a diagnostic: the reducer's fixed points.
+- **Exposure rule:** a boundary cell u^5 may expose a run of up to 2.5|u| letters (not < ⌈2.5|u|⌉).
+- **The real challenges satisfy the target:** all 118 have maximum exponent exactly 2.5 (census 2026-10-17).
+- **Unaffected:** ρ_min16 and L1 (computed with the reducer itself), and the guard's non-increasing closure (it uses the reducer's moves, including the length-neutral ones at 2.5).
+
+Every gate, hypothesis and success criterion that says "power-free" means **2.5-reduced** from now on. T-018's results are being re-checked under the corrected gate.
+
 ## Success levels
 
 | Level | Criterion | Meaning |

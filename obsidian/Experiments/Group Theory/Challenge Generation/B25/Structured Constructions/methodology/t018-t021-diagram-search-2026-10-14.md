@@ -16,6 +16,8 @@ tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/
 
 > [!summary] CLOSED 2026-10-17 (owner): hypothesis falsified (negative result). See [[#Conclusion (closed 2026-10-17)]]. The pre-registration and revisions below are kept as written.
 
+> [!warning] DEFINITION CORRECTION 2026-10-17 (owner): the target is **2.5-reduced** (no power with exponent > 2.5; exact 2.5-powers allowed). Every T-018 gate ("power-free", the exposure rule ⌈2.5|v|⌉) used the stricter "no exponent ≥ 2.5". The results are being **re-checked under the corrected gate**, and the conclusion may change. See [[challenge-gen-success-metrics#Owner decision 2026-10-17: the target is 2.5-reduced (no power with exponent > 2.5); exact 2.5-powers are allowed]].
+
 **Status: draft revision 3 (owner decisions 2026-10-14 applied). The run is held.** Order before start (owner):
 1. Developer's inverse-cell reduction;
 2. Math Expert's revision (done: [[2026-10-14-vertex-depth-criterion]]);
