@@ -127,3 +127,82 @@ So the rule points to the **multi-level branch with the λ ≈ 5 expectation**: 
 ## 5. Files (uncommitted, working tree of the t018 repo)
 
 `experiments/challenge_gen/t018/scripts/`: `t024_census.py`, `t024_m1_tiling.py`, `t024_m1_cert.py`, `t024_m1_report.py`. Data: `experiments/challenge_gen/t018/data/t024/` (five json files, 0.9 MB in all). Runs: capjob 2 CPUs / 2 GB each (the two depth runs and the control ran at the same time, 4 CPUs in all at one point, against a 2-CPU cap per job); census 40 s; tiling 491 words 28 min on 2 CPUs; control 60 words 5 min; depth 20 + 36 words about 12 min each on 1 CPU. Pure Python plus the local tcgraph_ext build (`compress`, `has_power25_cyclic`); no heavy kernel was newly written (the tiling DP is Python and would need a C++ port for a multi-level run on thousands of letters).
+
+## 6. Pre-registration: level-2 onion pilot (written 2026-10-17, before any pilot run; approved by Lead under the owner's delegation)
+
+**Question.** Does a second onion level raise strict depth again (about +1 per level, as one level did), when intermediate words are not required to be power-free?
+
+**Design (fixed before running).**
+- **Seeds**: 50 power-free dataset words with a stored certificate, `random.Random(2417).sample(sorted certified ids, 50)`. Tiles: the same 453 certified words, arcs 4-26, identity letter-automorphism only (so certificates need no relabelling), same DP (`t024_m1_tiling.py`), tile of the word itself excluded.
+- **Level 1**: for each seed, the 3 shortest distinct tilings (DP optimum plus 12 randomised re-runs, noise 3.0), no power-free requirement (relaxed). Each parent w₁ gets a compressed certificate (components compressed first, assembled, compressed).
+- **Level 2**: each of the 3 parents is tiled the same way (13 tilings each, so up to 39 candidates w₂ per seed). Lengths are expected near 300-600 letters. **Level 3 is not run**: it would exceed 10³ letters, which goes to C++ first.
+- **Final gates, reported side by side**: (A) w₂ exactly power-free (no window of period m and length ≥ ⌈2.5m⌉, cyclic); (B) "exact-half allowed", i.e. challenge-like: every window has even m and length exactly 5m/2 (so max run exponent ≤ 2.5). A ⊂ B. Per seed, the final A-word (B-word) is the shortest candidate passing A (B); certificate built and compressed only for these.
+- **Measured per level** (level 1: all 150 parents; level 2: the A and B finals): λ = |w_L|/|w_{L-1}|; share passing A and B (among all candidates, and per seed "has one"); S2 maxdepth, N_deep, T_deep and T_depth at the certificate's full N, deep core, area-like; D_c,≥2 = N_≥2/|w| (N_≥2 = cells of root length ≥ 2); bouquet control = S2 depth against the maximum S2 depth of the compressed components (previous-level diagram, tiles); L0 (the certificate expands exactly to the word, asserted); novelty (cyclic word is not a rotation or inverse of an R7 relator, and not one of the 820 dataset words under the 8 automorphisms).
+- **Hypothesis H-L2**: the mean S2 maxdepth of the level-2 finals exceeds the mean of their level-1 parents by at least 0.5, and the largest level-2 depth exceeds the largest level-1 depth in the pilot.
+- **Falsifier**: no level-2 final (under A or B) has S2 maxdepth above the largest level-1 parent depth in the pilot. Also reported as failure modes: fewer than 10 seeds with a final under A (the exact-power-free gate is then not reachable with this search); bouquet control failing (depth ≤ component maximum) for most finals.
+- **Not used for the decision**: S1 and S3 are reported, S2 is the adopted definition. Depths are for our certificates after our compression, not minimal fillings.
+- **Cost** (to be fixed after a 2-seed timing smoke test, excluded from the results): one capjob at a time, or rjob.
+
+**Amendment (before the full run, after a 2-seed timing smoke test, seeds 48-49 of the sample, about 60 s per seed on one CPU):** the smoke test gave 1-5 distinct level-2 candidates per parent and none passing A or B, so the gated arms alone may leave nothing to measure. Added: (i) level 2 uses 40 randomised re-runs per parent instead of 12 (level 1 unchanged); (ii) an **ungated reference arm U**: per seed, the level-2 candidate with the fewest windows (ties: shortest), certificate and depth measured as for A and B, reported separately and never counted as an A or B result. U answers whether burial continues at level 2 when the gates cannot be met; A and B answer the gated question. The falsifier and H-L2 apply to A and B as written; for U the same comparison is reported as a diagnostic. Cost estimate: 50 seeds x about 1-2 min = 50-100 min on one CPU, or 25-50 min on 2.
+
+## 7. Corrected gate (owner, 2026-10-17): target is 2.5-reduced, not power-free
+
+Owner correction (via Lead): the 2.5 reducer replaces u^p by u^-(5-p), which shortens the word only for p > 2.5, so the target property is **2.5-reduced**: no window of exponent strictly above 2.5 (forbidden length for period h: ⌊2.5h⌋ + 1); exact 2.5-powers are allowed. Everything in sections 1-6 above was measured with the **stricter** "power-free" test (windows of length ⌈2.5h⌉, exponent ≥ 2.5), which differs only for even periods. Marked here as *under the superseded gate*; what changes:
+
+- **Census (section 1)**: the 118 challenge words have no window of exponent above 2.5 (all 5,543 windows are exact halves, 0 exceptions), so on the linear windows counted they **are 2.5-reduced**. The earlier question "is power-free the right target" is answered by the owner: no, 2.5-reduced is. (Cyclic wrap-around windows were not counted.) The arc-sharing results do not depend on the gate, except that the random power-free control is a stricter control than needed.
+- **Gate B of the pilot (section 6)** was defined as "every window has even period m and length exactly 5m/2". This is **identical** to 2.5-reduced (odd periods: ⌈2.5m⌉ = ⌊2.5m⌋ + 1 is forbidden in both; even periods: length 5m/2 allowed in both, longer forbidden in both), so B is already the corrected gate and is the **headline**. Gate A (exactly power-free) stays as a diagnostic column. No code change.
+- **Dataset recount** (my own window count, cyclic): all **820** dataset words are 2.5-reduced; 492 are strictly power-free (the earlier 491 attempted + line 431); so the strictly-power-free tile and seed sets used in M1 are a subset (492 of 820, tiles 453 of 820). Growing the certified set to 820 needs 329 new KB certifications (the T1 job certified 461 words in 70 min on 9 CPUs) and is **not started**; it needs Lead's go.
+- M1 shares ("w1 power-free for 7.7% / 29%") are under the superseded gate; the corrected share needs a re-run of the M1 tiling and is prepared, not run.
+
+
+### 7.1 Recorded under the corrected gate (2.5-reduced), 2026-10-17
+
+- **(a) Dataset**: all **820** dataset words are 2.5-reduced (cyclic windows of length ⌊2.5h⌋+1); 492 are strictly power-free and 328 carry only exact-half windows. ρ_min16 (certify mode, 16 images, `t024_corrected_a.py`, `data/t024/corrected_a.json`): **1.0 for 818 words, 0.0 for 2 words**, so those 2 are **not L1**: 0-based dataset indices 13 and 14 (lines 14 and 15; 44 letters, 3 exact-half windows each, neither strictly power-free). Among the 328 not strictly power-free words 326 have ρ_min16 = 1 (these are the "326 L1 non-strict words" for later use); all 492 strictly power-free words have ρ_min16 = 1. The strictly-power-free sets used in sections 1-6 are a subset of the corrected set; not extended (the certification wave waits for a C++ certifier, Lead 2026-10-17).
+- **(c) T2 under the corrected test** (old B0+N arm states, `t2_jr_bound.py --corrected`, same attachments; gate 1 already allowed exactly half, so only the power test changes): beam pass12 289 → 304, pass_all 173 → 185, repairable failures 442 → 502; optimistic JR ratio on pass_all raw 3.55 → 3.71, distinct 3.56 → 3.85. Greedy: pass12 244 → 255, pass_all 145 → 153, repairable 370 → 421; ratio raw 3.55 → 3.75, distinct 3.51 → 3.82. The rule threshold is 1.5, so junction repair is still not dropped. This re-tests old states; it is not a new search under the corrected gate.
+
+## 8. Pilot smoke section: the 2 smoke seeds (dataset indices 21 and 594), diagnosis
+
+Not part of the pre-registered results (the pilot waits for the C++ tiling, Lead 2026-10-17). Script `t024_diag.py`, data `data/t024/diag_smoke.json`; same seeds and rng as the smoke run, no certificates. Gate = 2.5-reduced (exact halves ignored).
+
+**Smoke timing and outcome** (pilot script, 1 CPU): about 10 min per seed (level-2 tilings with 40 re-runs, then compress and statistics of a 450-cell diagram). Seed 21: 3 level-1 parents (152, 153, 153 letters, S2 depth 2, d₀ = 1), 8 level-2 candidates, none passing A or B; the ungated reference (fewest windows) has 376 letters, N = 460, S2 depth 2, the same as its parent: no depth rise in that one case. Seed 594: 1 parent (291 letters, depth 2), candidates fail too. Two seeds only.
+
+**Why the candidates fail** (15 distinct level-2 candidates over 4 parents; 182 junctions, 71 forbidden windows, 0.39 per junction):
+- **Every forbidden window spans exactly two neighbouring pieces, i.e. one junction** (71 of 71). None lies inside one piece (expected: a piece is a subword of a 2.5-reduced cyclic dataset word), none spans three. So a rule that checks each junction against its two neighbours is enough to decide the gate; the failures are local to junctions.
+- Periods: **44 of 71 have period 1** (a letter repeated 3 or more times across the junction), 16 period 3, 8 period 4, 3 period 5. Exponents 2.67-4.0. No window of period 2 (exact halves are the allowed ones and are ignored; 1-2 per candidate occur).
+- Cancellation at junctions is not the cause: candidates with 14 to 24 cancelled letters over 11-12 junctions fail alike.
+- A candidate has 1-7 forbidden windows. If junctions failed independently at rate 0.39, a 11-junction candidate would pass with probability about 0.61¹¹ ≈ 0.4%; the observed 0 of 300 re-runs per parent is consistent with that.
+- **Can another tiling pass?** With 300 randomised re-runs per parent (noise 3 and 8): the minimum number of forbidden windows reached is 4, 4, 6 (seed 21 parents) and 1 (seed 594 parent); 0 tilings pass B, 0 pass A. Noise on the DP costs does not find a clean one; the search is blind to the junction content.
+- L1 was not evaluated: no candidate passed the gate (the separate ρ_min16 check applies to finalists).
+
+**What this tells the C++ port.** The level step needs a **junction-aware rule**: because every failure sits at one junction between two neighbouring tiles, the DP can carry the identity of the previous tile (its last ~25 letters) as state and reject a transition when the join creates a window of exponent above 2.5. The state grows from 4 end letters to (arc, tile) choices (about 10² per position), which is cheap in C++. Cheapest first filter: the period-1 failures (62% of windows) are run-length: reject a join that leaves 3 equal consecutive letters (period 1 exponent ≥ 3) across the junction. Whether an exact-half-allowed, junction-clean tiling exists for most parents is not known: the blind search suggests it is rare (about 1 junction in 2 or 3 is bad), the junction-aware DP would settle it.
+
+## 9. M1 re-run under the corrected gate (2.5-reduced), tiling part
+
+Same 491 words and 453 tiles, arcs 4-26 (`m1_tiling_corrected491.json`, 28 min, 2 CPUs). Gate B = 2.5-reduced; A = strictly power-free.
+
+| quantity | A (superseded gate) | **B (corrected)** |
+|---|---|---|
+| shortest tiling has w₁ passing | 7.7% | **12.0%** |
+| words with some passing w₁ among ~17 tilings | 142 (28.9%) | **185 (37.7%)** |
+| share of all candidate tilings passing | 3.5% | **5.0%** |
+| λ of the best passing tiling (median) | 2.09 | 2.08 |
+
+λ, ā and k of the shortest tilings are unchanged (median λ 2.07, IQR 1.67-2.41). Exact-half windows per shortest-tiling w₁: median 0 (IQR 0-1). The corrected gate raises the passing shares by about a third but leaves them low: intermediate and final power conditions remain a real cost for the onion. The depth part under the corrected gate (S2 and S2-flip, separate L1) is running; see below once done.
+
+### 9.1 Depth under the corrected gate (46 words, one level, 2.5-reduced w₁, S2 and S2-flip, separate L1)
+
+Words: the best 2.5-reduced tiling (gate B) of the 47 words whose B-best tiling uses the identity automorphism; 46 ran (one w₀ has no stored certificate). `t024_m1_cert.py ... B`, data `m1_cert_B.json`. |w₁| 71-282 (median 125); 33 of the 46 are also strictly power-free (A), all 46 pass B. Same construction and compression as section 2.
+
+| | S2 | S2-flip control | notes |
+|---|---|---|---|
+| maxdepth 1 / 2 / 3 | 17 / 27 / 2 | 21 / 23 / 2 | T1 baseline: depth 2 in 2.4% of dataset certificates |
+| depth ≥ 2 | 29 of 46 | 25 of 46 | |
+| depth above the components' (max 0 or 1) | 34 of 46 | 31 of 46 | bouquet control passed in most cases under both |
+| area-like (this certificate's N) | 1 | 1 | the same word, below |
+| N_flip (flip cells absorbed) | median 7.5 (1-18) | | the flip control absorbs a median of 7.5 cells per diagram, about 5% |
+
+- **Separate L1** (ρ_min16 over the 16 images; 41 of 46 are L1 with ρ_min16 = 1.0): **5 are not L1** (ρ_min16 0.99 ×3, 0.73, 0.65), i.e. the reducer shortens them in some image. 'Power-free implies L1' was not available here and it matters: with L1 required, 24 words keep S2 depth ≥ 2 and 21 keep flip-control depth ≥ 2.
+- **The only area-like word (dataset index 216: |w₁| = 71, N = 131, S2 depth 3, T_deep 0.64, flip control 3 / 0.61) is not L1** (ρ_min16 = 0.73, and not strictly power-free). The deepest L1 word is index 670 (|w₁| = 213, N = 192, depth 3 under S2 and under the flip control, T_deep 0.33, strictly power-free), not area-like.
+- The flip control lowers the depth distribution a little (depth ≥ 2: 29 → 25) but does not remove the effect: most of the depth gain does not come from flip cells.
+- Cut vertex inside a tile arc under B: 5 of 883 arcs (0.6%).
+- Same caveats as section 4 (one level, our certificates after our compression, a selected subset of 46).
