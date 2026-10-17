@@ -409,6 +409,24 @@ Strict maxdepth against N: √N fits slightly better than log in all eight poole
 
 **F-N1 (normalisation falsifier, N_≥2 bins of width 10):** gate pass rate (admissible children per examined candidate) B0 0.190 → B0+N 0.202 (×1.06) in the beam, 0.185 → 0.201 (×1.09) in greedy; growing seeds 11 → 13 (×1.18) in both modes; attachments per state 7.1 → 7.6. By bin (N_≥2 10 to 19: ×1.05 beam, ×1.08 greedy; 20 to 29: ×1.12, ×1.01; the 0 to 9 bin has 7 to 10 states and ratios 1.7 and 2.2 on 2 to 5 children). **F-N1 is falsified: exponent normalisation is not a significant lever** (both ratios are below 1.5 in both modes). Normalisation adds states and a few growing seeds, no depth: the B0+N arms contain no state with strict maxdepth ≥ 2 either.
 
+## Best candidates (novel, L0-certified, power-free, guard passed) (Experimenter, 2026-10-16; owner-approved; numbers re-read from the files)
+
+All five words: exactly 2.5-power-free, L0-certified (trivial in B(2,5) via an R7 certificate), not in the dataset, junction/closure guard passed, rho_min16 = 1.0 (min16 status ok; the stored finalist field). **None is strictly area-like under S2 at full N** (the adopted criterion: T_deep, T_depth ≥ 0.5 over all N cells): the full-N values below are all under 0.6, and T_deep is under 0.30 for every word. They are the best *partial* results, ranked by D_c,≥2 (non-|v|=1 cells over the boundary length; the |v|=1 cells are absorbed by S2). Letters: a, b are generators, A, B their inverses.
+
+**Caveats.** (i) Cell counts N*_c are upper bounds (compressed-certificate size, not the minimal area). (ii) The depth of #1 and #2 is **inherited from the dataset seed** (line 48: strict maxdepth 2, N_deep 9, N≥2 23, N 55, at 52 letters): the search added cells (N≥2 23 → 27/28) but no strict depth; only #3-#5 reach their strict depth within the C++ arms, and those have strict maxdepth ≤ 1 (the C++ arms produced no state with strict maxdepth ≥ 2). (iii) #1-#2 have S2 values from the Validator-cheaper certificates (`data/validator_certs`), #3-#5 from the arms' own certificates, stored with each state in the arm's `states.jsonl` (`relator_indices`, `conjugators`, word `w`). (iv) T_deep(N≥2) in `strict_depth_results.json` is higher (0.83-0.88 for #1-#2) because it divides by N≥2 only; it is not the registered full-N rule.
+
+| # | Source | Word (letters) | |w| | N*_c | N≥2 | strict maxdepth | strict N_deep | D_c,≥2 | T_deep / T_depth (full N) |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | seed line 48 (dataset), smoke step 5 (Python); Validator certificate | `aaBAABAABBAABAABBAAbaabbaaBBababAABABaaBaabAAbAAbbAAbbaab` | 57 | 65 (smoke certificate: 66) | 28 | 2 (inherited) | 9 | 0.491 | 0.245 / 0.566 |
+| 2 | same lineage, smoke step 4; Validator certificate | `bAAbbAAbbaabAbaabaaBAABAABBAAbaabbaaBBababAABABaaBaabAA` | 55 | 63 (smoke certificate: 64) | 27 | 2 (inherited) | 9 | 0.491 | 0.255 / 0.577 |
+| 3 | C++ B0+N greedy, lineage L34, step 14 | `AbaabaaBAABAABaabaabaBABaaBaabAAbAAbaaBaaBABaaBabAbaab` | 54 | 66 | 35 | 1 (depth sum 11) | 11 | **0.648** (best) | 0.293 / 0.281 |
+| 4 | C++ B0 beam, lineage L47, step 3 | `AABaaBaaBBaaBaaBAAbAAbaabAABabAABabbaabaabABaaBaabbABaab` | 56 | 46 | 27 | 1 | 4 | 0.482 | 0.175 / 0.346 |
+| 5 | C++ B0 beam, lineage L20, step 1 | `aaBAABAABBAABaabaabAbaabAbAABaabAbabAbaaBAAbAbaab` | 49 | 32 | 19 | 1 | 4 | 0.388 | 0.299 / 0.429 |
+
+Notes: #1-#2 are the same 63-65-cell family (the step-4 word is a 55-letter relative of the step-5 word); their rho_min16, power-freeness and guard are from the smoke finalists (`data/smoke15/finalists.jsonl`, lineage L48, steps 4 and 5). #5 is classed "thick strip" under the standard depth, not area-like, and its strict depth is 1; it is listed because it is the best word of a short lineage with a small certificate. For #3 the standard depth is area-like (maxdepth 3, N_deep 41) and the S2 depth is not (maxdepth 1): the drop is the |v|=1 absorption. Dataset-class hits (a different word of the same lineage and step, n = 56, `novel` false) are excluded.
+
+**Pointers.** #1-#2: `data/validator_certs/best_L48-step5-n57.json`, `best_L48-step4-n55.json` (relator indices, conjugators, word) and `data/strict_depth_results.json` (keys `L48-step5-n57`, `L48-step4-n55`; S2 block). #3: `data/cpp_restart/B0N-greedy/states.jsonl` (certificate; match the word), `finalists.jsonl` and `strict_rescore.json` (lineage L34, step 14). #4: `data/cpp_restart/B0-beam/states.jsonl` (L47, step 3). #5: `data/cpp_restart/B0-beam/states.jsonl` (L20, step 1).
+
 ## Related material
 - [[2026-10-14-cancellation-constructions]] (ideas 2 and 3) · [[2026-10-14-area-vs-path-criterion]] · [[2026-10-14-vertex-depth-criterion]]
 - [[t016-overlap-chaining-2026-10-14]] (triangle census; E1d)
