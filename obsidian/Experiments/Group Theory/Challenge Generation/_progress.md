@@ -173,6 +173,9 @@ Decisions (owner, 2026-10-16):
 - **Best candidates** (novel, L0-certified, power-free, guard passed): see the T-018 note. Two words from seed line 48 have strict maxdepth 2, inherited from the seed; the best D_c,>=2 is 0.65 (seed line 34).
 - **Next (owner, 2026-10-16):** Validator checks the negative result; Math Expert assesses junction repair and R8; tcgraph PRs into main, with Validator review; b25 pinned to the consolidation commit.
 
+### 2026-10-17: T-018 closed (negative)
+Decision (owner, 2026-10-17): T-018/T-021 closed. H2 is falsified under strict depth (Validator-replicated); the search stalls before a depth-2 ring closes; normalisation and R8 are not levers; T1 shows strict depth plateauing (max 2) up to 123 letters. Conclusion and best candidates: [[t018-t021-diagram-search-2026-10-14#Conclusion (closed 2026-10-17)]]. Follow-up T-024 (depth versus length: onion construction, long words, relators beyond R7) is in feasibility: the challenge power census and the M1 onion probe are running.
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile

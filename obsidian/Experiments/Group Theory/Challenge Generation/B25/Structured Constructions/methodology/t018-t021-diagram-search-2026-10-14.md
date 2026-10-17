@@ -1,17 +1,20 @@
 ---
 title: t018-t021-diagram-search-2026-10-14
 hypothesis: "A search over van Kampen diagrams that attaches 2–3-cell patches of standard relators v^5 (|v| <= 7, b25_full) while keeping the boundary 2.5-power-free produces the first certified L1, novel B(2,5) word with a genuinely deep folded diagram (maxdepth >= 2 and T_deep >= 0.5 on the compressed certificate). D and D_c are tracked but not expected to reach 1."
-status: draft
+status: rejected
+closed: 2026-10-17
 author: asetlearning
 date: 2026-10-14
 todo: T-018, T-021
 project: challenge-gen
 instance: B(2,5)
 experiment_type: structured-constructions
-tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/b25, topic/trivial-words, topic/hard-instance-generation, topic/proof-certificates, topic/dehn-function, project/challenge-gen, status/pending, experiment, methodology]
+tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/b25, topic/trivial-words, topic/hard-instance-generation, topic/proof-certificates, topic/dehn-function, project/challenge-gen, status/rejected, experiment, methodology]
 ---
 
-# T-018 + T-021: diagram search over |v| ≤ 7 with a power-free boundary — pre-registration (DRAFT, revision 3)
+# T-018 + T-021: diagram search over |v| ≤ 7 with a power-free boundary
+
+> [!summary] CLOSED 2026-10-17 (owner): hypothesis falsified (negative result). See [[#Conclusion (closed 2026-10-17)]]. The pre-registration and revisions below are kept as written.
 
 **Status: draft revision 3 (owner decisions 2026-10-14 applied). The run is held.** Order before start (owner):
 1. Developer's inverse-cell reduction;
@@ -445,6 +448,12 @@ Origin: the Math Expert's proposal [[2026-10-16-t018-close-or-continue]]; owner-
 - **Fit of strict maxdepth against N_≥2 (S2, 453 points):** log N: SSE 67.9, r² 0.17, slope 0.277 per ln N; √N: SSE 69.6, r² 0.15; log slightly better; N as the abscissa gives the same ordering (SSE 68.1 / 69.6). S1: SSE 84.6 (log) / 85.3 (√); S3: 62.3 / 63.5. Both fits explain under 20% of the variance, and with maxdepth in {0, 1, 2} neither model is identified (same remark as for the arms).
 - **Reading (Math Expert's rule for T1): "maxdepth ≤ 2 throughout, flat in N → evidence of hyperbolic-like behaviour at these sizes", but with two reservations.** (a) These are non-minimal certificates; the Validator showed that compression can both lower the cell count and raise the strict depth (1 → 2 in the four L48 cases), so a shallow result on a non-minimal certificate is not automatically the conservative one. (b) The only words with strict depth 2 are the largest certificates, and their depth-2 core is thin (T_deep ≤ 0.12): consistent with a log N-type growth that the size range cannot resolve. It does answer the structural question in one respect: **power-free words of 32-123 letters have strict depth ≤ 2 in every certificate we could build; depth ≥ 3 never occurs.** Not verified: minimal fillings, the 38 uncertified words.
 
+**T1 extension: upper range, log against √ (Lead's request for T-024 feasibility; `scripts/t1_upper_fit.py`, `data/t1/t1_upper_fit.json`).** OLS of maxdepth on ln x and on √x, restricted to the words above the median, the 75th and the 90th percentile of x (x = N_≥2 or |w|), with a bootstrap (2,000 resamples of the words) of the SSE difference.
+- **S2 mean and quantiles by N_≥2 bin (n; mean; median; 75th; max; share with depth ≥ 2):** 25-50 (56; 0.59; 1; 1; 1; 0%), 50-100 (180; 0.76; 1; 1; 1; 0%), 100-150 (94; 0.96; 1; 1; 2; 2%), 150-200 (52; 1.04; 1; 1; 2; 6%), 200-300 (50; 1.04; 1; 1; 2; 10%), 300-400 (13; 1.08; 1; 1; 2; 8%), 400-600 (1). By |w|: 0.7-0.8 below 70 letters, 1.0 at 70-100 (share ≥ 2: 7%), 1.29 for the 7 words of 100+ letters.
+- **S2 fits, upper range:** N_≥2 ≥ 160 (114 words, range 160-528): slope 0.026 per ln N (√: 0.003), SSE 12.78 against 12.78; N_≥2 ≥ 214 (46 words): slope -0.30 (negative), SSE 4.30 against 4.31. Whole range: log better (SSE 67.9 against 69.6; bootstrap: √ better in 1% of resamples), but already for the upper half the difference is 0.08 (4% of resamples favour √) and for the upper quarter 0.00 (34%). **The largest-N bins do not discriminate log from √: both are flat there (slope indistinguishable from 0); what the S2 data show in the top range is a plateau at mean 1.0-1.1, maximum 2.** As the abscissa |w| the picture is the same (upper-quarter SSE 13.84 against 13.84).
+- **S1 (absorption once) keeps growing:** mean 1.37 / 1.43 / 1.61 in the upper half / quarter / tenth, slope 0.5-0.6 per ln N, the two models again indistinguishable (SSE equal to 0.03). The difference between S1 and S2 is the repeated absorption of |v| = 1 cells: S2 removes the growth. S3: mean 1.19-1.29, slope 0.12-0.19 then -0.06 in the top tenth.
+- **For T-024:** the data end at |w| = 123 (N_≥2 ≤ 528 under S2; only 1 certificate above 400, 7 words above 100 letters), so a √-law (slope ≈ 0.05 per √N at the whole-range fit) and a log-law cannot be told apart, and neither is supported over a bounded depth. Words of 1,000+ letters are needed for the curve to say anything.
+
 **T2: optimistic bound for junction repair (nothing implemented).** On the stored states of the two B0+N arms, every pair attachment passing gate 1 was normalised (B0+N) and tested; "repairable" = a failing attachment all of whose forbidden windows have m ≥ 2, are not an exact half (even m, 2L = 5m), and m is neither the root length of an adjacent new cell nor of an adjacent old cell (owners read off the folded diagram of the normalised certificate). Assumed: every repair succeeds and also passes gates 4 and 3. "pass" = attachments passing gates 1 and 2 (power-free w'); "children" = those that also pass gates 4 and 3 (what the search keeps, before the word dedup).
 
 | mode | states | gate-1 attachments | pass | children | fail | all-repairable | (pass + rep)/pass | (children + rep)/children | same, distinct words |
@@ -468,6 +477,27 @@ Reading by the stated rule: **above 1.5, so JR is not dropped by this test.** Wh
 - *Positive control.* Boundary = the inverse of a k-letter arc of a random |v| = 8 core plus 14 random letters (40 trials per k). Python generator, share of boundaries that give at least one configuration containing a |v| = 8 cell: k = 6-12: 0/40; k = 14: 2/30; 16: 7/37; 18: 17/39; 20: 24/40; 22: 28/40; 24: 25/40. The same control with |v| = 7 cells and the R7 table (so the mechanism is checked on a length that does occur): k = 14: 13/33; 16: 25/38; 20: 22/40. C++ against Python on 150 controls (k = 22): identical configuration counts every time; 216 Python configurations contain a |v| = 8 cell; the C++ configuration list contains entries with table index > 1630 and vmax = 8 (e.g. index 1699). So the generator, in both languages, does produce |v| = 8 attachments when the boundary offers a long arc of an 8-periodic core.
 - *Counts before the gates (all stored states, R7 / R8):* B0 beam 631 / 631, B0 greedy 558 / 558, B0+N beam 840 / 840, B0+N greedy 708 / 708; on the 116 lineage tips 187/187, 190/190, 190/190, 194/194. **Configurations using a table index > 1630: 0.**
 - *Why none on these boundaries.* A |v| = 8 cell needs sA + l >= 20 with l <= 13, i.e. a boundary arc of about 14 or more letters that continues an 8-periodic pattern (control: no hit below k = 14). The longest boundary arc matching any |v| = 8 core in the stored states is 9-16 letters, a chance match (median 11; 5 of 89 / 5 of 95 states reach 14); for |v| = 7 it is 14-17 in 37 of 89 (B0 beam) and 39 of 95 (B0+N greedy) states, because the existing 7-cells put 7-periodic arcs on the boundary. No diagram here contains an 8-cell, so no 8-periodic arc exists to bootstrap the first one. The (2,8) and (3,8) pairs of the counting argument need in addition a partner cell sharing up to 9-14 letters of the 8-core, which a chance arc does not supply. Conclusion: R8 gives nothing from these states because no |v| = 8 attachment is geometrically available there, not because of a filter; the one-step probe says nothing about R8 from boundaries that already carry 8-periodic arcs (the control shows those would be generated). Caveat: a "tip" is the last stored state of a lineage; 10-11 of the 29 tips per arm still have R7 children, so "stalled" is read as "last state of the lineage".
+
+## Conclusion (closed 2026-10-17)
+
+**Verdict: H2 falsified (negative result), replicated by the Validator** ([[2026-10-16-t018-restart-negative-check]]). Under strict depth (S2, vertex contact, T over the full N), the patch-growth search over the R7 move table from the 29 certified power-free dataset seeds produced no novel word with strict maxdepth ≥ 2, so the success criterion was not met.
+
+What was learned:
+- **Depth was an artefact of a⁵ cells.** Cells of root length 1 only normalise exponents. They made 36–62% of every certificate and created the earlier standard-depth hits (line 51) and D_c ≥ 1 (line 48). Strict depth S2, with N≥2 and D_c,≥2 as headline measures, was adopted ([[challenge-gen-success-metrics]] § Owner decision 2026-10-16).
+- **No power-free seed at N ≤ 3** (proved for 2 cells, exhaustive for 3; [[2026-10-15-t018-seed-reachability-review]]). Power-free certified relations do exist: 491 of 820 dataset words.
+- **The search stalls before a depth-2 ring can close.** In the C++ restart (four arms), lineages stall after 6–16 steps and no stored certificate reaches strict maxdepth ≥ 2. Cheaper certificates of the inherited line-48 lineage do reach 2 (T_deep 0.24–0.31). Compression can raise strict depth.
+- **Levers tested:**
+  - exponent normalisation is not one (F-N1 falsified, ×1.06–1.09);
+  - R8 adds nothing for these boundaries, because no 8-periodic arc ever appears to seed a length-8 cell (T3, with a positive control);
+  - an optimistic bound for junction repair is about 2.5× (T2), not tested.
+- **T1 (453 certified dataset words, up to 123 letters and 1,197 cells):** strict depth plateaus at mean ≈ 1, max 2. log vs √N is unresolved below ~1,000 letters, so depth versus length on much longer words is the open question.
+- **Best candidates:** [[#Best candidates (novel, L0-certified, power-free, guard passed) (Experimenter, 2026-10-16; owner-approved; numbers re-read from the files)]].
+- **Infrastructure produced:**
+  - the T-018 search, ported to C++ in tcgraph (`certificates/`, `diagram/`, `search/`) with exact Python equivalence, about 24× end to end;
+  - tcgraph consolidation (PRs #5 and #6);
+  - `capjob`.
+
+**Follow-up:** T-024 (depth versus word length: onion construction and long words, relators beyond R7, efficient search). The Validator's check of the Math Expert's ring and accretion argument will be appended when it arrives.
 
 ## Related material
 - [[2026-10-14-cancellation-constructions]] (ideas 2 and 3) · [[2026-10-14-area-vs-path-criterion]] · [[2026-10-14-vertex-depth-criterion]]
