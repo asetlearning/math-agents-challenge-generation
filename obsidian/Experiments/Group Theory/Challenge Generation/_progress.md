@@ -164,6 +164,15 @@ Decisions (owner, 2026-10-16):
 - **C++ port:** add exponent normalisation and strict depth to the port. The first comparison is B0 against B0+N; junction repair and R8 follow.
 - **The Mac full run (Python, job 20261016-130522-7373b4)** continues until the C++ code is ready. Then its completed results are collected for the Python-vs-C++ comparison, and the run restarts on the C++ implementation.
 
+### 2026-10-16: C++ port complete; T-018 restart on C++ (H2 falsified under strict depth)
+- **C++ port (tcgraph, one unified library):** the T-018 search runs on tcgraph (`certificates/`, `diagram/`, `search/`) with Python as the interface; exact Python-vs-C++ equivalence on every kernel and end to end. Like-for-like speed-up about 24x (expand_state 33x, scoring 36x). tcgraph `26-t018-cpp-port` (2c264fd) plus consolidation `27-tcgraph-consolidation` (f2cb8a1, owner-approved: one relator builder, one square-base detector, one expansion helper, RelatorMap::words, expandFactor always reduced, shared RollingHash, seeded Word::random).
+- **Restart (pre-registered, owner-approved):** four arms, B0/B0+N x beam/greedy, strict J, quota 3, triangles off, on the Mac (job 20261016-181907-e9ed6c), 9-17 s of search per arm against 19-71 min for the previous Python run (not like-for-like: settings differ).
+  - **H2 falsified:** no state of any arm (374 states) reaches strict maxdepth >= 2.
+  - **F-N1 falsified:** normalisation raises the pass rate only x1.06-1.09.
+  - H1, H3 and H6 falsified; H4 not reached (max D_c,>=2 0.65).
+- **Best candidates** (novel, L0-certified, power-free, guard passed): see the T-018 note. Two words from seed line 48 have strict maxdepth 2, inherited from the seed; the best D_c,>=2 is 0.65 (seed line 34).
+- **Next (owner, 2026-10-16):** Validator checks the negative result; Math Expert assesses junction repair and R8; tcgraph PRs into main, with Validator review; b25 pinned to the consolidation commit.
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
