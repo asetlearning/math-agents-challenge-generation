@@ -214,6 +214,7 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - Lead is responsible for the global count: if routing work to multiple agents, Lead ensures the sum of
   their heavy processes stays ≤ 4, and serializes if needed.
 - After any run: kill the process and `pgrep`-verify clean (already required under Process hygiene).
+- **Waiting for a job: never `until ! pgrep -f <pattern>` / `while pgrep -f <pattern>`.** `pgrep -f` matches the waiting shell's own command line, which contains the pattern, so the loop never ends. On 2026-10-17 it hung the Validator's and the Experimenter's waits for hours. Wait on the PID (`while kill -0 <pid>; do sleep 15; done`), on an output or sentinel file, on `rjob wait <id>`, or on a background-task notification.
 - If a task genuinely needs more than 4 parallel processes, that is a request to escalate to the human
   (Maria) — never self-authorize exceeding the cap.
 - **Scope: the cap is local to the agents' machine (the VM).**
