@@ -206,3 +206,59 @@ Words: the best 2.5-reduced tiling (gate B) of the 47 words whose B-best tiling 
 - The flip control lowers the depth distribution a little (depth ≥ 2: 29 → 25) but does not remove the effect: most of the depth gain does not come from flip cells.
 - Cut vertex inside a tile arc under B: 5 of 883 arcs (0.6%).
 - Same caveats as section 4 (one level, our certificates after our compression, a selected subset of 46).
+
+## 10. Pilot on the C++ backend: pre-registration update and K=64 smoke (2026-10-17, Experimenter)
+
+### 10.1 Pre-registration update (written before the 50-seed run; approved by Lead under the owner's delegation)
+Changes to section 6 (nothing else changes: seeds, hypothesis, falsifier, per-level metrics stay as registered):
+- **Backend.** `t024_onion_pilot.py ... cpp-junction`: tiles, tiling DP, assembly and measures from `tcgraph_ext.onion` (tcgraph `4390614`, b25 `5fbf9f7`; driver `t024_onion_cpp.py`). Python remains the orchestrator.
+- **Junction-aware DP** (beam K = 64, arc length 4-25): every join of two neighbouring tiles must pass the local power filter, so the tiling is no longer blind to junction content (the failure of the Python plain DP, section 8). Noisy re-runs: NOISY = 12 at level 1, NOISY2 = 40 at level 2, noise 3.0, seeded from the pilot's numpy generator (reproducible, not the same draws as the Python backend).
+- **Gate.** Headline gate = **2.5-reduced** (gate B in the code: every window an exact half); gate A (strictly power-free) stays a diagnostic. Finals: shortest level-2 candidate passing A / passing B / ungated reference U.
+- **L1.** Separate L1 (rho_min16 over the 16 images, L1 iff = 1) for every level-1 parent and every final, in the main process.
+- **Pipelines.** Intermediate level: cheap compression; finals: full compression, and the cheap pipeline is also run on each final word, with N, S2 depth and S2-flip depth of both recorded (the cheap-vs-full difference).
+- **Metrics per final:** S2 and S2-flip depth, S1/S3 depth, bouquet control (depth above the components' maximum), area-like, novelty, lambda per level, wall time.
+- **Falsifier (unchanged), made precise on L1:** no level-2 **L1** word above level 1's maximum depth falsifies "+1 depth per level"; a level-2 word that is not L1 does not count either way (it is reported separately).
+
+### 10.1a Addendum to 10.1: level-1 parent diversity (fixed 2026-10-18, before the 50-seed run; Lead decision under the delegation)
+The smoke gave one distinct level-1 tiling per seed (12 noisy re-runs at noise 3), so level 2 was a single shot. The junction DP has no K-best list of whole tilings (its K = 64 is the beam width per position; each call returns the cheapest tiling), so diversity comes from noise. Probe (5 dataset words, level-1 tiling only, distinct boundary words up to cyclic rotation; all of them pass the gate): noise 3 x 12 gives 1-2 (seeds 21, 594, 100, 200, 300: 1, 1, 1, 2, 1); noise 8 x 40 gives 3, 2, 6, 5, 2; noise 20 x 40 gives 9, 12, 8, 8, 5. A level-1 call costs about 2.5 s.
+Rule for the pilot, fixed now and not tuned after the run:
+- Level-1 parents = up to **3 distinct boundary words** (distinct up to cyclic rotation) from the noiseless tiling + NOISY = 12 re-runs at noise 3 (as registered). If fewer than 3 distinct, **top up** with NOISY_TOP = 40 further re-runs at noise 20; keep the 3 shortest distinct words.
+- Level 2 as registered: 13 tilings (noiseless + NOISY2 = 40 at noise 3) of each parent.
+- Per seed the result records `level1_distinct_base` (distinct parents before the top-up) and `level1_candidates` (distinct parents after it), and each final's parent.
+- Cost estimate: about 30 CPU-hours for 50 seeds (up to 3 parents, 5-25 min each); rjob on 9 CPUs, expected 3.5-5 h wall, timeout 8 h.
+
+### 10.2 Smoke at K = 64 (seeds 21 and 594, level 1 -> 2; files `runs/t024_pilot/smoke_k64.json`)
+| Seed | n0 (d0) | level-1 candidates | level-1 parent: len / S2 depth / gate / L1 | level-2 candidates (A / B) | level-2 final (B): len / S2 depth / L1 | time |
+|---|---|---|---|---|---|---|
+| 21 | 47 (1) | 1 | 174 / 2 / B (1 exact half) / L1 | 0 / 0 | none | 297 s |
+| 594 | 82 (1) | 1 | 283 / 2 / B (2 exact halves) / L1 | 2 / 0 (2 pass B) | 611 / 2 / B (3 exact halves) / **not L1 (rho_min16 0.959)** | 1,562 s |
+
+- The junction-aware DP produces level-2 words that pass the corrected gate (seed 594: 2 of 2 candidates), which the plain DP never did (section 8). Seed 21 yields no level-2 candidate.
+- Level 1 gains depth (d0 = 1 -> 2, bouquet control passed, L1). Level 2 does not: S2 depth stays 2 (= the parent's), the bouquet control fails (depth not above the components' maximum 2), and the word is not L1 (the 2.5 reducer shortens it by 4%). S2-flip depth 2 (43 flip cells). Cheap vs full on the final: N 876 vs 854, S2 depth 2 vs 2, flip depth 2 vs 2.
+- Only one distinct tiling per seed at level 1 (so one parent, not three): the junction-aware DP with 12 noisy re-runs finds few distinct tilings.
+- Cost: 5 min and 26 min for one seed each on one CPU; a 50-seed run is about 12 CPU-hours, so it needs an rjob.
+
+### 10.3 Pilot results (rjob 20261018-000601-9e5902; b25 `90bc1cb`, tcgraph `4390614`; 50 seeds, 9 processes, 3.0 h wall, 20.9 CPU-h; files `runs/pilot_cpp/outputs/pilot_50.json`, `analysis.txt`, `analysis2.txt`; Experimenter, 2026-10-18)
+All numbers are under the corrected gate (2.5-reduced = gate B; gate A = strictly power-free, diagnostic), L0 passed for every word, L1 = rho_min16 = 1. S2 = strict depth; flip = S2-flip control; bouquet ok = depth above the components' maximum.
+
+**Level 1.** d0 (the seed's own S2 depth) is 0 for 27 seeds and 1 for 23. Distinct parents before the top-up: 1 for 25 seeds, 2 for 11, 3 for 11, 4 for 3; after the top-up 49 seeds have at least 3 candidates and one seed has only 1. 148 parents (3 per seed, one seed 1): S2 depth 1 / 2 / 3 / 4 = 41 / 95 / 11 / 1; 146 pass B and 92 pass A; 115 are L1 (L1 parents by depth 1 / 2 / 3 / 4 = 31 / 75 / 8 / 1); bouquet ok 112; lambda median 2.76. Flip control on parents: depth 1 / 2 / 3 = 56 / 82 / 10. The largest level-1 depth in the pilot is **4**, by one parent (seed 594, L1).
+
+**Level 2.** Every one of the 50 seeds has level-2 candidates (497 in all; 50 seeds with a candidate passing B, 40 passing A). Finals (shortest candidate passing the gate; U = ungated reference):
+
+| Final | seeds | S2 depth 2 / 3 / 4 | flip depth 1 / 2 / 3 | L1 | L1 and bouquet ok | area-like | lambda median |
+|---|---|---|---|---|---|---|---|
+| B (headline) | 50 | 31 / 16 / 3 | 1 / 38 / 11 | 32 | 17 | 0 | 1.78 |
+| A (strictly power-free) | 40 | 30 / 8 / 2 | 2 / 33 / 5 | 40 | 22 | 0 | 1.83 |
+| U | 50 | 34 / 13 / 3 | 2 / 39 / 9 | 43 | 24 | 0 | 1.87 |
+
+- **Paired against the own parent (final depth vs its parent's depth).** B: mean 2.44 vs 1.72 (difference +0.72); 29 of 50 finals above their parent, 21 equal, 0 below. A: +0.52 (22 above, 16 equal, 2 below). Restricted to L1 finals with the bouquet control passed: B 17 of 17 above their parent (mean 2.65 vs 1.35), A 22 of 22 (2.41 vs 1.36).
+- **L1 finals with bouquet ok, by (S2 depth, flip depth):** B: (2,1) 1, (2,2) 7, (3,2) 6, (3,3) 1, (4,3) 2; A: (2,1) 2, (2,2) 12, (3,2) 5, (3,3) 2, (4,3) 1. The flip control lowers depth by at most one and never removes the gain.
+- **Not L1:** B finals 18 of 50 (many with rho_min16 0.99-1.0, a few 0.7-0.9); all 40 A finals are L1.
+- **Cheap vs full pipeline on the finals:** B: S2 depth differs for 6 of 50 words, flip depth for 7; N(cheap) is about 4% larger than N(full) at the median (full / cheap 0.957), at most 186 cells apart; A: 4 and 5 of 40 (median 0.949); U: 6 and 7 (0.956). So the cheap pipeline in the loop is a good proxy but changes the depth of about one word in eight.
+
+**Registered tests (section 6, and 10.1 on L1 words).**
+- H-L2, first clause (mean level-2 final exceeds the mean of its parents by at least 0.5): B +0.72, A +0.52, U +0.58: **met** (A only just).
+- H-L2, second clause and the **falsifier** (a level-2 final above the largest level-1 depth in the pilot): the largest level-2 depth is 4 (B: 3 finals, 2 of them L1 with bouquet ok; A: 2 finals, 1 L1 with bouquet ok), the largest level-1 depth is also 4 (one parent). **Nothing is above it, so the registered falsifier is met and the second clause fails.** The same holds on L1 words (level-2 L1 maximum 4, level-1 L1 maximum 4). The registered comparison uses one extreme parent (seed 594), which sets the level-1 maximum; against the typical parent the gain is the paired one above.
+- Failure modes: at least 10 seeds with an A final: **no failure** (40); bouquet control failing for most finals: B 21 of 50 fail, A 18 of 40 fail, so most pass; a depth claim needs the bouquet control, as Lead requires.
+
+**Reading.** A second level raises the typical depth by about 0.5-0.7 (the shortest gated candidate, paired with its parent), and reaches 3-4 on 19 (B) / 10 (A) of the seeds (of which L1 with bouquet ok: 9 and 8), in L1 words that pass the bouquet and flip controls; but it does not exceed the single deepest level-1 parent (4), so by the pre-registered criterion the hypothesis "+1 per level" is **not supported at the maximum** and only partly at the mean. No word is area-like. Depths are for our certificates after our compression, not minimal fillings.
