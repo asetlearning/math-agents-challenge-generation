@@ -16,7 +16,7 @@ tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/
 
 > [!summary] CLOSED 2026-10-17 (owner): hypothesis falsified (negative result). See [[#Conclusion (closed 2026-10-17)]]. The pre-registration and revisions below are kept as written.
 
-> [!warning] DEFINITION CORRECTION 2026-10-17 (owner): the target is **2.5-reduced** (no power with exponent > 2.5; exact 2.5-powers allowed). Every T-018 gate ("power-free", the exposure rule ⌈2.5|v|⌉) used the stricter "no exponent ≥ 2.5". The results are being **re-checked under the corrected gate**, and the conclusion may change. See [[challenge-gen-success-metrics#Owner decision 2026-10-17: the target is 2.5-reduced (no power with exponent > 2.5); exact 2.5-powers are allowed]].
+> [!warning] DEFINITION CORRECTION 2026-10-17 (owner): the target is **2.5-reduced** (no power with exponent > 2.5; exact 2.5-powers allowed). Every T-018 gate ("power-free", the exposure rule ⌈2.5|v|⌉) used the stricter "no exponent ≥ 2.5". **Re-checked 2026-10-17** ([[#Re-check under the corrected gate (2.5-reduced), 2026-10-17]]): the negative **stands for L1 words**. The corrected gate lets the B0+N arms reach strict depth 2, but only on words the reducer collapses (non-L1), and no L1 word reaches strict depth ≥ 2. See [[challenge-gen-success-metrics#Owner decision 2026-10-17: the target is 2.5-reduced (no power with exponent > 2.5); exact 2.5-powers are allowed]].
 
 **Status: draft revision 3 (owner decisions 2026-10-14 applied). The run is held.** Order before start (owner):
 1. Developer's inverse-cell reduction;
@@ -503,6 +503,43 @@ What was learned:
 - (a) Strict depth 2 needs a closed ring: **confirmed qualitatively**. The Math Expert's ~19/25-cell counts are not lower bounds: line 48's depth-2 structure has only 6 non-trivial cells inside its ring.
 - (b) Existence: **confirmed, with a correction**. Depth 2 holds on the Validator's 55-cell certificate; the stored 56-cell one gives 1.
 - (c) "A stall after 6–16 steps gives maxdepth ≤ 1 in any geometry" **does not follow**. L34 added +20 non-trivial cells and reached standard depth 3, but at step 14 its 8 non-trivial standard-deep cells sit under 22 cells of root length 1, which S2 absorbs. So the limit is the root-length mix of what this generator attaches, on stored certificates. "Any geometry" is untested.
+
+## Re-check under the corrected gate (2.5-reduced), 2026-10-17 (Experimenter)
+
+**Gate.** The owner corrected the target to **2.5-reduced**: no window with exponent strictly above 2.5 (length L, period m, forbidden iff 2L > 5m). Exact 2.5-powers (an *exact half*: even m, 2L = 5m) are allowed; "strictly power-free" (no window with exponent ≥ 2.5) is now a diagnostic. One detector (runs of minimal period) serves Python and C++ since T-026. Code: b25 `dc4c00e` (job) and `f3b1511` (rescore fix), cpp/tcgraph `5eb03be`. Everything below is **under the corrected gate**; the old numbers in the sections above were computed with the strict gate.
+
+**1. Gate-2 count (does the corrected gate change the search?).** I replayed all 374 stored states of the old C++ restart (job 20261016-181907-e9ed6c) through the C++ Expander of both builds (old tcgraph `da7ac90`, new `5eb03be`; budget 2,000, all configurations). An attachment the old gate 2 rejects and the new one accepts has windows of exact-half type only. Counts:
+
+| Arm | old gate-2 rejections | accepted by the corrected gate (exact-half only) |
+|---|---|---|
+| B0 beam | 417 | 0 |
+| B0 greedy | 373 | 0 |
+| B0+N beam | 551 | 15 |
+| B0+N greedy | 464 | 11 |
+
+So **B0 is unchanged** (identical counters at every step, identical trajectories: expected, no attachment there has only exact-half windows). **B0+N differs from step 1**, because exponent normalisation rewrites a run to exactly 2.5 and so creates exact halves. Positive control: the word 1 2 1 2 1 (m = 2, L = 5) is rejected by the old predicate (`has_power25_linear`) and accepted by the new (`has_power_gt25_linear` False, `is_2p5_reduced` True; `has_power_ge25_linear` True). Gate 2 calls `hasPower25Linear || hasPower25Cyclic` in `da7ac90` and `is2p5Reduced` in `5eb03be` (expand.cpp). The rjob log shows the corrected build (provenance `dc4c00e` / `5eb03be`). Files: `runs/gate2_check/{replay.py,old_build.json,new_build.json}`.
+
+**2. T-024 diag re-check (smoke seeds 21 and 594).** `t024_diag` re-run with the new detector: the output file is **byte-identical** to the earlier one. The junction picture is unchanged (all forbidden windows at single junctions; 0 of 300 re-runs pass gate A or B).
+
+**3. Restart arms rerun under the corrected gate** (rjob `20261017-214143-877a6a`, same parameters and inputs; 8-10 min on the Mac with 9 CPUs; steps run 6 / 14 / 8 / 16 as before). Rescore with strict depth S2 (vertex contact), the S2-flip control (even-root cells exposing at least half absorbed at peel time) and the separate L1 check (rho_min16 over the 16 images; L1 iff rho_min16 = 1), `rescore_strict_flip.py`, files `runs/arms_corrected/rescore/<arm>.json`.
+
+Strict S2 maxdepth over all stored states (counts of states at depth 0 / 1 / 2 / 3):
+
+| Arm | old run (states) | corrected run (states) | S2-flip control, corrected |
+|---|---|---|---|
+| B0 beam | 50 / 39 / 0 / 0 (89) | 50 / 39 / 0 / 0 (89) | 55 / 34 / 0 / 0 |
+| B0 greedy | 42 / 37 / 0 / 0 (79) | 42 / 37 / 0 / 0 (79) | 46 / 33 / 0 / 0 |
+| B0+N beam | 52 / 59 / 0 / 0 (111) | 57 / 105 / 2 / 0 (164) | 78 / 84 / 2 / 0 |
+| B0+N greedy | 42 / 53 / 0 / 0 (95) | 46 / 75 / 3 / 0 (124) | 61 / 61 / 2 / 0 |
+
+- The flip control lowers the depth-1 counts by 4-21 states, but the depth-2 states of B0+N survive it (flip depth 2 in 2 of 2 beam and 2 of 3 greedy states).
+- No state is area-like (S2 or flip) in any arm. Fits of maxdepth against N prefer √N in every arm (S2 and flip).
+- **L1.** All 29 seeds are L1 in every arm. All finalists of the B0 arms are L1 (49 and 43). Of the B0+N finalists **39 of 102 (beam) and 23 of 78 (greedy) are not L1**, most with rho_min16 = 0.0 (the 2.5 reducer collapses the word to the empty word).
+- **Every new depth-2 finalist is non-L1**: B0+N beam L2 step 5 (rho 0.0); B0+N greedy L2 steps 5 and 4 (rho 0.0) and step 3 (rho 0.94). **No L1-clean finalist has strict depth above 1 in any arm.** The depth-2 states are lineage L2, N = 40-46 cells. So the new depth comes from words the reducer trivialises, not from L1-clean words.
+
+**4. Seed re-check (Validator, corrected rule; reported by the Validator and Developer, not rerun by me).** The 2-cell seeds stay excluded. There are 16 3-cell chain classes up to rotation and inversion (64 before identification): (2,5) 4 classes of length 25, (2,6) 4 of length 30, (2,7) 8 of length 35, (3,7) none; **all are R2.5-trivial**, so none is an L1 word. Triangles: 63 feasible length triples, none 2.5-reduced. Triangles and lenses: 0 (Validator; the smallest maximum exponent is 3.5).
+
+Under the corrected gate the T-018 negative stands for L1 words: no L1 word reached strict depth >= 2.
 
 ## Related material
 - [[2026-10-14-cancellation-constructions]] (ideas 2 and 3) · [[2026-10-14-area-vs-path-criterion]] · [[2026-10-14-vertex-depth-criterion]]

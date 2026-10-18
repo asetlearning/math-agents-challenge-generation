@@ -176,6 +176,19 @@ Decisions (owner, 2026-10-16):
 ### 2026-10-17: T-018 closed (negative)
 Decision (owner, 2026-10-17): T-018/T-021 closed. H2 is falsified under strict depth (Validator-replicated); the search stalls before a depth-2 ring closes; normalisation and R8 are not levers; T1 shows strict depth plateauing (max 2) up to 123 letters. Conclusion and best candidates: [[t018-t021-diagram-search-2026-10-14#Conclusion (closed 2026-10-17)]]. Follow-up T-024 (depth versus length: onion construction, long words, relators beyond R7) is in feasibility: the challenge power census and the M1 onion probe are running.
 
+### 2026-10-17: T-018 re-checked under the corrected gate; T-026 done; T-024 status
+- **T-018 re-check** (2.5-reduced gate, exact halves allowed):
+  - the negative **stands for L1 words**;
+  - B0 arms unchanged (no exact-half-only rejections);
+  - B0+N arms reach strict depth 2 via normalisation-created exact halves, but every such finalist is non-L1 (ρ_min16 0 or 0.94);
+  - 3-cell seeds exist (16 classes) but all are R2.5-trivial.
+- **T-026 done:** a runs-based power detector in tcgraph (2.5-reduced target, strictly power-free diagnostic).
+- **T-024:**
+  - all 820 dataset words are 2.5-reduced (818 L1);
+  - one onion level gives strict depth ≥ 2 on L1 words (24/46), holding under the flip control;
+  - level 2 needs the junction-aware DP;
+  - the C++ onion port (with a 20× fullReduce speed-up) is in final review.
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
