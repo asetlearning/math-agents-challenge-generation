@@ -65,7 +65,7 @@ The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` 
   - **Seed gotcha:** if the sampler and PatternBoost use the same seed, the target lands in the initial pool and training never runs.
 - **Isolation of the worker account (fixed 2026-10-05).**
   - The first `install.sh` picked up the owner's uv from PATH. Since the fix merged into main (47b2e83), it always uses `~/.local/bin/uv`, and the host config now points to gpuworker's own uv.
-  - The owner's home was listable by other accounts (the macOS default). The owner set `chmod 700 /Users/alex`, so gpuworker is now blocked from everything there.
+  - The owner's home was listable by other accounts (the macOS default). The owner set `chmod 700` on its home directory, so gpuworker is now blocked from everything there.
   - Keep both properties when changing hosts or installers.
 - **Docker is not used on the Mac.** Docker on macOS runs a Linux VM without Metal/MPS, so containers would be CPU-only. Mac jobs therefore run natively, as builds pinned to a commit SHA. Linux servers also run natively for now (owner, 2026-10-14); a container backend (`docker run --gpus all`) or Slurm scheduling is optional later, behind the same job contract. b25's `Dockerfile` is stale: it runs `git submodule update` without `.git`, and compose forces amd64.
 - **Hosts update separately.** A host runs the `run_job.py` copied by its last `install.sh`; the Mac was re-installed on 2026-10-15 (multi-host runner, `mem_gb = 54` added to its config by hand, since `install.sh` keeps an existing config). The new client works with older runners (placement falls back to "idle host"), but GPU ids, `mem_gb` scheduling and the extended `info` need `install.sh` re-run on that host.
