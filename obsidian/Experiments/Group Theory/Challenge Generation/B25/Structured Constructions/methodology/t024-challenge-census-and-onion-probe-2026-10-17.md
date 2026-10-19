@@ -1,19 +1,36 @@
 ---
 title: t024-challenge-census-and-onion-probe-2026-10-17
 hypothesis: "The real challenge words are (nearly) 2.5-power-free, and a one-level 'onion' step (tile a power-free dataset word's boundary with inverse arcs of dataset relators) raises strict depth beyond what its components carry."
-status: draft
+status: validated
 author: asetlearning
 date: 2026-10-17
 todo: T-024
 project: challenge-gen
 instance: B(2,5)
 experiment_type: structured-constructions
-tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/b25, topic/trivial-words, topic/hard-instance-generation, topic/dehn-function, topic/power-free-words, project/challenge-gen, status/draft, experiment, methodology]
+tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/b25, topic/trivial-words, topic/hard-instance-generation, topic/dehn-function, topic/power-free-words, project/challenge-gen, status/validated, experiment, methodology]
 ---
 
 # T-024 (draft): challenge power census and the M1 one-level onion probe
 
-**Status: draft, results of two small analyses on existing data. No T-024 pre-registration yet.** Both were owner-approved on 2026-10-17 (via Lead): the census first, then M1. Nothing else was run.
+## Conclusion (closed by the owner, 2026-10-19)
+
+**T-024 is closed: positive at small depth, negative for depth growth.**
+- **Census (§2–3):** the HWW challenges are 2.5-reduced; every 2.5 window is an exact half, almost all of period 2.
+- **One onion level raises strict depth (M1, §9):** S2 depth ≥ 2 in 29 of 46 words, with the bouquet control holding.
+- **Levels 2 and 3 do not keep raising it for L1 words (§10.3, §10.6):**
+  - flip depth rises by +1 in 30–40% of seeds, but mostly on words that fail L1;
+  - the registered level-3 verdict is negative in both arms (rises 10% < 25%);
+  - the deepest-parent rule is inconclusive;
+  - the deepest L1, bouquet-ok word has flip depth 4, the same as level 1.
+- **Best candidates:** 11 Validator-confirmed words, 163–1,548 letters, with flip depth 3–4 above their components ([[2026-10-18-t024-level2-best-words-verify]], [[2026-10-18-t024-level3-first-word-verify]]). Their L1 and novelty come from the runs; a re-check is pending.
+- **Why it stalls (Math Expert, [[2026-10-19-t024-after-level3-options]]):**
+  - each level keeps the shortest gated candidate, and L1 is checked only afterwards (argued);
+  - L1 failures track exact halves at tile junctions (argued from the data).
+- **Option not taken:** selecting for L1 and depth inside the level step.
+- **Spin-offs:** the tcgraph `onion/` component, the linear-time power check (T-026), and the `inverseCellReduce` speed-up (tcgraph PR #9, 100–300× faster, identical output).
+
+**Earlier status line (2026-10-17):** draft, results of two small analyses on existing data. Both were owner-approved on 2026-10-17 (via Lead): the census first, then M1.
 
 Sources: Math Expert [[2026-10-16-t024-depth-vs-length-and-long-words]] §3-§4 (design and reading rule); Developer's step-1 timing, `test-output/t024-feasibility-step1-2026-10-16.md`; the T-018 note [[t018-t021-diagram-search-2026-10-14]] (strict depth definitions S1/S2/S3, T1 baseline).
 
