@@ -194,7 +194,7 @@ Decision (owner, 2026-10-17): T-018/T-021 closed. H2 is falsified under strict d
 - **Levels 2 and 3 do not keep raising it for L1 words:**
   - the registered level-3 verdict is negative (rises 10% in both arms);
   - the deepest L1 word has flip depth 4, the same as level 1.
-- **11 Validator-confirmed candidates:** 163–1,548 letters, flip depth 3–4. Their L1 and novelty re-check is pending.
+- **12 Validator-confirmed candidates:** 163–1,548 letters, strict depth 3–4. All are L1 (ρ_min16 = 1.0) and novel against the dataset, R7 and the HWW challenges (re-checked on 2026-10-19).
 - **tcgraph PR #9 merged:** the certificate-reduction speed-up, 100–300× faster with identical output.
 - **Next:** T-017 is proposed (minimality of the confirmed words), pending the owner's go. T-006 moves below T-009, because its census condition failed.
 - **Details:** [[t024-challenge-census-and-onion-probe-2026-10-17]].

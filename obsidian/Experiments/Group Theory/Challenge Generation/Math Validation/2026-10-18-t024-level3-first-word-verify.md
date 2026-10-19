@@ -29,6 +29,15 @@ This was a Lead task (2026-10-18). The method is the same as for level 2, [[2026
 - The word has depth 3 under S2 and under flip (d), one above its level-2 parent's 2 (and above the components' maximum 2).
 - It does not exceed the pilot's level-1 maximum of 4.
 - Minimality is not established (subset-merge search deferred to T-017).
-- L1, novelty and area-likeness were not re-checked; they are taken from the run.
+- L1, novelty and area-likeness were not re-checked here; they are taken from the run. L1 and novelty were re-checked on 2026-10-19; see the addendum below.
 
 Files (Validator scratch, not committed): `scratch/t024verify/check_l3.py`, with outputs `check_l3.json` and `check_l3.out`.
+
+## Addendum 2026-10-19: L1 and novelty
+
+These were re-checked independently with tcgraph main `188f8ae`, together with the 11 level-2 words, in [[2026-10-18-t024-level2-best-words-verify]] (section "Addendum 2026-10-19").
+- **L1:** all 16 images of the word are fixed points of the 2.5-reducer, so ρ_min16 = 1.0, which equals the run's value. The word is L1 under both ρ_min16 ≥ 0.5 and ρ_min16 = 1.
+- **Novelty:** the word is novel. Its cyclic length of 1,548 matches no word in the dataset (32–123), R7 (5–35), HWW (≥ 2,494), or among the other 11 words.
+
+**Verdict: CONFIRMED.**
+

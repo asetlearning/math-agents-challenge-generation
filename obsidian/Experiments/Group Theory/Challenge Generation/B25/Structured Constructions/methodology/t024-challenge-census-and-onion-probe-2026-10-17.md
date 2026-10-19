@@ -23,7 +23,9 @@ tags: [agent/exp, user/asetlearning, domain/group-theory, topic/burnside, topic/
   - the registered level-3 verdict is negative in both arms (rises 10% < 25%);
   - the deepest-parent rule is inconclusive;
   - the deepest L1, bouquet-ok word has flip depth 4, the same as level 1.
-- **Best candidates:** 11 Validator-confirmed words, 163–1,548 letters, with flip depth 3–4 above their components ([[2026-10-18-t024-level2-best-words-verify]], [[2026-10-18-t024-level3-first-word-verify]]). Their L1 and novelty come from the runs; a re-check is pending.
+- **Best candidates:** 12 Validator-confirmed words, 163–1,548 letters, all above their components: 11 level-2 words and the ds 519 level-3 word. 11 of them have flip depth 3–4; ds 781 has S2 3 and flip 2 ([[2026-10-18-t024-level2-best-words-verify]], [[2026-10-18-t024-level3-first-word-verify]]).
+  - **L1 and novelty, re-checked by the Validator on 2026-10-19 ([[2026-10-19-t024-l1-novelty-recheck-triage]]):** all 12 have ρ_min16 = 1.0. None is free-group conjugate to a dataset word, an R7 relator, an HWW challenge, or another of the 12.
+  - **Scope:** L1 is with respect to the heuristic reducer, and novelty is free-group conjugacy only.
 - **Why it stalls (Math Expert, [[2026-10-19-t024-after-level3-options]]):**
   - each level keeps the shortest gated candidate, and L1 is checked only afterwards (argued);
   - L1 failures track exact halves at tile junctions (argued from the data).

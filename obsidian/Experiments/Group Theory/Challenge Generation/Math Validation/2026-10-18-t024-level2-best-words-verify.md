@@ -4,7 +4,7 @@ date: 2026-10-18
 author: Validator (asetlearning)
 project: "[[project-challenge-gen]]"
 subject: "T-024: independent verification of the 12 best level-2 onion finals (pilot rjob 20261018-000601-9e5902)"
-verdict: "11 of 12 CONFIRMED (L0, 2.5-reduced, S2 depth 3-4 and flip-(d) depth both above the components'); ds 707 CONFIRMED under S2 only (flip-(d) depth 2 = components' 2). No cheaper certificate found by our reducers; minimality not established."
+verdict: "Addendum 2026-10-19: all 11 confirmed level-2 words and the ds519 level-3 word are L1 (rho_min16 = 1) and novel. 11 of 12 CONFIRMED (L0, 2.5-reduced, S2 depth 3-4 and flip-(d) depth both above the components'); ds 707 CONFIRMED under S2 only (flip-(d) depth 2 = components' 2). No cheaper certificate found by our reducers; minimality not established."
 ---
 # T-024: verification of the best level-2 onion words
 
@@ -100,3 +100,63 @@ Files (Validator scratch, not committed): `scratch/t024verify/`.
 - `replay_verify.py`, `job.toml`, `targets.json`;
 - `check_local.py` → `check_local.jsonl`;
 - rjob outputs in `runs/20261018-095405-e53f79/`.
+
+## Addendum 2026-10-19: independent L1 and novelty re-check
+
+This was a Lead task (2026-10-19, after the owner closed T-024 in vault `e5019b5`). Triage: [[2026-10-19-t024-l1-novelty-recheck-triage]].
+
+**Scope:** 12 words. These are the 11 level-2 words confirmed above (all except ds 707) plus the level-3 word ds519_L3_c2_B from [[2026-10-18-t024-level3-first-word-verify]]. Lead's message counted 11 words ("10 level-2 words"), but the table above confirms 11 level-2 words, so the total is 12.
+
+**Inputs:**
+- The level-2 words come from my replay dumps (each dump checked equal to the stored final).
+- The level-3 word comes from the timing job's certs (sha256 matching `index.json`).
+
+**Run:** tcgraph main `188f8ae` (b25 `ae6a79c` bindings; ctest 20/20), one local capjob (2 GB, 1 CPU), about 5 min wall. Script and outputs are in Validator scratch, not committed: `scratch/t024verify/check_l1_novelty.py`, giving `check_l1_novelty.json` and `.out`.
+
+### (1) L1
+
+- **Definition.** ρ_min16 = min over the 16 images of |R_2.5(image)| / |w|.
+  - The 16 images are the 8 letter automorphisms of F(a,b) (a, b swapped and/or inverted), each with and without inversion of the word.
+  - R_2.5 is the tcgraph 2.5-reducer in certify mode: `greedy_reduce2_5`, then `greedy_reduce_cyclic_exhaustive2_5` over all shifts. No timeout was used.
+- **Independent images.** I generated the images with my own code. For every word, the set equals the project's `images16`.
+- **Result.** Every one of the 16 images of every word is a fixed point of R_2.5: |R_2.5| = |w| in all 192 reductions. So **ρ_min16 = 1.0 for all 12 words.** This equals the run's stored values (status `ok`).
+- **Thresholds.** The words are L1 under both the project definition (ρ_min16 ≥ 0.5, the one Lead's task uses) and the stricter T-024 selection rule (ρ_min16 = 1).
+- **Scope.** This is a statement about the heuristic reducer only. It does not say the words are hard in B(2,5).
+
+### (2) Novelty
+
+A word is novel if it is not conjugate in F(a,b) to any of the following, and not conjugate to the inverse of any of them. Conjugate in F means its cyclic reduction is a rotation of theirs.
+- **Dataset:** the 820 dataset words.
+- **R7:** all 1,630 relators of the kbmag file `b25_full` (815 relators plus their inverses).
+  - My own parse of the file equals `table_from_kbmag`.
+  - The classes of the core table are a subset of these.
+- **HWW:** the 118 challenges of Havas, Wall and Wamsley (1974), as the registered 2.5-reduced file. As an extra, also the 118 non-empty words of the original freely reduced file.
+- **Each other:** the other 11 words.
+
+**Result: all 12 words are novel, and the reason is simple: no candidate has the same length as any reference word.**
+- The length of the cyclic reduction is invariant under conjugation, inversion and the letter automorphisms.
+- The 12 words are cyclically reduced, with lengths 163, 211, 216, 261, 320, 361, 378, 405, 529, 635, 699 and 1,548. All of these are different.
+- The reference sets have cyclic lengths outside that range: the dataset 32–123, R7 5–35, HWW (2.5-reduced) 2,494–27,321, and the original HWW 2,498–41,886.
+- So no reference word can be conjugate to any of the 12, and no two of the 12 are conjugate to each other.
+- Even under the coarser equivalence that also allows the 16 images (automorphisms and inversion), there is no match.
+- The pilot's own novelty flag (conjugacy against the core table and the dataset up to automorphisms) was `True` for all 12. It never checked HWW; this re-check adds HWW.
+
+### Per-word verdict
+
+| word | \|w\| | ρ_min16 (mine / run) | L1 (≥ 0.5 / = 1) | novel (conj. / up to 16 images) | **Verdict** |
+|---|---|---|---|---|---|
+| ds94 L2 | 216 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds125 L2 | 163 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds145 L2 | 361 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds160 L2 | 261 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds368 L2 | 211 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds512 L2 | 378 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds547 L2 | 699 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds566 L2 | 320 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds665 L2 | 405 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds764 L2 | 635 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds781 L2 | 529 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+| ds519 L3 c2 B | 1,548 | 1.0 / 1.0 | ✓ / ✓ | ✓ / ✓ | **CONFIRMED** |
+
+**Scope:** novelty here means only "not conjugate in the free group" to the listed words. It does not exclude words that are equal in B(2,5) to a reference word, or words that contain reference words as subwords. The onion words are built from dataset tiles, so they do contain such subwords.
+
