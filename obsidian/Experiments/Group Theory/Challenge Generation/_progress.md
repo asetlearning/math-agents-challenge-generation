@@ -199,6 +199,19 @@ Decision (owner, 2026-10-17): T-018/T-021 closed. H2 is falsified under strict d
 - **Next:** T-017 is proposed (minimality of the confirmed words), pending the owner's go. T-006 moves below T-009, because its census condition failed.
 - **Details:** [[t024-challenge-census-and-onion-probe-2026-10-17]].
 
+### 2026-10-20: T-017 closed (11 of 12 depth gains survive patch surgery)
+- **What was tested.** Whether the 12 confirmed T-024 words keep their depth gain when certificate-level patch surgery (M1: rewrite blocks of up to k cells) is applied equally to the words and to their components (parent and tiles). Pre-registered as H17.
+- **Result (upper bounds, R7):**
+  - flip depth: 11 of 12 words stay above their components' baseline; **ds547 fails** (2 vs 2) and is unconfirmed;
+  - strict depth S2: 9 of 12 (ds125, ds547, ds665 fail);
+  - ds160's depth-4 claim is retired (now 3, baseline 1);
+  - |S| = 5 only shrank areas; a targeted |S| = 6 run accepted no move;
+  - no word reaches 1 by power moves alone (M2'); allowing every u⁵ cell changed nothing.
+- **Limits:** upper bounds under a capped search, not true minima; ds764 and the level-3 word ds519 are partial-search bounds.
+- **Cost:** 60.2 CPU-h of surgery.
+- **Code:** tcgraph `surgery/` (certificate-level patch surgery).
+- **Details:** [[t017-recertification-and-minimality-2026-10-19]].
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile
