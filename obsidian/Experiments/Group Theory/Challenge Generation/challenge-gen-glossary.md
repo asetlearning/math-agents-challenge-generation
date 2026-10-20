@@ -21,6 +21,10 @@ Notation used in the definitions: |u| is word length, w̄ the freely reduced exp
 |---|---|---|---|
 | 2.5-power | A subword uᵠ of exponent q = (window length)/(period \|u\|) ≥ 2.5; the only thing the reducer rewrites | owner 2026-10-05; made exact in T-001 | [[#2.5-power and the reducer rewrite]] |
 | aut8 / 16 images | The 8 letter automorphisms of F(a,b) (generator swap × sign of each generator), times word inversion = 16 images of a word | owner decision 2026-10-14 (T-001); dataset name from 2026-10-07 | [[#aut8 and the 16 images]] |
+| solver | A decision or reduction procedure, with stated parameters, budget and repo@sha. It returns TRUE (trivial in G_β), SHORTER (a shorter equal or conjugate word), NONE, or (filters only) FALSE | owner 2026-10-20 (T-027) | [[challenge-gen-success-metrics#Owner decision 2026-10-20: solver resilience and level names (T-027)]] |
+| solver resilience | A candidate's resistance to the standard solver list S_std at stated budgets, reported as the resilience vector and ρ_S | owner 2026-10-20 (name approved) | same |
+| S1-each | L0-cert and strictly resilient (NONE on all 16 images) to each of R, CL, KB and D1 | T-027 | same |
+| S2-chain | Top level of the S axis: L0-cert, survives the solver chain R → CL → KB → DR (S_std-undecided), ρ_S ≥ 0.5 | owner 2026-10-20 | same |
 | canon | Shortlex-least string over the 16 images and all rotations of a cyclic word | T-002, 2026-10-14 | [[#canon (canonical class)]] |
 | cell | One (sampler setting × seed) group of words in a sampling grid; T-001: S1–S7, T-002: P·K·subset names | T-001 2026-10-13, T-002 2026-10-14 | [[#cell and cell names]] |
 | certificate | Factor word F = list of (relator index, conjugator) pairs whose expansion is w̄ | owner 2026-10-05 | [[challenge-gen-success-metrics#Notation]] |
@@ -48,8 +52,9 @@ Notation used in the definitions: |u| is word length, w̄ the freely reduced exp
 | factor word | See certificate | owner 2026-10-05 | [[challenge-gen-success-metrics#Notation]] |
 | fixed point (of the reducer) | A word on which R₂.₅ returns the word itself up to rotation | T-001 2026-10-13 | [[#fixed point of the reducer]] |
 | G1, G2, all-classes check, standard guard | Novelty guards for L1 words; G2 plus the all-classes check (R₂.₅(w) not the class of any of the 1,640 relators) is THE definition of novel; the standard guard (non-increasing 2.5-closure free of ε and relator classes, no ≤ 2-cell certificate, N*_c reported) applies to every construction (owner decisions 2026-10-14); G1 (registered in T-002) is superseded, historical only | T-002 2026-10-14; adopted by owner decision 2026-10-14 | [[#novel L1 and the guards G1 and G2]] |
+| G_k | ⟨a, b \| v⁵, v cyclically reduced, \|v\| ≤ k⟩. It maps onto B(2,5); R7 presents G_7 | T-017/T-027 | [[#G_k and throw stage]] |
 | gated D, objective variants A/B/C | Search scores on F*-based D: A = D if the L1 gate passes else 0; B = A × ρ_screen; C = A plus a hard floor on \|w\| | T-003 prereg 2026-10-14 | [[#T-003 search terms]] |
-| L0, L0-ext, L1, L2, L3 | Success levels | owner 2026-10-05 | [[challenge-gen-success-metrics#Success levels]]; L0-ext in [[#L0-ext]] |
+| L0-cert, L1-r25, L2-area, L3-quad (formerly L0, L1, L2, L3); L0-ext | Success levels, L ladder (renamed by the owner 2026-10-20) | owner 2026-10-05 | [[challenge-gen-success-metrics#Success levels]]; L0-ext in [[#L0-ext]] |
 | L1 gate | The constraint every search candidate must pass: R₂.₅(w) ≠ 1 and ρ_min16(w) ≥ 0.5 (screen ρ on the pool, ρ_min16 on finalists) | owner 2026-10-14 | [[project-challenge-gen#The search problem (owner, 2026-10-14) — the crucial part]] |
 | L1 prefilter | Per-neighbour exact check inside the scorer, no reducer call: fails only if \|cyc(w)\|/\|w\| < min_rho; otherwise passes to the pool gate | T-003 prereg 2026-10-14 | [[#T-003 search terms]] |
 | loop erasure | Chronological deletion of freely cancelling blocks of F; gives F* | owner 2026-10-05, made exact in T-001 | [[#loop erasure]] |
@@ -64,6 +69,7 @@ Notation used in the definitions: |u| is word length, w̄ the freely reduced exp
 | padding fraction | 1 − ρ_min16: the share of \|w\| removed by 2.5-reduction (minimising image) | owner decision 2026-10-14 (T-003) | [[#Padding breakdown (T-003)]] |
 | pool gate (workflow.l1_gate) | Screen-mode L1 gate applied to pool / top_k candidates after local search; failing words get gated_score | T-003 prereg 2026-10-14 | [[#T-003 search terms]] |
 | positive / negative control | See control | T-001 2026-10-13 | [[#positive and negative control]] |
+| positive length | The length of a word after writing x⁻¹ as x⁴; the measure used by Kuznetsov–Shlepkin Thm 3 | T-027 | [[#G_k and throw stage]] |
 | 2.5-reduced (target) | No power with exponent > 2.5 (linear and cyclic windows); exact 2.5-powers allowed. The property required of constructed words and boundaries (owner 2026-10-17). Window length for period h: ⌊2.5h⌋ + 1 | owner 2026-10-17 | [[challenge-gen-success-metrics#Owner decision 2026-10-17: the target is 2.5-reduced (no power with exponent > 2.5); exact 2.5-powers are allowed]] |
 | strictly power-free | No power with exponent ≥ 2.5 (windows ⌈2.5h⌉): the reducer's fixed points. Stricter than the target; used by mistake as the gate in T-018 and the T-024 probes; now a diagnostic only | 2026-10-17 correction | [[#pre-check: no square and power-free]] |
 | power-free shortcut | Exact test: no power ≥ 2.5 in w̄ (linear) and in cyc(w̄) (cyclic) implies the reducer is a no-op | T-001 (no-square form), T-002 (exact form) | [[#pre-check: no square and power-free]] |
@@ -71,6 +77,8 @@ Notation used in the definitions: |u| is word length, w̄ the freely reduced exp
 | relator map / relator table / relator file | Index to word table used to expand a certificate; its hashed form; and the file a table can be loaded from | T-001 2026-10-13 | [[#relator map, relator table and relator file]] |
 | rotation-invariant | The reducer's result does not depend on the cyclic rotation of its input (but does on relabelling and inversion) | T-001 2026-10-14 | [[#aut8 and the 16 images]] |
 | R₂.₅ | `greedyReduceCyclicExhaustive(greedyReduce(w̄))` | owner 2026-10-05 | [[challenge-gen-success-metrics#Notation]] |
+| reproduction record | The exact steps of a non-certificate proof: algorithm, repo@sha, parameters, conjugators, and every intermediate word in order | owner 2026-10-20 | [[challenge-gen-success-metrics#Owner decision 2026-10-20: solver resilience and level names (T-027)]] |
+| residual ratio ρ_S | min over the 16 images of \|Res_S(w)\|/\|w\| under a composite solver set S; ρ_S = ρ_min16 for S = {R} | T-027 | same |
 | screen mode | 2.5-reduction with cyclic shifts {0, 0.5} only; cheap, may miss reductions | owner 2026-10-05 | [[#screen mode and certify mode]] |
 | search objective | Maximise D = N*/\|w\| (factors of the minimised certificate over freely reduced length) subject to the L1 gate | owner 2026-10-14 | [[project-challenge-gen#The search problem (owner, 2026-10-14) — the crucial part]] |
 | search parameters | What every search run must record: relator set R, N range, conjugator bound, word-length bounds, move set, search strategy, objective and gate | owner 2026-10-14 | [[project-challenge-gen#The search problem (owner, 2026-10-14) — the crucial part]] |
@@ -80,6 +88,7 @@ Notation used in the definitions: |u| is word length, w̄ the freely reduced exp
 | short100, S1–S4 (T-002 strata), S1–S7 (T-001 cells) | Dataset subsets by length rank in T-002; the unrelated T-001 sampling cells | T-001, T-002 | [[#cell and cell names]] |
 | standard relators | All cyclically reduced v⁵ with \|v\| ≤ L, trivial in free B(2,5) by construction | PatternBoost design 2026 | [[#standard relators and dataset relators]] |
 | timeout | A reducer call exceeding the per-call wall-clock cap; recorded, never counted as pass or fail | T-001 2026-10-13 | [[#undecided, timeout]] |
+| throw stage | The D stage k (relators v⁵, \|v\| ≤ k) running when ShorterLengthFound or TRUE is raised. D's result is an equality in G_k | Validator 2026-10-20 | [[#G_k and throw stage]] |
 | undecided (`L0?`) | A word the harness did not classify (size limit or timeout) | T-002 2026-10-14 | [[#undecided, timeout]] |
 | w̄ | Freely reduced expansion of F | owner 2026-10-05 | [[challenge-gen-success-metrics#Notation]] |
 | ρ | \|R₂.₅(w)\|/\|w̄\| | owner 2026-10-05 | [[challenge-gen-success-metrics#Metric 1: resistance to 2.5 reduction (heuristic difficulty)]] |
@@ -239,6 +248,14 @@ Owner decision 2026-10-14, after T-003 ([[challenge-gen-success-metrics#Owner de
 - **D_dataset_P** = (dataset-relator factors in F*_P)/|w̄|. It differs from D_dataset (T-003 padding breakdown) only in using F*_P instead of F*. On the T-003 stage-1 runs the best values coincide.
 - **Headline D.** For relator sets mixing standard and dataset relators, reports lead with D_dataset_P and always give D and D_P next to it. Reason: on R-M, standard factors that the reducer removes inflate D without making the word harder (T-003: best D 0.13, best D_dataset_P 0.039). To be revisited if a method places standard cells genuinely inside the diagram (T-018). For a pure dataset relator set, D_dataset_P = D_P.
 - **Levels on the headline D** (owner decision 2026-10-14). L2 (D ≥ 1) and every other D threshold are read on the headline D: D_dataset_P on mixed sets, D_P on pure sets. Full D is reported alongside. The path-length D_path of T-016 chains is never a headline D.
+
+### G_k and throw stage
+- G_k = ⟨a, b | v⁵ : v cyclically reduced, 1 ≤ |v| ≤ k⟩. Every G_k maps onto G_{k+1} and onto B(2,5). So an equality or triviality proved in G_k holds in B(2,5).
+- R7 (kbmag `b25_full`, |v| ≤ 7) presents G_7.
+- D (`attempt_to_decide_if_trivial`) sews the relators of G_1, G_2, … in successive stages. It checks the tracked word's geodesic at the end of every stage, at the coset bound, and every 10⁸ iterations.
+- The **throw stage** is the stage running when a shorter word or TRUE is raised. The result is an equality in G_(throw stage), and the record must state it.
+- D's `false` proves non-triviality in G_k only, never in B(2,5).
+- **Positive length** counts each inverse letter as 4 (x⁻¹ = x⁴ in B). Kuznetsov–Shlepkin 2010 Thm 3 (computational, unreplicated) states that positive words of positive length ≤ 29 are equal in B₀(2,5) iff they are equal in B(2,5).
 
 ## Related material
 - [[challenge-gen-success-metrics]]: owner definitions (certificate, ρ, D, levels) and the ρ_min16 decision

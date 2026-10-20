@@ -108,6 +108,11 @@ Notes on the table:
 - **Results and outputs** (vault): `Agents/asetlearning/Experimenter-B25/` — `2026-10-19-t017-m1-results.md` (Steps 1–2), `2026-10-20-t017-step3-k5-results.md` with `t017-step3-k5-outputs/`, `2026-10-20-t017-step3-s6-results.md` with `t017-step3-s6-outputs/`.
 - **Verification:** Steps 1–2 [[2026-10-19-t017-m1-results-verify]] (CONFIRMED, 1,720 certificates); k=5 [[2026-10-20-t017-step3-k5-verify]] (CONFIRMED, 430/430, two corrections applied here); k=6 [[2026-10-20-t017-step3-s6-verify]] (CONFIRMED, 24/24). Pooling over runs is the Experimenter's computation from the three result sets (script in the Experimenter's scratch, not committed); the Validator reproduced the full pooled table independently ([[2026-10-20-t017-closeout-check]]).
 
+
+## Addendum (2026-10-20)
+
+The owner's solver test (coset enumeration alternated with 2.5-reduction) reduces 8 of these 12 words to the empty word. The other 4 leave three residual words (R1, R2, R3). kbmag then reduces all 12 words and all three residuals to the identity in under a second. H17 concerns certificate depth under M1 and is unaffected, but "robust under M1" does not mean hard to solve. The full history of R1–R3 is in the addendum of [[t024-challenge-census-and-onion-probe-2026-10-17]] (T-027).
+
 ## 8. Related material
 
 - [[2026-10-19-t017-recertification-and-minimality-plan-v2]] — the pre-registration; [[2026-10-19-t017-plan-review-triage]] — the Validator's plan review.

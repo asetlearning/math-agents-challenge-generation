@@ -183,14 +183,76 @@ Source: Math Expert's junction-repair revision 2 ([[2026-10-16-junction-repair-r
 
 Every gate, hypothesis and success criterion that says "power-free" means **2.5-reduced** from now on. T-018's results are being re-checked under the corrected gate.
 
+## Owner decision 2026-10-20: solver resilience and level names (T-027)
+
+Source: the owner's solver test on the 12 T-024 words, reproduced by the Validator ([[2026-10-20-t027-solver-reproduction]]). The solvers broke every word:
+- coset enumeration (D) shortened all 12, and D alternated with 2.5-reduction emptied 8 of them;
+- kbmag reduced all 12, and all 3 residuals, to the identity in under 1 s.
+
+These words had passed L0-cert and L1-r25 (ρ_min16 = 1), with certificate depths S2 3–4 and flip (d) 2–4 (T-024 certificate bounds). Definitions: [[2026-10-20-t027-breakability-and-breaker-list-v2]].
+
+**Principle (owner, 2026-10-20, verbatim; typos fixed):** "Although checking how hard candidates are by trying to solve triviality is an ultimate test, we probably want to keep provably computable metrics of hardness, like 2.5-reduction and Dehn's area approximations, for driving search algorithms." — Alex Myasnikov.
+
+In practice: solver resilience (below) is the ultimate test of a candidate. The computable metrics (2.5-reduction, area/Dehn approximations, depth) still drive the search. They are not evidence of hardness on their own.
+
+**Level names (owner, 2026-10-20).** Every level is a number plus a short suffix that recalls its meaning. There are two axes:
+- **L ladder** (certificate, 2.5-reduction and area): L0-cert, L1-r25, L2-area, L3-quad. These were formerly L0, L1, L2, L3; earlier notes keep the old labels.
+- **S axis** (resistance to solvers): S1-each, S2-chain.
+- The suffix is part of the name, so "S2-chain" (a level) is never confused with S2 (strict depth).
+
+**Solvers.** A *solver* is a procedure with stated parameters, budget and repo@sha. On a word it returns one of:
+- TRUE: trivial in a stated group G_β that maps onto B(2,5);
+- SHORTER: a shorter word, equal or conjugate in G_β, with the conjugator recorded;
+- NONE;
+- for filters only, FALSE: non-trivial in a quotient of B(2,5).
+
+Every TRUE or SHORTER emits a reproduction record (algorithm, repo@sha, parameters, conjugator, output word), and a certificate fragment where one is available.
+
+**The standard solver list S_std, in order of application (★ = standard budget):**
+
+| label | solver | valid in | standard budget |
+|---|---|---|---|
+| F0, F1 | abelianization; B₀(2,5) by anupq | filters (FALSE ⇒ non-trivial in B) | — |
+| R ★ | cyclic exhaustive 2.5-reduction | conjugacy in G_m | certify mode, 16 images |
+| CL ★ | non-increasing 2.5-closure (kbcert) | G_7 | node cap 10⁶ |
+| KB ★ | kbmag ReduceWord, rec (`436fd2c7…`) and slx (`75b12c59…`) systems from b25_full (`b1d511fe…`, `kbprog -me 100000`) | G_7 (TRUE); NONE proves nothing | levels use certify mode (every rotation of every image) and require NONE from both systems; screen mode (rotations 0 and ⌊n/2⌋) is for loops only |
+| D1 ★ | coset enumeration `attempt_to_decide_if_trivial` | equality in G_k, k = the stage running at the throw (recorded) | coset_bound 20,000,000, rml 5, log_step 10⁷, len_log_step 10⁸; one call on rotation 0 of each of the 16 images |
+| DR ★ | D1 alternated with R | as D1 and R | ≤ 50 rounds, same D1 parameters |
+
+- Optional or pending validation: DV (Dehn over the construction's vocabulary) and K29 (B₀ proposes a window shortening, KB or D certifies it).
+- S_std = R → CL → KB → DR. DR's first call is D1, so D1 is not a separate stage. Composite caps: 50 rounds and 2 CPU-h per word. CL returns NONE at its 10⁶-node cap. Code is recorded as repo@sha (filled after the harness commit).
+- Escalations outside S_std: D(2·10⁸, 7) and D(10⁹, 9), on rjob only, with the plan sent to Lead first when it exceeds about 2 h. "S_std-undecided" means undecided at the ★ budgets.
+
+**Measures.**
+- **Strictly resilient to β**: β returns NONE on all 16 images. For the rotation-sensitive solvers KB and D, this means on the rotations fixed by the pinned rotation rule: KB, every rotation of every image; D1, rotation 0 of each image.
+- **Residual ratio ρ_S** = min over the 16 images of |Res_S(w)|/|w|. Res_S is the result of applying S in order, restarting after each SHORTER, until TRUE, the empty word, a fixpoint or the cap.
+- **Resilience vector**: per solver, NONE / SHORTER (with length) / TRUE, plus ρ_S and the residual length. It is reported for every final candidate.
+
+**Solver levels (the S axis; also in the table under Success levels):**
+- **S1-each**: L0-cert, and strictly resilient to each of R, CL, KB and D1 at ★.
+- **S2-chain** (the top solver level): L0-cert, S_std-undecided (the chain R → CL → KB → DR gives no TRUE and leaves a non-empty residual), and ρ_S ≥ 0.5.
+- Words in the Kuznetsov–Shlepkin Thm-3 class are flagged "B₀-decidable (conditional)". That class: some rotation of w or w⁻¹ splits into two pieces whose positive forms (x⁻¹ = x⁴) have length ≤ 29 each.
+- The S axis is independent of the L ladder (owner, 2026-10-20). A word is described on both, e.g. "L1-r25 + S2-chain".
+
+**Registry.**
+- Approved candidates go to `data/b25_challenge_candidates.json` under `candidates`. Humans approve every addition and removal.
+- Evaluated non-candidates are logged under `tested`, with their resilience vectors.
+- Each record carries a certificate or a reproduction block. The dataset note keeps a change log of sha256 per revision.
+
+**Calibration (before first use).** Run S_std on the 118 HWW challenges and on the 820 dataset words, and report the resilience vectors. The level is meaningful only if it separates them.
+
 ## Success levels
+
+Two independent axes: the L ladder and the S axis. A word is described on both, e.g. "L1-r25 + S2-chain".
 
 | Level | Criterion | Meaning |
 |---|---|---|
-| L0 Valid | Certificate re-expands to w̄; standard (or certified) relators; abelianization passes | Provably trivial in free B(2,5) |
-| L1 Hard (heuristic) | L0, R₂.₅(w) ≠ 1, ρ ≥ 0.5 (certify mode) | Defeats the reducer that kills all random factor words |
-| L2 Hard + high filling | L1 and D(w) ≥ 1 on F* | Non-generic filling, an upper-bound proxy |
-| L3 Great | A family of L1 words with \|F*\| growing ≈ quadratically in n (fitted α ≈ 2) | Quadratic area as a function of reduced length (proxy) |
+| L0-cert (formerly L0) | Certificate re-expands to w̄; standard (or certified) relators; abelianization passes | Provably trivial in free B(2,5) |
+| L1-r25 (formerly L1) | L0-cert, R₂.₅(w) ≠ 1, ρ ≥ 0.5 (certify mode) | Resists 2.5-reduction, which kills all random factor words |
+| L2-area (formerly L2) | L1-r25 and D(w) ≥ 1 on F* | Non-generic filling, an upper-bound proxy |
+| L3-quad (formerly L3) | A family of L1-r25 words with \|F*\| growing ≈ quadratically in n (fitted α ≈ 2) | Quadratic area as a function of reduced length (proxy) |
+| S1-each | L0-cert, and strictly resilient to each of R, CL, KB and D1 at the standard budgets | Survives each standard solver on its own (T-027) |
+| S2-chain | L0-cert, S_std-undecided (no TRUE, residual non-empty), ρ_S ≥ 0.5 | Survives the standard solvers applied in sequence; the ultimate test of a candidate (T-027) |
 
 **Reporting** for every run: counts and rates at each level, the distribution of ρ and of D (on F*), n, |F| versus |F*|, and the generation cost. The baseline is random factor words from the same sampler; the owner's finding predicts ρ = 0 for all of them.
 

@@ -212,6 +212,17 @@ Decision (owner, 2026-10-17): T-018/T-021 closed. H2 is falsified under strict d
 - **Code:** tcgraph `surgery/` (certificate-level patch surgery).
 - **Details:** [[t017-recertification-and-minimality-2026-10-19]].
 
+### 2026-10-20: solvers break all 12 T-024 words; three residual words R1–R3 recorded; T-027 starts
+- **Owner's test (2026-10-19), reproduced by the Validator.** tcgraph coset enumeration (`attempt_to_decide_if_trivial`, 20M cosets, rml 5) alternated with cyclic exhaustive 2.5-reduction reduces 8 of the 12 confirmed words to the empty word, in about 0.5 s each. The other 4 leave three residual words:
+  - R1, 47 letters, from both ds94 and ds764;
+  - R2, 47 letters, from ds665;
+  - R3, 249 letters, from the level-3 word ds519.
+- **kbmag** (the existing `b25_full` rewriting systems) reduces all 12 words and all three residuals to the identity in under a second. So every one of them is proved trivial, and none meets the owner's minimum for a candidate.
+- **Meaning.** L1-r25, depth and area did not predict resistance to solvers. Solver resistance is now a separate axis of levels: S1-each and S2-chain, with the L levels renamed L0-cert, L1-r25, L2-area, L3-quad ([[challenge-gen-success-metrics]]).
+- **Registry (T-027).** `data/b25_challenge_candidates.json`: `candidates` is empty, and R1–R3 and their originals are logged under `tested`.
+- **Next (T-027):** a solver harness (B₀(2,5) filter, 2.5-reduction, closure, kbmag, coset enumeration), then calibration on the HWW challenges and the 820 dataset words.
+- **Details:** [[t024-challenge-census-and-onion-probe-2026-10-17]] (addendum), [[2026-10-20-t027-solver-reproduction]].
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile

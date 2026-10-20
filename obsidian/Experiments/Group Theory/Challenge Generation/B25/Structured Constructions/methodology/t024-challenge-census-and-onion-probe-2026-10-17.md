@@ -356,3 +356,68 @@ The first job wrote `pilot3.json` only at the end, so the rows were rebuilt from
 - **Descriptive, unregistered:** gains >= 1 ignoring L1 and bouquet: S 8 of 20 (40%), D 6 of 20 (30%) (including the +2 gain of seed 767 chain 2, flip 2 -> 4, 1,498 letters, not L1). The deepest L1 bouquet-ok level-3 word has flip depth **4** (seed 160, arm D, 811 letters, parent flip 3); no L1 bouquet-ok level-3 word has depth >= 5. Level-3 words of depth 4 that are not L1: seeds 512 (860 letters, parent 3->4) and 767 (1,498 letters, 2->4).
 - **Cost:** the first job 8 h on 9 processes (22 tasks), the completion job 11.4 h wall on 2 processes (580 chain 2: 20,349 s, 767 chain 2: 40,484 s); the level-3 full measure of 1,100-1,500 letter finals takes 3-11 h.
 - **Reading.** At level 3 the typical rise is +1 flip depth in about 30-40% of the seeds, but only 10% of the seeds give a rise that is also L1 and bouquet ok, and the only new maximum is one word of depth 4 (the level-1 maximum was also 4). With the registered rule the hypothesis that depth keeps growing at level 3 is **not supported** (negative branch); depth for our certificates after our compression, not minimal fillings.
+
+## Addendum (2026-10-20): solver tests on the 12 confirmed words, and the three residual candidates R1–R3
+
+Recorded by Lead. The owner ran the test on 2026-10-19; the Validator reproduced it on 2026-10-20 ([[2026-10-20-t027-solver-reproduction]]). Follow-up work is T-027. Level names follow [[challenge-gen-success-metrics]] (L0-cert, L1-r25, S1-each, S2-chain).
+
+**Starting point.** The 12 Validator-confirmed words of §10.6: L0-cert (R7 certificates), L1-r25 (ρ_min16 = 1.0), novel, 163–1,548 letters, certificate depth S2 3–4 and flip (d) 2–4. T-017 then showed that their depth gain survives patch surgery in 11 of 12 ([[t017-recertification-and-minimality-2026-10-19]]).
+
+**Step 1: the owner's solver chain (2026-10-19).**
+- Solvers:
+  - D = tcgraph `attempt_to_decide_if_trivial`, coset enumeration over ⟨a, b | v⁵, |v| ≤ rml⟩; it returns a shorter word equal to the input when it finds one;
+  - R = cyclic exhaustive 2.5-reduction.
+- Chain: R, then D(20M cosets, rml 5) → R repeated, until the empty word or no progress.
+- **8 of 12 reduce to the empty word, in about 0.5 s each:**
+
+  | word | length chain |
+  |---|---|
+  | ds125 | 163 → 136 → 0 |
+  | ds368 | 211 → 192 → 0 |
+  | ds160 | 261 → 202 → 0 |
+  | ds566 | 320 → 254 → 0 |
+  | ds145 | 361 → 296 → 0 |
+  | ds512 | 378 → 321 → 0 |
+  | ds781 | 529 → 447 → 0 |
+  | ds547 | 699 → 588 → 0 |
+
+- **Four words leave three residuals**, undecided by D up to 10⁹ cosets and rml 9. The originals' certificates make every residual provably trivial in B(2,5).
+
+  | residual | length | origin(s) | length chain |
+  |---|---|---|---|
+  | **T024_R1** | 47 | ds94 and ds764: the same string from both | ds94: 216 → 188 → 75 → 73 → 47; ds764: 635 → 556 → 136 → 135 → 47 |
+  | **T024_R2** | 47 | ds665 | 405 → 339 → 47 |
+  | **T024_R3** | 249 | ds519 (level 3) | 1,548 → 1,301 → 370 → 355 → 258 → 253 → 251 at D(20M, 5); 251 → 249 only at D(10⁹, rml 9) on a larger machine |
+
+- Escalations, all undecided: D(20M, 7); D(2·10⁸, 5), which ran out of memory on the VM; D(10⁹, 9), which took 504–960 s per word.
+
+**Step 2: Validator reproduction (2026-10-20, b25 `d1b5d0f`, tcgraph `63564c3`).**
+- **The chain is reproduced.**
+  - All 12 length chains match step for step.
+  - R1 is the identical string from ds94 and from ds764.
+  - R2 matches exactly, and ds519 reaches the owner's 251-letter word.
+  - R3 itself (the 10⁹ step) was not re-run.
+- **What each step proves.**
+  - Every D shortening was thrown at the end of relator stage 3, so it is an equality in G_3 = ⟨a, b | v⁵, |v| ≤ 3⟩, hence in B(2,5).
+  - R steps rotate the word, so they are conjugacies, not equalities.
+  - So "residual trivial iff original trivial" holds.
+- **B₀(2,5)** (GAP anupq, class 12): all 43 words are trivial: the originals, the intermediates and the residuals. This is a necessary condition only, and the expected result.
+
+**Step 3: kbmag breaks everything (Validator, 2026-10-20).** The existing kbmag rewriting systems for `b25_full` (rec and slx, `kbprog -me 100000`) reduce to the identity:
+- all 12 originals, in 0.44 s (rec) and 0.27 s (slx) for all 12 together, including loading the rules;
+- all 36 intermediate words;
+- all 16 D-step loops;
+- **R1, R2, R3 and the 251-letter word.**
+
+Each rule is an equality in G_7, so this proves every one of these words trivial in B(2,5). None of the 13 negative controls reduces.
+
+**Status of R1–R3.** They fail the owner's minimum for a challenge candidate, which is resistance to 2.5-reduction, the Cayley-graph procedure and kbmag. So they are not candidates: they are not S1-each.
+- **Where they are recorded.** They go in the `tested` section of the candidate registry (`data/b25_challenge_candidates.json`, T-027), with their certificates or exact reproduction records. The `candidates` section is empty.
+- **Word strings.** They are not given here; they will be in the registry.
+- **sha256 prefixes:** R1 `5082fb21…`, R2 `a61d770b…`, R3 `fdde2a7a…`.
+
+**What this changes.**
+- L1-r25, depth and area did not predict resistance to solvers.
+- The likely reason (Math Expert, under review): the onion's tiles are dataset words that kbmag's own rules derive, so kbmag peels the construction back layer by layer. Coset enumeration finds strips of several small cells that single-cell gates cannot see.
+- Solver resistance (the S axis) is now a separate, required check for candidates.
+- The claims in § Conclusion and §10.6 stay as recorded: they concern the measures they name, not resistance to solvers.
