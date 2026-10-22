@@ -197,7 +197,7 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 
 ## Paid cloud hosts — `rjob power` only
 
-Paid hosts (e.g. `cpuserver`) bill per hour while running and stop themselves after 30 idle minutes. Start, hold and stop them **only with `rjob power`** (`status`, `start`, `hold`, `stop`). The VM's Nebius key is readable by agents, but **never use the `nebius` CLI or the key directly**: a raw stop kills running jobs, and `rjob power stop` waits until the host is idle. Don't leave a hold in place after the work is done.
+Paid hosts (e.g. `cpuserver`) bill per hour while running and stop themselves after 30 idle minutes. `rjob submit` starts a stopped one when placement picks it; otherwise start, hold and stop them **only with `rjob power`** (`status`, `start`, `hold`, `stop`) or `rjob fetch <id> --start`. The VM's Nebius key is readable by agents, but **never use the `nebius` CLI or the key directly**: a raw stop kills running jobs, and `rjob power stop` waits until the host is idle. Don't leave a hold in place after the work is done.
 
 ## Compute budget — HARD GLOBAL CAP (all agents, non-negotiable)
 
