@@ -79,6 +79,7 @@ The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. Projects with an execut
   - `rjob fetch <id>` copies results to the profile's `runs_dir/<job-id>/`. Fetch summaries first with `--include`, and fetch bulky raw outputs only when the analysis needs them.
   - The fetched `provenance.json` supplies most of the provenance record: SHAs, lock hash, input hashes, host, device and the GPU ids used.
   - **Cite the job id** in the output capture and the results note.
+- **Paid hosts start and stop on demand.** A paid host (e.g. `cpuserver`) stops itself after 30 idle minutes. Before a job longer than 2 h: `rjob power status cpuserver`; if it is stopped, `rjob power start cpuserver`, then submit. Otherwise the job falls back to the Mac. Before a series of jobs or a long fetch session: `rjob power hold cpuserver <hours>` (≤ 12 h), and `rjob power hold cpuserver 0` when done. Fetch results soon after a job ends. Use only `rjob power`: never the `nebius` CLI, never a stop through the cloud console.
 - **Housekeeping.** Test or aborted runs that won't be reported: `rjob cleanup job <id>` and delete the local copy, after telling Lead.
 
 ### Analysis

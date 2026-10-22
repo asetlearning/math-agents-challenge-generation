@@ -195,6 +195,10 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - **No machine paths in commits (owner 2026-10-18).** Committed code, job specs, run artifacts (provenance.json, logs) and notes must not contain absolute machine paths: home directories (`/home/<user>`, `/Users/<user>`), mount points (`/media/psf/...`) or scratch dirs (`/tmp/...`). Use `~`, repo-relative paths, or an environment variable with a documented default. Sanitise rjob provenance and logs before they are committed (`/home/<user>` → `~`, the Mac worker home → `~gpuworker`). A pre-commit scanner warning about a home path must be resolved, not committed through.
 - Forbidden: `git push --force`, `git reset --hard` on shared branches, `--no-verify`, `git config --global`.
 
+## Paid cloud hosts — `rjob power` only
+
+Paid hosts (e.g. `cpuserver`) bill per hour while running and stop themselves after 30 idle minutes. Start, hold and stop them **only with `rjob power`** (`status`, `start`, `hold`, `stop`). The VM's Nebius key is readable by agents, but **never use the `nebius` CLI or the key directly**: a raw stop kills running jobs, and `rjob power stop` waits until the host is idle. Don't leave a hold in place after the work is done.
+
 ## Compute budget — HARD GLOBAL CAP (all agents, non-negotiable)
 
 **MAXIMUM 4 heavy compute processes running in parallel, TOTAL, ACROSS ALL AGENTS — not per agent.**
