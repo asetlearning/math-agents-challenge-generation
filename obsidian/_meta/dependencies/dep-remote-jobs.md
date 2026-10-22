@@ -17,6 +17,7 @@ capabilities:
   - "infrastructure: per-commit cached builds on the host (git worktree + uv venv; default recipe = b25 Dockerfile: uv sync --frozen --no-install-project --group build, then uv pip install -e . --no-build-isolation); submodule pin overridable per job"
   - "infrastructure: per-host job queue with GPU ids, CPU slots and an optional mem_gb budget (Mac: 1 GPU, 9 CPU slots), timeouts, cancel (process groups), states queued|building|running|done|failed|cancelled|timeout|dead"
   - "infrastructure: several hosts per project via <project>/rjob.toml; placement by device and free capacity; per-job GPU ids (CUDA_VISIBLE_DEVICES); optional mem_gb estimates; host recorded per job id"
+  - "infrastructure: optional per-host cost_per_hour (default 0) and max_hours in rjob.toml; placement passes over hosts whose max_hours < timeout_hours while another capable host is reachable, else uses them; submit prints the cost bound; rjob cost sums hours and cost per job and host (issue #8, PR #9 from branch 8-host-cost-max-hours @ 106549c, not merged; the VM client runs that branch)"
   - "infrastructure: resumable, sha256-verified fetch of outputs to <runs_dir>/<job-id>/, with --include subsets and provenance.json (repo + submodule SHAs, uv.lock hash, job spec, input hashes, host, torch, device)"
 heavy_processes: []
 mcp: none
@@ -32,7 +33,7 @@ tags: [meta, type/reference]
 ## What it is
 The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` is the only channel from that VM to stronger compute.
 
-- **Current host:** the owner's Mac (M1, 10 cores, 64 GB, MPS). Jobs run there under the unprivileged `gpuworker` account.
+- **Current hosts:** the owner's Mac (M1, 10 cores, 64 GB, MPS), with jobs under the unprivileged `gpuworker` account; and `cpuserver`, a CPU-only Linux server (16 cores, 62 GB), with jobs under the unprivileged `cpuworker` account (since 2026-10-21).
 - **More hosts:** any SSH-reachable Linux server (CUDA or CPU), set up the same way (`docs/server-setup.md`). Each project lists its hosts in an `rjob.toml` in the project directory.
 - **Client:** agents use the `rjob` CLI in the VM.
 - **Host side:** `run_job.py`, behind an SSH key locked with `restrict,command=run-job`.
@@ -44,6 +45,7 @@ The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` 
   2. `rjob wait <id>` blocks until the job finishes; run it in the background.
   3. `rjob fetch <id>` brings results to `~/Research/challenge-gen/runs/<id>/` for this project.
 - **Inspect:** `rjob status|logs|list|info|cancel`.
+- **Job length and cost:** the Mac takes jobs with `timeout_hours <= 2` (`max_hours = 2` in challenge-gen's `rjob.toml`, owner 2026-10-21); longer jobs go to the servers, and to the Mac only when no other host can run them (MPS/GPU with no GPU server, or no server reachable). `cpuserver` costs $0.55/h. Paid hosts carry `cost_per_hour`; `rjob cost` charges each job the full host rate for the hours it held the host, so concurrent jobs overstate the bill.
 - **Large inputs:** `rjob put-data <file>` uploads them once per host; they are content-addressed. `rjob submit` uploads a job's `[data]` to the host it was placed on.
 - **Which host:** `rjob submit` places a job on the first project host that can run its `device` and has room for its `gpus`, `cpus` and `mem_gb`; otherwise on the capable host with the shortest queue. Priority: `--host`, then `$RJOB_HOST` (outranks the project file), then `host = "..."` in job.toml, then placement. Later commands on the job id use the host recorded at submit; a job missing from the record goes to `$RJOB_HOST`, else the project host that knows the id, else `mac`. `rjob hosts` shows every host's load.
 - **Which tasks go remote** is set in the project's execution policy (see [[project-challenge-gen]]):
@@ -57,7 +59,9 @@ The agents run in a sandboxed VM: 2 CPUs, about 3 GB RAM, no GPU. `remote-jobs` 
 - **The SSH verb set and the forced-command boundary.** Over SSH, no verb may execute client-supplied strings.
 
 ## Known pitfalls
-- **Mac host is live (2026-10-05).** It is `Alex-MacBook-M1` at 10.211.55.2: macOS 15.3, 10 cores, 64 GB, torch MPS. Slots are 1 GPU and 9 CPU, with a 54 GB `mem_gb` budget since 2026-10-15. The challenge-gen host list is `~/Research/challenge-gen/rjob.toml` (Mac active; the Linux server is to be added). The locked key was verified: shell, arbitrary commands, scp and forwarding are all refused.
+- **Mac host is live (2026-10-05).** It is `Alex-MacBook-M1` at 10.211.55.2: macOS 15.3, 10 cores, 64 GB, torch MPS. Slots are 1 GPU and 9 CPU, with a 54 GB `mem_gb` budget since 2026-10-15. The challenge-gen host list is `~/Research/challenge-gen/rjob.toml` (Mac first, then `cpuserver`). The locked key was verified: shell, arbitrary commands, scp and forwarding are all refused.
+- **`cpuserver` is live (2026-10-21).** It is `math-agent-compute-16p-64g-1`: Ubuntu 24.04 x86_64, 16 cores, 62 GB, 184 GB free disk, no GPU, reached over the owner's Tailscale (headscale) network, with no public address. Slots are 15 CPU and a 53 GB `mem_gb` budget; the host Python is 3.12.15 with torch 2.14.1+cu130 (`cuda: false`). It is listed second in `~/Research/challenge-gen/rjob.toml`, with `cost_per_hour = 0.55`. Verified the same day: shell, arbitrary commands, scp and port forwarding are refused; a CPU smoke job and a `[code]` job (push, per-SHA build, uv venv, fetch, provenance) both ran.
+- **Tailscale SSH bypasses the lock.** With Tailscale SSH on (`RunSSH: true`), `tailscaled` answers port 22 on the tailnet address and logs users in by tailnet identity, so `authorized_keys` and its `restrict,command=run-job` line are ignored: the worker key gets a full shell, and rjob verbs run as shell commands (`rjob info` printed the GNU `info` manual). The remote-jobs `docs/server-setup.md` step 4 now carries this warning. On a tailnet host, run `sudo tailscale set --ssh=false` so OpenSSH handles port 22, and make sure every admin account has its own key in `authorized_keys` first, or the admin is locked out. Then `from=` must be the address sshd sees the VM connect from (the Mac's tailnet address, since the VM has no Tailscale of its own).
 - **b25 builds on the Mac (2026-10-05):**
   - **The committed submodule pin `c09327705a` fails**, as documented: Hybrid, Dehn, LengthRange, HighPowerCount, WordProductLength and Abelianized scorers are undeclared.
   - **Building against tcgraph `main` (26f4f5a9) works** in about 30 s once uv's cache is warm (`[code.submodules."cpp/tcgraph"] sha = "main"`, as in `examples/b25-build-tcgraph-main`). `tcgraph_ext` imports with torch 2.12.0 and MPS.

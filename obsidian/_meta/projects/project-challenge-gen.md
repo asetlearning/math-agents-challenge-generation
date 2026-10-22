@@ -192,9 +192,10 @@ The agents' VM is restricted: 2 CPUs, about 3 GB RAM, no GPU. Experiments are th
   | Alias | Host | Device | Capacity |
   |---|---|---|---|
   | `mac` | owner's Mac (M1, 10 cores, 64 GB) | `mps` | 1 GPU, 9 CPU slots |
-  | `gpuserver` | Linux x86_64 server (being set up) | `cuda` | 1 GPU now; CPU and memory set by `install.sh` |
+  | `cpuserver` | Linux x86_64 server `math-agent-compute-16p-64g-1` (16 cores, 62 GB, no GPU), on the owner's tailnet, $0.55/h | `cpu` | 15 CPU slots, 53 GB `mem_gb` |
 
-  Both run natively (per-SHA build + uv venv); Docker is not used on the Mac, because it has no MPS inside containers. PatternBoost jobs that do not depend on MPS-vs-CUDA numerics may use `device = "gpu"` so either host can take them; runs compared within one experiment should stay on one device type and say so in the pre-registration.
+  `cpuserver` is CPU-only, so GPU and MPS jobs still go to the Mac. Both run natively (per-SHA build + uv venv); Docker is not used on the Mac, because it has no MPS inside containers. If a CUDA host is added later, PatternBoost jobs that do not depend on MPS-vs-CUDA numerics may use `device = "gpu"` so either GPU host can take them; runs compared within one experiment should stay on one device type and say so in the pre-registration.
+- **Which host, by job length (owner, 2026-10-21).** The Mac takes jobs that finish within 2 hours; longer jobs go to the remote servers, and to the Mac only when no other host can run them (an MPS/GPU job while there is no GPU server, or no server reachable). `rjob.toml` sets this with `max_hours = 2` on `mac`, measured by the job's `resources.timeout_hours` (a job without it counts as 24 h); placement re-checks it on every submit, so adding or removing servers needs no other change. Each host carries `cost_per_hour` (default 0, free; `cpuserver` $0.55/h): cost = host rate × hours, `rjob submit` prints the bound for paid hosts, and `rjob cost --since <date>` sums hours and cost of recorded jobs for budgets.
 - **Code reaches the host only as committed SHAs** from an experiment branch; dirty trees are refused. The tcgraph submodule commit is explicit per job, and the `[code.submodules."cpp/tcgraph"]` override sets it when the b25 pin is stale.
 - **Each result directory is cited by its job id.** `provenance.json` supplies most of the provenance fields above.
 
