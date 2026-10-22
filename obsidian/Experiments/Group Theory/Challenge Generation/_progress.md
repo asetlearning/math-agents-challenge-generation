@@ -164,6 +164,65 @@ Decisions (owner, 2026-10-16):
 - **C++ port:** add exponent normalisation and strict depth to the port. The first comparison is B0 against B0+N; junction repair and R8 follow.
 - **The Mac full run (Python, job 20261016-130522-7373b4)** continues until the C++ code is ready. Then its completed results are collected for the Python-vs-C++ comparison, and the run restarts on the C++ implementation.
 
+### 2026-10-16: C++ port complete; T-018 restart on C++ (H2 falsified under strict depth)
+- **C++ port (tcgraph, one unified library):** the T-018 search runs on tcgraph (`certificates/`, `diagram/`, `search/`) with Python as the interface; exact Python-vs-C++ equivalence on every kernel and end to end. Like-for-like speed-up about 24x (expand_state 33x, scoring 36x). tcgraph `26-t018-cpp-port` (2c264fd) plus consolidation `27-tcgraph-consolidation` (f2cb8a1, owner-approved: one relator builder, one square-base detector, one expansion helper, RelatorMap::words, expandFactor always reduced, shared RollingHash, seeded Word::random).
+- **Restart (pre-registered, owner-approved):** four arms, B0/B0+N x beam/greedy, strict J, quota 3, triangles off, on the Mac (job 20261016-181907-e9ed6c), 9-17 s of search per arm against 19-71 min for the previous Python run (not like-for-like: settings differ).
+  - **H2 falsified:** no state of any arm (374 states) reaches strict maxdepth >= 2.
+  - **F-N1 falsified:** normalisation raises the pass rate only x1.06-1.09.
+  - H1, H3 and H6 falsified; H4 not reached (max D_c,>=2 0.65).
+- **Best candidates** (novel, L0-certified, power-free, guard passed): see the T-018 note. Two words from seed line 48 have strict maxdepth 2, inherited from the seed; the best D_c,>=2 is 0.65 (seed line 34).
+- **Next (owner, 2026-10-16):** Validator checks the negative result; Math Expert assesses junction repair and R8; tcgraph PRs into main, with Validator review; b25 pinned to the consolidation commit.
+
+### 2026-10-17: T-018 closed (negative)
+Decision (owner, 2026-10-17): T-018/T-021 closed. H2 is falsified under strict depth (Validator-replicated); the search stalls before a depth-2 ring closes; normalisation and R8 are not levers; T1 shows strict depth plateauing (max 2) up to 123 letters. Conclusion and best candidates: [[t018-t021-diagram-search-2026-10-14#Conclusion (closed 2026-10-17)]]. Follow-up T-024 (depth versus length: onion construction, long words, relators beyond R7) is in feasibility: the challenge power census and the M1 onion probe are running.
+
+### 2026-10-17: T-018 re-checked under the corrected gate; T-026 done; T-024 status
+- **T-018 re-check** (2.5-reduced gate, exact halves allowed):
+  - the negative **stands for L1 words**;
+  - B0 arms unchanged (no exact-half-only rejections);
+  - B0+N arms reach strict depth 2 via normalisation-created exact halves, but every such finalist is non-L1 (ρ_min16 0 or 0.94);
+  - 3-cell seeds exist (16 classes) but all are R2.5-trivial.
+- **T-026 done:** a runs-based power detector in tcgraph (2.5-reduced target, strictly power-free diagnostic).
+- **T-024:**
+  - all 820 dataset words are 2.5-reduced (818 L1);
+  - one onion level gives strict depth ≥ 2 on L1 words (24/46), holding under the flip control;
+  - level 2 needs the junction-aware DP;
+  - the C++ onion port (with a 20× fullReduce speed-up) is in final review.
+
+### 2026-10-19: T-024 closed (positive at small depth, negative for growth)
+- **One onion level raises strict depth.**
+- **Levels 2 and 3 do not keep raising it for L1 words:**
+  - the registered level-3 verdict is negative (rises 10% in both arms);
+  - the deepest L1 word has flip depth 4, the same as level 1.
+- **12 Validator-confirmed candidates:** 163–1,548 letters, strict depth 3–4. All are L1 (ρ_min16 = 1.0) and novel against the dataset, R7 and the HWW challenges (re-checked on 2026-10-19).
+- **tcgraph PR #9 merged:** the certificate-reduction speed-up, 100–300× faster with identical output.
+- **Next:** T-017 is proposed (minimality of the confirmed words), pending the owner's go. T-006 moves below T-009, because its census condition failed.
+- **Details:** [[t024-challenge-census-and-onion-probe-2026-10-17]].
+
+### 2026-10-20: T-017 closed (11 of 12 depth gains survive patch surgery)
+- **What was tested.** Whether the 12 confirmed T-024 words keep their depth gain when certificate-level patch surgery (M1: rewrite blocks of up to k cells) is applied equally to the words and to their components (parent and tiles). Pre-registered as H17.
+- **Result (upper bounds, R7):**
+  - flip depth: 11 of 12 words stay above their components' baseline; **ds547 fails** (2 vs 2) and is unconfirmed;
+  - strict depth S2: 9 of 12 (ds125, ds547, ds665 fail);
+  - ds160's depth-4 claim is retired (now 3, baseline 1);
+  - |S| = 5 only shrank areas; a targeted |S| = 6 run accepted no move;
+  - no word reaches 1 by power moves alone (M2'); allowing every u⁵ cell changed nothing.
+- **Limits:** upper bounds under a capped search, not true minima; ds764 and the level-3 word ds519 are partial-search bounds.
+- **Cost:** 60.2 CPU-h of surgery.
+- **Code:** tcgraph `surgery/` (certificate-level patch surgery).
+- **Details:** [[t017-recertification-and-minimality-2026-10-19]].
+
+### 2026-10-20: solvers break all 12 T-024 words; three residual words R1–R3 recorded; T-027 starts
+- **Owner's test (2026-10-19), reproduced by the Validator.** tcgraph coset enumeration (`attempt_to_decide_if_trivial`, 20M cosets, rml 5) alternated with cyclic exhaustive 2.5-reduction reduces 8 of the 12 confirmed words to the empty word, in about 0.5 s each. The other 4 leave three residual words:
+  - R1, 47 letters, from both ds94 and ds764;
+  - R2, 47 letters, from ds665;
+  - R3, 249 letters, from the level-3 word ds519.
+- **kbmag** (the existing `b25_full` rewriting systems) reduces all 12 words and all three residuals to the identity in under a second. So every one of them is proved trivial, and none meets the owner's minimum for a candidate.
+- **Meaning.** L1-r25, depth and area did not predict resistance to solvers. Solver resistance is now a separate axis of levels: S1-each and S2-chain, with the L levels renamed L0-cert, L1-r25, L2-area, L3-quad ([[challenge-gen-success-metrics]]).
+- **Registry (T-027).** `data/b25_challenge_candidates.json`: `candidates` is empty, and R1–R3 and their originals are logged under `tested`.
+- **Next (T-027):** a solver harness (B₀(2,5) filter, 2.5-reduction, closure, kbmag, coset enumeration), then calibration on the HWW challenges and the 820 dataset words.
+- **Details:** [[t024-challenge-census-and-onion-probe-2026-10-17]] (addendum), [[2026-10-20-t027-solver-reproduction]].
+
 ## Related material
 - [[ds-b25-trivial-2-5reduced-aut8-20261007]]: first registered challenge-gen dataset
 - [[project-challenge-gen]]: project profile

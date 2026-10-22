@@ -171,6 +171,12 @@ Grow the list organically. Don't pre-register topics that don't exist yet.
 - `#topic/proof-certificates` — machine-checkable evidence that accompanies a computed answer (explicit move sequences, derivations, witnesses) so that the claim can be verified cheaply and independently of the search that found it. Tag when producing or checking certificates is a substantive part of the paper.
 - `#topic/dehn-function` — Dehn (isoperimetric) functions and area: the minimum number of relator faces (van Kampen diagram cells) needed to show a word is trivial, as a function of word length; includes area over infinite relator sets and area-based filling invariants (Dehn spectrum). Substance test: the note states or uses a bound or computation of area/Dehn function, not just the word problem in general. Added 2026-10-14 by Researcher (T-017).
 
+- `#topic/filling-length` — filling length and space functions of groups: the minimum, over null-homotopies/rewritings of a trivial word, of the maximum length of the intermediate words (Gromov FL; Bridson–Riley free and fragmenting variants; Olshanskii space function). Substance test: the note states or uses a bound relating these peaks to area, diameter or word-problem space, or defines which move set (cyclic rotation, fragmentation) is used. Registered 2026-10-20 by asetlearning for #project/challenge-gen (T-028).
+- `#topic/space-complexity` — space (memory) as the measured resource of a word-problem or enumeration procedure: nondeterministic/deterministic space of the word problem, coset-table size (MaxCos/TotCos), rewriting-system size. Registered 2026-10-20 by asetlearning.
+- `#topic/pathological-presentations` — presentations of known (often trivial) groups engineered to be hard for a standard procedure (Todd–Coxeter, Knuth–Bendix, Andrews–Curtis search), e.g. Neumann's iterated substitution family. Substance test: the note reports how a specific procedure behaves on such presentations. Registered 2026-10-20 by asetlearning.
+- `#topic/compressed-word-problem` — the word problem for words given as straight-line programs (grammar-compressed), and its complexity per group class. Registered 2026-10-20 by asetlearning.
+- `#topic/grammar-compression` — straight-line programs / grammar-based compressors (Re-Pair, Sequitur, LZ78, bisection), smallest-grammar problem and approximation ratios. Tag when the compressor or its guarantees are a substantive part of the paper. Registered 2026-10-20 by asetlearning.
+
 ## Axis 5 — `#status/*` (lifecycle)
 
 General lifecycle:

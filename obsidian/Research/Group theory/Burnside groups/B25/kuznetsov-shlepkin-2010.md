@@ -184,3 +184,20 @@ For Lead: this paper should feed into the next pre-registered B(2,5) experiment.
 - MOC: [[_moc-burnside]]
 - Parent overview: [[group-theory-overview]]
 - Related Mixer artifact: [[algo-mixing-burnside-slides]] (the B(4,3) breakthrough that gives the proof-of-concept; B(2,5) is the next harder target where this paper's candidate relations become relevant)
+
+## Addendum 2026-10-20 — Theorem 3: scope, proof, and what it does NOT imply (T-027 query from Lead)
+
+> **Source limit.** The PDF (`source_path` above) is not on this VM and mathnet.ru is unreachable from it (connection refused), so the statements below are re-read from this note's earlier transcription of the paper, not re-checked against the PDF. Open task: obtain `timm554` full text (drop in vault `shared/`) and confirm the wording of Thm 3 and §2.
+
+**1. Statement (as transcribed here; same form as Thm 2 of [[kuznetsov-shlepkin-2009]]).** $v,w$ are arbitrary words over the alphabet $\{1,2\}$ — i.e. **positive words in the two generators**, no inverses — with $L(v),L(w)\le 29$. Then $v=w$ holds in $B_0(2,5)$ iff it holds in $B(2,5)$. So it is *not* restricted to minimal words as a hypothesis; "minimal-word format" in the abstract describes how the relations are tabulated (smaller side = shortlex-minimal word $v\prec w$, as in $C_s$) and how the comparison was run ($P_s$ vs the $B_0$ ball). Direction "$B\Rightarrow B_0$" is trivial ($B_0$ is a quotient); the content is "$B_0\Rightarrow B$". [computational, authors' claim]
+
+**Does it give "every $u$, $|u|\le 58$, trivial in $B_0$ is trivial in $B$"? No, not as stated.**
+- Length is in **positive** letters. Inverses are not free: $x^{-1}=x^4$ costs 4.
+- Valid corollary: $u=v\,w^{-1}$ with $v,w$ positive words, $|v|,|w|\le 29$ (so $u$ = a positive block followed by an inverted-positive block, $\le 58$ letters over $x^{\pm1},y^{\pm1}$). Then $u=1$ in $B_0\Rightarrow v=w$ in $B_0\Rightarrow v=w$ in $B$. [follows from Thm 3]
+- Not covered: general $u$ over $\{x^{\pm1},y^{\pm1}\}$ with mixed signs; and a *positive* $u$ of length $\le 58$ split as $u=v\,w'$ (then $v=w'^{-1}$, and $w'^{-1}$ as a positive word can have length up to $4|w'|$, not $\le 29$). Covering those needs a bound on the **positive-word diameter-type** quantity (shortest positive word for $w'^{-1}$), or a new computation at higher length. For T-027 the safe claim is the restricted one above, or the claim must be recomputed per word class.
+
+**2. Proof / reproducibility.** "Direct computation" = Algorithm I (§1, associativity-test variant) run to $K_{29}$ (in fact $K_{35}$) for $B(2,5)$, plus enumeration in $B_0(2,5)$ via $\psi$ and the Havas–Wall–Wamsley normal words ($34$ pc-generators). Logic: every relation Algorithm I derives is a consequence of the group axioms + exponent 5, hence **sound in $B(2,5)$**; if the derived rewriting reproduces all $B_0$-relations among words of length $\le 29$ (checked by comparing $P_s$ with the distinct $B_0$-elements of the length-$\le s$ ball), the $B_0$ relations hold in $B$. So the result is a computer-assisted proof, in principle a certificate (the relation list $C_{29}$), but: no code, no relation list, no checksums published (only samples at lengths 30–35); MATLAB 7.7 on a 125-node cluster, ~104 h for $K_{35}$; $|P_{35}|\approx5^{14}$ stated approximately. No independent replication found. [computational, unreplicated]
+
+**3. Later confirmation / extension.** Checked every Kuznetsov-line note in this vault (2011–2025) and a web search: none re-proves Thm 3, none extends beyond 29, none tests any of the 973 candidates at 30–35. The later papers work inside $B_0(2,5)$ only (they cannot test $B$-side claims). No correction or erratum found. Conclusion: length 29 is still the best published bound; 30+ is [conjectured/untested]. The Rust bidirectional / KBMAG route is the only available independent check.
+
+Cross-check suggestion for T-027: re-derive Thm 3 for small lengths independently (e.g. $B_0$ ball sizes vs. $K_s$ counts $|P_s|$ from [[kuznetsov-shlepkin-2009]] table, lengths $\le 27$) before relying on it at 29.

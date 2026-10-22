@@ -65,7 +65,7 @@ The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. Projects with an execut
   - Large inputs go through `rjob put-data` and `[data]`.
   - Keep the job directory with the experiment's runner in the repo, or under the profile's `runs_dir`.
 - **Estimate resources honestly.** `[resources]` sets `device` (cpu | mps | cuda | gpu | auto), `cpus`, `gpus` (default 1 for GPU devices) and, when known, `mem_gb`. These estimates decide which host the job goes to and what may run beside it; they are not enforced limits.
-- **Which host.** The project's `rjob.toml` (see the profile's execution policy) lists the hosts it may use. `rjob submit` places the job on the first host that can run its device and has room now, and prints `host: <alias> (<reason>)`. Pin a host only when the experiment needs it (`host = "..."` in job.toml, or `--host`), and say why in the pre-registration. `rjob hosts` shows every host's free capacity and queue.
+- **Which host.** The project's `rjob.toml` (see the profile's execution policy) lists the hosts it may use. `rjob submit` places the job on the first host that can run its device and has room now, and prints `host: <alias> (<reason>)`. Pin a host only when the experiment needs it (`host = "..."` in job.toml, or `--host`), and say why in the pre-registration. `rjob hosts` shows every host's free capacity, queue, `cost/h` and `max_hours`. Placement passes over a host for jobs longer than its `max_hours` (compared with `timeout_hours`) while another capable host exists, so set `timeout_hours` to a realistic bound. For a paid host, put the `cost:` line from `rjob submit --dry-run` in the pre-registration.
 - **Code must be committed.**
   - The host builds exact SHAs, and `rjob` refuses dirty trees.
   - Changes to repo code need a commit on an experiment branch first. Ask Lead, since only Lead commits.
@@ -79,6 +79,7 @@ The agents' VM is small: 2 CPUs, about 3 GB RAM, no GPU. Projects with an execut
   - `rjob fetch <id>` copies results to the profile's `runs_dir/<job-id>/`. Fetch summaries first with `--include`, and fetch bulky raw outputs only when the analysis needs them.
   - The fetched `provenance.json` supplies most of the provenance record: SHAs, lock hash, input hashes, host, device and the GPU ids used.
   - **Cite the job id** in the output capture and the results note.
+- **Paid hosts start and stop on demand.** A paid host (e.g. `cpuserver`) stops itself after 30 idle minutes. `rjob submit` starts it when placement picks it (jobs over 2 h; check the plan with `--dry-run`, which says `would start cpuserver`); the start adds 1-2 min. Results on a stopped server: `rjob fetch <id> --start`. Before a series of jobs or a long fetch session: `rjob power hold cpuserver <hours>` (≤ 12 h), and `rjob power hold cpuserver 0` when done. Fetch results soon after a job ends. Use only `rjob power`: never the `nebius` CLI, never a stop through the cloud console.
 - **Housekeeping.** Test or aborted runs that won't be reported: `rjob cleanup job <id>` and delete the local copy, after telling Lead.
 
 ### Analysis

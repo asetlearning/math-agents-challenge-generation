@@ -20,7 +20,7 @@ Each of the 150 words (letters 1=a,-1=a^-1,2=b,-2=b^-1; 32 empty; sha256 0679778
 3. Evaluation: each word = 1 in that group.
 
 ## Tools (probed 2026-09-30)
-GAP 4.15.1 (/home/parallels/Research/mixer/gap-4.15.1/gap), anupq 3.3.2, nq 2.5.11, polycyclic 2.17 — all load.
+GAP 4.15.1 (~/Research/mixer/gap-4.15.1/gap), anupq 3.3.2, nq 2.5.11, polycyclic 2.17 — all load.
 Producer path: ANUPQ Pq (`PqEpimorphism`, exponent 5, class 12).
 
 ## Methods inventory

@@ -20,7 +20,7 @@ heavy_processes: [gap, nq]
 mcp: none
 local_checkouts:
   maumayma: /opt/homebrew/bin/gap
-  asetlearning: /home/parallels/Research/mixer/gap-4.15.1/gap
+  asetlearning: ~/Research/mixer/gap-4.15.1/gap
 docs: ""
 used_by: ["[[project-b25]]", "[[project-mixer-core]]", "[[project-challenge-gen]]"]
 tags: [meta, type/reference]

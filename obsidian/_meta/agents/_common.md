@@ -192,7 +192,12 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - Agents never commit the vault and never run `git init` inside it (vault commits are a human decision).
 - Only Lead commits. Others never run `git commit`, `git push`, `git rebase`, `git config`. This applies to **every repo** (the vault, tcgraph, b25, remote-jobs, ...). Agents leave their changes in the working tree and send Lead a "ready for review" REPORT (repo, worktree and branch, files, what changed, test results). **No agent's commit goes in until Lead has reviewed and approved it**; Lead commits with the owner identity and pushes (owner 2026-10-16).
 - Working branches: `feat/<topic>`, `fix/<topic>`, `chore/<topic>`. Never `main` directly.
+- **No machine paths in commits (owner 2026-10-18).** Committed code, job specs, run artifacts (provenance.json, logs) and notes must not contain absolute machine paths: home directories (`/home/<user>`, `/Users/<user>`), mount points (`/media/psf/...`) or scratch dirs (`/tmp/...`). Use `~`, repo-relative paths, or an environment variable with a documented default. Sanitise rjob provenance and logs before they are committed (`/home/<user>` → `~`, the Mac worker home → `~gpuworker`). A pre-commit scanner warning about a home path must be resolved, not committed through.
 - Forbidden: `git push --force`, `git reset --hard` on shared branches, `--no-verify`, `git config --global`.
+
+## Paid cloud hosts — `rjob power` only
+
+Paid hosts (e.g. `cpuserver`) bill per hour while running and stop themselves after 30 idle minutes. `rjob submit` starts a stopped one when placement picks it; otherwise start, hold and stop them **only with `rjob power`** (`status`, `start`, `hold`, `stop`) or `rjob fetch <id> --start`. The VM's Nebius key is readable by agents, but **never use the `nebius` CLI or the key directly**: a raw stop kills running jobs, and `rjob power stop` waits until the host is idle. Don't leave a hold in place after the work is done.
 
 ## Compute budget — HARD GLOBAL CAP (all agents, non-negotiable)
 
@@ -214,6 +219,7 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 - Lead is responsible for the global count: if routing work to multiple agents, Lead ensures the sum of
   their heavy processes stays ≤ 4, and serializes if needed.
 - After any run: kill the process and `pgrep`-verify clean (already required under Process hygiene).
+- **Waiting for a job: never `until ! pgrep -f <pattern>` / `while pgrep -f <pattern>`.** `pgrep -f` matches the waiting shell's own command line, which contains the pattern, so the loop never ends. On 2026-10-17 it hung the Validator's and the Experimenter's waits for hours. Wait on the PID (`while kill -0 <pid>; do sleep 15; done`), on an output or sentinel file, on `rjob wait <id>`, or on a background-task notification.
 - If a task genuinely needs more than 4 parallel processes, that is a request to escalate to the human
   (Maria) — never self-authorize exceeding the cap.
 - **Scope: the cap is local to the agents' machine (the VM).**
