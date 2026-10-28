@@ -199,6 +199,8 @@ Other agents respect these labels. If you find a claim tagged `#status/disproven
 
 Paid hosts (e.g. `cpuserver`) bill per hour while running and stop themselves after 30 idle minutes. `rjob submit` starts a stopped one when placement picks it; otherwise start, hold and stop them **only with `rjob power`** (`status`, `start`, `hold`, `stop`) or `rjob fetch <id> --start`. The VM's Nebius key is readable by agents, but **never use the `nebius` CLI or the key directly**: a raw stop kills running jobs, and `rjob power stop` waits until the host is idle. Don't leave a hold in place after the work is done.
 
+**Project hosts are trusted (owner, 2026-10-22).** Every server in the project (the agents' VM, the Mac, `cpuserver`, and any host later added to the project's `rjob.toml`) is trusted, and any project data may be shipped to it, private data included (survivor words, unpublished datasets). "Private" still means: never committed to a public repo or published. Don't block or flag a job for moving project data between project hosts.
+
 ## Compute budget — HARD GLOBAL CAP (all agents, non-negotiable)
 
 **MAXIMUM 4 heavy compute processes running in parallel, TOTAL, ACROSS ALL AGENTS — not per agent.**
