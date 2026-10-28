@@ -7,18 +7,23 @@ project: challenge-gen
 instance: B(2,5)
 kind: trivial-words
 format: "JSON (schema b25-challenge-candidates v1); letters a A b B (A = a⁻¹, B = b⁻¹); certificates as lists of [relator index, conjugator] over the R7 table, with the used relators included"
-records: "revision 1: 0 candidates, 7 tested (3 residual words, 4 originals)"
+records: "revision 2: 215 candidates (T-028), 12 tested (7 from revision 1 + 5 broken T-028 words)"
 files:
   - path: "math-agents-challenge-generation:data/b25_challenge_candidates.json"
     sha256: 754f582c8b02bca1d5cf599a7f680ee9b501f6c4215852b50560f585d8f8d920
-    bytes: 1378235
+    bytes: 2263664
     role: data
+  - path: "math-agents-challenge-generation:data/b25_t028_survivors_220_rev4.json.gz"
+    sha256: 2c321be52a1e6506cebbd251392eed76698ba84df1e9746ac2e4c4fbc4a7e5fa   # gzip -9 -n; uncompressed sha256 c0e22bb0837b82e163649387690913184a7b7cc322ad0faacfd71637f3fac78e, 117355550 bytes
+    bytes: 2867414
+    role: full records of the T-028 candidates (certificates, every reduction step, history)
 storage: git (math-agents-challenge-generation data/)
 derived_from:
+  - "T-028 survivors file revision 4 (Lead's private run folder), sha256 c0e22bb0837b82e163649387690913184a7b7cc322ad0faacfd71637f3fac78e; published unchanged as the .gz file above (revision 2)"
   - "Lead's private results file of the 12 Validator-confirmed T-024 words with R7 certificates (gitignored), sha256 cd1ae09d3a0455ac45dff22950f066cb3fd76c92dc1df4069555a668ba1c17be — origin: T-024 onion pilot, [[t024-challenge-census-and-onion-probe-2026-10-17]] §10.6"
   - "the owner's residual-words file of 2026-10-19 (gitignored shared/ folder), sha256 890d6de4cee833109fb2e462462623bb9e9116f5ea549e47711addebaabab75e — origin: the owner's solver chain on the 12 words"
-produced_by: "b25_pyproject_agentic, branch t027-candidates-solvers: experiments/challenge_gen/solvers/build_candidates.py (sha256 63118b080b9a4702f568d6bc58c57cbf693cadcfd3189dea1273d725dfb1418e; solver harness, 13 files, sha256 b826ff9852b97549b7c65cee0405485d509ef9c5ab4ebecfb5b1075cdf55fb26); repo@sha added when the branch is committed"
-property_claimed: "Every record is trivial in free B(2,5), proved by an R7 certificate that re-expands exactly to its word (L0-cert). 'candidates' holds human-approved challenge candidates; 'tested' holds evaluated words that are not candidates, with their solver verdicts."
+produced_by: "revision 2: b25_pyproject_agentic t028-pilot ae6ca36, experiments/challenge_gen/t028/build_public_registry.py (sha256 ff0d7124457afcfeacebf7ca84c286f5b3439e5c8bc167a72dc755ddc1240d13). Revision 1: b25_pyproject_agentic, branch t027-candidates-solvers: experiments/challenge_gen/solvers/build_candidates.py (sha256 63118b080b9a4702f568d6bc58c57cbf693cadcfd3189dea1273d725dfb1418e; solver harness, 13 files, sha256 b826ff9852b97549b7c65cee0405485d509ef9c5ab4ebecfb5b1075cdf55fb26); repo@sha added when the branch is committed"
+property_claimed: "Revision 1 records: trivial in free B(2,5), proved by an R7 certificate that re-expands exactly to its word (L0-cert). T-028 candidates (revision 2): W is trivial by construction (a product of conjugated images of certified trivial words); 200 of the 215 words are proved equal to W in the free group modulo fifth powers (certificate chain, L0); 15 reach their word through a coset-enumeration step (equality in a finitely presented cover, reproduction block in the .gz file). 'candidates' holds human-approved challenge candidates; 'tested' holds evaluated words that are not candidates, with their solver verdicts."
 vetting:
   - check: "L0 of every certificate against its word, R7 only; words equal their sources; reproduction chains equal the Validator's"
     tool: "Validator's independent expander and chain (b25 d1b5d0f, tcgraph 63564c3)"
@@ -38,13 +43,31 @@ vetting:
     result: "7/7"
     date: 2026-10-20
     by: agent/validator (asetlearning)
-stats: {min_len: 47, max_len: 1548}
+  - check: "T-028 survivors rev 4: changed words carry the fixpoint finals, certificates replay (chain and L0), B0-trivial, counts 215 T3u / 5 broken / 200 certified live"
+    tool: "Validator's own replay and diff code"
+    scope: "free B(2,5) — proof (certificates); finite quotient — consistency only (B0)"
+    result: "PASS, [[2026-10-27-t028-survivors-rev4-check]]"
+    date: 2026-10-27
+    by: agent/validator (asetlearning)
+  - check: "independent rebuild of all 220 W from the construction, W and t certificates, R + D(20M, rml 5) re-reduction"
+    tool: "owner's own code (tcgraph 26f4f5a)"
+    scope: "free B(2,5) — proof (certificates)"
+    result: "W 220/220, certificates 220/220; never shorter than the stored word (160 equal, 60 longer); empties only the 3 known broken words it can reach"
+    date: 2026-10-27
+    by: agent/human (asetlearning)
+  - check: "W rebuilt from the public compact construction only; candidate words equal the benchmark; no two candidates equivalent under rotation, inverse or the 8 letter automorphisms; no proper powers; no machine paths"
+    tool: "Lead's own script (and the builder's self-check)"
+    scope: "syntactic"
+    result: "220/220; 215 distinct classes; 0 paths"
+    date: 2026-10-28
+    by: agent/lead (asetlearning)
+stats: {revision_1: {min_len: 47, max_len: 1548}, t028_candidates: {n: 215, min_len: 138, median_len: 602, max_len: 1313, certified: 200}}
 used_by: ["`[[challenge-gen-success-metrics]]` (solver resilience, registry rules)"]
 supersedes: ""
 superseded_by: ""
 author: asetlearning
-status: draft
-tags: [agent/lead, user/asetlearning, domain/group-theory, topic/b25, topic/burnside, topic/trivial-words, topic/hard-instance-generation, topic/proof-certificates, project/challenge-gen, status/draft, dataset]
+status: review
+tags: [agent/lead, user/asetlearning, domain/group-theory, topic/b25, topic/burnside, topic/trivial-words, topic/hard-instance-generation, topic/proof-certificates, project/challenge-gen, status/review, dataset]
 ---
 
 # B(2,5) challenge-candidate registry
@@ -91,6 +114,16 @@ Each record has:
 
 **Why none is a candidate.** kbmag (the `b25_full` rec and slx rewriting systems) reduces every word above to the identity in under a second. In addition, the owner's chain (coset enumeration alternated with 2.5-reduction) took the four originals to the residuals. The full history is in the addendum of [[t024-challenge-census-and-onion-probe-2026-10-17]].
 
+## Revision 2 (2026-10-28): the T-028 candidates
+
+> [!info] Plain English
+> 215 words, 138 to 1313 letters long, each trivial in B(2,5) by construction and each resisting every solver we have: 2.5-reduction with 12 tie-break orders, the closure search, kbmag (two rewriting systems, all 16 images, all rotations) and coset enumeration up to 10⁹ cosets with relators up to length 7, run in a loop until nothing shortens the word. No two are equivalent under rotation, inversion or the 8 letter automorphisms. The owner approved all 215 on 2026-10-28; they are also the project's benchmark.
+
+- **How a word is built.** W = cyclic_reduce(∏ c_j⁻¹ φ_j(t_j)^{s_j} c_j): t_j are certified trivial dataset words (length 50–80), φ_j substitutes a → x, b → y (twice for the C3r2 arm), s_j = ±1, c_j are conjugators. Each candidate record stores t, sign, x/y per round and the conjugator, so W rebuilds without the random generator (`construction_recipe` at the top level).
+- **From W to the word.** 2.5-reduction, kbmag and coset-enumeration steps, recorded in full in the .gz file (`reproduction`, `fixpoint`, `history`). For the 200 certified words, `certificate_chain` proves W = P·g⁻¹·word·g with P a product of conjugated fifth powers.
+- **Candidate record fields:** `id`, `kind`, `status`, `word`, `length`, `W`, `W_length`, `construction`, `levels`, `t3u`, `certified`, `d_steps`, `solvers` (one line per solver with its parameters), `rev4_record_sha256` (pointer to the full record in the .gz file).
+- **Caveats.** The 15 uncertified words rely on a coset-enumeration step; its relator set comes from the R7 table (`b25_full`), which is cited only by sha256. The .gz file is the private rev 4 file published unchanged, so it still says `"private": true` inside. Hardness is relative to the solvers listed; no lower bound is claimed.
+
 ## Derivation
 
 1. **Originals.** Copied from Lead's private file of the 12 confirmed T-024 words: word, R7 certificate and the relators it uses. Only the four words that left residuals are included.
@@ -134,6 +167,7 @@ for rec in reg["candidates"] + reg["tested"]:
 | revision | date | sha256 | change | approved by |
 |---|---|---|---|---|
 | 1 | 2026-10-20 | `754f582c…d920` | First revision: 0 candidates; 7 tested records (3 residuals, 4 originals). Vetted in [[2026-10-20-t027-registry-rev1-vet]] | owner (commit approved 2026-10-20) |
+| 2 | 2026-10-28 | `6060c5b9…eef2` | T-028: 215 approved candidates (all pass T3u, the fixpoint loops of 2026-10-27 and the held-out solvers; 200 certified, 15 with a coset-enumeration step); 5 broken T-028 words added to `tested`; the 7 revision-1 records unchanged. Full records in `b25_t028_survivors_220_rev4.json.gz` (`2c321be5…e5fa`) | owner (approved 2026-10-28) |
 
 ## Related material
 - [[datasets-convention]]
