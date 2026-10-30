@@ -7,11 +7,11 @@ project: challenge-gen
 instance: B(2,5)
 kind: trivial-words
 format: "JSON (schema b25-challenge-candidates v1); letters a A b B (A = a⁻¹, B = b⁻¹); certificates as lists of [relator index, conjugator] over the R7 table, with the used relators included"
-records: "revision 2: 215 candidates (T-028), 12 tested (7 from revision 1 + 5 broken T-028 words)"
+records: "revision 3: 207 candidates (T-028), 20 tested (7 from revision 1 + 5 broken T-028 words + 8 broken by the algo-mixer reducer)"
 files:
   - path: "math-agents-challenge-generation:data/b25_challenge_candidates.json"
-    sha256: 754f582c8b02bca1d5cf599a7f680ee9b501f6c4215852b50560f585d8f8d920
-    bytes: 2263664
+    sha256: 32f083dc5398bb633117b03e193de417d90fea0a1b222e161c75dcc22a446d95   # revision 3
+    bytes: 3452976
     role: data
   - path: "math-agents-challenge-generation:data/b25_t028_survivors_220_rev4.json.gz"
     sha256: 2c321be52a1e6506cebbd251392eed76698ba84df1e9746ac2e4c4fbc4a7e5fa   # gzip -9 -n; uncompressed sha256 c0e22bb0837b82e163649387690913184a7b7cc322ad0faacfd71637f3fac78e, 117355550 bytes
@@ -22,8 +22,8 @@ derived_from:
   - "T-028 survivors file revision 4 (Lead's private run folder), sha256 c0e22bb0837b82e163649387690913184a7b7cc322ad0faacfd71637f3fac78e; published unchanged as the .gz file above (revision 2)"
   - "Lead's private results file of the 12 Validator-confirmed T-024 words with R7 certificates (gitignored), sha256 cd1ae09d3a0455ac45dff22950f066cb3fd76c92dc1df4069555a668ba1c17be — origin: T-024 onion pilot, [[t024-challenge-census-and-onion-probe-2026-10-17]] §10.6"
   - "the owner's residual-words file of 2026-10-19 (gitignored shared/ folder), sha256 890d6de4cee833109fb2e462462623bb9e9116f5ea549e47711addebaabab75e — origin: the owner's solver chain on the 12 words"
-produced_by: "revision 2: b25_pyproject_agentic t028-pilot ae6ca36, experiments/challenge_gen/t028/build_public_registry.py (sha256 ff0d7124457afcfeacebf7ca84c286f5b3439e5c8bc167a72dc755ddc1240d13). Revision 1: b25_pyproject_agentic, branch t027-candidates-solvers: experiments/challenge_gen/solvers/build_candidates.py (sha256 63118b080b9a4702f568d6bc58c57cbf693cadcfd3189dea1273d725dfb1418e; solver harness, 13 files, sha256 b826ff9852b97549b7c65cee0405485d509ef9c5ab4ebecfb5b1075cdf55fb26); repo@sha added when the branch is committed"
-property_claimed: "Revision 1 records: trivial in free B(2,5), proved by an R7 certificate that re-expands exactly to its word (L0-cert). T-028 candidates (revision 2): W is trivial by construction (a product of conjugated images of certified trivial words); 200 of the 215 words are proved equal to W in the free group modulo fifth powers (certificate chain, L0); 15 reach their word through a coset-enumeration step (equality in a finitely presented cover, reproduction block in the .gz file). 'candidates' holds human-approved challenge candidates; 'tested' holds evaluated words that are not candidates, with their solver verdicts."
+produced_by: "revision 3: b25_pyproject_agentic t028-pilot ad87d88, experiments/challenge_gen/t028/mixer_registry_rev3.py (builder and validation) and mixer_chain_cert.py (chained certificates); mixer runs via experiments/challenge_gen/t028/mixer_rung.py and jobs/run_t028_mixer*.sh. Revision 2: b25_pyproject_agentic t028-pilot ae6ca36, experiments/challenge_gen/t028/build_public_registry.py (sha256 ff0d7124457afcfeacebf7ca84c286f5b3439e5c8bc167a72dc755ddc1240d13). Revision 1: b25_pyproject_agentic, branch t027-candidates-solvers: experiments/challenge_gen/solvers/build_candidates.py (sha256 63118b080b9a4702f568d6bc58c57cbf693cadcfd3189dea1273d725dfb1418e; solver harness, 13 files, sha256 b826ff9852b97549b7c65cee0405485d509ef9c5ab4ebecfb5b1075cdf55fb26); repo@sha added when the branch is committed"
+property_claimed: "Revision 1 records: trivial in free B(2,5), proved by an R7 certificate that re-expands exactly to its word (L0-cert). T-028 candidates (revision 2): W is trivial by construction (a product of conjugated images of certified trivial words); 200 of the 215 words are proved equal to W in the free group modulo fifth powers (certificate chain, L0); 15 reach their word through a coset-enumeration step (equality in a finitely presented cover, reproduction block in the .gz file). Revision 3: the 8 words broken by the algo-mixer reducer carry a certificate_chain proving the registry word is a product of conjugates of literal fifth powers (free B(2,5) proof; some fifth powers have period > 7, so these are not G_7 relators). 'shortest_known' words equal the registry word only by the solver steps that produced them (not certified). 'candidates' holds human-approved challenge candidates; 'tested' holds evaluated words that are not candidates, with their solver verdicts."
 vetting:
   - check: "L0 of every certificate against its word, R7 only; words equal their sources; reproduction chains equal the Validator's"
     tool: "Validator's independent expander and chain (b25 d1b5d0f, tcgraph 63564c3)"
@@ -61,7 +61,19 @@ vetting:
     result: "220/220; 215 distinct classes; 0 paths"
     date: 2026-10-28
     by: agent/lead (asetlearning)
-stats: {revision_1: {min_len: 47, max_len: 1548}, t028_candidates: {n: 215, min_len: 138, median_len: 602, max_len: 1313, certified: 200}}
+  - check: "8 algo-mixer breaks: every cell a conjugate of a literal fifth power; product free-reduces to the registry word; route ends empty"
+    tool: "Validator's own replay (7 on 2026-10-28..29, C3r2|3,3|23 on 2026-10-30)"
+    scope: "free B(2,5) — proof"
+    result: "8/8 CONFIRMED, [[2026-10-28-t028-mixer-c3r2-2-2-1-check]], [[2026-10-29-t028-mixer-r1-six-breaks-check]], [[2026-10-30-t028-mixer-c3r2-3-3-23-check]]"
+    date: 2026-10-30
+    by: agent/validator (asetlearning)
+  - check: "revision 3 file: the 8 certificate_chain fields replay to their registry words (x^-1 r x, r a literal fifth power); 207 candidates, 20 tested, ids unique, no broken id among candidates, no machine paths"
+    tool: "Lead's own replay script (independent of the builder) and the builder's validation"
+    scope: "free B(2,5) — proof (certificates); syntactic"
+    result: "8/8; counts as stated; 0 paths"
+    date: 2026-10-30
+    by: agent/lead (asetlearning)
+stats: {revision_1: {min_len: 47, max_len: 1548}, t028_candidates_rev3: {n: 207, with_shortest_known: 38}, t028_candidates: {n: 215, min_len: 138, median_len: 602, max_len: 1313, certified: 200}}
 used_by: ["`[[challenge-gen-success-metrics]]` (solver resilience, registry rules)"]
 supersedes: ""
 superseded_by: ""
@@ -124,6 +136,17 @@ Each record has:
 - **Candidate record fields:** `id`, `kind`, `status`, `word`, `length`, `W`, `W_length`, `construction`, `levels`, `t3u`, `certified`, `d_steps`, `solvers` (one line per solver with its parameters), `rev4_record_sha256` (pointer to the full record in the .gz file).
 - **Caveats.** The 15 uncertified words rely on a coset-enumeration step; its relator set comes from the R7 table (`b25_full`), which is cited only by sha256. The .gz file is the private rev 4 file published unchanged, so it still says `"private": true` inside. Hardness is relative to the solvers listed; no lower bound is claimed.
 
+## Revision 3 (2026-10-30): algo-mixer reducer breaks and shortest known words
+
+> [!info] Plain English
+> We ran a different kind of solver on all 215 candidates: the algo-mixer beam reducer, which rewrites with large kbmag rule sets (up to 14.4 million rules) and may let a word grow before it shrinks. It reduced 8 candidates to the empty word; each has a recorded, independently replayed certificate, confirmed by the Validator. Those 8 move to `tested`. The other 207 stay candidates. For 38 of them the runs found a shorter equal word, now stored as `shortest_known` next to the original.
+
+- **The solver.** algo-mixer `reduce_standalone` (GreedyReducerTransport / try_all_strategies: forward and inverse rules, braid moves, beam search up to 5·|w|+50 letters). Rule sets: b25_gen (656k), rec, slx, rpo (2.9M), rpo_rtl (3.2M), shortlex (7.5M), and all six merged (14.4M). `solver_identity.algo_mixer_reducer` lists them.
+- **The ladder** (`mixer_ladder`, 12 runs): small settings on all words, then larger rule sets and wider beams on the survivors, ending with all six sets merged at beam 4096 / 900 s on the 207 survivors; the shortened words were re-run through the fixpoint loop (R, CL, KB, D) after each step. Seven breaks came in the first run (b25_gen, beam 1024); the eighth (C3r2|3,3|23) needed four reducer runs and a final 2.5-reduction step.
+- **Broken records** (`tested`, `status` "broken ..."): `registry_word` (the revision 2 word), `mixer_break` (run, job, rule sets, settings), `certificate_chain` (`chain_cells` as [core, conjugator], the registry word = ∏ conj⁻¹·core·conj), level L0-cert. C1|6|0: the registry word → empty certificate is complete, but its link from the construction W rests on a coset-enumeration step, as in revision 2.
+- **`shortest_known`** (38 candidates): `word`, `length`, `how_obtained` (start length and each run with job id and length), `certified: false`. The equality with the registry word rests on the solver steps; the reducer paths of these shortenings were not recorded.
+- **Caveats.** Certificate cells include fifth powers of period > 7 (up to 29): valid in B(2,5), but outside the period-≤7 relators our other solvers use. The algo-mixer build used is branch `alex-exp` of ai-math-edu-lab/algo-mixer (commits 7dff5cc, fbc2870); the certificates do not depend on it. Hardness of the 207 is relative to the solvers listed.
+
 ## Derivation
 
 1. **Originals.** Copied from Lead's private file of the 12 confirmed T-024 words: word, R7 certificate and the relators it uses. Only the four words that left residuals are included.
@@ -168,6 +191,7 @@ for rec in reg["candidates"] + reg["tested"]:
 |---|---|---|---|---|
 | 1 | 2026-10-20 | `754f582c…d920` | First revision: 0 candidates; 7 tested records (3 residuals, 4 originals). Vetted in [[2026-10-20-t027-registry-rev1-vet]] | owner (commit approved 2026-10-20) |
 | 2 | 2026-10-28 | `6060c5b9…eef2` | T-028: 215 approved candidates (all pass T3u, the fixpoint loops of 2026-10-27 and the held-out solvers; 200 certified, 15 with a coset-enumeration step); 5 broken T-028 words added to `tested`; the 7 revision-1 records unchanged. Full records in `b25_t028_survivors_220_rev4.json.gz` (`2c321be5…e5fa`) | owner (approved 2026-10-28) |
+| 3 | 2026-10-30 | `32f083dc…6d95` | algo-mixer reducer ladder: 8 candidates broken (C1\|6\|9, C3r2\|2,2\|1, C3\|4\|19, C1\|6\|0, C1\|8\|0, C1\|8\|7, C1\|16\|22, C3r2\|3,3\|23), each with a Validator-confirmed certificate, moved to `tested`; 207 candidates remain; `shortest_known` on 38 candidates; `solver_identity.algo_mixer_reducer` and `mixer_ladder` added | owner (approved 2026-10-30) |
 
 ## Related material
 - [[datasets-convention]]
