@@ -4,9 +4,10 @@ authors:
   - A. A. Kuznetsov
   - A. K. Shlepkin
 year: 2010
-venue: "Trudy Instituta Matematiki i Mekhaniki UrO RAN, vol. 16, no. 2, pp. 133–138"
-url: ""
-source_path: "Downloads/ketnesov_2010 (1).pdf"
+venue: "Trudy Instituta Matematiki i Mekhaniki UrO RAN, vol. 16, no. 2, pp. 133–138 (received 25.01.2010; UDC 512.54)"
+url: "http://mi.mathnet.ru/timm554"
+title_ru: "О различии бернсайдовых групп B(2, 5) и B₀(2, 5)"
+source_path: "shared/timm554.pdf (local drop folder, not committed)"
 language: ru
 domain: group-theory
 status: draft
@@ -23,14 +24,12 @@ contradicts: []
 replicates: []
 cites:
   - "[[kuznetsov-shlepkin-2009]]"
-  - "[[havas-wall-wamsley-1974]]"
-  - "[[kourovka-11.48-kostrikin-1990]]"
 cited_by:
   - "[[_synthesis-kuznetsov-b25-algorithmic-line]]"
   - "[[kuznetsov-2019]]"
   - "[[kuznetsov-kuznetsova-2025]]"
   - "[[kuznetsov-2011]]"
-quality_notes: "Russian-language paper. Headline empirical contribution: 125-node MATLAB cluster computation of K_35(2,5) at ~104 hours; |C_35(2,5)| = 104,409 and |P_35(2,5)| ≈ 5^14. Theorems 3 and 4 are the operationally important results: coincidence of B(2,5) and B_0(2,5) on minimal words up to length 29 is proved, and a table of explicit candidate-divergence relations at lengths 30–35 is provided — failure of any one of these in B(2,5) implies B(2,5) is infinite. The new theoretical content in §1 (replacing the row-collision detection with associativity-test detection) is a real algorithmic refinement and worth understanding in its own right."
+quality_notes: "Checked against the full PDF 2026-10-31 (6 pages; the paper itself cites only the 2009 paper as [1]). Russian-language paper. Headline empirical contribution: 125-node MATLAB cluster computation of K_35(2,5) at ~104 hours; |C_35(2,5)| = 104,409 and |P_35(2,5)| ≈ 5^14. Theorems 3 and 4 are the operationally important results: coincidence of B(2,5) and B_0(2,5) on minimal words up to length 29 is proved, and a table of explicit candidate-divergence relations at lengths 30–35 is provided — failure of any one of these in B(2,5) implies B(2,5) is infinite. The new theoretical content in §1 (replacing the row-collision detection with associativity-test detection) is a real algorithmic refinement and worth understanding in its own right."
 author: maumayma
 tags:
   - agent/research
@@ -58,7 +57,7 @@ An algorithm for calculating elements and relations in Burnside groups is descri
 
 ## TL;DR
 
-Extends [[kuznetsov-shlepkin-2009]] in three ways: (1) presents a refined version of the Cayley-table-closure algorithm that uses **associativity-test collisions** $A_s(v_i A_s(v_j v_k)) \neq A_s(A_s(v_i v_j) v_k)$ rather than direct row collisions to detect new relations, with separate finite/infinite limit theorems; (2) using a 125-node MATLAB cluster (~104 hours wall-clock), computes $K_{35}(2,5)$ with $|C_{35}(2,5)| = 104{,}409$ relations and $|P_{35}(2,5)| \approx 5^{14}$ minimal words; (3) confirms that $B(2,5)$ and $B_0(2,5)$ coincide on minimal-word relations up to length 29, and exhibits explicit candidate relations at lengths 30 (2 relations), 31 (10), 32 (47), 33 (70), 34 (259), 35 (585) in $B_0(2,5)$ — **failure of any one of these in $B(2,5)$ would prove $B(2,5)$ infinite**.
+Extends [[kuznetsov-shlepkin-2009]] in three ways: (1) presents a refined version of the Cayley-table-closure algorithm that uses **associativity-test collisions** $A_s(v_i A_s(v_j v_k)) \neq A_s(A_s(v_i v_j) v_k)$ rather than direct row collisions to detect new relations, with separate finite/infinite limit theorems; (2) using a 125-node MATLAB cluster (~104 hours wall-clock), computes $K_{35}(2,5)$ with $|C_{35}(2,5)| = 104{,}409$ relations and $|P_{35}(2,5)| \approx 5^{14}$ minimal words; (3) confirms that $B(2,5)$ and $B_0(2,5)$ coincide on minimal-word relations up to length 29, and exhibits explicit candidate relations at lengths 30 (2 relations), 31 (10), 32 (47), 33 (70), 34 (259), 35 (585) in $B_0(2,5)$ — relations the authors could **not** derive in $B(2,5)$ (see \"What candidate means\" below) — **failure of any one of these in $B(2,5)$ would prove $B(2,5)$ infinite**.
 
 ## Problem
 
@@ -99,7 +98,7 @@ This extends [[kuznetsov-shlepkin-2009]]'s length-27 coincidence theorem to leng
 
 The table (called Table 1 / **Some relations in the group $B_0(2,5)$** in §2) lists explicit candidate-divergence relations by length:
 
-| Length | Number of candidate relations | Sample relation (first listed) |
+| Length | Number of candidate relations | Sample relation (first listed; all of lengths 30–31 and two each of 32–35 are in the appendix) |
 |---|---|---|
 | 30 | 2 | `122121121221121212211212212112 = 212121122112212121122112212121` |
 | 31 | 10 | `1221122121211221122121212222111 = 2121122121121221121212211212212` |
@@ -108,9 +107,11 @@ The table (called Table 1 / **Some relations in the group $B_0(2,5)$** in §2) l
 | 34 | 259 | `1112121221122112112121112111222211 = 2121211221122212111121122221222212` |
 | 35 | 585 | `11212122112211212121111222121121121 = 22211122221212211212212112212121122` |
 
-**Total candidate-divergence relations across lengths 30–35:** $2 + 10 + 47 + 70 + 259 + 585 = 973$. (The paper reproduces only a few representatives per length, not all 973.)
+**Total candidate-divergence relations across lengths 30–35:** $2 + 10 + 47 + 70 + 259 + 585 = 973$. (The paper prints all 2 + 10 relations of lengths 30 and 31 and only two each for lengths 32–35: 20 of 973 in total. Both sides of every printed relation have the same length. The table is titled "Some relations in the group B₀(2,5)" [trans.] and the counts are given as "in total N relations" [trans.]; the paper does not say whether the counts are all relations of that length or a minimal list.)
 
-**Proof of Theorem 4 (§2).** The relations are all derived as $\psi(v) = \psi(w)$ via the Havas-Wall-Wamsley commutator basis — they hold in $B_0(2,5)$ by construction. If even one fails in $B(2,5)$, then $B(2,5) \not\cong B_0(2,5)$, which by [[kuznetsov-shlepkin-2009]]'s opening observation (and the structural fact that $B_0(2,5)$ is the maximal finite quotient of $B(2,5)$) implies $B(2,5)$ is infinite. The paper's example computation: $\psi(122121121221121212211212212112) = \psi(212121122112212121122112212121) = $ a specific normal word in the commutator basis (a long product of base commutators $1, 2, 3, \ldots, 34$ to powers).
+**What "candidate" means (§2, before Theorem 4).** "Length 30 turned out to be a kind of 'point of divergence' [trans.] of B(2,5) and B₀(2,5)": from length 30 on, $B_0(2,5)$ has relations whose validity in $B(2,5)$ **could not be proved** by the §1 algorithm or the algorithm of [[kuznetsov-shlepkin-2009]] when applying relations whose left and right sides have length $\le 35$ [trans.]. So the table lists unproved relations, not relations shown to fail; "divergence" refers to the proof method, not to an established difference of the groups.
+
+**Proof of Theorem 4 (§2).** The relations hold in $B_0(2,5)$; the paper's example is $\psi(122121121221121212211212212112)=\psi(212121122112212121122112212121)=$ a normal word with exponents on pc-generators 3–34 (starts $3^1 4^2 5^2 6^1 7^4 8^1\ldots$, ends $\ldots 31^4 32^2 34^4$). The notation $\psi$ and the numbering are the paper's; it does not name the Havas–Wall–Wamsley presentation (that identification is this vault's). If one relation fails in $B(2,5)$ then $B(2,5)\neq B_0(2,5)$, "which means the infiniteness of $B(2,5)$" [trans.]; the paper gives no further argument (it implicitly uses that $B_0(2,5)$ is the largest finite quotient). The paper's example computation: $\psi(122121121221121212211212212112) = \psi(212121122112212121122112212121) = $ a specific normal word in the commutator basis (a long product of base commutators $1, 2, 3, \ldots, 34$ to powers).
 
 ## Assumptions
 
@@ -118,11 +119,12 @@ The table (called Table 1 / **Some relations in the group $B_0(2,5)$** in §2) l
 - Lemma 1's argument (finite-order monoid is a group) is valid in the constructive limit setting of Theorem 2.
 - MATLAB 7.7.0 floating-point and integer arithmetic on the cluster does not introduce errors in symbolic relation derivation — implicit; the paper does not discuss verification.
 - The cluster computation reaches the length-35 relations completely (not just partially up to time budget) — implicit from the reported $|C_{35}|$ and $|P_{35}|$ values being given as exact rather than as lower bounds.
-- The list of 973 candidate divergence relations at lengths 30–35 is exhaustive within those lengths — the paper says "in the minimal word format up to length 29 the groups coincide; on lengths 30–35 [these] relations are found," implying these are all the divergent ones in that range.
+- That the 973 counts are the complete number of unproved relations at lengths 30–35 — not established: the table is headed "Some relations" [trans.] and the paper does not say how the counts were defined.
 
 ## Limitations / scope
 
 - The candidate divergence relations are **candidates only**. The paper does not show that any one of them fails in $B(2,5)$. Verifying or refuting one of them in $B(2,5)$ is the next step, and is delegated to other methods.
+- Only 20 of the 973 relations are printed (all of lengths 30 and 31, two each of 32–35); the rest are not in the paper.
 - Length 35 is the empirical ceiling for this cluster computation; nothing is said about whether the candidate set continues to grow at $|P_{s+1}|/|P_s| \approx 1.9$ beyond length 35 or whether the rate changes.
 - No formal verification of the algorithm's MATLAB implementation. The 5^14 value for $|P_{35}|$ is stated as $\approx$ — not exact — which is mildly concerning for what should be an exact count.
 - The associativity-test refinement (§1) generalizes the prior algorithm but the paper does not benchmark it against the row-collision version of [[kuznetsov-shlepkin-2009]]. It is plausibly faster (fewer candidates to test per step) but this is not quantified.
@@ -155,7 +157,7 @@ The paper's combination — a clean infiniteness theorem + an explicit refutatio
 - At what length does $|P_s(2,5)|$ first exceed $|B_0(2,5)| = 5^{34}$? Reaching that length computationally would prove $B(2,5) \neq B_0(2,5)$, equivalently $B(2,5)$ is infinite. (Rough estimate: extrapolating the $\approx 1.9$ growth ratio from the 2009 tables, this requires $s \approx 45$–55.)
 - Could the candidate relations at length 30 be tested directly with KBMAG starting from the B(2,5) presentation? If KBMAG produces a confluent system that rewrites both sides of, say, the first relation to **distinct** canonical forms, that's a refutation.
 - Is the §1 associativity-test variant of the algorithm genuinely faster than the §1 row-collision variant from [[kuznetsov-shlepkin-2009]]? The change reduces the number of triples to test per step but introduces a 3-way product per check; the net effect on wall-clock is not benchmarked.
-- Have the original 2010 cluster outputs (the specific list of 973 relations, the full $P_{35}$ word list) been preserved or are they only summarized in this paper? The relations table in §2 lists only one or two per length; recovering the full set may require contacting the authors.
+- Have the original 2010 cluster outputs (the specific list of 973 relations, the full $P_{35}$ word list) been preserved or are they only summarized in this paper? The table prints 20 of 973 (all of lengths 30–31, two each of 32–35); recovering the rest needs the authors or a recomputation.
 
 ## Mixer / B(2,5) project framing
 
@@ -178,7 +180,7 @@ For Lead: this paper should feed into the next pre-registered B(2,5) experiment.
 - Contradicts: (none)
 - Replicates: continues [[kuznetsov-shlepkin-2009]]'s implementation work at cluster scale
 - Concepts introduced/used: [[Concepts/cayley-table-closure-algorithm]] (the refined associativity-test variant), [[Concepts/verification-methods-for-group-equality]] (the ψ-homomorphism comparison)
-- Cites (in vault): [[kuznetsov-shlepkin-2009]], [[havas-wall-wamsley-1974]] (the commutator basis 1–34 used to define ψ), [[kourovka-11.48-kostrikin-1990]] (the problem this attacks)
+- Cites (the paper's only reference): [[kuznetsov-shlepkin-2009]]. Vault context, not cited by the paper: [[havas-wall-wamsley-1974]] (likely source of the pc-generator numbering used for ψ), [[kourovka-11.48-kostrikin-1990]] (the problem this attacks)
 - Cited by (in vault): [[_synthesis-kuznetsov-b25-algorithmic-line]]
 - Open problem this engages: [[b25-finiteness-11.48-kostrikin]] (Mixer attack rationale, separate framing)
 - MOC: [[_moc-burnside]]
@@ -187,9 +189,9 @@ For Lead: this paper should feed into the next pre-registered B(2,5) experiment.
 
 ## Addendum 2026-10-20 — Theorem 3: scope, proof, and what it does NOT imply (T-027 query from Lead)
 
-> **Source limit.** The PDF (`source_path` above) is not on this VM and mathnet.ru is unreachable from it (connection refused), so the statements below are re-read from this note's earlier transcription of the paper, not re-checked against the PDF. Open task: obtain `timm554` full text (drop in vault `shared/`) and confirm the wording of Thm 3 and §2.
+> **Checked against the PDF 2026-10-31** (`timm554`, 6 pages, pp. 133–138). The earlier source-limit caveat is removed; see "Check against the PDF" at the end for what changed.
 
-**1. Statement (as transcribed here; same form as Thm 2 of [[kuznetsov-shlepkin-2009]]).** $v,w$ are arbitrary words over the alphabet $\{1,2\}$ — i.e. **positive words in the two generators**, no inverses — with $L(v),L(w)\le 29$. Then $v=w$ holds in $B_0(2,5)$ iff it holds in $B(2,5)$. So it is *not* restricted to minimal words as a hypothesis; "minimal-word format" in the abstract describes how the relations are tabulated (smaller side = shortlex-minimal word $v\prec w$, as in $C_s$) and how the comparison was run ($P_s$ vs the $B_0$ ball). Direction "$B\Rightarrow B_0$" is trivial ($B_0$ is a quotient); the content is "$B_0\Rightarrow B$". [computational, authors' claim]
+**1. Statement (confirmed against the PDF).** $v,w$ are arbitrary words over the alphabet $\{1,2\}$ — i.e. **positive words in the two generators**, no inverses — with $L(v),L(w)\le 29$. Then $v=w$ holds in $B_0(2,5)$ iff it holds in $B(2,5)$. So it is *not* restricted to minimal words as a hypothesis; "minimal-word format" in the abstract describes how the relations are tabulated (smaller side = shortlex-minimal word $v\prec w$, as in $C_s$) and how the comparison was run ($P_s$ vs the $B_0$ ball). Direction "$B\Rightarrow B_0$" is trivial ($B_0$ is a quotient); the content is "$B_0\Rightarrow B$". [computational, authors' claim]
 
 **Does it give "every $u$, $|u|\le 58$, trivial in $B_0$ is trivial in $B$"? No, not as stated.**
 - Length is in **positive** letters. Inverses are not free: $x^{-1}=x^4$ costs 4.
@@ -201,3 +203,57 @@ For Lead: this paper should feed into the next pre-registered B(2,5) experiment.
 **3. Later confirmation / extension.** Checked every Kuznetsov-line note in this vault (2011–2025) and a web search: none re-proves Thm 3, none extends beyond 29, none tests any of the 973 candidates at 30–35. The later papers work inside $B_0(2,5)$ only (they cannot test $B$-side claims). No correction or erratum found. Conclusion: length 29 is still the best published bound; 30+ is [conjectured/untested]. The Rust bidirectional / KBMAG route is the only available independent check.
 
 Cross-check suggestion for T-027: re-derive Thm 3 for small lengths independently (e.g. $B_0$ ball sizes vs. $K_s$ counts $|P_s|$ from [[kuznetsov-shlepkin-2009]] table, lengths $\le 27$) before relying on it at 29.
+
+## Check against the PDF, 2026-10-31
+
+Source: `timm554` (Trudy IMM UrO RAN 16:2, 2010, pp. 133–138; received 25.01.2010). Title (ru): О различии бернсайдовых групп B(2, 5) и B₀(2, 5); (en): On the difference of the Burnside groups B(2,5) and B₀(2,5). Authors A. A. Kuznetsov (Siberian State Aerospace Univ.), A. K. Shlepkin (Krasnoyarsk State Agrarian Univ.). The paper's only reference is [1] = the 2009 paper (vol. 15, pp. 125–132).
+
+**Confirmed as written:** title, authors, venue, pages; abstract; Lemma 1, Theorems 1–2 and proofs; Theorem 3 wording (words over the generator alphabet {1,2}, $L(v),L(w)\le 29$, iff, "proof: direct computation"); Theorem 4 wording; cluster facts (125 nodes, 3 GHz, 4 GB, MATLAB 7.7.0, ≈104 h, $|C_{35}|=104409$, $|P_{35}|\approx5^{14}$); counts 2/10/47/70/259/585 = 973; the first-listed sample at every length.
+
+**Changes made to this note:**
+1. `url` filled (`http://mi.mathnet.ru/timm554`); added `title_ru` and received date; `source_path` replaced by the vault `shared/` drop (old value was a machine path).
+2. `cites` reduced to the paper's actual reference; Havas–Wall–Wamsley and Kourovka links moved to "vault context, not cited".
+3. Table claim corrected: the paper prints all relations at lengths 30 (2) and 31 (10) and two each at 32–35 (20 of 973), not "one or two per length"; the "exhaustive" assumption dropped (counts' definition not stated). Printed list added below.
+4. Added what "candidate" means: unproved in $B(2,5)$ by the §1 and 2009 algorithms with relations of side length ≤ 35 — not shown to fail.
+5. Theorem 4 proof paragraph corrected (the claimed appeal to the 2009 paper's opening observation is not in the text).
+6. Source-limit block removed; Theorem 3 wording confirmed. The proof outline and later-work parts of the addendum are this vault's reading, not statements of the paper.
+
+**Not stated in the paper** (do not attribute to it): that ψ uses the Havas–Wall–Wamsley presentation; code, a relation list or checksums; anything on inverses or mixed-sign words; any bound beyond length 35; how the $B_0$ side was matched with $P_s$ beyond "comparison of computer calculations". The paper also says the $B_0$ computation yields "the minimal possible list of relations for $B_0(2,5)$ in terms of {1,2}-words allowing to get the minimal word from any word of length ≤ 35" [trans.].
+
+**For T-027 (B₀ / length-29 claims):**
+- The restricted-corollary warning in §1 stands: Theorem 3 covers positive {1,2}-words only, so "$u=vw^{-1}$, $v,w$ positive, $|v|,|w|\le29$" is the safe form of the $|u|\le58$ claim.
+- $B_0\Rightarrow B$ up to 29 is a computer-assisted result with no published certificate: [computational, unreplicated].
+- Length 30 is the first length with relations the authors could not derive in $B$, so lengths ≥ 30 lie outside any published guarantee; a T-027/T-028 claim about positive words of length ≥ 30 needs its own proof. A derivation in $B(2,5)$ of one of the 12 length-30/31 relations below would be new relative to this paper (it would not by itself settle finiteness).
+- Both sides of every printed relation have equal length.
+
+## Appendix: relations printed in the paper's table (transcribed from the PDF)
+
+Length 30 (all 2):
+```
+122121121221121212211212212112 = 212121122112212121122112212121
+121212211221121212211221121212 = 211212212112212121122121121221
+```
+Length 31 (all 10):
+```
+1221122121211221122121212222111 = 2121122121121221121212211212212
+1112222121212211221121212211221 = 2122121122121211221211212211212
+1211212211212122112122121122121 = 2221111212121122112212121122112
+1212211212212112212121122121121 = 2112211212122112211212121111222
+1122211212112221121211122111212 = 2121112211121211222112121122211
+1121211222112121112211121211122 = 2211121211122111212112221121211
+1221211212212112111122211112112 = 2112111122211112112122121121221
+1122212122211222121221112212122 = 2212122111221212221122212122211
+1221112112112111221211212212112 = 2112122121121221112112112111221
+1212221122212122111221212211122 = 2211122121221112212122211222121
+```
+Lengths 32–35 (first two of 47 / 70 / 259 / 585):
+```
+12211222121111211222212222121112 = 21211112121221122112112121112111
+11211121222112111121121212111221 = 21111212112112211122121211112112
+122212221112212211221122122112211 = 221111221122212211221112211221222
+111122121212222112212212211122122 = 222212222121221111221221112221111
+1112121221122112112121112111222211 = 2121211221122212111121122221222212
+1221121222211121212212212221212211 = 2222122111122221211221212111122212
+11212122112211212121111222121121121 = 22211122221212211212212112212121122
+11112121122121122121121221122121211 = 22112121221121221211221212222111222
+```
