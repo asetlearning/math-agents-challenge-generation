@@ -176,6 +176,7 @@ Grow the list organically. Don't pre-register topics that don't exist yet.
 - `#topic/pathological-presentations` — presentations of known (often trivial) groups engineered to be hard for a standard procedure (Todd–Coxeter, Knuth–Bendix, Andrews–Curtis search), e.g. Neumann's iterated substitution family. Substance test: the note reports how a specific procedure behaves on such presentations. Registered 2026-10-20 by asetlearning.
 - `#topic/compressed-word-problem` — the word problem for words given as straight-line programs (grammar-compressed), and its complexity per group class. Registered 2026-10-20 by asetlearning.
 - `#topic/grammar-compression` — straight-line programs / grammar-based compressors (Re-Pair, Sequitur, LZ78, bisection), smallest-grammar problem and approximation ratios. Tag when the compressor or its guarantees are a substantive part of the paper. Registered 2026-10-20 by asetlearning.
+- `#topic/magnus-expansion` — the Magnus embedding of a free group into noncommutative power series, Fox free derivatives, lower central and mod-p dimension (Zassenhaus) filtrations, free nilpotent quotients, as computable invariants of free-group words. Substance test: the note states or uses what such an image detects (e.g. membership in γ_c or D_c) or its computation cost. Registered 2026-11-04 by asetlearning for #project/b25-solver (I1-invariant-review).
 
 ## Axis 5 — `#status/*` (lifecycle)
 
@@ -215,6 +216,7 @@ Currently registered:
 - `#project/b53` — B(5,3)
 - `#project/b29` — B(2,9) finiteness program. Registered 2026-08-11 on Maria's stage-2 GO (active deliverables: pq-tower experiment + runs/b29/, stage-1 synthesis, W1/W2 workstreams). Stage-1 notes predating registration carry `#topic/b29` only; new project-scoped notes carry both.
 - `#project/challenge-gen` — Challenge generation: generating hard instances that come with a built-in proof (certificate) of the target property, for benchmarking and training search algorithms (ML/LLM/RL). Phase 1: hard trivial words ("challenges") in B(2,5); later Andrews–Curtis and other search-reducible open problems. Registered 2026-10-05 by asetlearning. B(2,5)-specific challenge notes may carry both `#project/challenge-gen` and `#project/b25`. Profile: [[project-challenge-gen]]
+- `#project/b25-solver` — Learning-based solver for trivial words in B(2,5): a solver that adapts to the given word (PatternBoost-style search driven towards the target, learned move distributions), tested on the [[project-challenge-gen]] benchmark first, the HWW challenges later. Registered 2026-11-04 by asetlearning. Notes may also carry `#project/b25` or `#project/challenge-gen` (soft cap 2). Profile: [[project-b25-solver]]
 
 Add new `#project/*` tags as new projects start. Each registered project should have a **project profile** at `_meta/projects/project-<name>.md` (repos, commands, provenance fields, protected interfaces), per [[projects-and-dependencies-convention]]. Discuss in `_meta/canvas-setup.md` before adding to keep them stable.
 
