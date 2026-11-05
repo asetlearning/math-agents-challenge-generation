@@ -25,6 +25,7 @@ protected_interfaces:
   - "candidate registry data/b25_challenge_candidates.json — changed only with owner approval, per [[challenge-gen-candidate-workflow]]"
 hot_paths:
   - "Policy (owner): heavy algorithms in tcgraph (C++) with Python bindings; one library, no duplicated code; develop in our repos only"
+  - "All group theory in C++ (owner 2026-11-04): every group-theoretic procedure (reductions, automorphisms and substitutions, certificate construction and pull-back, distances, invariants) is implemented in tcgraph, even when it is cheap, so that long words and large word sets stay fast and all such procedures share one place and one data model; Python only orchestrates (I/O, configs, job drivers, analysis)"
   - "Scorers (owner 2026-11-04): new scorers are welcome and may be combined with existing ones, but each is a class in the existing tcgraph scorer structure (WordScorer family, usable in HybridScorer and LocalSearcher), bound to Python, with no unnecessary changes to existing code. Efficiency is a high priority: the long-term targets are very long words, so state the per-call complexity and measure on words of 2,000-5,000 letters"
   - "LocalSearcher::search and the scorers (edit distance O(|w|·|c|); group distance over rotations and images)"
 vault_docs:
