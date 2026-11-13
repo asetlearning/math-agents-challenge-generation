@@ -7,16 +7,16 @@ project: challenge-gen
 instance: B(2,5)
 kind: trivial-words
 format: "JSON (schema b25-challenge-candidates v1); letters a A b B (A = a⁻¹, B = b⁻¹); certificates as lists of [relator index, conjugator] over the R7 table, with the used relators included; from revision 3 certificate_chain as [core, conjugator] cells over literal fifth powers; from revision 6 those chains are in the gzip JSON file b25_challenge_certificates.json.gz (schema b25-challenge-certificates v1)"
-records: "revision 9: 116 candidates (T-028), 111 tested (7 from revision 1 + 5 broken T-028 words + 8 broken by the algo-mixer reducer + 91 broken by the b25-solver: 7 in revision 4, 62 in revision 5, 7 in revision 7, 4 in revision 8, 11 in revision 9)"
+records: "revision 10: 103 candidates (T-028), 124 tested (7 from revision 1 + 5 broken T-028 words + 8 broken by the algo-mixer reducer + 104 broken by the b25-solver: 7 in revision 4, 62 in revision 5, 7 in revision 7, 4 in revision 8, 11 in revision 9, 13 in revision 10)"
 files:
   - path: "math-agents-challenge-generation:data/b25_challenge_candidates.json"
-    sha256: 2fcc238ddeb305aa2fba84839e8a14168b9ec7310fceadf4ccd36dc04fce8e86   # revision 9
-    bytes: 1968530
+    sha256: df3cbb81aa78d7f62f9fdb956b98b2a31fcbf83cad70ef583bc922a145d66cb3   # revision 10
+    bytes: 1965483
     role: data (candidates, tested records; certificate_chain_ref pointers into the certificates file)
   - path: "math-agents-challenge-generation:data/b25_challenge_certificates.json.gz"
-    sha256: b64a4f19f45b80c1489eda4e182c70d8cb3d16cdd82d31c119cfe55390405805   # gzip -9, mtime 0; uncompressed sha256 609a8aa8cdd846ac5d8229c9286fc1fe006f21e3422fa885c6a4b4b0bd621bf5
-    bytes: 201522
-    role: certificate_chain of the 103 tested records that have one (revision 9)
+    sha256: b123440d895e73faac542f5c0c96c7750f619cf0bc26f740d374dde5ec43ea5f   # gzip -9, mtime 0; uncompressed sha256 793a3c28cf418db7c3b9ba7ad1f677f4f52890ee247346b903a988e60a1dc0ae
+    bytes: 261166
+    role: certificate_chain of the 116 tested records that have one (revision 10)
   - path: "math-agents-challenge-generation:data/b25_t028_survivors_220_rev4.json.gz"
     sha256: 2c321be52a1e6506cebbd251392eed76698ba84df1e9746ac2e4c4fbc4a7e5fa   # gzip -9 -n; uncompressed sha256 c0e22bb0837b82e163649387690913184a7b7cc322ad0faacfd71637f3fac78e, 117355550 bytes
     bytes: 2867414
@@ -26,8 +26,8 @@ derived_from:
   - "T-028 survivors file revision 4 (Lead's private run folder), sha256 c0e22bb0837b82e163649387690913184a7b7cc322ad0faacfd71637f3fac78e; published unchanged as the .gz file above (revision 2)"
   - "Lead's private results file of the 12 Validator-confirmed T-024 words with R7 certificates (gitignored), sha256 cd1ae09d3a0455ac45dff22950f066cb3fd76c92dc1df4069555a668ba1c17be — origin: T-024 onion pilot, [[t024-challenge-census-and-onion-probe-2026-10-17]] §10.6"
   - "the owner's residual-words file of 2026-10-19 (gitignored shared/ folder), sha256 890d6de4cee833109fb2e462462623bb9e9116f5ea549e47711addebaabab75e — origin: the owner's solver chain on the 12 words"
-produced_by: "revision 9: b25_pyproject_agentic main 697d0c5 (tcgraph c0087d9), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-9 script in the Lead's run folder (revision fields set to 9, one certificate per target, fewest cells); breaks from B2-beam-long-words (experiments/b25_solver/beam.py, b25 a16dfe3) ([[project-b25-solver]]). Revision 8: b25_pyproject_agentic main f036926 (tcgraph c0087d9), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-8 script in the Lead's run folder (revision fields set to 8, one certificate per target, fewest cells); breaks from B1-beam-pilot (experiments/b25_solver/beam.py, b25 a49314f) ([[project-b25-solver]]). Revision 7: b25_pyproject_agentic main 0ecaad5 (tcgraph 859448b), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-7 script in the Lead's run folder (revision fields set to 7, one certificate per target); breaks from A-dense-m2 (experiments/b25_solver/expa.py, b25 47ccdae) ([[project-b25-solver]]). Revision 6: b25_pyproject_agentic b25solver-registry-certs edd5426, experiments/challenge_gen/bench/registry_io.py (split; load restores the chains). Revision 5: b25_pyproject_agentic b25solver-mixer-bridge ec7f072 (tcgraph ba72168), experiments/b25_solver/registry_rev4.build driven by a revision-5 script in the Lead's run folder (revision fields set to 5); breaks from E4-blind-insertion-R (b25 89d8bda) and E4-mixer (b25 4a4cf7c, certificates rebuilt with the mixer_replay bridge fix ec7f072) ([[project-b25-solver]]). Revision 4: b25_pyproject_agentic b25solver-stage1 f693f81 (tcgraph ba72168), experiments/b25_solver/registry_rev4.py; breaks from E2-whitehead-solvers, E3-whitehead-loop and E0-rebuild-seed-pool ([[project-b25-solver]]). Revision 3: b25_pyproject_agentic t028-pilot ad87d88, experiments/challenge_gen/t028/mixer_registry_rev3.py (builder and validation) and mixer_chain_cert.py (chained certificates); mixer runs via experiments/challenge_gen/t028/mixer_rung.py and jobs/run_t028_mixer*.sh. Revision 2: b25_pyproject_agentic t028-pilot ae6ca36, experiments/challenge_gen/t028/build_public_registry.py (sha256 ff0d7124457afcfeacebf7ca84c286f5b3439e5c8bc167a72dc755ddc1240d13). Revision 1: b25_pyproject_agentic, branch t027-candidates-solvers: experiments/challenge_gen/solvers/build_candidates.py (sha256 63118b080b9a4702f568d6bc58c57cbf693cadcfd3189dea1273d725dfb1418e; solver harness, 13 files, sha256 b826ff9852b97549b7c65cee0405485d509ef9c5ab4ebecfb5b1075cdf55fb26); repo@sha added when the branch is committed"
-property_claimed: "Revision 1 records: trivial in free B(2,5), proved by an R7 certificate that re-expands exactly to its word (L0-cert). T-028 candidates (revision 2): W is trivial by construction (a product of conjugated images of certified trivial words); 200 of the 215 words are proved equal to W in the free group modulo fifth powers (certificate chain, L0); 15 reach their word through a coset-enumeration step (equality in a finitely presented cover, reproduction block in the .gz file). Revision 3: the 8 words broken by the algo-mixer reducer carry a certificate_chain proving the registry word is a product of conjugates of literal fifth powers (free B(2,5) proof; some fifth powers have period > 7, so these are not G_7 relators). Revision 4: the 7 words broken by the b25-solver carry a certificate_chain of the same kind (registry word = product of conjugates of literal fifth powers). Revision 5: the 62 words broken by the b25-solver E4 loop carry a certificate_chain of the same kind. Revision 7: the 7 words broken by experiment A carry a certificate_chain of the same kind. Revision 8: the 4 words broken by the beam pilot carry a certificate_chain of the same kind. Revision 9: the 11 words broken by the B2 beam run carry a certificate_chain of the same kind. 'shortest_known' words equal the registry word only by the solver steps that produced them (not certified). 'candidates' holds human-approved challenge candidates; 'tested' holds evaluated words that are not candidates, with their solver verdicts."
+produced_by: "revision 10: b25_pyproject_agentic main 2406ce1 (tcgraph c0087d9), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-10 script in the Lead's run folder (revision fields set to 10, one certificate per target, fewest cells); breaks from B3-beam-reroot (b25 8177b6f) and B4-beam-dump-starts (b25 4707acb), experiments/b25_solver/beam.py ([[project-b25-solver]]). Revision 9: b25_pyproject_agentic main 697d0c5 (tcgraph c0087d9), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-9 script in the Lead's run folder (revision fields set to 9, one certificate per target, fewest cells); breaks from B2-beam-long-words (experiments/b25_solver/beam.py, b25 a16dfe3) ([[project-b25-solver]]). Revision 8: b25_pyproject_agentic main f036926 (tcgraph c0087d9), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-8 script in the Lead's run folder (revision fields set to 8, one certificate per target, fewest cells); breaks from B1-beam-pilot (experiments/b25_solver/beam.py, b25 a49314f) ([[project-b25-solver]]). Revision 7: b25_pyproject_agentic main 0ecaad5 (tcgraph 859448b), experiments/b25_solver/registry_rev4.build and registry_io (split), driven by a revision-7 script in the Lead's run folder (revision fields set to 7, one certificate per target); breaks from A-dense-m2 (experiments/b25_solver/expa.py, b25 47ccdae) ([[project-b25-solver]]). Revision 6: b25_pyproject_agentic b25solver-registry-certs edd5426, experiments/challenge_gen/bench/registry_io.py (split; load restores the chains). Revision 5: b25_pyproject_agentic b25solver-mixer-bridge ec7f072 (tcgraph ba72168), experiments/b25_solver/registry_rev4.build driven by a revision-5 script in the Lead's run folder (revision fields set to 5); breaks from E4-blind-insertion-R (b25 89d8bda) and E4-mixer (b25 4a4cf7c, certificates rebuilt with the mixer_replay bridge fix ec7f072) ([[project-b25-solver]]). Revision 4: b25_pyproject_agentic b25solver-stage1 f693f81 (tcgraph ba72168), experiments/b25_solver/registry_rev4.py; breaks from E2-whitehead-solvers, E3-whitehead-loop and E0-rebuild-seed-pool ([[project-b25-solver]]). Revision 3: b25_pyproject_agentic t028-pilot ad87d88, experiments/challenge_gen/t028/mixer_registry_rev3.py (builder and validation) and mixer_chain_cert.py (chained certificates); mixer runs via experiments/challenge_gen/t028/mixer_rung.py and jobs/run_t028_mixer*.sh. Revision 2: b25_pyproject_agentic t028-pilot ae6ca36, experiments/challenge_gen/t028/build_public_registry.py (sha256 ff0d7124457afcfeacebf7ca84c286f5b3439e5c8bc167a72dc755ddc1240d13). Revision 1: b25_pyproject_agentic, branch t027-candidates-solvers: experiments/challenge_gen/solvers/build_candidates.py (sha256 63118b080b9a4702f568d6bc58c57cbf693cadcfd3189dea1273d725dfb1418e; solver harness, 13 files, sha256 b826ff9852b97549b7c65cee0405485d509ef9c5ab4ebecfb5b1075cdf55fb26); repo@sha added when the branch is committed"
+property_claimed: "Revision 1 records: trivial in free B(2,5), proved by an R7 certificate that re-expands exactly to its word (L0-cert). T-028 candidates (revision 2): W is trivial by construction (a product of conjugated images of certified trivial words); 200 of the 215 words are proved equal to W in the free group modulo fifth powers (certificate chain, L0); 15 reach their word through a coset-enumeration step (equality in a finitely presented cover, reproduction block in the .gz file). Revision 3: the 8 words broken by the algo-mixer reducer carry a certificate_chain proving the registry word is a product of conjugates of literal fifth powers (free B(2,5) proof; some fifth powers have period > 7, so these are not G_7 relators). Revision 4: the 7 words broken by the b25-solver carry a certificate_chain of the same kind (registry word = product of conjugates of literal fifth powers). Revision 5: the 62 words broken by the b25-solver E4 loop carry a certificate_chain of the same kind. Revision 7: the 7 words broken by experiment A carry a certificate_chain of the same kind. Revision 8: the 4 words broken by the beam pilot carry a certificate_chain of the same kind. Revision 9: the 11 words broken by the B2 beam run carry a certificate_chain of the same kind. Revision 10: the 13 words broken by the B3 and B4 beam runs carry a certificate_chain of the same kind. 'shortest_known' words equal the registry word only by the solver steps that produced them (not certified). 'candidates' holds human-approved challenge candidates; 'tested' holds evaluated words that are not candidates, with their solver verdicts."
 vetting:
   - check: "L0 of every certificate against its word, R7 only; words equal their sources; reproduction chains equal the Validator's"
     tool: "Validator's independent expander and chain (b25 d1b5d0f, tcgraph 63564c3)"
@@ -142,6 +142,24 @@ vetting:
     scope: "free B(2,5) — proof (certificates replayed by accept); syntactic"
     result: "ok; counts as stated; 0 paths"
     date: 2026-11-12
+    by: agent/lead (asetlearning)
+  - check: "10 B3 beam breaks (arm B with re-rooting): every core a literal reduced fifth power x^5; product of conj^-1 core conj, g^-1 g free-reduces to the rev-9 registry word; ids open rev-9 candidates"
+    tool: "bench solver contract (verified-cert); Lead's own replay; Validator's own replay"
+    scope: "free B(2,5) — proof"
+    result: "10/10 PASS, [[2026-11-12-b25-solver-beam-b3-breaks-check]]"
+    date: 2026-11-12
+    by: agent/validator (asetlearning)
+  - check: "3 B4 beam breaks (arms B and BS, chains start at B3 word-dump words): every core a literal reduced fifth power x^5; product of conj^-1 core conj, g^-1 g free-reduces to the rev-9 registry word; ids open rev-9 candidates"
+    tool: "bench solver contract (verified-cert); Lead's own replay; Validator's own replay"
+    scope: "free B(2,5) — proof"
+    result: "3/3 PASS, [[2026-11-13-b25-solver-beam-b4-breaks-check]]"
+    date: 2026-11-13
+    by: agent/validator (asetlearning)
+  - check: "revision 10 file: 13 moved ids equal the confirmed targets; bench accept ok (112 broken with certificate on the registry word, 112 replayed, 103 candidates, ids unique); 116 chains in the gz; split round trip equal; no machine paths"
+    tool: "bench accept via the builder; registry_io.load round trip; Lead's path grep"
+    scope: "free B(2,5) — proof (certificates replayed by accept); syntactic"
+    result: "ok; counts as stated; 0 paths"
+    date: 2026-11-13
     by: agent/lead (asetlearning)
 stats: {revision_1: {min_len: 47, max_len: 1548}, t028_candidates_rev3: {n: 207, with_shortest_known: 38}, t028_candidates_rev4: {n: 200, with_shortest_known: 36}, t028_candidates_rev5: {n: 138, min_len: 156, median_len: 729, max_len: 1313, with_shortest_known: 24}, t028_candidates_rev7: {n: 131, min_len: 156, median_len: 732, max_len: 1313, with_shortest_known: 24}, t028_candidates_rev8: {n: 127, min_len: 156, median_len: 734, max_len: 1313, with_shortest_known: 24}, t028_candidates_rev9: {n: 116, min_len: 156, median_len: 739, max_len: 1313, with_shortest_known: 19}, t028_candidates: {n: 215, min_len: 138, median_len: 602, max_len: 1313, certified: 200}}
 used_by: ["`[[challenge-gen-success-metrics]]` (solver resilience, registry rules)"]
@@ -324,6 +342,32 @@ Each record has:
 - **Not included.** C3\|4\|2: the beam reached the empty word 43 times, but every chain passes through a kbmag step of its E4 end word that the certifier does not yet certify; it stays a candidate.
 - **Caveats.** Certificate cells include fifth powers of period up to 56. Hardness of the 116 is relative to the solvers listed in revisions 2–9.
 
+## Revision 10 (2026-11-13): B3 and B4 beam breaks
+
+> [!info] Plain English
+> Two more beam runs broke 13 candidates. B3 restarted the beam from any word at most 75% of its start (at most 3 times per word) and ran on the 23 unbroken candidates under 500 letters and 20 longer words that B2 had shortened: 10 breaks, 7 of them long words that broke only after a restart. B4 started from the shortest words B3 had saved, and on the 4 longest words first ran a greedy shortening step: 3 breaks, among them C3\|6\|13 at 1109 letters, the longest word broken so far. Each break has a certificate that three independent checks replayed. 103 candidates remain.
+
+| id | registry length | run | arm | chain depth | last pool | cells |
+|---|---|---|---|---|---|---|
+| C3\|6\|13 | 1109 | B4 | BS | 2 | T-blind | 405 |
+| C3\|6\|8 | 1100 | B3 | B | 3 | T-blind | 214 |
+| C3\|6\|5 | 816 | B3 | B | 1 | T-blind | 217 |
+| C3\|4\|23 | 744 | B3 | B | 1 | T-blind | 277 |
+| C3r2\|3,3\|3 | 734 | B3 | B | 3 | v5 | 200 |
+| C3\|4\|29 | 730 | B3 | B | 2 | v5 | 341 |
+| C3\|6\|28 | 715 | B3 | B | 4 | T-blind | 240 |
+| C1\|8\|11 | 459 | B4 | B | 4 | v5 | 68 |
+| C1\|12\|16 | 458 | B3 | B | 1 | T-blind | 66 |
+| C3\|4\|5 | 454 | B3 | B | 2 | v5 | 212 |
+| C3\|4\|1 | 418 | B3 | B | 1 | T-blind | 155 |
+| C1\|8\|24 | 404 | B4 | B | 3 | T-blind | 136 |
+| C1\|8\|12 | 402 | B3 | B | 4 | T-blind | 218 |
+
+- **Runs.** B3-beam-reroot, job 20261112-033029-51091b (cpuserver, 6.0 h): arm B (width 12, depth ≤ 4, 6 CPU-h per word) with re-rooting (0.75, at most 3) on 43 targets. B4-beam-dump-starts, job 20261112-140433-c93577 (cpuserver, 10.7 h): the 2 shortest B3-dump words of each target as extra start words (their chains kept); arm B on the 29 B3 targets without a break (6 CPU-h), arm BS on the 4 longest (a width-1 greedy shortening step, then the beam; 12 CPU-h). Pools T-blind, v5 and long as in B2.
+- **Certificates.** One per target, the one with the fewest cells; every chain goes registry word → empty (for B4 through the B3 dump word). Records carry `pool_break` with route, experiment, job and n_cells. `solver_identity.beam_b3` and `beam_b4` describe the programs.
+- **Not included.** C3\|4\|2: reached 56 letters in B3 and B4, not the empty word; the earlier empties pass through a kbmag step that the closure search did not certify at caps 10⁷ and 2·10⁷ (job 20261111-223037-47a958). It stays a candidate.
+- **Caveats.** Certificate cells include fifth powers of period up to 49. Hardness of the 103 is relative to the solvers listed in revisions 2–10.
+
 ## Derivation
 
 1. **Originals.** Copied from Lead's private file of the 12 confirmed T-024 words: word, R7 certificate and the relators it uses. Only the four words that left residuals are included.
@@ -384,6 +428,7 @@ for rec in reg["candidates"] + reg["tested"]:
 | 7 | 2026-11-09 | `993334f4…e5f6` | b25-solver experiment A (A-dense-m2): 7 candidates broken (C1\|16\|2, C1\|12\|14, C1\|16\|17, C3\|6\|23, C1\|12\|1, C1\|12\|25, C1\|8\|16; 4 by the long pool), each with a Validator-confirmed certificate, moved to `tested`; 131 candidates remain; certificates file `bfe51ec5…d91f`; `solver_identity.expa_dense_m2` added | owner (approved 2026-11-09) |
 | 8 | 2026-11-10 | `e15e5e77…556c` | b25-solver beam pilot (B1-beam-pilot): 4 candidates broken (C3\|9\|25, C1\|16\|29, C3\|4\|18, C1\|12\|20; C3\|9\|25 and C3\|4\|18 by the beam only), each with a Validator-confirmed certificate, moved to `tested`; 127 candidates remain; certificates file `417bcafd…7bbb`; `solver_identity.beam_pilot_b1` added | owner (approved 2026-11-10) |
 | 9 | 2026-11-12 | `2fcc238d…8e86` | b25-solver B2 beam run (B2-beam-long-words): 11 candidates broken (C3\|6\|7, C3\|6\|0, C3r2\|2,3\|25, C3\|6\|4, C1\|12\|26, C3r2\|2,2\|9, C3r2\|2,2\|27, C3\|6\|16, C3\|6\|1, C3r2\|2,2\|22, C3\|4\|20), each with a Validator-confirmed certificate, moved to `tested`; 116 candidates remain; certificates file `b64a4f19…5805`; `solver_identity.beam_b2` added | owner (approved 2026-11-12) |
+| 10 | 2026-11-13 | `df3cbb81…6cb3` | b25-solver B3 and B4 beam runs (B3-beam-reroot, B4-beam-dump-starts): 13 candidates broken (C1\|12\|16, C1\|8\|11, C1\|8\|12, C1\|8\|24, C3r2\|3,3\|3, C3\|4\|1, C3\|4\|23, C3\|4\|29, C3\|4\|5, C3\|6\|13, C3\|6\|28, C3\|6\|5, C3\|6\|8), each with a Validator-confirmed certificate, moved to `tested`; 103 candidates remain; certificates file `b123440d…ea5f`; `solver_identity.beam_b3` and `beam_b4` added | owner (approved 2026-11-13) |
 
 ## Related material
 - [[datasets-convention]]
